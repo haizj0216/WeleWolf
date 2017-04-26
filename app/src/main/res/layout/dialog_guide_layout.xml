@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/color_black_70">
+
+    <ImageView
+        android:id="@+id/guide_image"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:scaleType="fitStart" />
+
+    <ImageView
+        android:id="@+id/guide_image_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/guide_image"
+        android:layout_centerHorizontal="true"
+        android:visibility="gone"/>
+</RelativeLayout>

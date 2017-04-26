@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical"
+    android:paddingLeft="18dp"
+    android:paddingRight="18dp" >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <EditText
+            android:id="@+id/regist_phone_edit"
+            style="@style/regist_edit_text_1"
+            android:hint="@string/login_hint_phone_number"
+            android:inputType="phone"
+            android:imeOptions="actionDone"
+            android:digits="1234567890"
+            android:maxLength="11" >
+        </EditText>
+
+        <ImageView
+            android:id="@+id/clear_phone_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="9dp"
+            android:src="@drawable/clear_input_icon"
+            android:visibility="gone" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal" >
+
+        <EditText
+            android:id="@+id/regit_sms_code_edit"
+            style="@style/regist_edit_text_1"
+            android:layout_width="0dp"
+            android:layout_marginTop="0dp"
+            android:layout_weight="1"
+            android:imeOptions="actionDone"
+            android:hint="@string/regist_hint_sms_code"
+            android:inputType="number"
+            android:maxLength="4" >
+        </EditText>
+
+        <Button
+            android:id="@+id/regist_send_sms_code_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="55dp"
+            android:layout_gravity="bottom"
+            android:layout_marginLeft="21dp"
+            android:background="@drawable/regist_send_sms_code_btn_bg"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp"
+            android:text="获取验证码"
+            android:textColor="@color/white"
+            android:textSize="15sp" />
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <EditText
+            android:id="@+id/regist_password_edit"
+            style="@style/regist_edit_text_1"
+            android:hint="@string/regist_hint_password"
+            android:inputType="textPassword"
+            android:imeOptions="actionDone"
+            android:maxLength="20" >
+        </EditText>
+
+        <CheckBox
+            android:id="@+id/show_plaintext_password_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="6dp"
+            android:layout_marginRight="6dp"
+            android:button="@drawable/show_plaintext_password_bg" />
+
+        <View
+            android:id="@+id/divider_line"
+            android:layout_width="1dp"
+            android:layout_height="15dp"
+            android:layout_centerVertical="true"
+            android:layout_toLeftOf="@id/show_plaintext_password_view"
+            android:background="@color/color_divider" />
+
+        <ImageView
+            android:id="@+id/clear_password_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="9dp"
+            android:layout_marginRight="9dp"
+            android:layout_toLeftOf="@id/divider_line"
+            android:src="@drawable/clear_input_icon"
+            android:visibility="gone" />
+    </RelativeLayout>
+
+    
+    
+    <LinearLayout
+        android:id="@+id/customer_sercvice_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="18dp"
+            android:text="获取不到验证码? 请拨打客服电话:"
+            android:textColor="@color/gray"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/customer_service_phone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="18dp"
+            android:paddingLeft="6dp"
+            android:clickable="true"
+            android:text="400-038-9691"
+            android:textColor="@color/color_main_app"
+            android:textSize="12sp" />
+    </LinearLayout>
+    
+</LinearLayout>

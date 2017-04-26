@@ -1,0 +1,45 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white">
+
+    <ImageView
+        android:id="@+id/loop_detail_header_head"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dp"
+        android:padding="2dp"
+        android:src="@drawable/default_img" />
+
+    <TextView
+        android:id="@+id/loop_detail_header_class"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/loop_detail_header_head"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="8dp"
+        android:textColor="@color/color_text_main"
+        android:textSize="15dp" />
+
+    <include
+        android:id="@+id/loop_detail_header_data"
+        layout="@layout/layout_loop_common_data"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/loop_detail_header_class"
+        android:layout_marginBottom="15dp"
+        android:layout_marginTop="30dp"/>
+
+    <TextView
+        android:id="@+id/loop_detail_header_tip"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/loop_detail_header_data"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="15dp"
+        android:text="(比赛完成后结算)"
+        android:textColor="@color/color_text_primary"
+        android:textSize="12dp" />
+
+</RelativeLayout>

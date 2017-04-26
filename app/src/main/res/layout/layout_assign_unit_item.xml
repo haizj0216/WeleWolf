@@ -1,0 +1,45 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <ImageView
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/bg_shape_assign_unit" />
+
+    <ImageView
+        android:id="@+id/assign_unit_item_select_bg"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/icon_unit_select" />
+
+    <LinearLayout
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_centerHorizontal="true"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/assign_unit_item_index"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="1"
+            android:textColor="@color/color_text_main"
+            android:textSize="15dp" />
+
+        <TextView
+            android:id="@+id/assign_unit_item_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="-2dp"
+            android:ellipsize="end"
+            android:maxLength="8"
+            android:text="Unit"
+            android:textColor="@color/color_text_main"
+            android:textSize="10dp" />
+    </LinearLayout>
+
+</RelativeLayout>

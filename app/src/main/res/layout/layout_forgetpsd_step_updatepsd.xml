@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingBottom="10dp"
+        android:paddingLeft="15dp"
+        android:paddingTop="10dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="手机号码 "
+            android:textColor="#999999"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/phone_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:text="13500000001 "
+            android:textColor="#5f5f5f"
+            android:textSize="14sp" />
+    </LinearLayout>
+
+    <com.knowbox.teacher.widgets.CleanableEditText
+        android:id="@+id/new_psd_edit"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:hint="@string/forgetpsd_hint_new_password"
+        android:imeOptions="actionDone"
+        android:inputType="textPassword"
+        android:paddingRight="15dp"
+        android:paddingLeft="5dp"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:background="@color/color_divider" />
+
+    <com.knowbox.teacher.widgets.CleanableEditText
+        android:id="@+id/new_agin_psd_edit"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_marginTop="1dp"
+        android:hint="@string/forgetpsd_hint_new_agin_password"
+        android:imeOptions="actionDone"
+        android:inputType="textPassword"
+        android:paddingRight="15dp"
+        android:paddingLeft="5dp"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:background="@color/color_divider" />
+
+</LinearLayout>

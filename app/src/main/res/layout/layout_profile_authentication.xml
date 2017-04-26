@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/color_main_background">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:id="@+id/profile_certification_success_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="212dp"
+                    android:background="@color/color_main_app"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:layout_width="170dp"
+                        android:layout_height="118dp"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginTop="40dp"
+                        android:src="@drawable/certifpicture" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginTop="8dp"
+                        android:text="已通过教师资格认证"
+                        android:textColor="@color/white"
+                        android:textSize="17dp" />
+
+                </LinearLayout>
+
+
+                <TextView
+                    android:id="@+id/profile_certification_sucess_time"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/item_high_size"
+                    android:layout_marginTop="10dp"
+                    android:background="@color/white"
+                    android:gravity="center_vertical"
+                    android:paddingLeft="12dp"
+                    android:textColor="@color/color_text_main"
+                    android:textSize="15dp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/profile_certification_certing_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="212dp"
+                    android:background="@color/color_main_app"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:layout_width="170dp"
+                        android:layout_height="118dp"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginTop="40dp"
+                        android:src="@drawable/icon_certifing" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginTop="8dp"
+                        android:text="证件审核中"
+                        android:textColor="@color/white"
+                        android:textSize="17sp" />
+
+                </LinearLayout>
+
+
+                <TextView
+                    android:id="@+id/profile_certification_certing_time"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/item_high_size"
+                    android:layout_marginTop="10dp"
+                    android:background="@color/white"
+                    android:gravity="center_vertical"
+                    android:paddingLeft="12dp"
+                    android:textColor="@color/color_text_main"
+                    android:textSize="15dp" />
+            </LinearLayout>
+
+            <RelativeLayout
+                android:id="@+id/profile_certification_cert_layout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:visibility="visible">
+
+                <TextView
+                    android:id="@+id/profile_certification_fail_reason"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/color_fcc622"
+                    android:gravity="center_vertical"
+                    android:paddingBottom="5dp"
+                    android:paddingLeft="12dp"
+                    android:paddingRight="12dp"
+                    android:paddingTop="5dp"
+                    android:textColor="@color/white"
+                    android:textSize="13sp"
+                    android:visibility="gone" />
+
+                <LinearLayout
+                    android:id="@+id/profile_certification_photo_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_below="@id/profile_certification_fail_reason"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginBottom="72dp"
+                    android:orientation="vertical">
+
+                    <RelativeLayout
+                        android:id="@+id/profile_certification_image_layout"
+                        android:layout_width="match_parent"
+                        android:layout_height="238dp"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/bg_auth_image">
+
+                        <ImageView
+                            android:layout_width="100dp"
+                            android:layout_height="100dp"
+                            android:layout_centerHorizontal="true"
+                            android:layout_marginTop="47dp"
+                            android:src="@drawable/icon_auth_photo" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerHorizontal="true"
+                            android:layout_marginTop="170dp"
+                            android:alpha="80"
+                            android:text="点此上传图片"
+                            android:textColor="@color/color_main_app"
+                            android:textSize="18sp" />
+
+                        <ImageView
+                            android:id="@+id/profile_certification_image"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerInParent="true"
+                            android:scaleType="fitCenter"
+                            android:visibility="gone" />
+                    </RelativeLayout>
+
+                    <WebView
+                        android:id="@+id/profile_certification_rule"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:orientation="vertical">
+                    <Button
+                        android:id="@+id/btn_upload_teacherinfo"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/button_high_size"
+                        android:layout_marginBottom="15dp"
+                        android:layout_marginLeft="15dp"
+                        android:layout_marginRight="15dp"
+                        android:layout_marginTop="15dp"
+                        android:background="@drawable/bg_auth_submit"
+                        android:enabled="false"
+                        android:text="提交认证"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/button_text_size" />
+                </LinearLayout>
+
+            </RelativeLayout>
+
+        </FrameLayout>
+    </ScrollView>
+
+    <View
+        android:id="@+id/profile_certification_empty"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:visibility="gone"></View>
+</FrameLayout>

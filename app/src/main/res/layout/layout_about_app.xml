@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/color_main_background"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="200dp">
+
+        <ImageView
+            android:id="@+id/profile_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="25dp"
+            android:layout_centerHorizontal="true"
+            android:src="@drawable/about_app_logo" />
+
+        <TextView
+            android:id="@+id/profile_assist_version"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/profile_icon"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="15dp"
+            android:text="当前版本 ： V 0.0"
+            android:textColor="@color/color_text_main"
+            android:textSize="15dp" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:clickable="false"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:id="@+id/profile_assist_intro"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/item_high_size"
+            android:background="@drawable/bg_myclass_list_item"
+            android:paddingLeft="@dimen/margin_left_or_right"
+            android:paddingRight="@dimen/margin_left_or_right"
+            android:visibility="gone">
+
+            <TextView
+                style="@style/profile_item_text2_style"
+                android:text="新特性" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:src="@drawable/icon_profile_more" />
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/margin_top_divider_size"
+            android:background="@color/color_divider"
+            android:visibility="gone"/>
+
+        <RelativeLayout
+            android:id="@+id/profile_assist_update"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/item_high_size"
+            android:background="@drawable/bg_myclass_list_item"
+            android:paddingLeft="@dimen/margin_left_or_right"
+            android:paddingRight="@dimen/margin_left_or_right">
+
+            <TextView
+                style="@style/profile_item_text2_style"
+                android:text="检测版本"></TextView>
+        </RelativeLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center_horizontal|bottom"
+        android:orientation="vertical"
+        android:paddingBottom="8dp">
+
+        <TextView
+            style="@style/profile_item_text2_style"
+            android:text="单词部落软件许可及服务协议"
+            android:textColor="@color/color_main_app"
+            android:textSize="10sp" />
+
+        <TextView
+            style="@style/profile_item_text2_style"
+            android:layout_marginTop="3dp"
+            android:text="知识印象  版权所有"
+            android:textColor="#c9c8cc"
+            android:textSize="10sp" />
+
+        <TextView
+            style="@style/profile_item_text2_style"
+            android:layout_marginTop="3dp"
+            android:text="Copyright @ 2015 Knowbox.All Rights Reserved"
+            android:textColor="#c9c8cc"
+            android:textSize="10sp" />
+    </LinearLayout>
+</LinearLayout>

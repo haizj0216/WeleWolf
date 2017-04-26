@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="50dp"
+    android:background="@color/color_black_light_image_previewer" >
+
+    <ImageButton
+        android:id="@+id/header4_back_btn"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
+        android:layout_centerVertical="true"
+        android:background="@null"
+        android:onClick="onClicked"
+        android:src="@drawable/bt_title_back" >
+    </ImageButton>
+
+    <TextView
+        android:id="@+id/header4_center_divider"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:text=" / "
+        android:textColor="#959595"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/header4_count_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_toRightOf="@id/header4_center_divider"
+        android:text="9"
+        android:textColor="#959595"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/header4_cur_index"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_toLeftOf="@id/header4_center_divider"
+        android:text="1"
+        android:textColor="#ffffff"
+        android:textSize="18sp" />
+
+</RelativeLayout>

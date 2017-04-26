@@ -1,0 +1,113 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <RelativeLayout
+        android:id="@+id/student_ranking"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:visibility="visible">
+
+        <include layout="@layout/layout_common_student_item"></include>
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/student_unstudy"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:background="@color/white"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:gravity="center_vertical">
+
+            <TextView
+                android:id="@+id/student_unstudy_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:text="未参赛人数"
+                android:textColor="@color/color_text_main"
+                android:textSize="16dp" />
+
+            <TextView
+                android:id="@+id/student_unstudy_count"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="8dp"
+                android:text="(7人)"
+                android:textColor="@color/color_text_primary"
+                android:textSize="12dp" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:background="@color/color_divider" />
+
+        <com.hyena.framework.app.widget.AccuracGridView
+            android:id="@+id/student_unstudy_gridview"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="15dp"
+            android:layout_marginBottom="15dp"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:cacheColorHint="@android:color/transparent"
+            android:listSelector="@android:color/transparent"
+            android:verticalSpacing="20dp"
+            android:numColumns="4" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/student_empty"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <ImageView
+            android:id="@+id/student_empty_img"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+            android:src="@drawable/icon_empty_nodata" />
+
+        <TextView
+            android:id="@+id/student_empty_desc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="25dp"
+            android:text="该班级部落暂无学生"
+            android:textColor="@color/color_text_main"
+            android:textSize="15dp" />
+
+        <TextView
+            android:id="@+id/student_empty_code"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:text="学生可通过群号“123455”加入"
+            android:textColor="@color/color_text_primary"
+            android:textSize="13dp" />
+
+        <TextView
+            android:id="@+id/student_empty_add"
+            android:layout_width="220dp"
+            android:layout_height="50dp"
+            android:layout_marginBottom="25dp"
+            android:layout_marginTop="25dp"
+            android:background="@drawable/bg_button_common"
+            android:gravity="center"
+            android:text="分享班级链接邀请学生"
+            android:textColor="@color/white"
+            android:textSize="15dp" />
+    </LinearLayout>
+
+</RelativeLayout>

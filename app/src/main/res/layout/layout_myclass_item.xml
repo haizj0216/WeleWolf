@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="51dp"
+    android:minHeight="51dp">
+
+    <TextView
+        android:id="@+id/profile_myclass_name"
+        style="@style/profile_item_text_style"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="18dp"
+        android:text="盒子助手" />
+
+    <ImageView
+        android:id="@+id/icon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:layout_marginRight="12dp"
+        android:src="@drawable/icon_profile_more" />
+
+    <TextView
+        android:id="@+id/profile_myclass_code"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginRight="8dp"
+        android:layout_toLeftOf="@id/icon"
+        android:textColor="#c9c8ce"
+        android:textSize="14sp" />
+
+    <ImageView
+        android:id="@+id/profile_myclass_tips"
+        android:layout_width="8dp"
+        android:layout_height="8dp"
+        android:layout_toRightOf="@id/profile_myclass_name"
+        android:layout_marginTop="12dp"
+        android:src="@drawable/bg_chat_noread_disabled" />
+
+    <View
+        android:id="@+id/item_divider_line"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/margin_top_divider_size"
+        android:layout_alignLeft="@id/profile_myclass_name"
+        android:layout_alignParentBottom="true"
+        android:background="@color/color_divider" />
+
+
+</RelativeLayout>

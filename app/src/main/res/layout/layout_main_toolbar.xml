@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/main_tab_group"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:layout_alignParentBottom="true"
+    android:background="#fcfcfc" >
+
+    <View
+        android:id="@+id/main_tab_devider"
+        android:layout_width="fill_parent"
+        android:layout_height="@dimen/margin_top_divider_size"
+        android:background="@color/color_divider" />
+
+    <LinearLayout
+        android:id="@+id/main_tab_panel"
+        android:layout_width="700dp"
+        android:layout_height="49dp"
+        android:layout_below="@id/main_tab_devider"
+        android:layout_centerHorizontal="true"
+        android:orientation="horizontal" >
+        <RelativeLayout
+            android:id="@+id/main_tab_game"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_weight="1" >
+
+            <TextView
+                android:id="@+id/main_tab_game_text"
+                style="@style/main_tab"
+                android:layout_centerInParent="true"
+                android:drawableTop="@drawable/tab_icon_game"
+                android:text="游戏" />
+
+            <View
+                android:id="@+id/main_game_tips"
+                android:layout_width="10dp"
+                android:layout_height="10dp"
+                android:layout_alignRight="@id/main_tab_game_text"
+                android:layout_marginTop="3dp"
+                android:layout_marginRight="21dp"
+                android:background="@drawable/bg_chat_noread_disabled"
+                android:visibility="gone"/>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/main_tab_list"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_weight="1" >
+
+            <TextView
+                android:id="@+id/main_tab_list_txt"
+                style="@style/main_tab"
+                android:layout_centerInParent="true"
+                android:drawableTop="@drawable/tab_icon_stu"
+                android:text="排行榜" />
+
+            <View
+                android:id="@+id/main_list_tips"
+                android:layout_width="10dp"
+                android:layout_height="10dp"
+                android:layout_alignRight="@id/main_tab_list_txt"
+                android:layout_marginTop="3dp"
+                android:layout_marginRight="21dp"
+                android:background="@drawable/bg_chat_noread_disabled"
+                android:visibility="gone"/>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/main_tab_message"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_weight="1" >
+
+            <TextView
+                android:id="@+id/main_tab_message_txt"
+                style="@style/main_tab"
+                android:layout_centerInParent="true"
+                android:drawableTop="@drawable/tab_icon_profile"
+                android:text="消息" />
+
+            <View
+                android:id="@+id/main_message_tips"
+                android:layout_width="10dp"
+                android:layout_height="10dp"
+                android:layout_alignRight="@id/main_tab_message_txt"
+                android:layout_marginTop="3dp"
+                android:layout_marginRight="21dp"
+                android:background="@drawable/bg_chat_noread_disabled"
+                android:visibility="gone"/>
+        </RelativeLayout>
+    </LinearLayout>
+
+</RelativeLayout>

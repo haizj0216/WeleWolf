@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/color_main_background"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/desc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingLeft="@dimen/padding_left_or_right"
+        android:paddingRight="@dimen/padding_left_or_right"
+        android:text="找不到您所在的学校？输入您的学校名称进行创建"
+        android:layout_marginTop="10dp"
+        android:textColor="@color/color_text_primary"
+        android:textSize="14dp" />
+
+    <TextView
+        android:id="@+id/dialog_choose_school_not_found_city_name"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:gravity="center_vertical"
+        android:layout_marginLeft="15dp"
+        android:textColor="@color/color_text_main"
+        android:textSize="15dp" />
+
+    <com.knowbox.teacher.widgets.CleanableEditText
+        android:id="@+id/dialog_choose_school_not_found_create"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/item_high_size"
+        android:background="@color/white"
+        android:gravity="center_vertical"
+        android:hint="输入学校名称"
+        android:textColor="@color/color_text_main"
+        android:textColorHint="@color/color_text_third"
+        android:textSize="15dp" />
+
+</LinearLayout>

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical">
+
+    <FrameLayout
+        android:id="@+id/images_picker_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"></FrameLayout>
+
+    <RelativeLayout
+        android:id="@+id/images_picker_bottom_container"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_alignParentBottom="true"
+        android:background="@color/white"
+        android:gravity="center_vertical"
+        android:visibility="gone">
+
+        <LinearLayout
+            android:id="@+id/images_picker_picture_count"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignParentLeft="true"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:singleLine="true"
+                android:text="@string/multi_images_picker_has_chose"
+                android:textColor="@color/color_red" />
+
+            <TextView
+                android:id="@+id/images_picker_preview_image"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/multi_images_picker_number_bg"
+                android:gravity="center"
+                android:singleLine="true"
+                android:textColor="@color/white" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="2dp"
+                android:singleLine="true"
+                android:text="@string/multi_images_picker_picture_unit"
+                android:textColor="@color/color_red" />
+
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/images_picker_confirm"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:layout_marginLeft="2dp"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:src="@drawable/multi_images_picker_drawable_done" />
+    </RelativeLayout>
+
+</RelativeLayout>

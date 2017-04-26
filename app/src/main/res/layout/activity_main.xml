@@ -1,0 +1,52 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <RelativeLayout
+        android:id="@+id/main_debug_panel"
+        android:layout_width="fill_parent"
+        android:layout_height="60dp"
+        android:layout_alignParentTop="true"
+        android:background="#FF000000"
+        android:orientation="horizontal"
+        android:visibility="gone" >
+
+        <Button
+            android:id="@+id/main_debug_clear"
+            android:layout_width="60dp"
+            android:layout_height="fill_parent"
+            android:layout_alignParentRight="true"
+            android:gravity="center"
+            android:text="Clear" />
+
+        <ScrollView
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_toLeftOf="@id/main_debug_clear" >
+
+            <TextView
+                android:id="@+id/main_debug_txt"
+                android:layout_width="99999dp"
+                android:layout_height="fill_parent"
+                android:gravity="top|left"
+                android:text="欢迎使用Debug模式"
+                android:textColor="#FFFFFF" />
+        </ScrollView>
+    </RelativeLayout>
+
+    <FrameLayout
+        android:id="@+id/main_container"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_below="@id/main_debug_panel" >
+    </FrameLayout>
+
+    <FrameLayout
+        android:id="@+id/main_subpage_container"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_below="@id/main_debug_panel"
+        android:visibility="gone" />
+
+</RelativeLayout>

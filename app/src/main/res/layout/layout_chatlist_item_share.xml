@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical" >
+
+    <TextView
+        android:id="@+id/timestamp"
+        style="@style/chat_text_date_style"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_gravity="center" />
+
+    <LinearLayout
+        android:id="@+id/chatlist_item_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginTop="15dp"
+        android:background="@drawable/msg_share_homework_item_border"
+        android:orientation="vertical" >
+
+        <RelativeLayout
+            android:id="@+id/chatlist_item_bg"
+            android:layout_width="fill_parent"
+            android:layout_height="95dp">
+
+            <TextView
+                android:id="@+id/share_homework_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="40dp"
+                android:textSize="25dp"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginTop="15dp"
+                android:layout_marginRight="15dp"
+                android:singleLine="true"
+                android:ellipsize="end"
+                android:textColor="@color/color_white_100"/>
+
+            <TextView
+                android:id="@+id/share_homework_teacher_from"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/share_homework_title"
+                android:layout_alignParentRight="true"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="15dp"
+                android:singleLine="true"
+                android:gravity="right"
+                android:ellipsize="end"
+                android:textColor="@color/color_white_100"
+                android:textSize="16dp"/>
+
+            <TextView
+                android:id="@+id/share_homework_subject"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/share_homework_title"
+                android:layout_toLeftOf="@id/share_homework_teacher_from"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="15dp"
+                android:textColor="@color/color_white_100"
+                android:textSize="16dp"/>
+
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="35dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="15dp"
+                android:text="查看详情"
+                android:textColor="#707070"
+                android:textSize="14dp" />
+
+            <ImageView
+                android:layout_width="6dp"
+                android:layout_height="10dp"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="15dp"
+                android:src="@drawable/profile_icon_next" />
+        </RelativeLayout>
+    </LinearLayout>
+
+</LinearLayout>

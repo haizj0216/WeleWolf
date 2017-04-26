@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/ranking_item"
+    android:layout_width="match_parent"
+    android:layout_height="106dp"
+    android:background="@color/color_white_100">
+
+    <RelativeLayout
+        android:id="@+id/ranking_layout"
+        android:layout_width="60dp"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true">
+
+        <ImageView
+            android:id="@+id/rank_img"
+            android:layout_width="21dp"
+            android:layout_height="24dp"
+            android:layout_centerInParent="true"
+            android:src="@drawable/icon_rank_first"
+            android:visibility="visible" />
+
+        <TextView
+            android:id="@+id/rank_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="333"
+            android:textColor="@color/color_text_primary"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            android:visibility="gone" />
+    </RelativeLayout>
+
+    <ImageView
+        android:id="@+id/student_head_photo"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="60dp"
+        android:padding="5dp"
+        android:src="@drawable/default_img" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="110dp"
+        android:paddingLeft="10dp">
+
+        <TextView
+            android:id="@+id/student_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:singleLine="true"
+            android:text="黎明名"
+            android:textColor="@color/color_text_main"
+            android:textSize="16sp" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/student_name">
+
+            <RelativeLayout
+                android:layout_width="67dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp">
+
+                <TextView
+                    android:id="@+id/point_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="胜场积分"
+                    android:textColor="@color/color_text_primary"
+                    android:textSize="13sp" />
+
+                <TextView
+                    android:id="@+id/score"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/point_title"
+                    android:layout_marginTop="4dp"
+                    android:drawableLeft="@drawable/icon_competition_points"
+                    android:drawablePadding="5dp"
+                    android:ellipsize="end"
+                    android:singleLine="true"
+                    android:text="9090909"
+                    android:textColor="@color/color_text_main"
+                    android:textSize="13sp" />
+
+                <View
+                    android:layout_width="1px"
+                    android:layout_height="32dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:background="@color/color_divider" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:paddingLeft="15dp">
+
+                <TextView
+                    android:id="@+id/master_word"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="练熟单词"
+                    android:textColor="@color/color_text_primary"
+                    android:textSize="13sp" />
+
+                <TextView
+                    android:id="@+id/master_word_count"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/master_word"
+                    android:layout_marginTop="4dp"
+                    android:ellipsize="end"
+                    android:singleLine="true"
+                    android:text="9090909"
+                    android:textColor="@color/color_text_main"
+                    android:textSize="13sp" />
+
+            </RelativeLayout>
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+    <View
+        android:id="@+id/divider_line_buttom"
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:layout_alignParentBottom="true"
+        android:layout_marginLeft="15dp"
+        android:background="@color/color_divider" />
+
+</RelativeLayout>

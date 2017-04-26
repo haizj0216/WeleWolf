@@ -1,0 +1,119 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:id="@+id/item_content"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/color_main_background"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/singletest_word_title"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_marginLeft="15dp"
+            android:drawablePadding="5dp"
+            android:drawableRight="@drawable/icon_rule"
+            android:gravity="center"
+            android:paddingBottom="2dp"
+            android:paddingRight="15dp"
+            android:text="高频错词"
+            android:textColor="@color/color_text_primary"
+            android:textSize="13sp"
+            android:visibility="gone" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@color/white">
+
+            <TextView
+                android:id="@+id/singletest_word_item_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="15dp"
+                android:text="Good"
+                android:textColor="@color/color_text_main"
+                android:textSize="16dp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/singletest_word_item_errorcount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="32dp"
+                android:text="20"
+                android:textColor="@color/color_text_primary"
+                android:textSize="14dp" />
+
+            <ImageView
+                android:id="@+id/singletest_word_icon_more"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="15dp"
+                android:src="@drawable/icon_profile_more" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:layout_alignParentBottom="true"
+                android:layout_marginLeft="15dp"
+                android:background="@color/color_divider" />
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/student_empty"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <ImageView
+            android:id="@+id/student_empty_img"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+            android:src="@drawable/icon_empty_nodata" />
+
+        <TextView
+            android:id="@+id/student_empty_desc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="25dp"
+            android:text="该练习暂无单词"
+            android:textColor="@color/color_text_main"
+            android:textSize="15dp" />
+
+        <TextView
+            android:id="@+id/student_empty_code"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:textColor="@color/color_text_primary"
+            android:textSize="13dp"
+            android:visibility="gone"/>
+
+        <TextView
+            android:id="@+id/student_empty_add"
+            android:layout_width="220dp"
+            android:layout_height="50dp"
+            android:layout_marginBottom="25dp"
+            android:layout_marginTop="25dp"
+            android:background="@drawable/bg_button_common"
+            android:gravity="center"
+            android:textColor="@color/white"
+            android:textSize="15dp"
+            android:visibility="gone"/>
+    </LinearLayout>
+</RelativeLayout>

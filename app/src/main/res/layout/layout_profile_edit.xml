@@ -1,0 +1,299 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/color_main_background"
+    android:scrollbars="none">
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:id="@+id/profile_user_icon_layout"
+            android:layout_width="match_parent"
+            android:layout_height="72dp"
+            android:layout_marginTop="10dp"
+            android:background="@color/color_profile_item_bg"
+            android:paddingLeft="@dimen/padding_left_or_right"
+            android:paddingRight="@dimen/padding_left_or_right">
+
+            <TextView
+                style="@style/profile_item_text_style"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:text="头像" />
+
+            <ImageView
+                android:id="@+id/profile_user_icon"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:src="@drawable/default_img" />
+        </RelativeLayout>
+
+
+        <RelativeLayout
+            android:id="@+id/profile_user_name_layout"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/item_high_size"
+            android:layout_marginTop="@dimen/margin_top_size"
+            android:background="@color/color_profile_item_bg"
+            android:paddingLeft="@dimen/padding_left_or_right"
+            android:paddingRight="@dimen/padding_left_or_right">
+
+            <TextView
+                style="@style/profile_item_text_style"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:text="姓名" />
+
+            <TextView
+                android:id="@+id/profile_user_name"
+                style="@style/profile_item_text_primary_style"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="20dp"
+                android:text="0" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:src="@drawable/icon_profile_more" />
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/margin_top_divider_size"
+            android:background="@color/color_divider" />
+
+        <RelativeLayout
+            android:id="@+id/profile_user_gender_layout"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/item_high_size"
+            android:background="@color/color_profile_item_bg"
+            android:paddingLeft="@dimen/padding_left_or_right"
+            android:paddingRight="@dimen/padding_left_or_right">
+
+            <TextView
+                style="@style/profile_item_text_style"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:text="性别" />
+
+            <TextView
+                android:id="@+id/profile_user_gender"
+                style="@style/profile_item_text_primary_style"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="20dp"
+                android:text="未填写" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:src="@drawable/icon_profile_more" />
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/margin_top_divider_size"
+            android:background="@color/color_divider" />
+
+        <RelativeLayout
+            android:id="@+id/profile_user_birthday_layout"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/item_high_size"
+            android:background="@color/color_profile_item_bg"
+            android:paddingLeft="@dimen/padding_left_or_right"
+            android:paddingRight="@dimen/padding_left_or_right">
+
+            <TextView
+                style="@style/profile_item_text_style"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:text="生日" />
+
+            <TextView
+                android:id="@+id/profile_user_birthday"
+                style="@style/profile_item_text_primary_style"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="20dp"
+                android:text="未填写" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:src="@drawable/icon_profile_more" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/profile_user_subject_layout"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/item_high_size"
+            android:layout_marginTop="@dimen/margin_top_size"
+            android:background="@color/color_profile_item_bg"
+            android:paddingLeft="@dimen/padding_left_or_right"
+            android:paddingRight="@dimen/padding_left_or_right">
+
+            <TextView
+                style="@style/profile_item_text_style"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:text="学段科目" />
+
+            <TextView
+                android:id="@+id/profile_user_subject"
+                style="@style/profile_item_text_primary_style"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="20dp"
+                android:text="0" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:src="@drawable/icon_profile_more" />
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/margin_top_divider_size"
+            android:background="@color/color_divider" />
+
+        <RelativeLayout
+            android:id="@+id/profile_user_school_layout"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/item_high_size"
+            android:background="@color/color_profile_item_bg"
+            android:paddingLeft="@dimen/padding_left_or_right"
+            android:paddingRight="@dimen/padding_left_or_right">
+
+            <TextView
+                style="@style/profile_item_text_style"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:text="所在学校" />
+
+            <TextView
+                android:id="@+id/profile_user_school"
+                style="@style/profile_item_text_primary_style"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="80dp"
+                android:layout_marginRight="20dp"
+                android:ellipsize="end"
+                android:lines="1"
+                android:text="" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:src="@drawable/icon_profile_more" />
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/margin_top_divider_size"
+            android:background="@color/color_divider" />
+
+        <RelativeLayout
+            android:id="@+id/profile_user_authentication_layout"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/item_high_size"
+            android:background="@color/color_profile_item_bg"
+            android:paddingLeft="@dimen/padding_left_or_right"
+            android:paddingRight="@dimen/padding_left_or_right">
+
+            <TextView
+                style="@style/profile_item_text_style"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:text="教师认证" />
+
+            <TextView
+                android:id="@+id/profile_user_status_authentication"
+                style="@style/profile_item_text_primary_style"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="20dp"
+                android:text="仅限英语学科认证" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:src="@drawable/icon_profile_more" />
+        </RelativeLayout>
+
+        <!--<RelativeLayout
+            android:id="@+id/profile_user_level_layout"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/item_high_size"
+            android:layout_marginTop="@dimen/margin_top_size"
+            android:background="@color/color_profile_item_bg"
+            android:paddingLeft="@dimen/padding_left_or_right"
+            android:paddingRight="@dimen/padding_left_or_right">
+
+            <TextView
+                style="@style/profile_item_text_style"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:text="我的等级" />
+
+            <TextView
+                android:id="@+id/profile_user_level"
+                style="@style/profile_item_text_primary_style"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="20dp"
+                android:text="lv3" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:src="@drawable/icon_profile_more" />
+        </RelativeLayout>-->
+
+    </LinearLayout>
+
+</ScrollView>
+

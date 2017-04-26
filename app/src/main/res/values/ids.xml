@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<resources>
+
+    <item name="main_bank_top_recommend" type="id"></item>
+    <item name="main_bank_top_bank" type="id"></item>
+    <item name="main_bank_top_mime" type="id"></item>
+</resources>

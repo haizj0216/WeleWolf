@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/color_main_background">
+
+    <LinearLayout
+        android:id="@+id/confirm_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="@color/color_white_100"
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/margin_top_divider_size"
+            android:background="@color/color_divider" />
+
+        <TextView
+            android:id="@+id/confirm"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/button_high_size"
+            android:layout_margin="@dimen/margin_left_or_right"
+            android:background="@drawable/common_btn_strong_selector"
+            android:gravity="center"
+            android:text="确认"
+            android:textColor="@drawable/common_btn_text_strong_selector"
+            android:textSize="@dimen/button_text_size" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/confirm_layout"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:background="@color/white"
+            android:gravity="center_vertical"
+            android:paddingLeft="15dp"
+            android:text="选择年级"
+            android:textColor="@color/color_text_main"
+            android:textSize="15dp" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:background="@color/color_divider"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@color/white"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center">
+
+                <TextView
+                    android:id="@+id/subject_grade_middle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:drawableLeft="@drawable/bg_subject_select"
+                    android:drawablePadding="10dp"
+                    android:gravity="center"
+                    android:padding="10dp"
+                    android:text="初中"
+                    android:textColor="@color/color_text_primary"
+                    android:textSize="14dp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center">
+
+                <TextView
+                    android:id="@+id/subject_grade_high"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:drawableLeft="@drawable/bg_subject_select"
+                    android:drawablePadding="10dp"
+                    android:gravity="center"
+                    android:padding="10dp"
+                    android:text="高中"
+                    android:textColor="@color/color_text_primary"
+                    android:textSize="14dp" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginTop="10dp"
+            android:background="@color/white"
+            android:gravity="center_vertical"
+            android:paddingLeft="15dp"
+            android:text="选择科目"
+            android:textColor="@color/color_text_main"
+            android:textSize="15dp" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:background="@color/color_divider"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/color_white_100">
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:paddingTop="20dp"
+                android:paddingBottom="18dp">
+
+                <ImageView
+                    android:id="@+id/subject_img"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:src="@drawable/subject_icon_english"/>
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignRight="@id/subject_img"
+                    android:src="@drawable/subject_icon_selected"/>
+
+                <TextView
+                    android:id="@+id/subject_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/subject_img"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="10dp"
+                    android:text="英语"
+                    android:textColor="@color/color_text_main"
+                    android:textSize="15sp"/>
+            </RelativeLayout>
+        </LinearLayout>
+
+       <!-- <GridView
+            android:id="@+id/subject_gridview"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:scrollbars="none"
+            android:background="@color/white"
+            android:cacheColorHint="@color/transparent"
+            android:listSelector="@color/transparent"
+            android:numColumns="4"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:paddingBottom="10dp"
+            android:visibility="gone"/>-->
+    </LinearLayout>
+
+
+</RelativeLayout>

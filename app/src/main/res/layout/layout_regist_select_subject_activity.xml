@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:gravity="center_horizontal"
+    android:orientation="vertical" >
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="50dp"
+        android:layout_marginTop="100dp"
+        android:text="选择您的教学科目"
+        android:textColor="@color/gray"
+        android:textSize="20sp" />
+
+    <GridView
+        android:id="@+id/select_subject_grid"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:horizontalSpacing="1dp"
+        android:numColumns="3"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:verticalSpacing="25dp" >
+    </GridView>
+
+    <TextView
+        android:id="@+id/select_subject_close"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/regist_select_subject_close" />
+
+</LinearLayout>

@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/color_main_background"
+    android:scrollbars="none">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
+
+
+        <TextView
+            android:id="@+id/unmaster_words_count"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingTop="20dp"
+            android:text="-  未掌握单词 23  -"
+            android:textColor="@color/color_text_primary"
+            android:textSize="15sp" />
+
+
+        <com.hyena.framework.app.widget.AccuracGridView
+            android:id="@+id/unmaster_words"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:cacheColorHint="@android:color/transparent"
+            android:padding="10dp"
+            android:paddingTop="15dp"
+            android:divider="@null"
+            android:dividerHeight="0dp"
+            android:horizontalSpacing="5dp"
+            android:listSelector="@android:color/transparent"
+            android:numColumns="2"
+            android:scrollbars="none"
+            android:verticalSpacing="5dp" />
+
+        <TextView
+            android:id="@+id/master_words_count"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingTop="10dp"
+            android:text="-  已掌握单词 23  -"
+            android:textColor="@color/color_text_primary"
+            android:textSize="15sp" />
+
+        <com.hyena.framework.app.widget.AccuracGridView
+            android:id="@+id/master_words"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:cacheColorHint="@android:color/transparent"
+            android:divider="@null"
+            android:dividerHeight="0dp"
+            android:horizontalSpacing="5dp"
+            android:listSelector="@android:color/transparent"
+            android:numColumns="2"
+            android:padding="10dp"
+            android:paddingBottom="20dp"
+            android:paddingTop="15dp"
+            android:scrollbars="none"
+            android:verticalSpacing="5dp" />
+
+    </LinearLayout>
+</ScrollView>

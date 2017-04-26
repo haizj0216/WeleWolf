@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">专杀狼人</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_login">登录</string>
+    <string name="login_hint_phone_number">请输入11位手机号码</string>
+    <string name="forgetpsd_hint_phone_number">填写手机号码</string>
+    <string name="login_hint_password">请输入密码</string>
+    <string name="forgetpsd_hint_new_password">填写新密码</string>
+    <string name="forgetpsd_hint_new_agin_password">再次填写密码</string>
+    <string name="regist_hint_password">填写6—20位密码</string>
+    <string name="regist_hint_sms_code">4位验证码</string>
+    <string name="regist_hint_user_name">填写姓名（真实姓名便于学生找到您）</string>
+    <string name="regist_hint_school">所在学校</string>
+    <string name="regist_hint_subject">教学信息</string>
+    <string name="regist_hint_create_grade">选择年级</string>
+    <string name="regist_hint_create_class">创建班群</string>
+    <string name="login_btn">立即登录</string>
+    <string name="if_forget_password"><u>忘记密码？</u></string>
+    <string name="recorder_tip">还可录制%1$d段语音</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="multi_images_picker_has_chose">已选择&#160;&#160;</string>
+    <string name="multi_images_picker_picture_unit">&#160;&#160;张</string>
+    <string name="multi_images_picker_please_choose_pic">选择图片</string>
+    <string name="multi_images_picker_arrive_limit_count">已达到最大选择数</string>
+
+    <string name="class_add_class_name">班群名称(2-20字符)</string>
+
+    <!--发布比赛 AssignSubmitFragment-->
+    <string name="title_release_single_test_game">发布测验</string>
+    <string name="tv_single_test_game">单次测验赛</string>
+    <string name="title_release_circle_practice_game">发布比赛</string>
+    <string name="tv_circle_practice_game">循环练习赛</string>
+    <string name="tv_game_type">比赛类型</string>
+    <string name="tv_game_class">比赛班级</string>
+    <string name="tv_tip_test_time">根据所选单词数量和难度以自动设置单次测验时间30分钟</string>
+    <string name="title_homework_name">作业名称</string>
+    <string name="title_single_test_game_name">测验名称</string>
+    <string name="tv_release_game">确认发布</string>
+    <string name="tv_release_word_test">确认发布</string>
+    <string name="tv_release_game_success">发布比赛成功</string>
+    <string name="tv_release_word_test_success">发布测验成功</string>
+
+
+    <!--修改比赛名称 AssignNameFragment-->
+    <string name="toast_homework_name_can_not_be_empty">作业名称不能为空</string>
+    <string name="toast_homework_name_can_not_be_two_byte">作业名称不能少于两个字符</string>
+    <string name="toast_single_test_name_can_not_be_empty">测验名称不能为空</string>
+    <string name="toast_single_test_name_can_not_be_two_byte">测验名称不能少于两个字符</string>
+
+    <!--创建比赛成功页-->
+    <string name="tv_invite_student">邀请学生</string>
+
+</resources>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ffffff"
+    android:orientation="vertical" >
+
+    <Button
+        android:id="@+id/create_class_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_margin="17dp"
+        android:background="@drawable/regist_select_class_create_class_btn"
+        android:text="+ 自定义班群名称"
+        android:textColor="@color/color_main_app"
+        android:textSize="18sp" />
+
+    <ListView
+        android:id="@+id/class_list_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:divider="#e6e6e6"
+        android:dividerHeight="1px"
+        android:listSelector="@android:color/transparent"
+        android:scrollbars="@null" >
+    </ListView>
+
+</LinearLayout>

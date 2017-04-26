@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/color_main_background">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:gravity="center"
+        android:background="@color/white">
+
+        <LinearLayout
+            android:id="@+id/ll_competition_loop_create"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/icon_competition_create_loop"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="15sp"
+                android:layout_marginTop="20dp"
+                android:textStyle="bold"
+                android:textColor="@color/color_text_main"
+                android:text="循环练习赛"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:layout_marginTop="10dp"
+                android:lineSpacingExtra="5dp"
+                android:textColor="@color/color_text_primary"
+                android:text="音形译句等多种题型\n循环练习单词，全方位提升单词熟练度"/>
+
+        </LinearLayout>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:gravity="center"
+        android:background="@color/white">
+
+        <LinearLayout
+            android:id="@+id/ll_competition_singletest_create"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/icon_competition_create_singletest"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="15sp"
+                android:layout_marginTop="20dp"
+                android:textStyle="bold"
+                android:textColor="@color/color_text_main"
+                android:text="单次测验赛"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:layout_marginTop="10dp"
+                android:lineSpacingExtra="5dp"
+                android:textColor="@color/color_text_primary"
+                android:text="一次性对目标单词作答\n根据得分、用时检测学生单词掌握情况" />
+
+        </LinearLayout>
+    </RelativeLayout>
+
+</LinearLayout>

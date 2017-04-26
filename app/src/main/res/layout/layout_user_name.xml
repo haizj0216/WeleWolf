@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/color_main_background"
+    android:orientation="vertical">
+
+    <com.knowbox.teacher.widgets.CleanableEditText
+        android:id="@+id/profile_edit_username"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/item_high_size"
+        android:background="@color/white"
+        android:paddingLeft="10dp"
+        android:textSize="15sp"
+        android:maxLength="16"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="使用您的真实姓名，便于您的学生找到您"
+        android:textColor="#5f5f5f"
+        android:textSize="13dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"/>
+
+</LinearLayout>

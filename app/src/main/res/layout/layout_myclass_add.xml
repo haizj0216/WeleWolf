@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/color_main_background">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:layout_marginTop="10dp"
+        android:background="@color/white"
+        android:gravity="center"
+        android:id="@+id/edit_layout"
+        android:orientation="horizontal"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp">
+
+        <TextView
+            android:id="@+id/class_add_grade"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginTop="0dp"
+            android:drawablePadding="5dp"
+            android:drawableRight="@drawable/icon_assign_paper_down"
+            android:text="一年级"
+            android:textColor="#525252"
+            android:gravity="center"
+            android:textSize="15dp"/>
+
+        <View
+            android:layout_width="@dimen/margin_top_divider_size"
+            android:layout_height="15dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:background="@color/color_divider"/>
+
+        <com.knowbox.teacher.widgets.CleanableEditText
+            android:id="@+id/class_add_class_name"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:textSize="14dp"
+            android:background="@null"
+            android:maxLength="20"/>
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/margin_top_divider_size"
+        android:layout_alignBottom="@id/edit_layout"
+        android:background="@color/color_main_background"/>
+
+    <TextView
+        android:id="@+id/create_class_desc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="学生将以加入部落的形式加入班群"
+        android:textSize="13sp"
+        android:paddingLeft="15dp"
+        android:paddingTop="10dp"
+        android:layout_below="@id/edit_layout"
+        android:visibility="gone"
+        android:textColor="@color/color_text_primary"/>
+
+</RelativeLayout>

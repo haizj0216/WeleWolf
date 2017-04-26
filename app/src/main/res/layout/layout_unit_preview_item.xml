@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/question_type_no"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="题型1."
+        android:paddingLeft="15dp"
+        android:paddingTop="15dp"
+        android:textColor="@color/color_text_primary"
+        android:textSize="15dp"/>
+
+    <TextView
+        android:id="@+id/question_type_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="英汉互译 （2题）"
+        android:textStyle="bold"
+        android:paddingLeft="15dp"
+        android:paddingTop="5dp"
+        android:paddingBottom="5dp"
+        android:textColor="@color/color_text_main"
+        android:textSize="16dp"/>
+
+    <ImageView
+        android:id="@+id/question_type_preview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp"
+        android:layout_gravity="center_horizontal"
+        android:scaleType="centerInside"
+        android:src="@drawable/icon_questiontype_card3"/>
+
+
+</LinearLayout>

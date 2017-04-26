@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical"
+    android:paddingLeft="18dp"
+    android:paddingRight="18dp" >
+
+    <TextView
+        android:id="@+id/phone_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="填写您注册单词部落时的手机号码"
+        android:textColor="#999999"
+        android:textSize="14sp" />
+
+    <EditText
+        android:id="@+id/phone_edit"
+        style="@style/regist_edit_text_1"
+        android:digits="1234567890"
+        android:hint="@string/forgetpsd_hint_phone_number"
+        android:imeOptions="actionDone"
+        android:inputType="phone"
+        android:maxLength="11" >
+    </EditText>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal" >
+
+        <EditText
+            android:id="@+id/sms_code_edit"
+            style="@style/regist_edit_text_1"
+            android:layout_width="0dp"
+            android:layout_marginTop="0dp"
+            android:layout_weight="1"
+            android:hint="@string/regist_hint_sms_code"
+            android:imeOptions="actionDone"
+            android:inputType="number"
+            android:maxLength="4" >
+        </EditText>
+
+        <Button
+            android:id="@+id/send_sms_code_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="55dp"
+            android:layout_gravity="bottom"
+            android:layout_marginLeft="21dp"
+            android:background="@drawable/regist_send_sms_code_btn_bg"
+            android:text="获取验证码"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp"
+            android:textColor="@color/regist_sms_code_btn_text"
+            android:textSize="12sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/customer_sercvice_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="18dp"
+            android:paddingLeft="6dp"
+            android:text="获取不到验证码? 请拨打客服电话"
+            android:textColor="#c6c6c6"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/customer_service_phone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="18dp"
+            android:paddingLeft="6dp"
+            android:clickable="true"
+            android:text="400-038-9691"
+            android:textColor="@color/color_main_app"
+            android:textSize="12sp" />
+    </LinearLayout>
+
+</LinearLayout>

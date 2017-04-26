@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/black" >
+
+    <com.knowbox.teacher.widgets.photoview.PhotoView
+        android:id="@+id/photoview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:scaleType="fitCenter"
+        android:src="@drawable/image_previewer_default" />
+    
+     <include
+        android:id="@+id/header_layout"
+        layout="@layout/layout_document_preview_header"
+        android:layout_gravity="top"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:background="@color/color_black_light_image_previewer"
+        android:gravity="center"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:id="@+id/delete_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:padding="10dp"
+            android:text="删除"
+            android:textColor="@color/txt_color_white_grey_btn"
+            android:textSize="22dp" />
+    </LinearLayout>
+
+</FrameLayout>

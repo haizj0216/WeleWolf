@@ -1,0 +1,88 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="fill_parent"
+        android:layout_height="50dp"
+        android:background="@color/white"
+        android:orientation="horizontal">
+
+
+        <RelativeLayout
+            android:id="@+id/tab_student"
+            android:layout_width="0dp"
+            android:layout_height="fill_parent"
+            android:layout_weight="1">
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:layout_alignParentTop="true"
+                android:background="@color/color_divider" />
+
+            <TextView
+                android:id="@+id/training_ranking"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text="学生列表"
+                android:textColor="@color/color_home_tab"
+                android:textSize="16dp" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/margin_top_divider_size"
+                android:layout_alignParentBottom="true"
+                android:background="@color/color_divider" />
+
+            <View
+                android:id="@+id/tab_blockade_bottom"
+                android:layout_width="fill_parent"
+                android:layout_height="3px"
+                android:layout_alignParentBottom="true"
+                android:background="@drawable/bg_home_class_tab" />
+        </RelativeLayout>
+        <RelativeLayout
+            android:id="@+id/tab_word"
+            android:layout_width="0dp"
+            android:layout_height="fill_parent"
+            android:layout_weight="1">
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:layout_alignParentTop="true"
+                android:background="@color/color_divider" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text="单词列表"
+                android:textColor="@color/color_home_tab"
+                android:textSize="16dp" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/margin_top_divider_size"
+                android:layout_alignParentBottom="true"
+                android:background="@color/color_divider" />
+
+            <View
+                android:id="@+id/tab_homework_bottom"
+                android:layout_width="fill_parent"
+                android:layout_height="3px"
+                android:layout_alignParentBottom="true"
+                android:background="@drawable/bg_home_class_tab" />
+        </RelativeLayout>
+
+    </LinearLayout>
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/unit_info_viewpager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1" />
+</LinearLayout>

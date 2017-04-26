@@ -1,0 +1,33 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+    <ImageView
+        android:id="@+id/student_head_photo"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="10dp"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/default_img" />
+
+    <ImageView
+        android:id="@+id/student_head_rank"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignRight="@id/student_head_photo"
+        android:layout_marginRight="-10dp"
+        android:src="@drawable/ic_rank_crown_1st" />
+
+    <TextView
+        android:id="@+id/student_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/student_head_photo"
+        android:layout_centerHorizontal="true"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:text="11111111"
+        android:paddingTop="7dp"
+        android:textColor="@color/white"
+        android:textSize="14sp" />
+</RelativeLayout>

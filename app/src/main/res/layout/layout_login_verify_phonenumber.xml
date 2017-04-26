@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/color_white_100">
+
+    <com.knowbox.teacher.widgets.ResizeLayout
+        android:id="@+id/login_verify_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/color_white_100"
+        android:orientation="vertical">
+
+        <View
+            android:id="@+id/divider_hint_top"
+            android:layout_width="match_parent"
+            android:layout_height="10dp"
+            android:background="@color/transparent" />
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="80dp"
+            android:text="已发送验证码短信到"
+            android:textColor="@color/color_text_primary"
+            android:textSize="16dp" />
+
+        <TextView
+            android:id="@+id/login_phone_number"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="15dp"
+            android:text="186 1201 9749"
+            android:textColor="@color/color_text_main"
+            android:textSize="35dp"
+            android:textStyle="bold" />
+
+        <View
+            android:id="@+id/divider_hint_middle"
+            android:layout_width="match_parent"
+            android:layout_height="20dp"
+            android:background="@color/transparent" />
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:layout_marginTop="28dp"
+            android:background="@drawable/login_edit_bg">
+
+            <ImageView
+                android:id="@+id/login_verifycode_icon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="15dp"
+                android:src="@drawable/login_verifycode" />
+
+            <TextView
+                android:id="@+id/login_verifycode_cend"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="15dp"
+                android:textColor="@color/color_text_primary"
+                android:textSize="13dp" />
+
+            <com.knowbox.teacher.widgets.CleanableEditText
+                android:id="@+id/login_verify_code"
+                android:layout_width="wrap_content"
+                android:layout_height="45dp"
+                android:layout_toLeftOf="@id/login_verifycode_cend"
+                android:layout_toRightOf="@id/login_verifycode_icon"
+                android:digits="1234567890"
+                android:hint="请输入4位验证码"
+                android:imeOptions="actionDone"
+                android:maxLength="4" />
+        </RelativeLayout>
+
+        <Button
+            android:id="@+id/login_btn"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/login_btn_bg"
+            android:text="登录"
+            android:textColor="@color/login_btn_txt_color"
+            android:textSize="15dp" />
+
+        <View
+            android:id="@+id/divider_buttom_hint"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="10dp"
+            android:layout_weight="1"
+            android:background="@color/transparent" />
+
+    </com.knowbox.teacher.widgets.ResizeLayout>
+
+    <RelativeLayout
+        android:id="@+id/title_layout"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/color_white_100">
+
+        <ImageButton
+            android:id="@+id/title_bar_back"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_centerVertical="true"
+            android:background="@null"
+            android:padding="15dp"
+            android:src="@drawable/bt_title_back_dark" />
+
+        <TextView
+            android:id="@+id/title_bar_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ellipsize="middle"
+            android:singleLine="true"
+            android:text="验证手机号"
+            android:layout_centerInParent="true"
+            android:textColor="@color/color_text_main"
+            android:textSize="18sp" />
+
+    </RelativeLayout>
+
+</FrameLayout>

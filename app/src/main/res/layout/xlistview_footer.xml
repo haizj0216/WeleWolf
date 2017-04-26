@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="4dip"
+    android:background="@android:color/transparent"
+    android:padding="6dip" >
+
+    <RelativeLayout
+        android:id="@+id/xlistview_footer_content"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:padding="3dip" >
+
+        <LinearLayout
+            android:id="@+id/xlistview_footer_loading"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:visibility="gone">
+
+            <ProgressBar
+                android:id="@+id/progressbarFootId"
+                style="@style/progress_style"
+                android:layout_width="20dip"
+                android:layout_height="20dip"
+                android:layout_gravity="center" />
+
+            <TextView
+                android:id="@+id/progressbarTextFootId"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="10dip"
+                android:textColor="#4D4D4D"
+                android:text="正在加载..."
+                android:textSize="14dp" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/make_homework_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="已全部加载"
+            android:textSize="12dp"
+            android:gravity="center"
+            android:layout_marginTop="8dp"
+            android:layout_centerInParent="true"
+            android:textColor="@color/color_text_primary"
+            android:visibility="gone"/>
+
+    </RelativeLayout>
+
+</LinearLayout>

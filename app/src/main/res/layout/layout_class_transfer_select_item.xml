@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="60dp"
+    android:background="@color/white"
+    android:minHeight="60dp">
+
+    <ImageView
+        android:id="@+id/class_transfer_teacher_item_icon"
+        android:layout_width="37dp"
+        android:layout_height="37dp"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="@dimen/margin_left_or_right"
+        android:src="@drawable/bt_chat_teacher_default"/>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="@dimen/margin_left_or_right"
+        android:layout_toRightOf="@id/class_transfer_teacher_item_icon">
+
+        <TextView
+            android:id="@+id/class_transfer_teacher_item_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="ABC"
+            android:textColor="@color/color_text_main"
+            android:textSize="@dimen/item_title_size" />
+
+        <TextView
+            android:id="@+id/class_transfer_teacher_item_phone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/class_transfer_teacher_item_name"
+            android:layout_marginTop="4dp"
+            android:text="ABC"
+            android:textColor="@color/color_text_primary"
+            android:textSize="@dimen/item_title_desc_size" />
+
+        <TextView
+            android:id="@+id/class_transfer_teacher_item_sex"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/class_transfer_teacher_item_name"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="4dp"
+            android:layout_toRightOf="@id/class_transfer_teacher_item_phone"
+            android:text="ABC"
+            android:textColor="@color/color_text_primary"
+            android:textSize="@dimen/item_title_desc_size" />
+
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/margin_top_divider_size"
+        android:layout_alignParentBottom="true"
+        android:background="@color/color_divider"/>
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:layout_marginRight="@dimen/margin_left_or_right"
+        android:src="@drawable/profile_icon_next" />
+</RelativeLayout>

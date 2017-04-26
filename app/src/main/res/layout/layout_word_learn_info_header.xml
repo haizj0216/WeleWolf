@@ -1,0 +1,33 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="150dp"
+    android:background="@color/white"
+    android:gravity="center_horizontal"
+    android:minHeight="150dp"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/word_learn_info_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="38dp"
+        android:textColor="@color/color_text_main"
+        android:textSize="24dp" />
+
+    <TextView
+        android:id="@+id/word_learn_info_explain"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="7dp"
+        android:textColor="@color/color_text_primary"
+        android:textSize="15dp" />
+
+    <TextView
+        android:id="@+id/word_learn_info_desc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:textColor="@color/color_text_primary"
+        android:textSize="13dp" />
+
+</LinearLayout>

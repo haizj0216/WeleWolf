@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/margin_top_divider_size"
+        android:background="@color/color_divider" />
+
+    <RelativeLayout
+        android:id="@+id/profile_item_layout"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/item_high_size"
+        android:background="@color/white"
+        android:paddingLeft="@dimen/padding_left_or_right"
+        android:paddingRight="@dimen/padding_left_or_right">
+
+        <ImageView
+            android:id="@+id/profile_item_icon"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_centerVertical="true"
+            android:src="@drawable/icon_profile_shopping" />
+
+        <TextView
+            android:id="@+id/profile_item_title"
+            style="@style/profile_item_text_style"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="12dp"
+            android:layout_toRightOf="@id/profile_item_icon"
+            android:text="邀请" />
+
+        <ImageView
+            android:id="@+id/profile_item_more"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:src="@drawable/icon_profile_more" />
+
+        <TextView
+            android:id="@+id/profile_item_desc"
+            style="@style/profile_item_text_primary_style"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="10dp"
+            android:paddingLeft="6dp"
+            android:paddingRight="6dp"
+            android:gravity="center"
+            android:textColor="@color/white"
+            android:visibility="gone"
+            android:background="@drawable/bg_activity_desc"
+            android:layout_toLeftOf="@id/profile_item_more" />
+
+        <ImageView
+            android:id="@+id/profile_item_tip"
+            android:layout_width="8dp"
+            android:layout_height="8dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="15dp"
+            android:layout_marginTop="10dp"
+            android:src="@drawable/red_circle" />
+
+    </RelativeLayout>
+
+</LinearLayout>

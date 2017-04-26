@@ -1,0 +1,77 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <ImageView
+        android:layout_width="112dp"
+        android:layout_height="154dp"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/bg_class_unit_item" />
+
+    <LinearLayout
+        android:id="@+id/class_unit_item_layout"
+        android:layout_width="47dp"
+        android:layout_height="47dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/bg_class_unit_name"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/class_unit_item_index"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:textColor="@color/white"
+            android:textSize="18dp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/class_unit_item_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:layout_marginTop="-2dp"
+            android:gravity="center"
+            android:maxLength="8"
+            android:textColor="@color/white"
+            android:textSize="10dp" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/class_unit_item_desc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/class_unit_item_layout"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="15dp"
+        android:text="已练熟人数"
+        android:textColor="@color/color_text_main"
+        android:textSize="15dp" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/class_unit_item_desc"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="10dp"
+        android:layout_marginTop="9dp">
+
+        <TextView
+            android:id="@+id/class_unit_item_grasp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/color_text_main"
+            android:textSize="14dp"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:id="@+id/class_unit_item_total"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/color_text_primary"
+            android:textSize="12dp" />
+    </LinearLayout>
+
+</RelativeLayout>

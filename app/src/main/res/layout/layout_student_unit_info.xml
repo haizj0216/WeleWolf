@@ -1,0 +1,58 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <com.knowbox.teacher.widgets.PinnedScrollView
+        android:id="@+id/student_unit_scrollview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <include
+                android:id="@+id/student_unit_header"
+                layout="@layout/layout_student_unit_header" />
+
+            <TextView
+                android:id="@+id/student_unit_book"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/student_unit_header"
+                android:layout_centerHorizontal="true"
+                android:layout_gravity="center_horizontal"
+                android:paddingBottom="15dp"
+                android:paddingTop="15dp"
+                android:text="-  人教版七年级上  -"
+                android:textColor="@color/color_text_primary"
+                android:textSize="15dp" />
+
+            <com.hyena.framework.app.widget.AccuracGridView
+                android:id="@+id/student_unit_list"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/student_unit_book"
+                android:layout_marginBottom="20dp"
+                android:layout_marginLeft="13dp"
+                android:layout_marginRight="13dp"
+                android:layout_marginTop="5dp"
+                android:cacheColorHint="@android:color/transparent"
+                android:divider="@android:color/transparent"
+                android:dividerHeight="0dp"
+                android:horizontalSpacing="5dp"
+                android:listSelector="@android:color/transparent"
+                android:numColumns="2"
+                android:scrollbars="none"
+                android:verticalSpacing="5dp" />
+        </RelativeLayout>
+    </com.knowbox.teacher.widgets.PinnedScrollView>
+
+    <ImageView
+        android:id="@+id/student_unit_header_back"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:padding="15dp"
+        android:src="@drawable/bt_title_back_dark" />
+</RelativeLayout>

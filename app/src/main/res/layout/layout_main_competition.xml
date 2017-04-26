@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/color_main_background">
+
+    <RelativeLayout
+        android:id="@+id/competition_submit"
+        android:layout_width="match_parent"
+        android:layout_height="90dp"
+        android:background="@color/white">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="15dp"
+            android:src="@drawable/icon_competition_create" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="95dp"
+            android:text="发起比赛"
+            android:textColor="@color/color_text_main"
+            android:textSize="18sp" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="15dp"
+            android:src="@drawable/icon_more_right" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:layout_alignParentBottom="true"
+            android:background="@color/color_main_background" />
+
+    </RelativeLayout>
+
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:id="@+id/competition_list_refresh"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="90dp">
+
+        <com.knowbox.teacher.widgets.LoadMoreListView
+            android:id="@+id/competition_list"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/color_main_background"
+            android:cacheColorHint="@android:color/transparent"
+            android:clipChildren="false"
+            android:clipToPadding="false"
+            android:divider="@null"
+            android:dividerHeight="0dp"
+            android:listSelector="@android:color/transparent"
+            android:paddingTop="10dp"
+            android:scrollbars="none" />
+
+    </android.support.v4.widget.SwipeRefreshLayout>
+
+    <RelativeLayout
+        android:id="@+id/empty_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="90dp"
+        android:visibility="visible">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/empty_icon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:src="@drawable/icon_havnot_competitions" />
+
+            <TextView
+                android:id="@+id/empty_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:paddingTop="25dp"
+                android:text="暂无比赛记录"
+                android:textColor="@color/color_text_main"
+                android:textSize="15sp" />
+
+            <TextView
+                android:id="@+id/empty_text_desc"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:gravity="center_horizontal"
+                android:lineSpacingExtra="8dp"
+                android:paddingTop="15dp"
+                android:text="点击发起比赛\n发布循环练习、单次测验"
+                android:textColor="@color/color_text_primary"
+                android:textSize="14sp" />
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+    <!--<TextView-->
+    <!--android:id="@+id/competition_submit"-->
+    <!--android:layout_width="65dp"-->
+    <!--android:layout_height="65dp"-->
+    <!--android:layout_alignParentBottom="true"-->
+    <!--android:layout_alignParentRight="true"-->
+    <!--android:layout_marginRight="10dp"-->
+    <!--android:layout_marginBottom="10dp"-->
+    <!--android:textSize="12sp"-->
+    <!--android:gravity="center"-->
+    <!--android:paddingBottom="6dp"-->
+    <!--android:textColor="@color/white"-->
+    <!--android:background="@drawable/bg_main_circle"-->
+    <!--android:text="发布\n比赛"/>-->
+</RelativeLayout>

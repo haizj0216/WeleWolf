@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/color_black_40">
+
+    <com.knowbox.teacher.modules.webactivity.BaseWebView
+        android:id="@+id/activity_newtask_webview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="24dp"
+        android:layout_centerInParent="true"
+        android:visibility="invisible"></com.knowbox.teacher.modules.webactivity.BaseWebView>
+
+    <ImageView
+        android:id="@+id/activity_newtask_close"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignRight="@id/activity_newtask_webview"
+        android:layout_alignTop="@id/activity_newtask_webview"
+        android:layout_marginRight="-16dp"
+        android:layout_marginTop="-16dp"
+        android:src="@drawable/icon_web_pop_close" />
+</RelativeLayout>

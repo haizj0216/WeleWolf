@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:paddingLeft="40dp"
+    android:paddingRight="40dp">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:scrollbars="none">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="40dp"
+                android:background="@drawable/dialog_common_bg"
+                android:gravity="center_horizontal"
+                android:orientation="vertical"
+                android:paddingTop="60dp">
+
+                <TextView
+                    android:id="@+id/dialog_message_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginRight="16dp"
+                    android:gravity="center"
+                    android:textColor="@color/color_text_main"
+                    android:textSize="16dp" />
+
+                <TextView
+                    android:id="@+id/dialog_message_msg"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginRight="16dp"
+                    android:layout_marginTop="10dp"
+                    android:gravity="center"
+                    android:textColor="@color/color_text_primary"
+                    android:textSize="14dp" />
+
+                <LinearLayout
+                    android:id="@+id/dialog_message_button_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="15dp"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginRight="8dp"
+                    android:layout_marginTop="20dp"
+                    android:orientation="horizontal">
+
+                    <Button
+                        android:id="@+id/dialog_message_button_cancel"
+                        android:layout_width="match_parent"
+                        android:layout_height="43dp"
+                        android:layout_marginLeft="8dp"
+                        android:layout_marginRight="8dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/common_btn_strong_selector"
+                        android:textColor="@drawable/common_btn_text_strong_selector"
+                        android:textSize="15dp" />
+
+                    <Button
+                        android:id="@+id/dialog_message_button_confirm"
+                        android:layout_width="match_parent"
+                        android:layout_height="43dp"
+                        android:layout_marginLeft="8dp"
+                        android:layout_marginRight="8dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/common_btn_strong_selector"
+                        android:textColor="@drawable/common_btn_text_strong_selector"
+                        android:textSize="15dp" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <ImageView
+                android:id="@+id/dialog_message_icon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:src="@drawable/icon_dialog_message" />
+        </RelativeLayout>
+
+    </ScrollView>
+
+</RelativeLayout>

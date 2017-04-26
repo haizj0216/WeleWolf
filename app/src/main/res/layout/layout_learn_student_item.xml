@@ -1,0 +1,24 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:gravity="center"
+    android:orientation="vertical">
+
+    <ImageView
+        android:id="@+id/learn_student_item_head"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:src="@drawable/default_img" />
+
+    <TextView
+        android:id="@+id/learn_student_item_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="9dp"
+        android:ellipsize="end"
+        android:singleLine="true"
+        android:text="c测试"
+        android:textColor="@color/color_text_main"
+        android:textSize="14dp"
+        android:textStyle="bold" />
+</LinearLayout>

@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/color_black_image_previewer">
+
+    <include
+        android:id="@+id/header_layout"
+        layout="@layout/layout_image_edit_header" />
+
+
+    <LinearLayout
+        android:id="@+id/footer_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="@color/color_black_light_image_previewer"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/delete_text"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:clickable="true"
+            android:gravity="center"
+            android:padding="10dp"
+            android:text="删除"
+            android:textColor="@color/txt_color_white_grey_btn"
+            android:textSize="22dp" />
+
+        <View
+            android:layout_width="@dimen/margin_top_divider_size"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_horizontal"
+            android:background="@color/color_divider" />
+
+        <TextView
+            android:id="@+id/edit_text"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:clickable="true"
+            android:gravity="center"
+            android:padding="10dp"
+            android:text="编辑"
+            android:textColor="@color/txt_color_white_grey_btn"
+            android:textSize="22dp" />
+
+    </LinearLayout>
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/image_view_pager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/footer_layout"
+        android:layout_below="@id/header_layout"
+        android:layout_gravity="center"></android.support.v4.view.ViewPager>
+</RelativeLayout>

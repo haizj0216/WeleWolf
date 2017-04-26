@@ -1,0 +1,95 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="13dp">
+
+        <TextView
+            android:id="@+id/question_index"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:text="题目1."
+            android:textColor="@color/color_text_primary"
+            android:textSize="14dp" />
+
+        <TextView
+            android:id="@+id/question_wrong_count"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:text="出错33次"
+            android:textColor="@color/color_text_main"
+            android:textSize="15dp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/gym_question_conent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:gravity="center"
+        android:minHeight="90dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/gym_question_conent_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/color_gym_question_content"
+            android:textSize="19dp"
+            android:textStyle="bold"
+            android:visibility="gone" />
+
+        <ImageView
+            android:id="@+id/gym_question_conent_image"
+            android:layout_width="wrap_content"
+            android:layout_height="100dp"
+            android:scaleType="centerInside"
+            android:visibility="gone" />
+
+        <pl.droidsonroids.gif.GifImageView
+            android:id="@+id/gym_question_content_audio"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:src="@drawable/icon_gym_question_audio"
+            android:visibility="gone" />
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/gym_question_anim_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal">
+
+        <LinearLayout
+            android:id="@+id/gym_question_options"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="15dp"
+            android:layout_marginTop="10dp"
+            android:orientation="vertical" />
+
+        <include
+            android:id="@+id/gym_question_blank"
+            layout="@layout/layout_gym_workblank"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="15dp"
+            android:layout_marginTop="10dp"
+            android:visibility="gone" />
+    </RelativeLayout>
+
+    <View
+        android:id="@+id/divider"
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:background="@color/color_divider"/>
+</LinearLayout>

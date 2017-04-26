@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/activity_webview_layout"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
+
+    <RelativeLayout
+        android:id="@+id/activity_title_bar"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/color_white_100">
+
+        <ImageButton
+            android:id="@+id/activity_title_bar_back"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_centerVertical="true"
+            android:background="@null"
+            android:padding="15dp"
+            android:src="@drawable/bt_title_back_dark" />
+
+        <TextView
+            android:id="@+id/activity_title_close"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@id/activity_title_bar_back"
+            android:background="@drawable/title_bar_menu_selector"
+            android:text="关闭"
+            android:textColor="@color/color_text_main"
+            android:textSize="16dp"
+            android:visibility="gone" />
+
+        <TextView
+            android:id="@+id/activity_title_bar_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:drawablePadding="10dp"
+            android:ellipsize="middle"
+            android:maxWidth="200dp"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:singleLine="true"
+            android:textColor="@color/color_text_main"
+            android:textSize="20dp" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true">
+
+            <ImageView
+                android:id="@+id/activity_menu"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:padding="15dp"
+                android:visibility="gone" />
+
+            <TextView
+                android:id="@+id/activity_right_txt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="15dp"
+                android:singleLine="true"
+                android:textColor="@color/color_text_main"
+                android:textSize="16sp"
+                android:visibility="gone"
+                />
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/margin_top_divider_size"
+            android:background="@color/color_divider"
+            android:layout_alignParentBottom="true"/>
+
+    </RelativeLayout>
+    <ProgressBar
+        android:id="@+id/activity_webview_progress"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_below="@id/activity_title_bar"
+        style="@android:style/Widget.ProgressBar.Horizontal"
+        android:background="@color/color_white_50"
+        android:progressDrawable="@drawable/bg_update_progressdialog"
+        android:max="100"
+        android:visibility="gone"/>
+
+    <com.knowbox.teacher.modules.webactivity.BaseWebView
+        android:id="@+id/activity_webview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/activity_webview_progress"></com.knowbox.teacher.modules.webactivity.BaseWebView>
+</RelativeLayout>

@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<resources>
+    <dimen name="fab_size_normal">56dp</dimen>
+    <dimen name="fab_size_mini">40dp</dimen>
+    <dimen name="fab_shadow_size">12dp</dimen>
+
+    <dimen name="fab_scroll_threshold">4dp</dimen>
+    <dimen name="fab_elevation_lollipop">8dp</dimen>
+
+    <dimen name="fab_shadow_offset">16dp</dimen>
+    <dimen name="fab_shadow_radius">9dp</dimen>
+
+    <dimen name="fab_actions_spacing">24dp</dimen>
+    <dimen name="index_bar_view_margin">10dp</dimen>
+    <dimen name="index_bar_view_text_size">13dp</dimen>
+    <dimen name="result_blank_head_height_no_tab">258dip</dimen>
+
+    <dimen name="result_blank_head_height">303dip</dimen>
+    <dimen name="result_blank_head_tab">43dip</dimen>
+
+    <dimen name="num_text_width">40dp</dimen>
+    <dimen name="num_text_height">40dp</dimen>
+    <dimen name="num_text_vertical_gap">15dp</dimen>
+    <dimen name="work_detail_number_size">7dp</dimen>
+
+
+    <dimen name="margin_left_or_right">15dp</dimen>
+    <dimen name="padding_left_or_right">15dp</dimen>
+    <dimen name="margin_top_size">10dp</dimen>
+    <dimen name="margin_top_divider_size">1px</dimen>
+
+    <dimen name="item_high_size">50dp</dimen>
+    <dimen name="item_title_high_size">40dp</dimen>
+
+    <dimen name="item_title_size">15dp</dimen>
+    <dimen name="item_title_desc_size">14dp</dimen>
+
+    <dimen name="card_title_size">13dp</dimen>
+    <dimen name="card_title_primary_size">12dp</dimen>
+
+    <dimen name="button_sharp_radius">4dp</dimen>
+    <dimen name="button_text_size">15sp</dimen>
+    <dimen name="button_high_size">42dp</dimen>
+
+    <dimen name="question_circle_size">45dp</dimen>
+    <dimen name="question_circle_rate_size">14dp</dimen>
+    <dimen name="question_circle_number_size">15dp</dimen>
+
+    <dimen name="size_text_main">15dp</dimen>
+    <dimen name="size_text_primary">14dp</dimen>
+    <dimen name="size_text_third">13dp</dimen>
+
+    <dimen name="size_circle_photo">50dp</dimen>
+    <dimen name="size_high_message_item">70dp</dimen>
+    <dimen name="size_text_massage_item_name">16dp</dimen>
+    <dimen name="size_text_massage_item_desc">14dp</dimen>
+    <dimen name="size_text_massage_item_time">12dp</dimen>
+
+    <dimen name="size_text_title_main">13dp</dimen>
+    <dimen name="size_text_title_primary">12dp</dimen>
+
+    <dimen name="classitem_bg_radius">5dp</dimen>
+
+
+    <dimen name="dp_10_">-10dp</dimen>
+    <dimen name="dp_10">10dp</dimen>
+    <dimen name="dp_15">15dp</dimen>
+
+    <!--sp-->
+    <dimen name="sp_16">16sp</dimen>
+    <dimen name="sp_14">14sp</dimen>
+
+</resources>

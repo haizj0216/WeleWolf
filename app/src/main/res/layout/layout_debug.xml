@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/color_main_background" >
+
+    <ScrollView
+        android:id="@+id/scrollView1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical" >
+
+            <RelativeLayout
+                android:id="@+id/show_debug_cansole_layout"
+                style="@style/debug_layout"
+                android:layout_marginTop="10dp" >
+
+                <TextView
+                    style="@style/profile_item_text2_style"
+                    android:layout_alignParentLeft="true"
+                    android:text="显示控制台信息" />
+
+                <ToggleButton
+                    android:id="@+id/debug_cansole_switch"
+                    android:layout_width="45dp"
+                    android:layout_height="20dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:background="@drawable/ui_toggle_button_bg"
+                    android:textOff=""
+                    android:textOn="" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/ping_layout"
+                style="@style/debug_layout"
+                android:layout_marginTop="10dp" >
+
+                <TextView
+                    android:id="@+id/settings_about"
+                    style="@style/profile_item_text2_style"
+                    android:text="PING服务器" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/icon_profile_more" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/allow_multi_node_login_layout"
+                style="@style/debug_layout"
+                android:layout_marginTop="10dp" >
+
+                <TextView
+                    style="@style/profile_item_text2_style"
+                    android:layout_alignParentLeft="true"
+                    android:text="是否允许多端点登录" />
+
+                <ToggleButton
+                    android:id="@+id/allow_multi_node_login_switch"
+                    android:layout_width="45dp"
+                    android:layout_height="20dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:background="@drawable/ui_toggle_button_bg"
+                    android:textOff=""
+                    android:textOn="" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/copy_db_to_external_layout"
+                style="@style/debug_layout"
+                android:layout_marginTop="10dp" >
+
+                <TextView
+                    android:id="@+id/copy_db_to_external_title"
+                    style="@style/profile_item_text2_style"
+                    android:text="拷贝数据库到外部存储器" >
+                </TextView>
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/icon_profile_more" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/margin_top_divider_size"
+                    android:layout_alignLeft="@id/copy_db_to_external_title"
+                    android:layout_alignParentBottom="true"
+                    android:background="@color/color_profile_line_bg" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/clear_default_db_layout"
+                style="@style/debug_layout" >
+
+                <TextView
+                    android:id="@+id/clear_default_db_title"
+                    style="@style/profile_item_text2_style"
+                    android:text="清空数据库" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/icon_profile_more" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/app_detail_layout"
+                style="@style/debug_layout"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="10dp" >
+
+                <TextView
+                    style="@style/profile_item_text2_style"
+                    android:text="查看应用详细" />
+            </RelativeLayout>
+        </LinearLayout>
+    </ScrollView>
+
+</FrameLayout>

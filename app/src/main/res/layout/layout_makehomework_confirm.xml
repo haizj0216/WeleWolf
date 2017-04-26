@@ -1,0 +1,305 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/color_main_background">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="72dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <!--比赛类型-->
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/item_high_size"
+                android:background="@color/white">
+                <TextView
+                    android:id="@+id/tv_game_type_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="@dimen/margin_left_or_right"
+                    android:layout_marginStart="@dimen/margin_left_or_right"
+                    android:text="@string/tv_game_type"
+                    android:textColor="@color/color_text_main"
+                    android:textSize="@dimen/sp_16"
+                    android:textStyle="bold" />
+                <TextView
+                    android:id="@+id/tv_game_type"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="@dimen/dp_10"
+                    android:layout_marginEnd="@dimen/dp_10"
+                    android:ellipsize="end"
+                    android:gravity="end"
+                    android:singleLine="true"
+                    android:textColor="@color/color_text_main"
+                    android:textSize="@dimen/sp_14" />
+            </RelativeLayout>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/margin_top_divider_size"
+                android:background="@color/color_divider" />
+
+            <!--比赛名称-->
+            <RelativeLayout
+                android:id="@+id/confirm_title_layout"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/item_high_size"
+                android:background="@color/white">
+
+                <TextView
+                    android:id="@+id/homework_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="@dimen/margin_left_or_right"
+                    android:text="比赛名称"
+                    android:textColor="@color/color_text_main"
+                    android:textSize="16dp"
+                    android:textStyle="bold" />
+
+                <ImageView
+                    android:id="@+id/img_next1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="@dimen/margin_left_or_right"
+                    android:src="@drawable/profile_icon_next" />
+
+                <TextView
+                    android:id="@+id/make_confirm_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_toLeftOf="@id/img_next1"
+                    android:layout_toRightOf="@id/homework_title"
+                    android:ellipsize="end"
+                    android:gravity="right"
+                    android:singleLine="true"
+                    android:textColor="@color/color_text_primary"
+                    android:textSize="@dimen/item_title_desc_size" />
+            </RelativeLayout>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/margin_top_divider_size"
+                android:background="@color/color_divider" />
+
+            <!--比赛日期-->
+            <RelativeLayout
+                android:id="@+id/confirm_makeout_layout"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/item_high_size"
+                android:background="@color/white">
+
+                <TextView
+                    android:id="@+id/tv_game_date_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="@dimen/margin_left_or_right"
+                    android:text="比赛日期"
+                    android:textColor="@color/color_text_main"
+                    android:textSize="16dp"
+                    android:textStyle="bold" />
+
+                <!--循环练习赛的比赛时间-->
+                <LinearLayout
+                    android:id="@+id/ll_circle_practice_game_date"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="15dp">
+
+                    <TextView
+                        android:id="@+id/com_start_date"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:gravity="center_vertical"
+                        android:text="开始日期"
+                        android:textColor="@color/color_text_primary"
+                        android:textSize="@dimen/item_title_desc_size" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="15dp"
+                        android:layout_marginRight="15dp"
+                        android:text="至"
+                        android:textColor="@color/color_text_main"
+                        android:textSize="14dp" />
+
+                    <TextView
+                        android:id="@+id/com_end_date"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:gravity="center_vertical"
+                        android:text="开始日期"
+                        android:textColor="@color/color_text_primary"
+                        android:textSize="@dimen/item_title_desc_size" />
+                </LinearLayout>
+
+                <!--单词测验赛的比赛日期-->
+                <TextView
+                    android:id="@+id/tv_single_test_game_date"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/color_text_primary"
+                    android:textSize="@dimen/sp_14"
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="@dimen/dp_10"
+                    android:layout_marginEnd="@dimen/dp_10"
+                    android:ellipsize="end"
+                    android:gravity="end"
+                    android:visibility="gone"
+                    android:singleLine="true"/>
+
+
+            </RelativeLayout>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/margin_top_divider_size"
+                android:background="@color/color_divider" />
+
+            <!--比赛时间-->
+            <RelativeLayout
+                android:id="@+id/make_confirm_deadline_layout"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/item_high_size"
+                android:background="@color/white">
+
+                <TextView
+                    android:id="@+id/tv_game_time_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="@dimen/margin_left_or_right"
+                    android:text="答题时间"
+                    android:textColor="@color/color_text_main"
+                    android:textSize="16dp"
+                    android:textStyle="bold" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:gravity="center_vertical"
+                    android:layout_marginRight="15dp">
+
+                    <TextView
+                        android:id="@+id/tv_game_time_everyday"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="15dp"
+                        android:text="每日"
+                        android:textColor="@color/color_text_main"
+                        android:textSize="14dp" />
+
+                    <TextView
+                        android:id="@+id/com_start_time"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:gravity="center_vertical"
+                        android:text="开始日期"
+                        android:textColor="@color/color_text_primary"
+                        android:textSize="@dimen/item_title_desc_size" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="15dp"
+                        android:layout_marginRight="15dp"
+                        android:text="至"
+                        android:textColor="@color/color_text_main"
+                        android:textSize="14dp" />
+
+                    <TextView
+                        android:id="@+id/com_end_time"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:gravity="center_vertical"
+                        android:text="开始日期"
+                        android:textColor="@color/color_text_primary"
+                        android:textSize="@dimen/item_title_desc_size" />
+                </LinearLayout>
+
+            </RelativeLayout>
+
+            <!--提示：自动设置的测试时间-->
+            <TextView
+                android:id="@+id/tv_tip_test_time"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/color_text_primary"
+                android:textSize="12dp"
+                android:layout_marginTop="9dp"
+                android:ellipsize="end"
+                android:layout_marginLeft="15dp"
+                android:text="@string/tv_tip_test_time"
+                android:visibility="visible"
+                android:singleLine="true"/>
+
+            <!--要发布的班级列表-->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="15dp"
+                android:background="@color/white"
+                android:gravity="center_vertical"
+                android:paddingLeft="@dimen/padding_left_or_right"
+                android:text="发布到"
+                android:textColor="@color/color_text_main"
+                android:textSize="16dp"
+                android:textStyle="bold" />
+            <com.hyena.framework.app.widget.AccuracListView
+                android:id="@+id/make_confirm_gradelist"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:divider="@color/transparent"
+                android:listSelector="@color/transparent" />
+
+        </LinearLayout>
+    </ScrollView>
+
+    <!--发布比赛-->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="75dp"
+        android:layout_alignParentBottom="true"
+        android:background="@color/white">
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/margin_top_divider_size"
+            android:background="@color/color_divider" />
+        <TextView
+            android:id="@+id/make_confirm_ok"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:background="@drawable/common_btn_strong_selector"
+            android:gravity="center"
+            android:text="发布比赛"
+            android:textColor="@drawable/common_btn_text_strong_selector"
+            android:textSize="16dp" />
+    </RelativeLayout>
+
+</RelativeLayout>

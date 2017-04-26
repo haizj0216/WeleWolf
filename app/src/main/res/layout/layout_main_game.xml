@@ -1,0 +1,198 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="#2E2A39">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:src="@drawable/logo_navigation" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="10dp"
+            android:padding="10dp"
+            android:src="@drawable/icon_profile_settings" />
+    </RelativeLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="none">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:background="#2E2A39">
+
+                <ImageView
+                    android:id="@+id/main_header_image"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="25dp"
+                    android:padding="4dp"
+                    android:src="@drawable/homepage_title_user" />
+
+                <ImageView
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="25dp"
+                    android:src="@drawable/home_head_border" />
+
+                <TextView
+                    android:id="@+id/main_header_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignTop="@id/main_header_image"
+                    android:layout_marginLeft="20dp"
+                    android:layout_toRightOf="@id/main_header_image"
+                    android:text="匀匀"
+                    android:textColor="@color/white" />
+
+                <TextView
+                    android:id="@+id/main_header_lv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="20dp"
+                    android:layout_toRightOf="@id/main_header_image"
+                    android:background="@drawable/chat_recording_text_hint_bg"
+                    android:padding="2dp"
+                    android:text="Lv.1"
+                    android:textColor="@color/white" />
+
+                <TextView
+                    android:id="@+id/main_header_exp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="5dp"
+                    android:layout_toRightOf="@id/main_header_lv"
+                    android:text="经验:100"
+                    android:textColor="@color/white" />
+
+                <TextView
+                    android:id="@+id/main_header_code"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBottom="@id/main_header_image"
+                    android:layout_marginLeft="20dp"
+                    android:layout_toRightOf="@id/main_header_image"
+                    android:text="ID:39368236"
+                    android:textColor="@color/white" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="20dp"
+                    android:src="@drawable/icon_profile_more" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginTop="100dp"
+                android:background="#474350">
+
+                <TextView
+                    android:id="@+id/main_header_coin"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="15dp"
+                    android:drawableLeft="@drawable/ic_coin"
+                    android:drawablePadding="3dp"
+                    android:text="我的金币:90"
+                    android:textColor="@color/white" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="15dp"
+                    android:drawablePadding="5dp"
+                    android:drawableRight="@drawable/icon_profile_more"
+                    android:text="充值"
+                    android:textColor="@color/white" />
+            </RelativeLayout>
+
+            <ImageView
+                android:id="@+id/main_game_easy"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="145dp"
+                android:src="@drawable/home_easy" />
+
+            <RelativeLayout
+                android:id="@+id/main_game_standard"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/main_game_easy"
+                android:layout_marginTop="5dp">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/home_standard" />
+
+            </RelativeLayout>
+
+            <LinearLayout
+                android:id="@+id/main_game_operate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/main_game_standard"
+                android:layout_marginTop="5dp">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:src="@drawable/home_explanation" />
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/home_create_room" />
+                </RelativeLayout>
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:src="@drawable/home_search" />
+            </LinearLayout>
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/main_game_operate"
+                android:layout_marginTop="5dp"
+                android:src="@drawable/home_lock" />
+        </RelativeLayout>
+    </ScrollView>
+
+</LinearLayout>

@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/color_main_background">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="107dp"
+            android:background="@color/white">
+
+            <ImageView
+                android:id="@+id/profile_class_headphoto"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:layout_centerInParent="true"
+                android:layout_gravity="center_horizontal"
+                android:scaleType="centerCrop"
+                android:src="@drawable/default_img" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/profile_class_class_layout"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/item_high_size"
+            android:layout_marginTop="@dimen/margin_top_size"
+            android:background="@color/color_white_100"
+            android:paddingLeft="@dimen/padding_left_or_right"
+            android:paddingRight="@dimen/padding_left_or_right">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:text="班群名称"
+                android:textColor="@color/color_text_main"
+                android:textSize="@dimen/item_title_size" />
+
+            <ImageView
+                android:id="@+id/progile_class_class_icon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:src="@drawable/icon_profile_more" />
+
+            <TextView
+                android:id="@+id/profile_class_class_name"
+                style="@style/profile_item_text_primary_style"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="8dp"
+                android:singleLine="true"
+                android:ellipsize="end"
+                android:maxEms="15"
+                android:gravity="right"
+                android:layout_toLeftOf="@id/progile_class_class_icon"
+                android:layout_marginLeft="20dp"
+                android:text="textview"/>
+
+        </RelativeLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/margin_top_divider_size"
+            android:background="@color/color_divider" />
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/item_high_size"
+            android:background="@color/color_profile_item_bg"
+            android:paddingLeft="@dimen/padding_left_or_right"
+            android:paddingRight="@dimen/padding_left_or_right">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:text="班级部落号"
+                    android:textColor="@color/color_text_main"
+                    android:textSize="@dimen/item_title_size" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:text="学生通过班级部落号加入"
+                    android:textColor="#c9c8cc"
+                    android:textSize="11dp"/>
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/profile_class_code"
+                style="@style/profile_item_text_primary_style"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"/>
+
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/margin_top_divider_size"
+            android:background="@color/color_divider" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/item_high_size"
+            android:background="@color/color_profile_item_bg"
+            android:paddingLeft="@dimen/padding_left_or_right"
+            android:paddingRight="@dimen/padding_left_or_right">
+
+            <TextView
+                android:id="@+id/create_time_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:text="创建时间"
+                android:textColor="@color/color_text_main"
+                android:textSize="@dimen/item_title_size" />
+
+            <TextView
+                android:id="@+id/profile_class_found"
+                style="@style/profile_item_text_primary_style"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"/>
+
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/margin_top_divider_size"
+            android:background="@color/color_divider" />
+
+        <RelativeLayout
+            android:id="@+id/profile_class_transfer_layout"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/item_high_size"
+            android:background="@color/color_profile_item_bg"
+            android:paddingLeft="@dimen/padding_left_or_right"
+            android:paddingRight="@dimen/padding_left_or_right"
+            android:visibility="gone">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:text="转移班群"
+                android:textColor="@color/color_text_main"
+                android:textSize="@dimen/item_title_size" />
+
+            <ImageView
+                android:id="@+id/progile_class_transfer_icon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:src="@drawable/icon_profile_more" />
+
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/margin_top_divider_size"
+            android:background="@color/color_divider" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/item_high_size"
+            android:background="@color/color_profile_item_bg"
+            android:paddingLeft="@dimen/padding_left_or_right"
+            android:paddingRight="@dimen/padding_left_or_right">
+
+            <TextView
+                style="@style/profile_item_text_style"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:text="允许新同学加入"
+                android:textColor="@color/color_text_main"
+                android:textSize="@dimen/item_title_size" />
+
+            <ImageView
+                android:id="@+id/profile_class_switch"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:src="@drawable/btn_toggle_button_cache_off" />
+
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/profile_class_delete"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/item_high_size"
+            android:layout_marginTop="@dimen/margin_top_size"
+            android:background="@drawable/bg_myclass_list_item"
+            android:gravity="center_vertical"
+            android:paddingLeft="@dimen/padding_left_or_right"
+            android:text="解散班群"
+            android:textColor="@color/color_text_main"
+            android:textSize="@dimen/item_title_size" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="26dp"
+            android:layout_marginTop="10dp"
+            android:text="解散班群，学生也会从班群中退出"
+            android:textColor="#cccccd"
+            android:textSize="12dp" />
+    </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/profile_class_info_guide"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/color_black_50"
+        android:visibility="gone"
+        android:clickable="true">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="250dp"
+            android:src="@drawable/bg_guide_class_transfer" />
+    </RelativeLayout>
+
+</FrameLayout>

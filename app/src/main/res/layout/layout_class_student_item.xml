@@ -1,0 +1,248 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <RelativeLayout
+        android:id="@+id/student_ranking"
+        android:layout_width="match_parent"
+        android:layout_height="106dp"
+        android:background="@color/white">
+
+        <RelativeLayout
+            android:id="@+id/student_ranking_layout"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true">
+
+            <ImageView
+                android:id="@+id/rank_img"
+                android:layout_width="21dp"
+                android:layout_height="24dp"
+                android:layout_centerInParent="true"
+                android:src="@drawable/icon_rank_first" />
+
+            <TextView
+                android:id="@+id/student_ranking_index"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text="1"
+                android:textColor="@color/color_text_primary"
+                android:textSize="16dp"
+                android:textStyle="bold" />
+        </RelativeLayout>
+
+        <ImageView
+            android:id="@+id/student_head_photo"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="48dp"
+            android:src="@drawable/default_img" />
+
+        <RelativeLayout
+            android:id="@+id/student_data_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="80dp"
+            android:layout_toRightOf="@id/student_head_photo">
+
+            <TextView
+                android:id="@+id/student_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:singleLine="true"
+                android:textStyle="bold"
+                android:text="黎明"
+                android:textColor="@color/color_text_main"
+                android:textSize="16dp" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:layout_below="@id/student_name">
+
+                <RelativeLayout
+                    android:id="@+id/doquestion_layout"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/grasp_title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:ellipsize="end"
+                        android:gravity="center_horizontal"
+                        android:singleLine="true"
+                        android:text="已练熟"
+                        android:textColor="@color/color_text_primary"
+                        android:textSize="13dp" />
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/grasp_title"
+                        android:layout_marginTop="6dp"
+                        android:gravity="bottom">
+
+                        <TextView
+                            android:id="@+id/student_grasp_count"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:ellipsize="end"
+                            android:singleLine="true"
+                            android:text="90%"
+                            android:textColor="@color/color_text_main"
+                            android:textSize="12dp" />
+
+                        <TextView
+                            android:id="@+id/student_grasp_rate"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="5dp"
+                            android:drawableLeft="@drawable/icon_student_rank_up"
+                            android:drawablePadding="2dp"
+                            android:text="1"
+                            android:textStyle="bold"
+                            android:textColor="@color/color_button_red"
+                            android:textSize="11dp" />
+                    </LinearLayout>
+
+
+                </RelativeLayout>
+
+                <View
+                    android:layout_width="1px"
+                    android:layout_height="30dp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginRight="15dp"
+                    android:background="@color/color_divider" />
+
+                <RelativeLayout
+                    android:id="@+id/pkinfo_layout"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/student_grasping_title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:ellipsize="end"
+                        android:gravity="center_horizontal"
+                        android:singleLine="true"
+                        android:text="练习中单词"
+                        android:textColor="@color/color_text_primary"
+                        android:textSize="13dp" />
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="6dp"
+                        android:layout_below="@id/student_grasping_title"
+                        android:gravity="bottom">
+
+                        <TextView
+                            android:id="@+id/student_grasping_count"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:ellipsize="end"
+                            android:singleLine="true"
+                            android:text="90%"
+                            android:textColor="@color/color_text_main"
+                            android:textSize="12dp" />
+
+                        <TextView
+                            android:id="@+id/student_grasping_rate"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="5dp"
+                            android:drawableLeft="@drawable/icon_student_rank_down"
+                            android:drawablePadding="2dp"
+                            android:textStyle="bold"
+                            android:text="1"
+                            android:textColor="@color/color_button_red"
+                            android:textSize="11dp" />
+                    </LinearLayout>
+                </RelativeLayout>
+
+            </LinearLayout>
+
+        </RelativeLayout>
+
+
+        <TextView
+            android:id="@+id/student_encourage"
+            android:layout_width="60dp"
+            android:layout_height="28dp"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="15dp"
+            android:layout_marginTop="35dp"
+            android:background="@drawable/common_btn_strong_selector"
+            android:gravity="center"
+            android:singleLine="true"
+            android:text="鼓励他"
+            android:textColor="@color/color_white_100"
+            android:textSize="13sp" />
+
+        <View
+            android:id="@+id/divider_line_buttom"
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:layout_alignParentBottom="true"
+            android:layout_marginLeft="15dp"
+            android:background="@color/color_divider" />
+    </RelativeLayout>
+
+
+    <LinearLayout
+        android:id="@+id/student_empty"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <ImageView
+            android:id="@+id/student_empty_img"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+            android:src="@drawable/icon_empty_nodata" />
+
+        <TextView
+            android:id="@+id/student_empty_desc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="25dp"
+            android:text="该班级部落暂无学生"
+            android:textColor="@color/color_text_main"
+            android:textSize="15dp" />
+
+        <TextView
+            android:id="@+id/student_empty_code"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:text="学生可通过群号“123455”加入"
+            android:textColor="@color/color_text_primary"
+            android:textSize="13dp" />
+
+        <TextView
+            android:id="@+id/student_empty_add"
+            android:layout_width="220dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="25dp"
+            android:layout_marginBottom="25dp"
+            android:background="@drawable/bg_button_common"
+            android:gravity="center"
+            android:text="分享班级链接邀请学生"
+            android:textColor="@color/white"
+            android:textSize="15dp" />
+    </LinearLayout>
+
+</RelativeLayout>

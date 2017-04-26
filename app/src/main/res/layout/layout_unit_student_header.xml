@@ -1,0 +1,53 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="156dp"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="-10dp"
+            android:gravity="bottom">
+
+            <TextView
+                android:id="@+id/unit_student_header_learned"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="25"
+                android:textColor="@color/color_text_main"
+                android:textSize="70dp" />
+
+            <TextView
+                android:id="@+id/unit_student_header_count"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="/32"
+                android:textColor="@color/color_text_primary"
+                android:textSize="15dp" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/unit_student_header_rule"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawablePadding="4dp"
+            android:layout_marginLeft="2dp"
+            android:layout_marginTop="-5dp"
+            android:drawableRight="@drawable/icon_rule"
+            android:gravity="center"
+            android:text="已练熟人数"
+            android:textColor="@color/color_text_main"
+            android:textSize="15dp" />
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="15dp"
+        android:background="@color/color_main_background"/>
+</LinearLayout>

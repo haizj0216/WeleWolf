@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/color_main_background"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:id="@+id/profile_settings_remind"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/item_high_size"
+        android:layout_marginTop="@dimen/margin_top_size"
+        android:background="@color/white"
+        android:paddingLeft="@dimen/padding_left_or_right"
+        android:paddingRight="@dimen/padding_left_or_right" >
+
+        <TextView
+            style="@style/profile_item_text2_style"
+            android:text="消息提醒" />
+
+        <ImageView
+            android:id="@+id/profile_settings_notify_toggle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true" >
+        </ImageView>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/item_high_size"
+        android:layout_marginTop="@dimen/margin_top_size"
+        android:background="@color/white"
+        android:paddingLeft="@dimen/padding_left_or_right"
+        android:paddingRight="@dimen/padding_left_or_right" >
+
+        <TextView
+            style="@style/profile_item_text2_style"
+            android:text="手机号">
+        </TextView>
+
+        <TextView
+            android:id="@+id/settings_user_phone_number"
+            style="@style/profile_item_text_primary_style"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:text="00000000000" >
+        </TextView>
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/margin_top_divider_size"
+        android:background="@color/color_divider" />
+
+    <RelativeLayout
+        android:id="@+id/settings_modify_password_layout"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/item_high_size"
+        android:background="@drawable/bg_myclass_list_item"
+        android:paddingLeft="@dimen/padding_left_or_right"
+        android:paddingRight="@dimen/padding_left_or_right" >
+
+        <TextView
+            android:id="@+id/settings_modify_password"
+            style="@style/profile_item_text2_style"
+            android:text="修改密码"/>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:src="@drawable/icon_profile_more" />
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/margin_top_divider_size"
+        android:background="@color/color_divider" />
+
+    <RelativeLayout
+        android:id="@+id/settings_clear_cache"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/item_high_size"
+        android:background="@drawable/bg_myclass_list_item"
+        android:paddingLeft="@dimen/padding_left_or_right"
+        android:paddingRight="@dimen/padding_left_or_right" >
+
+        <TextView
+            style="@style/profile_item_text2_style"
+            android:text="清除缓存">
+        </TextView>
+
+        <TextView
+            android:id="@+id/settings_cache_size"
+            style="@style/profile_item_text_primary_style"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true">
+        </TextView>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/settings_feedback_layout"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/item_high_size"
+        android:layout_marginTop="@dimen/margin_top_size"
+        android:background="@drawable/bg_myclass_list_item"
+        android:paddingLeft="@dimen/padding_left_or_right"
+        android:paddingRight="@dimen/padding_left_or_right"
+        android:visibility="gone">
+
+        <TextView
+            style="@style/profile_item_text2_style"
+            android:text="意见反馈" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:src="@drawable/icon_profile_more" />
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/margin_top_divider_size"
+        android:background="@color/color_divider" />
+
+    <RelativeLayout
+        android:id="@+id/settings_ablout_layout"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/item_high_size"
+        android:background="@drawable/bg_myclass_list_item"
+        android:paddingLeft="@dimen/padding_left_or_right"
+        android:paddingRight="@dimen/padding_left_or_right" >
+
+        <TextView
+            android:id="@+id/settings_about"
+            style="@style/profile_item_text2_style"
+            android:text="关于部落" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:src="@drawable/icon_profile_more" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/settings_switchapi_layout"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/item_high_size"
+        android:layout_marginTop="@dimen/margin_top_size"
+        android:background="@drawable/bg_myclass_list_item"
+        android:paddingLeft="@dimen/padding_left_or_right"
+        android:paddingRight="@dimen/padding_left_or_right"
+        android:visibility="gone">
+
+        <TextView
+            style="@style/profile_item_text2_style"
+            android:text="API切换" />
+
+        <TextView
+            android:id="@+id/type_api"
+            style="@style/profile_item_text_primary_style"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="20dp" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:src="@drawable/icon_profile_more" />
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/exit_app_layout"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/item_high_size"
+        android:layout_marginTop="@dimen/margin_top_size"
+        android:background="@drawable/bg_myclass_list_item"
+        android:gravity="center_vertical"
+        android:paddingLeft="@dimen/padding_left_or_right"
+        android:text="退出当前账号"
+        android:textSize="@dimen/item_title_size"
+        android:textColor="@color/color_red" />
+
+</LinearLayout>

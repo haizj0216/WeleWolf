@@ -1,0 +1,44 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="50dp"
+    android:minHeight="50dp">
+
+    <TextView
+        android:id="@+id/loop_student_detail_item_index"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="15dp"
+        android:text="1"
+        android:textColor="@color/color_text_primary"
+        android:textSize="15dp" />
+
+    <TextView
+        android:id="@+id/loop_student_detail_item_word"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="4dp"
+        android:layout_toRightOf="@id/loop_student_detail_item_index"
+        android:ellipsize="end"
+        android:lines="1"
+        android:text="出错单词"
+        android:textColor="@color/color_text_main"
+        android:textSize="15dp" />
+
+    <LinearLayout
+        android:id="@+id/loop_student_detail_item_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_centerVertical="true"
+        android:layout_toRightOf="@id/loop_student_detail_item_word"
+        android:gravity="center_vertical"
+        android:orientation="horizontal" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:layout_alignParentBottom="true"
+        android:layout_marginLeft="15dp"
+        android:background="@color/color_divider" />
+</RelativeLayout>

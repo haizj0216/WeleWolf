@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" 
+    android:paddingLeft="35dp"
+    android:paddingRight="35dp">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:scrollbars="none" >
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true" >
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="32dp"
+                android:background="@color/white"
+                android:orientation="vertical" >
+
+                <TextView
+                    android:id="@+id/dialog_correct_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginRight="30dp"
+                    android:layout_marginTop="48dp"
+                    android:text="将此作业推荐到该班全部学生?"
+                    android:textColor="#525252"
+                    android:textSize="15dp" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="20dp"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginTop="27dp"
+                    android:gravity="center_vertical" >
+
+                    <CheckBox
+                        android:id="@+id/dialog_correct_markrmd"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:button="@drawable/bg_checkbox_markrmd"
+                        android:text="" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+                        android:text="不再提示"
+                        android:textColor="#525252"
+                        android:textSize="14dp" />
+                </LinearLayout>
+
+                <RelativeLayout
+                    android:id="@+id/dialog_common_opt_container"
+                    android:layout_width="fill_parent"
+                    android:layout_height="44dp" >
+
+                    <View
+                        android:layout_width="fill_parent"
+                        android:layout_height="@dimen/margin_top_divider_size"
+                        android:layout_alignParentTop="true"
+                        android:background="@color/color_divider" />
+
+                    <LinearLayout
+                        android:layout_width="fill_parent"
+                        android:layout_height="44dp"
+                        android:orientation="horizontal" >
+
+                        <TextView
+                            android:id="@+id/dialog_common_cancel"
+                            android:layout_width="fill_parent"
+                            android:layout_height="fill_parent"
+                            android:layout_weight="1"
+                            android:background="@drawable/dialog_btn_bg"
+                            android:gravity="center"
+                            android:textColor="@drawable/dialog_btn_txt_color"
+                            android:textSize="18dp" />
+
+                        <TextView
+                            android:id="@+id/dialog_common_confirm"
+                            android:layout_width="fill_parent"
+                            android:layout_height="fill_parent"
+                            android:layout_weight="1"
+                            android:background="@drawable/dialog_btn_bg"
+                            android:gravity="center"
+                            android:textColor="@drawable/dialog_btn_txt_color"
+                            android:textSize="18dp" />
+                    </LinearLayout>
+
+                    <View
+                        android:id="@+id/dialog_common_devider"
+                        android:layout_width="@dimen/margin_top_divider_size"
+                        android:layout_height="fill_parent"
+                        android:layout_centerInParent="true"
+                        android:background="@color/color_divider" />
+                </RelativeLayout>
+            </LinearLayout>
+
+            <ImageView
+                android:id="@+id/dialog_correct_icon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:src="@drawable/bt_correct_markrmd_icon" />
+        </RelativeLayout>
+    </ScrollView>
+
+</RelativeLayout>

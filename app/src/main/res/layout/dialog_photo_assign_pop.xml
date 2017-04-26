@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/color_black_60"
+    android:orientation="vertical" >
+
+    <View
+        android:id="@+id/assign_photo_empty"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:background="@android:color/transparent" >
+    </View>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/assign_photo_from_album"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:background="#ffffff"
+            android:gravity="center"
+            android:text="从相册上传题目"
+            android:textColor="@color/color_main_app"
+            android:textSize="16dp" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/margin_top_divider_size"
+            android:background="@color/color_divider" />
+
+        <TextView
+            android:id="@+id/assign_photo_from_camera"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:background="#ffffff"
+            android:gravity="center"
+            android:text="拍照上传题目"
+            android:textColor="@color/color_main_app"
+            android:textSize="16dp" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="3dp"
+            android:background="@color/color_black_60" />
+
+        <TextView
+            android:id="@+id/assign_photo_cancel"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:background="#ffffff"
+            android:gravity="center"
+            android:text="取消"
+            android:textColor="#808080"
+            android:textSize="16dp" />
+    </LinearLayout>
+
+</LinearLayout>

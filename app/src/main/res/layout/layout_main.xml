@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <include
+        android:id="@+id/main_toolbar"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        layout="@layout/layout_main_toolbar" />
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/main_pagers"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_above="@id/main_toolbar" />
+
+    <LinearLayout
+        android:id="@+id/loading_layout"
+        android:layout_width="235dp"
+        android:layout_height="57dp"
+        android:layout_centerInParent="true"
+        android:background="@drawable/bg_loading"
+        android:gravity="center_vertical"
+        android:visibility="gone">
+
+        <ImageView
+            android:id="@+id/loading_anim"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="20dp"
+            android:src="@drawable/bt_loading_icon" />
+
+        <TextView
+            android:id="@+id/loading_hint"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="20dp"
+            android:text="加载中..."
+            android:textColor="@color/white"
+            android:textSize="16dp" />
+    </LinearLayout>
+
+</RelativeLayout>

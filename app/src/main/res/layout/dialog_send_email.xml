@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="285dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:background="@drawable/dialog_common_bg"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="25dp"
+                android:layout_marginTop="25dp"
+                android:text="发送至邮箱"
+                android:textColor="@color/color_text_main"
+                android:textSize="20dp" />
+
+            <EditText
+                android:id="@+id/dialog_send_edit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp"
+                android:layout_marginTop="30dp"
+                android:maxLength="40"
+                android:background="@null"
+                android:hint="请输入邮箱地址"
+                android:textColor="@color/color_text_main"
+                android:textColorHint="@color/color_text_primary"
+                android:textSize="15dp" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:layout_marginLeft="25dp"
+                android:layout_marginRight="25dp"
+                android:layout_marginTop="10dp"
+                android:background="@color/color_main_app"></View>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="25dp"
+                android:layout_marginRight="25dp"
+                android:layout_marginTop="10dp"
+                android:text="作业将以PDF的形式发送到你的邮箱。若没收到邮件，请检查邮件垃圾箱"
+                android:textColor="@color/color_text_primary"
+                android:textSize="12dp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="15dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:layout_marginTop="25dp">
+
+                <TextView
+                    android:id="@+id/dialog_common_cancel"
+                    android:layout_width="fill_parent"
+                    android:layout_height="42dp"
+                    android:layout_marginRight="7dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/common_btn_weak_selector"
+                    android:gravity="center"
+                    android:text="取消"
+                    android:textColor="@drawable/common_btn_text_weak_selector"
+                    android:textSize="18dp" />
+
+                <TextView
+                    android:id="@+id/dialog_common_confirm"
+                    android:layout_width="fill_parent"
+                    android:layout_height="42dp"
+                    android:layout_marginLeft="7dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/common_btn_strong_selector"
+                    android:gravity="center"
+                    android:text="确定"
+                    android:textColor="@drawable/common_btn_text_strong_selector"
+                    android:textSize="18dp" />
+
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+</RelativeLayout>

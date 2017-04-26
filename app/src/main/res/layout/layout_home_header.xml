@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="150dp"
+    android:minHeight="150dp">
+
+    <ImageView
+        android:id="@+id/item_head_bg"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/img_default_bg"
+        android:scaleType="centerCrop" />
+
+    <ImageView
+        android:id="@+id/class_item_header_head"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="25dp"
+        android:padding="2dp"
+        android:background="@drawable/bg_class_item_head"
+        android:src="@drawable/icon_class_item_default_head" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@id/class_item_header_head"
+        android:layout_alignRight="@id/class_item_header_head"
+        android:src="@drawable/icon_class_edit" />
+
+    <TextView
+        android:id="@+id/class_item_header_code"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/class_item_header_head"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="8dp"
+        android:gravity="center"
+        android:text="sdfsdfsd"
+        android:textColor="@color/color_fefefe"
+        android:textSize="15dp"
+        android:textStyle="bold" />
+
+    <LinearLayout
+        android:id="@+id/class_item_static_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/class_item_header_code"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="3dp">
+
+        <TextView
+            android:id="@+id/class_item_header_grade"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:alpha="0.7"
+            android:text="年级:7年级"
+            android:textColor="@color/white"
+            android:textSize="12dp" />
+
+        <View
+            android:layout_width="1dp"
+            android:layout_height="12dp"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:alpha="0.7"
+            android:background="@color/white"></View>
+
+        <TextView
+            android:id="@+id/class_item_header_count"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:alpha="0.7"
+            android:text="班级人数:32"
+            android:textColor="@color/white"
+            android:textSize="12dp" />
+    </LinearLayout>
+
+</RelativeLayout>
+

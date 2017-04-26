@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:paddingBottom="20dp"
+    android:paddingLeft="30dp"
+    android:paddingRight="30dp"
+    android:paddingTop="20dp" >
+
+    <EditText
+        android:id="@+id/result_text"
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:background="@drawable/dialog_fillblack_input_bg"
+        android:ems="20"
+        android:focusable="true"
+        android:hint="在此输入内容"
+        android:padding="5dp"
+        android:singleLine="true" />
+
+</LinearLayout>

@@ -1,0 +1,206 @@
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!--
+        Base application theme, dependent on API level. This theme is replaced
+        by AppBaseTheme from res/values-vXX/styles.xml on newer devices.
+    -->
+    <style name="AppBaseTheme" parent="android:Theme.Light.NoTitleBar">
+        <!--
+            Theme customizations available in newer API levels can go in
+            res/values-vXX/styles.xml, while customizations related to
+            backward-compatibility can go here.
+        -->
+    </style>
+
+    <!-- Application theme. -->
+    <style name="AppTheme" parent="AppBaseTheme">
+        <!-- All customizations that are NOT specific to a particular API-level can go here. -->
+    </style>
+
+    <style name="mySpinnerStyle" parent="android:style/Widget.ListView.DropDown">
+        <item name="android:divider">@drawable/dialog_list_devider</item>
+        <item name="android:dividerHeight">@dimen/margin_top_divider_size</item>
+        <item name="android:background">@drawable/dialog_spinner_popup_bg</item>
+    </style>
+
+    <style name="Theme.KnowBox.Activity" parent="@android:style/Theme.Light">
+        <item name="android:dropDownListViewStyle">@style/mySpinnerStyle</item>
+        <item name="numberPickerStyle">@style/NPWidget.Holo.Light.NumberPicker</item>
+        <item name="android:windowNoTitle">true</item>
+    </style>
+
+    <style name="Theme.KnowBox.DataPicker" parent="@android:style/Theme.Translucent">
+        <item name="android:dropDownListViewStyle">@style/mySpinnerStyle</item>
+        <item name="numberPickerStyle">@style/NPWidget.Holo.Light.NumberPicker</item>
+    </style>
+
+    <style name="progress_style" parent="@android:style/Widget.ProgressBar.Large">
+        <item name="android:indeterminateDrawable">@anim/anim_progressbar_loading</item>
+    </style>
+
+    <style name="profile_item_text_style" parent="@android:style/TextAppearance">
+        <item name="android:textSize">@dimen/item_title_size</item>
+        <item name="android:textColor">@color/color_text_main</item>
+    </style>
+
+    <style name="profile_item_text_primary_style" parent="@android:style/TextAppearance">
+        <item name="android:textSize">@dimen/item_title_desc_size</item>
+        <item name="android:textColor">@color/color_text_primary</item>
+    </style>
+
+    <style name="profile_item_text2_style" parent="@android:style/TextAppearance">
+        <item name="android:textSize">@dimen/item_title_size</item>
+        <item name="android:textColor">@color/color_text_main</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_centerVertical">true</item>
+    </style>
+
+    <!-- 基础样式 -->
+    <style name="stylebase" />
+
+    <style name="DialogWithOutAnimation" parent="@android:style/Theme.Dialog">
+        <item name="android:windowIsFloating">false</item>
+        <item name="android:windowFrame">@null</item>
+        <item name="android:windowFullscreen">false</item>
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:background">@android:color/transparent</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:backgroundDimEnabled">true</item>
+        <item name="android:windowSoftInputMode">adjustResize|stateUnspecified</item>
+        <item name="android:windowAnimationStyle">@null</item>
+    </style>
+
+    <style name="IphoneDialog" parent="@style/DialogWithOutAnimation"></style>
+
+    <style name="VirtualDialog" parent="@style/DialogWithOutAnimation">
+        <item name="android:backgroundDimEnabled">false</item>
+    </style>
+
+    <!-- Tab样式 -->
+    <style name="main_tab" parent="@style/stylebase">
+        <item name="android:layout_width">78dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:button">@null</item>
+        <item name="android:gravity">center</item>
+        <item name="android:paddingTop">2dp</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:textColor">@drawable/tab_txt_bg</item>
+        <item name="android:textSize">13dp</item>
+    </style>
+
+    <style name="no_Net">
+        <item name="android:textColor">@color/gray3</item>
+        <item name="android:shadowColor">#ffffff</item>
+        <item name="android:shadowDx">0</item>
+        <item name="android:shadowDy">2</item>
+        <item name="android:shadowRadius">0.8</item>
+    </style>
+
+    <!-- 登录页面输入框 -->
+
+    <style name="style_login_edit_text">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">45dp</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:textColor">@color/color_main_app</item>
+        <item name="android:textColorHint">@color/color_text_third</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+
+    <style name="regist_edit_text_1">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">55dp</item>
+        <item name="android:layout_marginTop">10dp</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:textColor">#525252</item>
+        <item name="android:textColorHint">@color/gray</item>
+        <item name="android:textSize">15sp</item>
+        <item name="android:ems">12</item>
+        <item name="android:inputType">text</item>
+        <item name="android:background">@drawable/regist_divider_line_cao</item>
+    </style>
+
+    <style name="edit_input_text">
+        <item name="android:textColor">#525252</item>
+        <item name="android:textColorHint">@color/gray</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:inputType">text</item>
+        <item name="android:background">@null</item>
+        <item name="android:maxLength">16</item>
+    </style>
+    
+    <style name="regist_edit_text_2">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">44dp</item>
+        <item name="android:layout_marginTop">10dp</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:textColor">#525252</item>
+        <item name="android:textColorHint">#c6c6c6</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:background">@drawable/regist_divider_line_arrow</item>
+        <item name="android:clickable">false</item>
+        <item name="android:focusable">false</item>
+    </style>
+
+    <!-- 注册页面输入框 -->
+    <style name="style_registe_edit_text">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:background">@color/white</item>
+        <item name="android:padding">15dp</item>
+        <item name="android:drawablePadding">15dp</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:selectAllOnFocus">true</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textColorHint">@color/login_input_hint</item>
+        <item name="android:textSize">15sp</item>
+    </style>
+
+    <style name="PopupWindowDialogWithDim" parent="@style/DialogWithOutAnimation">
+        <item name="android:windowAnimationStyle">@style/AnimationPopwindow1</item>
+    </style>
+
+    <style name="AnimationPopwindow1">
+        <item name="android:windowEnterAnimation">@anim/popup_show</item>
+        <item name="android:windowExitAnimation">@anim/popup_hide</item>
+    </style>
+
+    <declare-styleable name="MultipleText">
+        <attr name="textColor" format="color" />
+        <attr name="textSize" format="dimension" />
+        <attr name="textWordMargin" format="dimension" />
+        <attr name="textLineMargin" format="dimension" />
+        <attr name="textBackground" format="integer" />
+        <attr name="textPaddingLeft" format="dimension" />
+        <attr name="textPaddingRight" format="dimension" />
+        <attr name="textPaddingTop" format="dimension" />
+        <attr name="textPaddingBottom" format="dimension" />
+    </declare-styleable>
+
+    <!-- debug页面 -->
+    <style name="debug_layout">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">45dp</item>
+        <item name="android:background">@color/white</item>
+        <item name="android:paddingLeft">10dp</item>
+        <item name="android:paddingRight">10dp</item>
+    </style>
+    
+    <!-- 上传错误类型 -->
+
+    <style name="DialogAnim" parent="android:Animation">
+        <item name="android:windowEnterAnimation">@anim/anim_dialog_enter</item>
+        <item name="android:windowExitAnimation">@anim/anim_dialog_exit</item>
+    </style>
+
+    <style name="PopupAnimation" mce_bogus="1" parent="android:Animation">
+        <item name="android:windowEnterAnimation">@anim/popup_enter</item>
+        <item name="android:windowExitAnimation">@anim/popup_exit</item>
+    </style>
+    <style name="PopuplistAnimation" mce_bogus="1" parent="android:Animation">
+        <item name="android:windowEnterAnimation">@anim/popuplist_enter</item>
+        <item name="android:windowExitAnimation">@anim/popuplist_exit</item>
+    </style>
+</resources>

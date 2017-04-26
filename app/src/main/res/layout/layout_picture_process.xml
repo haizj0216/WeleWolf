@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/color_black_image_previewer" >
+
+    <RelativeLayout
+        android:id="@+id/title0Id"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/color_black_light_image_previewer" >
+
+        <FrameLayout
+            android:id="@+id/pbackFrayId"
+            android:layout_width="55dip"
+            android:layout_height="fill_parent" >
+
+            <ImageView
+                android:id="@+id/header_back_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:src="@drawable/bt_title_back" />
+        </FrameLayout>
+
+        <TextView
+            android:id="@+id/header_title_txt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="英语"
+            android:textColor="@color/white"
+            android:textSize="22sp" />
+
+        <TextView
+            android:id="@+id/header_submit_txt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="23dp"
+            android:text="提交"
+            android:textColor="@color/white"
+            android:textSize="20sp" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/btm0LayId"
+        android:layout_width="fill_parent"
+        android:layout_height="60dip"
+        android:layout_alignParentBottom="true" >
+
+        <LinearLayout
+            android:id="@+id/btm1LayId"
+            android:layout_width="fill_parent"
+            android:layout_height="60dip"
+            android:background="#4a4a4a"
+            android:weightSum="4" >
+
+            <RelativeLayout
+                android:id="@+id/orignalLayId"
+                android:layout_width="0dip"
+                android:layout_height="fill_parent"
+                android:layout_weight="1"
+                android:gravity="center" >
+
+                <ImageView
+                    android:id="@+id/orignalImgId"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:duplicateParentState="true"
+                    android:src="@drawable/tab_original_photo_tab" />
+
+                <TextView
+                    android:id="@+id/orignalTextId"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/orignalImgId"
+                    android:layout_centerHorizontal="true"
+                    android:gravity="center"
+                    android:text="原图"
+                    android:textColor="@color/crop_orignal_color"
+                    android:textSize="14dp" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/enhanceLayId"
+                android:layout_width="0dip"
+                android:layout_height="fill_parent"
+                android:layout_weight="1"
+                android:gravity="center" >
+
+                <ImageView
+                    android:id="@+id/enhanceImgId"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:src="@drawable/tab_enhance_photo_tab" />
+
+                <TextView
+                    android:id="@+id/enhanceTextId"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/enhanceImgId"
+                    android:layout_centerHorizontal="true"
+                    android:gravity="center"
+                    android:text="增强"
+                    android:textColor="@color/crop_orignal_color"
+                    android:textSize="14dp" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/cropLayId"
+                android:layout_width="0dip"
+                android:layout_height="fill_parent"
+                android:layout_weight="1"
+                android:gravity="center" >
+
+                <ImageView
+                    android:id="@+id/cropImgId"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:src="@drawable/tab_crop_photo_tab" />
+
+                <TextView
+                    android:id="@+id/cropTextId"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/cropImgId"
+                    android:layout_centerHorizontal="true"
+                    android:gravity="center"
+                    android:text="裁剪"
+                    android:textColor="@color/crop_orignal_color"
+                    android:textSize="14dp" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/rotateLayId"
+                android:layout_width="0dip"
+                android:layout_height="fill_parent"
+                android:layout_weight="1"
+                android:gravity="center" >
+
+                <ImageView
+                    android:id="@+id/rotateImgId"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:src="@drawable/tab_rotate_photo_tab" />
+
+                <TextView
+                    android:id="@+id/rotateTextId"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/rotateImgId"
+                    android:layout_centerHorizontal="true"
+                    android:gravity="center"
+                    android:text="旋转"
+                    android:textColor="@color/crop_orignal_color"
+                    android:textSize="14dp" />
+            </RelativeLayout>
+        </LinearLayout>
+
+        <View
+            android:layout_width="@dimen/margin_top_divider_size"
+            android:layout_height="fill_parent"
+            android:layout_centerInParent="true"
+            android:layout_marginBottom="2dp"
+            android:layout_marginTop="2dp"
+            android:background="#8f9199" />
+    </RelativeLayout>
+
+    <FrameLayout
+        android:id="@+id/controlLayId"
+        android:layout_width="fill_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/btm0LayId"
+        android:layout_below="@id/title0Id" >
+
+        <ImageView
+            android:id="@+id/displayImgId"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center" />
+
+        <com.knowbox.teacher.widgets.CropCanvas
+            android:id="@+id/cropCanvasId"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:padding="10dip"
+            android:visibility="gone" />
+    </FrameLayout>
+
+</RelativeLayout>

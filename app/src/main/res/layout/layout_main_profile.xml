@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/color_main_background"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:id="@+id/profile_edit"
+        android:layout_width="match_parent"
+        android:layout_height="90dp"
+        android:background="@color/color_main_app">
+
+        <ImageView
+            android:id="@+id/profile_icon"
+            android:layout_width="55dp"
+            android:layout_height="55dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/margin_left_or_right"
+            android:src="@drawable/default_img" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="19dp"
+            android:layout_marginRight="30dp"
+            android:layout_toRightOf="@id/profile_icon"
+            android:gravity="center_vertical">
+
+            <TextView
+                android:id="@+id/profile_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:maxWidth="180dp"
+                android:singleLine="true"
+                android:text="姓名"
+                android:textColor="@color/white"
+                android:textSize="17sp" />
+
+            <TextView
+                android:id="@+id/profile_subject"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/profile_name"
+                android:layout_marginTop="5dp"
+                android:textColor="@color/white"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/profile_school"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/profile_name"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="25dp"
+                android:layout_marginTop="5dp"
+                android:layout_toRightOf="@id/profile_subject"
+                android:ellipsize="end"
+                android:lines="1"
+                android:textColor="@color/white"
+                android:textSize="14sp" />
+        </RelativeLayout>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/margin_left_or_right"
+            android:src="@drawable/icon_profile_more_white" />
+    </RelativeLayout>
+
+    <com.hyena.framework.app.widget.AccuracListView
+        android:id="@+id/other_item_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:cacheColorHint="@android:color/transparent"
+        android:divider="@android:color/transparent"
+        android:dividerHeight="0dp" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/margin_top_divider_size"
+        android:background="@color/color_main_background" />
+
+    <RelativeLayout
+        android:id="@+id/profile_help_layout"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/item_high_size"
+        android:layout_marginTop="@dimen/margin_top_size"
+        android:background="@color/white"
+        android:paddingLeft="@dimen/padding_left_or_right"
+        android:paddingRight="@dimen/padding_left_or_right">
+
+        <ImageView
+            android:id="@+id/help_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:src="@drawable/icon_profile_help" />
+
+        <TextView
+            android:id="@+id/help_service"
+            style="@style/profile_item_text_style"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="12dp"
+            android:layout_toRightOf="@id/help_icon"
+            android:text="客服中心" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:src="@drawable/icon_profile_more" />
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/margin_top_divider_size"
+        android:background="@color/color_divider" />
+
+    <RelativeLayout
+        android:id="@+id/profile_settings_layout"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/item_high_size"
+        android:background="@color/white"
+        android:paddingLeft="@dimen/padding_left_or_right"
+        android:paddingRight="@dimen/padding_left_or_right">
+
+        <ImageView
+            android:id="@+id/setting_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:src="@drawable/icon_profile_settings" />
+
+        <TextView
+            android:id="@+id/profile_settings"
+            style="@style/profile_item_text_style"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="12dp"
+            android:layout_toRightOf="@id/setting_icon"
+            android:text="设置" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:src="@drawable/icon_profile_more" />
+
+
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/margin_top_divider_size"
+        android:background="@color/color_main_background" />
+
+    <RelativeLayout
+        android:id="@+id/profile_debug_layout"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/item_high_size"
+        android:background="@color/white"
+        android:paddingLeft="@dimen/padding_left_or_right"
+        android:paddingRight="@dimen/padding_left_or_right"
+        android:visibility="gone">
+
+        <ImageView
+            android:id="@+id/debug_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:src="@drawable/icon_profile_settings" />
+
+        <TextView
+            android:id="@+id/debug_title"
+            style="@style/profile_item_text_style"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="12dp"
+            android:layout_toRightOf="@id/debug_icon"
+            android:text="开发者模式" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:src="@drawable/icon_profile_more" />
+    </RelativeLayout>
+</LinearLayout>

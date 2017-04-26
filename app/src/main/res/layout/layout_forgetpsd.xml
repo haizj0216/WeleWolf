@@ -1,0 +1,114 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical" >
+
+        <RelativeLayout
+            android:id="@+id/title_layout"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@color/color_white_100">
+
+            <ImageButton
+                android:id="@+id/title_bar_back"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_centerVertical="true"
+                android:background="@null"
+                android:padding="15dp"
+                android:src="@drawable/bt_title_back_dark" />
+
+            <TextView
+                android:id="@+id/title_bar_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ellipsize="middle"
+                android:singleLine="true"
+                android:text="忘记密码"
+                android:layout_centerInParent="true"
+                android:textColor="@color/color_text_main"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/page_no_all"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="16dp"
+                android:text="/2"
+                android:textColor="@color/color_text_primary"
+                android:textSize="13sp" />
+
+            <TextView
+                android:id="@+id/page_no"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toLeftOf="@id/page_no_all"
+                android:text="1"
+                android:paddingBottom="2dp"
+                android:layout_centerVertical="true"
+                android:textColor="@color/color_main_app"
+                android:textSize="18sp" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/margin_top_divider_size"
+                android:layout_alignParentBottom="true"
+                android:background="@color/color_divider"/>
+
+        </RelativeLayout>
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/white" >
+
+            <com.knowbox.teacher.widgets.ForbidSlideViewPager
+                android:id="@+id/view_pager"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+            <LinearLayout
+                android:id="@+id/content_layout2"
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:layout_gravity="bottom"
+                android:orientation="horizontal" >
+
+                <Button
+                    android:id="@+id/previous_btn"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@drawable/regist_navig_btn_bg"
+                    android:text="返   回"
+                    android:textColor="@color/white"
+                    android:textSize="17sp" />
+
+                <Button
+                    android:id="@+id/next_btn"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="1dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/regist_navig_btn_bg"
+                    android:enabled="true"
+                    android:text="下一步"
+                    android:textColor="@color/white"
+                    android:textSize="17sp" />
+            </LinearLayout>
+        </FrameLayout>
+    </LinearLayout>
+
+    <include
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        layout="@layout/layout_loading"
+        android:visibility="gone" />
+
+</RelativeLayout>

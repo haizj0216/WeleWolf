@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/white">
+
+    <TextView
+        android:id="@+id/dialog_choose_city_name"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:gravity="center_vertical"
+        android:paddingLeft="15dp"
+        android:textColor="@color/color_main_app"
+        android:textSize="15dp" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/margin_top_divider_size"
+        android:background="@color/color_divider" />
+
+    <ListView
+        android:id="@+id/dialog_choose_city_list"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:cacheColorHint="@color/transparent"
+        android:divider="#e6e6e6"
+        android:dividerHeight="1px"
+        android:drawSelectorOnTop="false"
+        android:listSelector="@color/transparent"
+        android:scrollingCache="false" />
+
+
+</LinearLayout>

@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="@color/color_main_background"
+              android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/class_transfer_phone"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="@color/color_white_100"
+        android:gravity="center_vertical">
+
+        <ImageView
+            android:layout_width="37dp"
+            android:layout_height="37dp"
+            android:layout_marginLeft="@dimen/margin_left_or_right"
+            android:src="@drawable/bt_class_transfer_phone"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/margin_left_or_right"
+            android:text="手机号邀请转移"
+            android:textColor="@color/color_text_main"
+            android:textSize="@dimen/item_title_size"/>
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:background="@color/color_main_background"/>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:id="@+id/class_transfer_gradeschool"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="25dp"
+                    android:layout_gravity="center_vertical"
+                    android:background="@color/color_main_background"
+                    android:gravity="center_vertical"
+                    android:paddingLeft="@dimen/padding_left_or_right"
+                    android:text="本校小学"
+                    android:textColor="@color/color_text_main"
+                    android:textSize="16dp"/>
+
+                <com.hyena.framework.app.widget.AccuracListView
+                    android:id="@+id/class_transfer_gradeschool_list"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:cacheColorHint="@android:color/transparent"
+                    android:divider="@android:color/transparent"
+                    android:dividerHeight="0dp">
+
+                </com.hyena.framework.app.widget.AccuracListView>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/class_transfer_middleschool"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="25dp"
+                    android:layout_gravity="center_vertical"
+                    android:background="@color/color_main_background"
+                    android:gravity="center_vertical"
+                    android:paddingLeft="@dimen/padding_left_or_right"
+                    android:text="本校初中"
+                    android:textColor="@color/color_text_main"
+                    android:textSize="16dp"/>
+
+                <com.hyena.framework.app.widget.AccuracListView
+                    android:id="@+id/class_transfer_middleschool_list"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:cacheColorHint="@android:color/transparent"
+                    android:divider="@android:color/transparent"
+                    android:dividerHeight="0dp">
+
+                </com.hyena.framework.app.widget.AccuracListView>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/class_transfer_highschool"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="25dp"
+                    android:layout_gravity="center_vertical"
+                    android:background="@color/color_main_background"
+                    android:gravity="center_vertical"
+                    android:paddingLeft="@dimen/padding_left_or_right"
+                    android:text="本校高中"
+                    android:textColor="@color/color_text_main"
+                    android:textSize="16dp"/>
+
+                <com.hyena.framework.app.widget.AccuracListView
+                    android:id="@+id/class_transfer_highschool_list"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:cacheColorHint="@android:color/transparent"
+                    android:divider="@android:color/transparent"
+                    android:dividerHeight="0dp">
+
+                </com.hyena.framework.app.widget.AccuracListView>
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

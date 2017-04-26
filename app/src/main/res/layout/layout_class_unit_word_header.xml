@@ -1,0 +1,67 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="156dp"
+    android:background="@color/white"
+    android:minHeight="156dp">
+
+    <com.knowbox.teacher.widgets.WaveView xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/circle_progress"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/icon_wave_bg"
+        app:wave_circle="true"
+        app:wave_color="#fcc369" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@id/circle_progress"
+        android:layout_alignTop="@id/circle_progress"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="5dp"
+        android:src="@drawable/icon_wave_light" />
+
+    <TextView
+        android:id="@+id/unit_header_rule"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/circle_progress"
+        android:layout_centerHorizontal="true"
+        android:paddingTop="12dp"
+        android:paddingRight="10dp"
+        android:drawablePadding="4dp"
+        android:drawableRight="@drawable/icon_rule"
+        android:gravity="center"
+        android:paddingLeft="17dp"
+        android:text="全班已练熟单词"
+        android:textColor="@color/color_text_main"
+        android:textSize="15dp" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/unit_header_rule"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="3dp">
+
+        <TextView
+            android:id="@+id/unit_header_learned"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="25"
+            android:textColor="@color/color_text_main"
+            android:textSize="13dp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/unit_header_total"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="/30"
+            android:textColor="@color/color_text_primary"
+            android:textSize="13dp" />
+    </LinearLayout>
+
+</RelativeLayout>

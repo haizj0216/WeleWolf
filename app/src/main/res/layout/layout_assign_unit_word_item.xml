@@ -1,0 +1,28 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:id="@+id/assign_word_item_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_margin="5dp"
+        android:background="@drawable/bg_assign_word_item"
+        android:paddingBottom="5dp"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp"
+        android:paddingTop="5dp"
+        android:text="Hello"
+        android:textColor="@color/color_text_main"
+        android:textSize="14dp"
+        android:textStyle="bold" />
+
+    <ImageView
+        android:id="@+id/assign_word_item_select"
+        android:layout_width="15dp"
+        android:layout_height="15dp"
+        android:layout_marginRight="-5dp"
+        android:layout_alignRight="@id/assign_word_item_text"
+        android:src="@drawable/icon_assign_word_item_select" />
+</RelativeLayout>

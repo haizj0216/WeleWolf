@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:paddingLeft="10dp">
+
+        <ImageView
+            android:id="@+id/dialog_common_list_item_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="38dp"
+            android:layout_centerVertical="true"
+            android:scaleType="centerInside"
+            android:visibility="gone" />
+
+        <TextView
+            android:id="@+id/dialog_common_list_item_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:layout_toRightOf="@id/dialog_common_list_item_icon"
+            android:textColor="@color/color_text_main"
+            android:textSize="18dp" />
+
+        <TextView
+            android:id="@+id/dialog_common_list_item_desc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/dialog_common_list_item_title"
+            android:paddingLeft="25dp"
+            android:textColor="@color/color_text_third"
+            android:textSize="12dp"
+            android:visibility="gone" />
+    </RelativeLayout>
+
+    <View
+        android:id="@+id/dialog_common_list_item_devider"
+        android:layout_width="fill_parent"
+        android:layout_height="@dimen/margin_top_divider_size"
+        android:background="@color/color_divider" />
+
+</LinearLayout>

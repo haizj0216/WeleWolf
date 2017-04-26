@@ -1,0 +1,42 @@
+<com.knowbox.teacher.widgets.GymOptionView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bg_gym_question_option_normal"
+    android:minHeight="50dp">
+
+    <TextView
+        android:id="@+id/gym_option_code"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="18dp"
+        android:text="B"
+        android:textColor="@color/color_gym_question_content"
+        android:textSize="24dp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/gym_option_value"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginBottom="10dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginTop="10dp"
+        android:layout_toRightOf="@id/gym_option_code"
+        android:text="You are lucky."
+        android:textColor="@color/color_gym_question_content"
+        android:textSize="18dp" />
+
+    <ImageView
+        android:id="@+id/gym_option_result"
+        android:layout_width="27dp"
+        android:layout_height="27dp"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="15dp"
+        android:src="@drawable/icon_gym_option_right"
+        android:visibility="gone" />
+
+
+</com.knowbox.teacher.widgets.GymOptionView>

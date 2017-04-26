@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/color_main_background"
+    android:orientation="vertical">
+
+    <EditText
+        android:id="@+id/regist_name_edit"
+        android:hint="@string/regist_hint_user_name"
+        android:imeOptions="actionDone"
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:background="@color/white"
+        android:textColor="#5f5f5f"
+        android:textColorHint="#c9c8ce"
+        android:paddingLeft="18dp"
+        android:textSize="15sp"
+        android:maxLength="7" >
+    </EditText>
+
+    
+    <RelativeLayout
+        android:id="@+id/regist_teachinginfo_layout"
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:layout_marginTop="11dp"
+        android:paddingLeft="18dp"
+        android:paddingRight="18dp"
+        android:background="@color/color_profile_item_bg">
+
+        <TextView
+            style="@style/profile_item_text_style"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:hint="@string/regist_hint_subject"/>
+
+        <TextView
+            android:id="@+id/regist_teachinginfo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="20dp"
+            android:text=""
+            android:textColor="#c9c8ce"
+            android:textSize="14sp"/>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:src="@drawable/icon_profile_more" />
+    </RelativeLayout>
+    
+     <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/margin_top_divider_size"
+        android:background="@color/color_divider"
+        android:layout_marginLeft="18dp" />
+    
+     <RelativeLayout
+        android:id="@+id/regist_school_layout"
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:background="@color/color_profile_item_bg"
+        android:paddingLeft="18dp"
+        android:paddingRight="18dp">
+
+        <TextView
+            style="@style/profile_item_text_style"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:hint="@string/regist_hint_school"/>
+
+        <TextView
+            android:id="@+id/regist_school_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="20dp"
+            android:text=""
+            android:textColor="#c9c8ce"
+            android:textSize="14sp"/>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:src="@drawable/icon_profile_more" />
+    </RelativeLayout>
+    
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:paddingLeft="18dp"
+        android:text="填写正确的教学信息，匹配您的教学资源"
+        android:textColor="@color/gray"
+        android:textSize="14sp" />
+
+</LinearLayout>
