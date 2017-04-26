@@ -3,8 +3,9 @@
  */
 package com.knowbox.teacher.modules.message.services;
 
-import com.easemob.EMConnectionListener;
-import com.easemob.chat.EMMessage;
+
+import com.hyphenate.EMConnectionListener;
+import com.hyphenate.chat.EMMessage;
 
 import java.util.ArrayList;
 import java.util.List;

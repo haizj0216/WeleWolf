@@ -24,9 +24,6 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 
-import com.easemob.chat.EMChatManager;
-import com.easemob.chat.EMConversation;
-import com.easemob.chat.EMMessage;
 import com.hyena.framework.app.fragment.BaseSubFragment;
 import com.hyena.framework.app.fragment.BaseUIFragment;
 import com.hyena.framework.clientlog.LogUtil;
@@ -35,6 +32,9 @@ import com.hyena.framework.datacache.DataAcquirer;
 import com.hyena.framework.utils.BaseApp;
 import com.hyena.framework.utils.MsgCenter;
 import com.hyena.framework.utils.UiThreadHandler;
+import com.hyphenate.chat.EMClient;
+import com.hyphenate.chat.EMConversation;
+import com.hyphenate.chat.EMMessage;
 import com.knowbox.base.service.share.ShareService;
 import com.knowbox.teacher.App;
 import com.knowbox.teacher.R;
@@ -66,9 +66,11 @@ import java.net.URLDecoder;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.Hashtable;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 import java.util.Stack;
 
 /**
@@ -244,8 +246,8 @@ public class MainFragment extends BaseUIFragment<UIFragmentHelper> {
 
 	private void updateUnReadMessage() {
 		List<EMMessage> mApnsMessages = new ArrayList<EMMessage>();
-		Hashtable<String, EMConversation> conversationTable = EMChatManager
-				.getInstance().getAllConversations();//环信的消息管理器获取所有的谈话存入集合
+		Map<String, EMConversation> conversationTable = EMClient
+				.getInstance().chatManager().getAllConversations();//环信的消息管理器获取所有的谈话存入集合
 		if(conversationTable != null) {//如果有谈话
 			Iterator<String> keyIterator = conversationTable.keySet().iterator();
 			while(keyIterator.hasNext()) {

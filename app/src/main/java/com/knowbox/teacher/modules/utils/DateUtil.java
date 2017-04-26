@@ -5,9 +5,9 @@ package com.knowbox.teacher.modules.utils;
 
 import android.text.format.DateFormat;
 
-import com.easemob.util.DateUtils;
-import com.easemob.util.TimeInfo;
 import com.hyena.framework.utils.BaseApp;
+import com.hyphenate.util.DateUtils;
+import com.hyphenate.util.TimeInfo;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;

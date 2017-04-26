@@ -6,15 +6,13 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.text.TextUtils;
 
-import com.easemob.chat.EMChatManager;
-import com.easemob.chat.EMConversation;
-import com.easemob.chat.EMMessage;
 import com.hyena.framework.app.fragment.BaseSubFragment;
 import com.hyena.framework.app.fragment.BaseUIFragment;
 import com.hyena.framework.clientlog.LogUtil;
 import com.hyena.framework.utils.BaseApp;
 import com.hyena.framework.utils.UiThreadHandler;
 import com.hyena.framework.utils.VersionUtils;
+import com.hyphenate.chat.EMMessage;
 import com.knowbox.teacher.App;
 import com.knowbox.teacher.base.bean.OnlineCompetitionListInfo;
 import com.knowbox.teacher.base.database.bean.ChatListItem;
@@ -25,13 +23,9 @@ import com.knowbox.teacher.base.utils.ActionUtils;
 import com.knowbox.teacher.base.utils.ChannelUtils;
 import com.knowbox.teacher.modules.classes.AddGradeClassFragment;
 import com.knowbox.teacher.modules.homework.assign.AssignSelectPublisherFragment;
-import com.knowbox.teacher.modules.homework.assign.AssignUnitFragment;
 import com.knowbox.teacher.modules.homework.competition.LoopDetailFragment;
 import com.knowbox.teacher.modules.homework.competition.SingleTestDetailFragment;
 import com.knowbox.teacher.modules.main.MainFragment;
-import com.knowbox.teacher.modules.message.EMChatFragment;
-import com.knowbox.teacher.modules.message.adapter.EMChatListPiecesAdapter;
-import com.knowbox.teacher.modules.message.adapter.EMChatNoticeAdapter;
 import com.knowbox.teacher.modules.profile.ActivityWebViewFragment;
 import com.knowbox.teacher.modules.profile.SettingsFragment;
 import com.knowbox.teacher.modules.profile.UserAuthNotyetFragment;
@@ -71,19 +65,6 @@ public class MessagePushUtils {
                 try {
                     int type = Integer.parseInt(customType);
                     switch (type) {
-                        case EMChatListPiecesAdapter.MSG_TYPE_SET:
-                        case EMChatListPiecesAdapter.MSG_TYPE_RECOMMEND:
-                        case EMChatListPiecesAdapter.MSG_TYPE_CORRECT:
-                        case EMChatListPiecesAdapter.MSG_TYPE_REMIND:
-                        case EMChatListPiecesAdapter.MSG_TYPE_PARISE:
-                            break;
-                        case EMChatListPiecesAdapter.MSG_TYPE_CHATQUESTION:
-                            break;
-                        case EMChatListPiecesAdapter.MSG_TYPE_NOTICE:
-                        case EMChatListPiecesAdapter.MSG_TYPE_AUTH:
-                        case EMChatListPiecesAdapter.MSG_TYPE_ACTIVITY:
-                            showNoticeFragment(message);
-                            break;
                         default:
                             break;
                     }
@@ -275,18 +256,6 @@ public class MessagePushUtils {
         Bundle bundle = new Bundle();
         bundle.putSerializable("chatItem", item);
 
-        EMChatFragment fragment = (EMChatFragment) Fragment.instantiate(
-                mFragment.getActivity(), EMChatFragment.class.getName(), bundle);
-        mFragment.showFragment(fragment);
-
-        new Thread(){
-            public void run() {
-                EMConversation conversation = EMChatManager.getInstance().getConversation(item.mUserId);
-                if(conversation != null){
-                    conversation.resetUnreadMsgCount();
-                }
-            };
-        }.start();
     }
 
     /**
@@ -294,14 +263,6 @@ public class MessagePushUtils {
      * @param message
      */
     private void showNoticeFragment(EMMessage message) {
-        String link = message.getStringAttribute("link", null);
-        BaseSubFragment fragment;
-        if (link.equalsIgnoreCase(EMChatNoticeAdapter.NATIVE_AUTH_URI)) {
-            fragment = (BaseSubFragment) Fragment.instantiate(mFragment.getActivity(), UserAuthNotyetFragment.class.getName());
-            mFragment.showFragment(fragment);
-        } else {
-            openNewWindow(link, "活动");
-        }
     }
 
     private void openClassListFragment() {

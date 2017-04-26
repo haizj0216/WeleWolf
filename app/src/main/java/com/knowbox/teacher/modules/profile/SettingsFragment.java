@@ -9,7 +9,6 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.easemob.chat.EMChatManager;
 import com.hyena.framework.app.fragment.BaseUIFragment;
 import com.hyena.framework.app.fragment.bean.MenuItem;
 import com.hyena.framework.clientlog.LogUtil;
@@ -27,7 +26,6 @@ import com.knowbox.teacher.base.utils.PreferencesController;
 import com.knowbox.teacher.modules.login.forgetpass.ForgetPasswordFragment;
 import com.knowbox.teacher.modules.login.services.LoginService;
 import com.knowbox.teacher.modules.login.services.LogoutListener;
-import com.knowbox.teacher.modules.message.EMChatFragment;
 import com.knowbox.teacher.modules.utils.ConstantsUtils;
 import com.knowbox.teacher.modules.utils.DialogUtils;
 import com.knowbox.teacher.modules.utils.ToastUtils;
@@ -122,7 +120,6 @@ public class SettingsFragment extends BaseUIFragment<UIFragmentHelper> {
         ((ImageView) view.findViewById(R.id.profile_settings_notify_toggle)).setImageResource(notify
                 ? R.drawable.btn_toggle_button_cache_on
                 : R.drawable.btn_toggle_button_cache_off);
-        EMChatManager.getInstance().getChatOptions().setNoticeBySound(notify);
 
         refreshCacheSize();
     }
@@ -189,9 +186,6 @@ public class SettingsFragment extends BaseUIFragment<UIFragmentHelper> {
         item.mUserName = "单词部落客服";
         item.mHeadPhoto = "http://file.knowbox.cn/upload/service/head_photo.png";
         bundle.putSerializable("chatItem", item);
-        EMChatFragment fragment = (EMChatFragment) Fragment.instantiate(getActivity(),
-                EMChatFragment.class.getName(), bundle);
-        showFragment(fragment);
     }
 
     private void switchAPI() {
@@ -261,7 +255,6 @@ public class SettingsFragment extends BaseUIFragment<UIFragmentHelper> {
 
     private void updateNotify(View v) {
         boolean notify = PreferencesController.getBoolean(ISNOTIFY, true);
-        EMChatManager.getInstance().getChatOptions().setNoticeBySound(!notify);
         PreferencesController.setBoolean(ISNOTIFY, !notify);
         ((ImageView) v).setImageResource(!notify ? R.drawable.btn_toggle_button_cache_on
                 : R.drawable.btn_toggle_button_cache_off);

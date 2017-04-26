@@ -49,7 +49,7 @@ import java.util.Calendar;
 import java.util.Date;
 
 public class ImageUtil {
-	private static final String TAG = "ImageUtils";
+	private static final String TAG = "ImageUtilsa";
 
 	private static final int MAX_SIZE = 400;// 最大尺寸400
 
@@ -184,8 +184,7 @@ public class ImageUtil {
 		try {
 			ret = Bitmap.createBitmap(width, height, Config.RGB_565);
 		} catch (OutOfMemoryError e) {
-			LogUtil.e("OutOfMemoryError",
-					"OutOfMemoryError in ImageUtils.round(): " + e.getMessage());
+			e.printStackTrace();
 		}
 		if (ret == null)
 			return null;
@@ -238,10 +237,7 @@ public class ImageUtil {
 			resizedBitmap = Bitmap.createScaledBitmap(bitmap, width, height,
 					true);
 		} catch (OutOfMemoryError e) {
-			LogUtil.e(
-					"OutOfMemoryError",
-					"OutOfMemoryError in ImageUtils.getResizedBitmap(): "
-							+ e.getMessage());
+			e.printStackTrace();
 		}
 		if (resizedBitmap == null)
 			return null;

@@ -3,7 +3,8 @@
  */
 package com.knowbox.teacher.modules.message.services;
 
-import com.easemob.chat.EMMessage;
+
+import com.hyphenate.chat.EMMessage;
 
 public interface EMNewMessageListener {
 

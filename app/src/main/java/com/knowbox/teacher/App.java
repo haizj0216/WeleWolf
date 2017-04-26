@@ -8,8 +8,6 @@ import android.app.ActivityManager.RunningAppProcessInfo;
 import android.content.Context;
 import android.util.Log;
 
-import com.easemob.EMConnectionListener;
-import com.easemob.EMError;
 import com.hyena.framework.clientlog.LogUtil;
 import com.hyena.framework.clientlog.Logger;
 import com.hyena.framework.config.FrameworkConfig;
@@ -83,9 +81,6 @@ public class App extends BaseApp {
         if (processAppName == null || !processAppName.equalsIgnoreCase("com.knowbox.teacher")) {
             return;
         }
-		//注册应用系统服务
-		mEMChatService = (EMChatService) getSystemService(EMChatService.SERVICE_NAME);
-		mEMChatService.getObserver().addEMConnectionListener(mEmConnectionListener);
 	}
 
 	public void onAppStarted(){
@@ -120,18 +115,4 @@ public class App extends BaseApp {
 		}
 	}
 	
-	private EMConnectionListener mEmConnectionListener = new EMConnectionListener() {
-
-		@Override
-		public void onDisconnected(int error) {
-			if (error == EMError.CONNECTION_CONFLICT) {
-				mIsEmChatConntcted = false;
-			}
-		}
-
-		@Override
-		public void onConnected() {
-			mIsEmChatConntcted = true;
-		}
-	};
 }

@@ -79,4 +79,5 @@ dependencies {
     compile project(':base-release')
     compile 'com.github.yangzc:AndroidSupport:1.0.2'
     compile(name: 'android-gif-drawable-1.1.14', ext: 'aar')
+    compile files('libs/hyphenatechat_3.3.1.jar')
 }

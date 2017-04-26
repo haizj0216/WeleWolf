@@ -3,7 +3,8 @@
  */
 package com.knowbox.teacher.modules.message.services;
 
-import com.easemob.EMCallBack;
+
+import com.hyphenate.EMCallBack;
 
 /**
  * 聊天登录回调

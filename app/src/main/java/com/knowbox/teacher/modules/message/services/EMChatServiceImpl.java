@@ -5,24 +5,18 @@ package com.knowbox.teacher.modules.message.services;
 
 import android.text.TextUtils;
 
-import com.easemob.EMCallBack;
-import com.easemob.EMConnectionListener;
-import com.easemob.EMError;
-import com.easemob.EMEventListener;
-import com.easemob.EMNotifierEvent;
-import com.easemob.chat.EMChat;
-import com.easemob.chat.EMChatManager;
-import com.easemob.chat.EMChatOptions;
-import com.easemob.chat.EMContactListener;
-import com.easemob.chat.EMContactManager;
-import com.easemob.chat.EMGroupManager;
-import com.easemob.chat.EMMessage;
-import com.easemob.chat.EMMessage.ChatType;
-import com.easemob.chat.GroupChangeListener;
-import com.easemob.chat.OnMessageNotifyListener;
-import com.easemob.util.EasyUtils;
 import com.hyena.framework.clientlog.LogUtil;
 import com.hyena.framework.utils.BaseApp;
+import com.hyphenate.EMCallBack;
+import com.hyphenate.EMConnectionListener;
+import com.hyphenate.EMContactListener;
+import com.hyphenate.EMError;
+import com.hyphenate.EMGroupChangeListener;
+import com.hyphenate.EMMessageListener;
+import com.hyphenate.chat.EMClient;
+import com.hyphenate.chat.EMMessage;
+import com.hyphenate.chat.EMOptions;
+import com.hyphenate.util.EasyUtils;
 import com.knowbox.teacher.base.database.bean.UserItem;
 import com.knowbox.teacher.modules.login.services.LoginService;
 import com.knowbox.teacher.modules.message.utils.MessageNotifier;
@@ -31,272 +25,221 @@ import java.util.List;
 
 /**
  * 环信消息服务实现类
+ *
  * @author yangzc
  */
 public class EMChatServiceImpl implements EMChatService {
 
-	//SDK是否已经初始化
-	private static boolean mSdkInited = false;
-	//监听器
-	private EMChatServiceObserver mChatServiceObserver = new EMChatServiceObserver();
-	
-	private MessageNotifier mNotifier;
-	
-	private String mUserId;
+    //SDK是否已经初始化
+    private static boolean mSdkInited = false;
+    //监听器
+    private EMChatServiceObserver mChatServiceObserver = new EMChatServiceObserver();
 
-	private final String XIAOMI_PUSH_APP_ID = "2882303761517550899";
-	private final String XIAOMI_PUSH_APP_KEY = "5451755029899";
-	
-	public EMChatServiceImpl(){
+    private MessageNotifier mNotifier;
+
+    private String mUserId;
+
+    private final String XIAOMI_PUSH_APP_ID = "2882303761517550899";
+    private final String XIAOMI_PUSH_APP_KEY = "5451755029899";
+
+    public EMChatServiceImpl() {
 //		initEMChat();
 //		registReceiver();
-	}
-	
-	@Override
-	public boolean initEMChat() {
-		if (mSdkInited) {
-			return true;
-		}
-		// check process
-		// 初始化EM聊天
-		EMChat.getInstance().init(BaseApp.getAppContext());
-		// 设置沙箱模式 慎用
+    }
+
+    @Override
+    public boolean initEMChat() {
+        if (mSdkInited) {
+            return true;
+        }
+        // check process
+        // 初始化EM聊天
+
+        // 设置沙箱模式 慎用
 //		EMChat.getInstance().setEnv(EMEnvMode.EMSandboxMode);
-		// 开始Debug模式
-		EMChat.getInstance().setDebugMode(true);
-		EMChat.getInstance().setAutoLogin(false);
-		
-		// 获取到EMChatOptions对象
-		EMChatOptions options = EMChatManager.getInstance().getChatOptions();
-		// 默认添加好友时，是不需要验证的，改成需要验证
-		options.setAcceptInvitationAlways(false);
-		// 默认环信是不维护好友关系列表的，如果app依赖环信的好友关系，把这个属性设置为true
-		options.setUseRoster(false);
-		// 设置收到消息是否有新消息通知(声音和震动提示)，默认为true
-		options.setNotifyBySoundAndVibrate(true);
-		// 设置收到消息是否有声音提示，默认为true
-		options.setNoticeBySound(true);
-		// 设置收到消息是否震动 默认为true
-		options.setNoticedByVibrate(true);
-		// 设置语音消息播放是否设置为扬声器播放 默认为true
-		options.setUseSpeaker(true);
-		// 设置是否需要已读回执
-		options.setRequireAck(true);
-		// 设置是否需要已送达回执
-		options.setRequireDeliveryAck(true);
-		// 设置notification消息点击时，跳转的intent为自定义的intent
-//		options.setOnNotificationClickListener(getNotificationClickListener());
-		options.setNotifyText(new OnMessageNotifyListener() {
-			@Override
-			public int onSetSmallIcon(EMMessage message) {
-				return 0;
-			}
-			
-			@Override
-			public String onSetNotificationTitle(EMMessage message) {
-				return null;
-			}
+        // 获取到EMChatOptions对象
+        EMOptions options = new EMOptions();
+        // 默认添加好友时，是不需要验证的，改成需要验证
+        options.setAcceptInvitationAlways(false);
+        // 设置是否需要已读回执
+        options.setRequireAck(true);
+        // 设置是否需要已送达回执
+        options.setRequireDeliveryAck(true);
+        // 设置notification消息点击时，跳转的intent为自定义的intent
 
-			@Override
-			public String onLatestMessageNotify(EMMessage message, int arg1, int arg2) {
-				return null;
-			}
-			
-			@Override
-			public String onNewMessageNotify(EMMessage message) {
-				if(message == null)
-					return null;
-				
-				return message.getStringAttribute("userName", "") + "发来一条消息";
-			}
-			
-		});
-		
-		mNotifier = new MessageNotifier();
-		mNotifier.init(BaseApp.getAppContext());
-		registReceiver();
+        EMClient.getInstance().init(BaseApp.getAppContext(), options);
+
+        EMClient.getInstance().setDebugMode(false);
+        mNotifier = new MessageNotifier();
+        mNotifier.init(BaseApp.getAppContext());
+        registReceiver();
         mSdkInited = true;
-		return true;
-	}
-	
-	@Override
-	public void loginEMChat() {
-		if (EMChat.getInstance().isLoggedIn()) {
-			initEmchat();
-			return;
-		}
+        return true;
+    }
 
-		LoginService service = (LoginService) BaseApp.getAppContext().getSystemService(LoginService.SERVICE_NAME);
-		if(service == null){
-			return;
-		}
+    @Override
+    public void loginEMChat() {
+        if (EMClient.getInstance().isLoggedInBefore()) {
+            initEmchat();
+            return;
+        }
 
-		if(service.isLogin()) {
-			final UserItem userItem = service.getLoginUser();
-			if (TextUtils.isEmpty(userItem.userId) || TextUtils.isEmpty(userItem.loginName)) {
-				getObserver().notifyEMChatLoginError(EMError.INVALID_PASSWORD_USERNAME, "");
-				return;
-			}
-			EMChatManager.getInstance().login(userItem.userId, userItem.loginName, new EMCallBack() {
-				@Override
-				public void onSuccess() {
-					getObserver().notifyEMChatLoginSuccess();
-					initEmchat();
-				}
+        LoginService service = (LoginService) BaseApp.getAppContext().getSystemService(LoginService.SERVICE_NAME);
+        if (service == null) {
+            return;
+        }
 
-				@Override
-				public void onProgress(int arg0, String arg1) {}
-				@Override
-				public void onError(int errorCode, String message) {
-					getObserver().notifyEMChatLoginError(errorCode, message);
-				}
-			});
-		}
-	}
+        if (service.isLogin()) {
+            final UserItem userItem = service.getLoginUser();
+            if (TextUtils.isEmpty(userItem.userId) || TextUtils.isEmpty(userItem.loginName)) {
+                getObserver().notifyEMChatLoginError(EMError.USER_NOT_FOUND, "");
+                return;
+            }
+            EMClient.getInstance().login(userItem.userId, userItem.loginName, new EMCallBack() {
+                @Override
+                public void onSuccess() {
+                    getObserver().notifyEMChatLoginSuccess();
+                    initEmchat();
+                }
 
-	private void initEmchat() {
-		try {
+                @Override
+                public void onError(int i, String s) {
+                    getObserver().notifyEMChatLoginError(i, s);
+                }
+
+                @Override
+                public void onProgress(int i, String s) {
+
+                }
+            });
+        }
+    }
+
+    private void initEmchat() {
+        try {
 //			final UserItem userItem = Utils.getLoginUserItem();
 
-			//第一次登录或者之前logout后再登录，加载所有本地群和回话
-			EMGroupManager.getInstance().loadAllGroups();
-			EMChatManager.getInstance().loadAllConversations();
-			//获取群聊列表(群聊里只有GroupId和GroupName等简单信息，不包含members),SDK会把群组存入到内存和DB中
+            //第一次登录或者之前logout后再登录，加载所有本地群和回话
+            EMClient.getInstance().groupManager().loadAllGroups();
+            EMClient.getInstance().chatManager().loadAllConversations();
+            //获取群聊列表(群聊里只有GroupId和GroupName等简单信息，不包含members),SDK会把群组存入到内存和DB中
 //			try {
 //				EMGroupManager.getInstance().getGroupsFromServer();
 //			} catch (EaseMobException e) {
 //				e.printStackTrace();
 //			}
-			//注册连接状态监听器
-			EMChatManager.getInstance().addConnectionListener(mEmConnectionListener);
-			//小米手机推送配置
-			EMChatManager.getInstance().setMipushConfig(XIAOMI_PUSH_APP_ID, XIAOMI_PUSH_APP_KEY);
-			//添加联系人监听器
-			EMContactManager.getInstance().setContactListener(mEmContactListener);
-			//注册群组状态变化监听器
-			EMGroupManager.getInstance().addGroupChangeListener(mGroupChangeListener);
-			//通知SDK，UI 已经初始化完毕，注册了相应的receiver和listener, 可以接受broadcast了
-			EMChat.getInstance().setAppInited();
-			//更新昵称
+            //注册连接状态监听器
+            EMClient.getInstance().addConnectionListener(mEmConnectionListener);
+            //添加联系人监听器
+            EMClient.getInstance().contactManager().setContactListener(mEmContactListener);
+            //注册群组状态变化监听器
+            EMClient.getInstance().groupManager().addGroupChangeListener(mGroupChangeListener);
+            //更新昵称
 //			EMChatManager.getInstance().updateCurrentUserNick(userItem.userName);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
-	
-	@Override
-	public void logoutEMChat() {
-		EMChatManager.getInstance().logout(true, new EMCallBack() {
-			@Override
-			public void onSuccess() {
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 
-			}
+    @Override
+    public void logoutEMChat() {
+        EMClient.getInstance().logout(true, new EMCallBack() {
+            @Override
+            public void onSuccess() {
 
-			@Override
-			public void onError(int i, String s) {
+            }
 
-			}
+            @Override
+            public void onError(int i, String s) {
 
-			@Override
-			public void onProgress(int i, String s) {
+            }
 
-			}
-		});
-		EMChatManager.getInstance().removeConnectionListener(mEmConnectionListener);
-		//添加联系人监听器
-		EMContactManager.getInstance().removeContactListener();
-		//注册群组状态变化监听器
-		EMGroupManager.getInstance().removeGroupChangeListener(mGroupChangeListener);
-	}
+            @Override
+            public void onProgress(int i, String s) {
 
-	@Override
-	public EMChatServiceObserver getObserver() {
-		return mChatServiceObserver;
-	}
-	
-	private void registReceiver(){
-		EMChatManager.getInstance().registerEventListener(
-				mListener,
-				new EMNotifierEvent.Event[] {
-						EMNotifierEvent.Event.EventNewMessage,
-						EMNotifierEvent.Event.EventDeliveryAck,
-						EMNotifierEvent.Event.EventReadAck,
-						EMNotifierEvent.Event.EventNewCMDMessage });
-		/*IntentFilter intentFilter = new IntentFilter(EMChatManager.getInstance().getNewMessageBroadcastAction());
-		intentFilter.setPriority(3);
-		MsgCenter.registerGlobalReceiver(mBroadcastReceiver, intentFilter);
+            }
+        });
+        EMClient.getInstance().removeConnectionListener(mEmConnectionListener);
+        //添加联系人监听器
+        EMClient.getInstance().contactManager().removeContactListener(mEmContactListener);
+        //注册群组状态变化监听器
+        EMClient.getInstance().groupManager().removeGroupChangeListener(mGroupChangeListener);
+    }
 
-		// 注册一个ack回执消息的BroadcastReceiver
-		IntentFilter ackMessageIntentFilter = new IntentFilter(EMChatManager.getInstance().getAckMessageBroadcastAction());
-		ackMessageIntentFilter.setPriority(3);
-		MsgCenter.registerGlobalReceiver(mBroadcastReceiver, ackMessageIntentFilter);
-		
-		//注册一个透传消息的BroadcastReceiver
-		IntentFilter cmdMessageIntentFilter = new IntentFilter(EMChatManager.getInstance().getCmdMessageBroadcastAction());
-		cmdMessageIntentFilter.setPriority(3);
-		MsgCenter.registerGlobalReceiver(mBroadcastReceiver, cmdMessageIntentFilter);*/
+    @Override
+    public EMChatServiceObserver getObserver() {
+        return mChatServiceObserver;
+    }
 
-	}
-	
-	private void unRegistReceiver(){
-		//MsgCenter.unRegisterGlobalReceiver(mBroadcastReceiver);
-		EMChatManager.getInstance().unregisterEventListener(mListener);
-	}
-	
-	@Override
-	public void releaseAll() {
-		unRegistReceiver();
-	}
-	
-	private EMEventListener mListener = new EMEventListener() {
+    private void registReceiver() {
+        EMClient.getInstance().chatManager().addMessageListener(
+                mListener);
+    }
 
-		@Override
-		public void onEvent(EMNotifierEvent event) {
-			//获取到message
-			EMMessage message = (EMMessage) event.getData();
-			switch (event.getEvent()) {
-			case EventNewMessage:
-				sendNotifition(message);
-				getObserver().notifyNewMessage(message);
-				break;
-			case EventDeliveryAck:
-			case EventReadAck:
-				if (message != null) {
-					message.isAcked = true;
-				}
-				break;
-			case EventNewCMDMessage:
+    private void unRegistReceiver() {
+        //MsgCenter.unRegisterGlobalReceiver(mBroadcastReceiver);
+        EMClient.getInstance().chatManager().removeMessageListener(mListener);
+    }
 
-				break;
-			default:
-				break;
-			}
-		}
-	};
-	
-	private void sendNotifition(EMMessage message) {
+    @Override
+    public void releaseAll() {
+        unRegistReceiver();
+    }
+
+    private EMMessageListener mListener = new EMMessageListener() {
+
+        @Override
+        public void onMessageReceived(List<EMMessage> list) {
+            for (EMMessage message : list) {
+                sendNotifition(message);
+                getObserver().notifyNewMessage(message);
+            }
+        }
+
+        @Override
+        public void onCmdMessageReceived(List<EMMessage> list) {
+
+        }
+
+        @Override
+        public void onMessageRead(List<EMMessage> list) {
+
+        }
+
+        @Override
+        public void onMessageDelivered(List<EMMessage> list) {
+
+        }
+
+        @Override
+        public void onMessageChanged(EMMessage emMessage, Object o) {
+
+        }
+    };
+
+    private void sendNotifition(EMMessage message) {
         String username = null;
         //群组消息
-        if(message.getChatType() == ChatType.GroupChat || message.getChatType() == ChatType.ChatRoom){
+        if (message.getChatType() == EMMessage.ChatType.GroupChat || message.getChatType() == EMMessage.ChatType.ChatRoom) {
             username = message.getTo();
-        } else{
+        } else {
             //单聊消息
             username = message.getFrom();
         }
 
         //如果是当前会话的消息，刷新聊天页面
-		if (EasyUtils.isAppRunningForeground(BaseApp.getAppContext())) {
-			if (!TextUtils.isEmpty(message.getStringAttribute("apns", ""))
-					&& message.getIntAttribute("status", -1) == 1) {
-				getObserver().notifyNewApnsMessage(message);
-			} else {
-				mNotifier.onNewMsg(message);
-			}
-		} else {
-			mNotifier.onNewMsg(message);
-		}
-	}
-	
+        if (EasyUtils.isAppRunningForeground(BaseApp.getAppContext())) {
+            if (!TextUtils.isEmpty(message.getStringAttribute("apns", ""))
+                    && message.getIntAttribute("status", -1) == 1) {
+                getObserver().notifyNewApnsMessage(message);
+            } else {
+                mNotifier.onNewMsg(message);
+            }
+        } else {
+            mNotifier.onNewMsg(message);
+        }
+    }
+
 //	private BroadcastReceiver mBroadcastReceiver = new BroadcastReceiver(){
 //		@Override
 //		public void onReceive(Context context, Intent intent) {
@@ -341,97 +284,141 @@ public class EMChatServiceImpl implements EMChatService {
 //			}
 //		}
 //	};
-	
-	private EMContactListener mEmContactListener = new EMContactListener() {
-		
-		@Override
-		public void onContactAdded(List<String> usernameList) {
-		}
 
-		@Override
-		public void onContactDeleted(final List<String> usernameList) {
-		}
+    private EMContactListener mEmContactListener = new EMContactListener() {
 
-		@Override
-		public void onContactInvited(String username, String reason) {
-		}
+        @Override
+        public void onContactAdded(String s) {
 
-		@Override
-		public void onContactAgreed(String username) {
-		}
+        }
 
-		@Override
-		public void onContactRefused(String username) {
-			// 参考同意，被邀请实现此功能
-		}
-	};
-	
-	private EMConnectionListener mEmConnectionListener = new EMConnectionListener() {
-		
-		@Override
-		public void onDisconnected(final int error) {
-			LogUtil.v("yangzc", "onDisconnected");
-			getObserver().notifyEMDisConnection(error);
-		}
-		
-		@Override
-		public void onConnected() {
-			getObserver().notifyEMConnectioned();
-		}
-	};
-	
-	private GroupChangeListener mGroupChangeListener = new GroupChangeListener() {
-		
-		@Override
-		public void onInvitationReceived(String groupId, String groupName, String inviter, String reason) {
-		}
+        @Override
+        public void onContactDeleted(String s) {
 
-		@Override
-		public void onInvitationAccpted(String groupId, String inviter, String reason) {
+        }
 
-		}
+        @Override
+        public void onContactInvited(String username, String reason) {
+        }
 
-		@Override
-		public void onInvitationDeclined(String groupId, String invitee, String reason) {
+        @Override
+        public void onFriendRequestAccepted(String s) {
 
-		}
+        }
 
-		@Override
-		public void onUserRemoved(String groupId, String groupName) {
-			// 提示用户被T了，demo省略此步骤
-		}
+        @Override
+        public void onFriendRequestDeclined(String s) {
 
-		@Override
-		public void onGroupDestroy(String groupId, String groupName) {
-			// 群被解散
-			// 提示用户群被解散,demo省略
-		}
+        }
 
-		@Override
-		public void onApplicationReceived(String groupId, String groupName, String applyer, String reason) {
-			// 用户申请加入群聊
-		}
+    };
 
-		@Override
-		public void onApplicationAccept(String groupId, String groupName, String accepter) {
-			// 加群申请被同意
-		}
+    private EMConnectionListener mEmConnectionListener = new EMConnectionListener() {
 
-		@Override
-		public void onApplicationDeclined(String groupId, String groupName, String decliner, String reason) {
-			// 加群申请被拒绝，demo未实现
-		}
-	};
+        @Override
+        public void onDisconnected(final int error) {
+            LogUtil.v("yangzc", "onDisconnected");
+            getObserver().notifyEMDisConnection(error);
+        }
 
-	@Override
-	public void setCurrentUserId(String userId) {
-		// TODO Auto-generated method stub
-		mUserId = userId;
-	}
+        @Override
+        public void onConnected() {
+            getObserver().notifyEMConnectioned();
+        }
+    };
 
-	@Override
-	public String getCurrentUserId() {
-		// TODO Auto-generated method stub
-		return mUserId;
-	}
+    private EMGroupChangeListener mGroupChangeListener = new EMGroupChangeListener() {
+
+        @Override
+        public void onInvitationReceived(String groupId, String groupName, String inviter, String reason) {
+        }
+
+        @Override
+        public void onRequestToJoinReceived(String s, String s1, String s2, String s3) {
+
+        }
+
+        @Override
+        public void onRequestToJoinAccepted(String s, String s1, String s2) {
+
+        }
+
+        @Override
+        public void onRequestToJoinDeclined(String s, String s1, String s2, String s3) {
+
+        }
+
+        @Override
+        public void onInvitationAccepted(String s, String s1, String s2) {
+
+        }
+
+        @Override
+        public void onInvitationDeclined(String groupId, String invitee, String reason) {
+
+        }
+
+        @Override
+        public void onUserRemoved(String groupId, String groupName) {
+            // 提示用户被T了，demo省略此步骤
+        }
+
+        @Override
+        public void onGroupDestroyed(String s, String s1) {
+
+        }
+
+        @Override
+        public void onAutoAcceptInvitationFromGroup(String s, String s1, String s2) {
+
+        }
+
+        @Override
+        public void onMuteListAdded(String s, List<String> list, long l) {
+
+        }
+
+        @Override
+        public void onMuteListRemoved(String s, List<String> list) {
+
+        }
+
+        @Override
+        public void onAdminAdded(String s, String s1) {
+
+        }
+
+        @Override
+        public void onAdminRemoved(String s, String s1) {
+
+        }
+
+        @Override
+        public void onOwnerChanged(String s, String s1, String s2) {
+
+        }
+
+        @Override
+        public void onMemberJoined(String s, String s1) {
+
+        }
+
+        @Override
+        public void onMemberExited(String s, String s1) {
+
+        }
+
+    };
+
+    @Override
+    public void setCurrentUserId(String userId) {
+        // TODO Auto-generated method stub
+        mUserId = userId;
+    }
+
+    @Override
+    public String getCurrentUserId() {
+        // TODO Auto-generated method stub
+        return mUserId;
+    }
 }

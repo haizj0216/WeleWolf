@@ -16,11 +16,10 @@ import android.os.Vibrator;
 import android.support.v4.app.NotificationCompat;
 import android.text.TextUtils;
 
-import com.easemob.chat.EMChatManager;
-import com.easemob.chat.EMMessage;
-import com.easemob.chat.TextMessageBody;
-import com.easemob.util.EMLog;
-import com.easemob.util.EasyUtils;
+import com.hyphenate.chat.EMClient;
+import com.hyphenate.chat.EMMessage;
+import com.hyphenate.chat.EMTextMessageBody;
+import com.hyphenate.util.EasyUtils;
 import com.knowbox.teacher.base.database.bean.ClassInfoItem;
 import com.knowbox.teacher.base.services.updateclass.UpdateClassService;
 import com.knowbox.teacher.base.utils.PreferencesController;
@@ -88,7 +87,6 @@ public class MessageNotifier {
 				.getSystemService(Context.VIBRATOR_SERVICE);
 
 		mUpdateClassService = (UpdateClassService) appContext.getSystemService(UpdateClassService.SERVICE_NAME);
-
 	}
 
 	/**
@@ -117,10 +115,6 @@ public class MessageNotifier {
 	 * @param message
 	 */
 	public synchronized void onNewMsg(EMMessage message) {
-		if (EMChatManager.getInstance().isSlientMessage(message)) {
-			return;
-		}
-
 		// 判断app是否在后台
 		if (!EasyUtils.isAppRunningForeground(appContext)) {
 			sendNotification(message, false);
@@ -132,13 +126,8 @@ public class MessageNotifier {
 	}
 
 	public synchronized void onNewMesg(List<EMMessage> messages) {
-		if (EMChatManager.getInstance().isSlientMessage(
-				messages.get(messages.size() - 1))) {
-			return;
-		}
 		// 判断app是否在后台
 		if (!EasyUtils.isAppRunningForeground(appContext)) {
-			EMLog.d(TAG, "app is running in backgroud");
 			sendNotification(messages, false);
 		} else {
 			sendNotification(messages, true);
@@ -183,14 +172,14 @@ public class MessageNotifier {
 		EMMessage.ChatType chatType = message.getChatType();
 		try {
 			String notifyText = username + ":";
-			int count = EMChatManager.getInstance().getConversation(message.getFrom()).getUnreadMsgCount();
+			int count = EMClient.getInstance().chatManager().getConversation(message.getFrom()).getUnreadMsgCount();
 			if (count > 1) {
 				notifyText = "[" + count + "条]" + username + ":";
 			}
 
 			switch (message.getType()) {
 			case TXT:
-				TextMessageBody textMessageBody = (TextMessageBody) message.getBody();
+				EMTextMessageBody textMessageBody = (EMTextMessageBody) message.getBody();
 				String customType = message.getStringAttribute("type", "");//自定义类型
 				if (!TextUtils.isEmpty(message.getStringAttribute("apns", ""))) {
 					//"em_apns_ext" -> "{"em_push_title":"自定义信息"}"
@@ -305,22 +294,6 @@ public class MessageNotifier {
 	 */
 	@SuppressLint("DefaultLocale")
 	public void viberateAndPlayTone(EMMessage message) {
-		if (message != null) {
-			List<String> slientUsers = EMChatManager.getInstance()
-					.getChatOptions().getUsersOfNotificationDisabled();
-			List<String> slientGroups = EMChatManager.getInstance()
-					.getChatOptions().getGroupsOfNotificationDisabled();
-			if (EMChatManager.getInstance().isSlientMessage(message)
-					|| !PreferencesController.getBoolean(
-							SettingsFragment.ISNOTIFY, true)
-					|| (slientUsers != null && slientUsers.contains(message
-							.getFrom()) && message.getChatType() != EMMessage.ChatType.GroupChat)
-					|| (slientGroups != null && slientGroups.contains(message
-							.getTo()))) {
-				return;
-			}
-		}
-
 		if (System.currentTimeMillis() - lastNotifiyTime < 1000) {
 			// received new messages within 2 seconds, skip play ringtone
 			return;
@@ -331,7 +304,6 @@ public class MessageNotifier {
 
 			// 判断是否处于静音模式
 			if (audioManager.getRingerMode() == AudioManager.RINGER_MODE_SILENT) {
-				EMLog.e(TAG, "in slient mode now");
 				return;
 			}
 
@@ -345,9 +317,6 @@ public class MessageNotifier {
 				ringtone = RingtoneManager.getRingtone(appContext,
 						notificationUri);
 				if (ringtone == null) {
-					EMLog.d(TAG,
-							"cant find ringtone at:"
-									+ notificationUri.getPath());
 					return;
 				}
 			}

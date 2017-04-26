@@ -29,15 +29,12 @@ import com.hyena.framework.utils.UiThreadHandler;
 import com.knowbox.teacher.R;
 import com.knowbox.teacher.base.bean.OnlineLoginInfo;
 import com.knowbox.teacher.base.bean.OnlineTeacherExtInfo;
-import com.knowbox.teacher.base.database.bean.ChatListItem;
 import com.knowbox.teacher.base.database.bean.UserItem;
 import com.knowbox.teacher.base.database.tables.UserTable;
 import com.knowbox.teacher.base.http.services.OnlineServices;
 import com.knowbox.teacher.modules.debugs.DebugFragment;
 import com.knowbox.teacher.modules.login.services.LoginService;
 import com.knowbox.teacher.modules.login.services.UpdateSchoolListener;
-import com.knowbox.teacher.modules.message.EMChatFragment;
-import com.knowbox.teacher.modules.message.services.EMChatService;
 import com.knowbox.teacher.modules.profile.ActivityWebViewFragment;
 import com.knowbox.teacher.modules.profile.SettingsFragment;
 import com.knowbox.teacher.modules.profile.UserAuthNotyetFragment;
@@ -209,18 +206,6 @@ public class MainProfileFragment extends BaseUIFragment<UIFragmentHelper> {
         ActivityWebViewFragment fragment = (ActivityWebViewFragment) Fragment
                 .instantiate(getActivity(),
                         ActivityWebViewFragment.class.getName(), mBundle);
-        showFragment(fragment);
-    }
-
-    private void openServiceChatFragment() {
-        Bundle bundle = new Bundle();
-        ChatListItem item = new ChatListItem();
-        item.mUserId = EMChatService.SERVICE_ID;
-        item.mUserName = "单词部落客服";
-        item.mHeadPhoto = "http://file.knowbox.cn/upload/service/head_photo.png";
-        bundle.putSerializable("chatItem", item);
-        EMChatFragment fragment = (EMChatFragment) Fragment.instantiate(getActivity(),
-                EMChatFragment.class.getName(), bundle);
         showFragment(fragment);
     }
 

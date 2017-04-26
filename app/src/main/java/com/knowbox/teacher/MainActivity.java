@@ -17,8 +17,6 @@ import android.view.View;
 import android.webkit.WebView;
 import android.widget.TextView;
 
-import com.easemob.EMConnectionListener;
-import com.easemob.EMError;
 import com.hyena.framework.app.activity.NavigateActivity;
 import com.hyena.framework.app.fragment.BaseFragment;
 import com.hyena.framework.app.fragment.BaseUIFragment;
@@ -31,6 +29,8 @@ import com.hyena.framework.servcie.debug.DebugModeListener;
 import com.hyena.framework.servcie.debug.DebugService;
 import com.hyena.framework.utils.ToastUtils;
 import com.hyena.framework.utils.UiThreadHandler;
+import com.hyphenate.EMConnectionListener;
+import com.hyphenate.EMError;
 import com.knowbox.teacher.base.bean.OnlineVersion;
 import com.knowbox.teacher.base.database.bean.UserItem;
 import com.knowbox.teacher.base.database.tables.QuestionTable;
@@ -390,7 +390,7 @@ public class MainActivity extends NavigateActivity {
 		@Override
 		public void onDisconnected(int error) {
 			debug("emchat error: " + error);
-			if (error == EMError.CONNECTION_CONFLICT) {
+			if (error == EMError.USER_LOGIN_ANOTHER_DEVICE) {
 				// 显示帐号在其他设备登陆dialog
 				UiThreadHandler.post(new Runnable() {
 					@Override
@@ -444,13 +444,11 @@ public class MainActivity extends NavigateActivity {
 		@Override
 		public void onError(int reason, final String message) {
 			debug("onError");
-			if (reason == EMError.UNKNOWN_SERVER_ERROR
-					|| reason == EMError.NONETWORK_ERROR
-					|| reason == EMError.DNS_ERROR
-					|| reason == EMError.UNABLE_CONNECT_TO_SERVER
-					|| reason == EMError.CONNECT_TIMER_OUT
-					|| reason == EMError.IO_EXCEPTION
-					|| reason == EMError.ENCRYPTION_ERROR) {
+			if (reason == EMError.SERVER_TIMEOUT
+					|| reason == EMError.SERVER_BUSY
+					|| reason == EMError.SERVER_GET_DNSLIST_FAILED
+					|| reason == EMError.SERVER_NOT_REACHABLE
+					|| reason == EMError.SERVER_UNKNOWN_ERROR) {
 				if (mRetryTime < 3) {
 					mEMChatService.loginEMChat();
 					mRetryTime += 1;
