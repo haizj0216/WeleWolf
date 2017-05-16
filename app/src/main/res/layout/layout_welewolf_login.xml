@@ -17,7 +17,7 @@
         android:layout_marginLeft="25dp"
         android:layout_marginRight="25dp"
         android:background="@drawable/login_btn_bg"
-        android:text="登录"
+        android:text="注册"
         android:textColor="@color/color_504b8d"
         android:textSize="16sp" />
 

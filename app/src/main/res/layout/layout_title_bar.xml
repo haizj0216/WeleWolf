@@ -3,7 +3,7 @@
     android:id="@+id/title_bar_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/color_white_100"
+    android:background="@color/color_23213a"
     android:orientation="vertical">
 
     <ImageButton
@@ -93,7 +93,7 @@
             android:padding="5dp"
             android:singleLine="true"
             android:maxWidth="200dp"
-            android:textColor="@color/color_text_main"
+            android:textColor="@color/white"
             android:textSize="18sp" />
 
         <TextView
