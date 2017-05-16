@@ -30,7 +30,7 @@
             android:textSize="14sp" />
     </LinearLayout>
 
-    <com.knowbox.teacher.widgets.CleanableEditText
+    <com.buang.welewolf.widgets.CleanableEditText
         android:id="@+id/new_psd_edit"
         android:layout_width="match_parent"
         android:layout_height="45dp"
@@ -47,7 +47,7 @@
         android:layout_marginRight="15dp"
         android:background="@color/color_divider" />
 
-    <com.knowbox.teacher.widgets.CleanableEditText
+    <com.buang.welewolf.widgets.CleanableEditText
         android:id="@+id/new_agin_psd_edit"
         android:layout_width="match_parent"
         android:layout_height="45dp"

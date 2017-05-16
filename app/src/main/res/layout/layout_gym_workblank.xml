@@ -1,4 +1,4 @@
-<com.knowbox.teacher.widgets.GymWordBlankView xmlns:android="http://schemas.android.com/apk/res/android"
+<com.buang.welewolf.widgets.GymWordBlankView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content">
 
@@ -18,4 +18,4 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="25dp"
         android:orientation="vertical" />
-</com.knowbox.teacher.widgets.GymWordBlankView>
+</com.buang.welewolf.widgets.GymWordBlankView>

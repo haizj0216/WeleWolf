@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <com.knowbox.teacher.widgets.HeaderGridView
+    <com.buang.welewolf.widgets.HeaderGridView
         android:id="@+id/gridGallery"
         android:layout_width="match_parent"
         android:layout_height="match_parent"

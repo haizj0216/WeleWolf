@@ -2,7 +2,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
-    <com.knowbox.teacher.widgets.PinnedScrollView
+    <com.buang.welewolf.widgets.PinnedScrollView
         android:id="@+id/student_unit_scrollview"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -47,7 +47,7 @@
                 android:scrollbars="none"
                 android:verticalSpacing="5dp" />
         </RelativeLayout>
-    </com.knowbox.teacher.widgets.PinnedScrollView>
+    </com.buang.welewolf.widgets.PinnedScrollView>
 
     <ImageView
         android:id="@+id/student_unit_header_back"

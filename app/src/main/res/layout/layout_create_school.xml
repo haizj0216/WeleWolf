@@ -25,7 +25,7 @@
         android:textColor="@color/color_text_main"
         android:textSize="15dp" />
 
-    <com.knowbox.teacher.widgets.CleanableEditText
+    <com.buang.welewolf.widgets.CleanableEditText
         android:id="@+id/dialog_choose_school_not_found_create"
         android:layout_width="match_parent"
         android:layout_height="@dimen/item_high_size"

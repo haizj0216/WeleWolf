@@ -23,7 +23,7 @@
         android:textColor="@color/color_text_primary"
         android:textSize="13dp" />
 
-    <com.knowbox.teacher.widgets.flowlayout.FlowLayout
+    <com.buang.welewolf.widgets.flowlayout.FlowLayout
         android:id="@+id/assign_unit_item_flowlayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

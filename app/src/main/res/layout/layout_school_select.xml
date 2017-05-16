@@ -41,7 +41,7 @@
         android:background="@color/color_divider" />
 
 
-    <com.knowbox.teacher.widgets.pinned_listview.PinnedHeaderListView
+    <com.buang.welewolf.widgets.pinned_listview.PinnedHeaderListView
         android:id="@+id/dialog_choose_school_list"
         android:layout_width="match_parent"
         android:layout_height="match_parent"

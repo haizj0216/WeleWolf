@@ -1,4 +1,4 @@
-<com.knowbox.teacher.widgets.GymOptionView xmlns:android="http://schemas.android.com/apk/res/android"
+<com.buang.welewolf.widgets.GymOptionView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@drawable/bg_gym_question_option_normal"
@@ -39,4 +39,4 @@
         android:visibility="gone" />
 
 
-</com.knowbox.teacher.widgets.GymOptionView>
+</com.buang.welewolf.widgets.GymOptionView>

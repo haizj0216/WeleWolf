@@ -5,7 +5,7 @@
     android:background="@color/color_main_background"
     android:orientation="vertical">
 
-    <com.knowbox.teacher.widgets.CleanableEditText
+    <com.buang.welewolf.widgets.CleanableEditText
         android:id="@+id/homework_edit_name"
         android:layout_width="match_parent"
         android:layout_height="55dp"

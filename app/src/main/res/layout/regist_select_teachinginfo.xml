@@ -11,7 +11,7 @@
         android:layout_height="wrap_content"
         android:layout_weight="1" >
 
-        <com.knowbox.teacher.widgets.numberpicker.NumberPicker
+        <com.buang.welewolf.widgets.numberpicker.NumberPicker
             android:id="@+id/select_section"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
@@ -23,7 +23,7 @@
         android:layout_height="wrap_content"
         android:layout_weight="1" >
 
-        <com.knowbox.teacher.widgets.numberpicker.NumberPicker
+        <com.buang.welewolf.widgets.numberpicker.NumberPicker
             android:id="@+id/select_subject"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"

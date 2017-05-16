@@ -13,7 +13,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1">
 
-            <com.knowbox.teacher.widgets.numberpicker.NumberPicker
+            <com.buang.welewolf.widgets.numberpicker.NumberPicker
                 android:id="@+id/dialog_makehomework_month"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -25,7 +25,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1">
 
-            <com.knowbox.teacher.widgets.numberpicker.NumberPicker
+            <com.buang.welewolf.widgets.numberpicker.NumberPicker
                 android:id="@+id/dialog_makehomework_day"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

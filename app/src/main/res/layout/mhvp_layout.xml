@@ -4,12 +4,12 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <com.knowbox.teacher.widgets.headerviewpager.ScrollableViewPager
+    <com.buang.welewolf.widgets.headerviewpager.ScrollableViewPager
         android:id="@+id/mhvp_pager"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
 
-    <com.knowbox.teacher.widgets.headerviewpager.TranslatableLinearLayout
+    <com.buang.welewolf.widgets.headerviewpager.TranslatableLinearLayout
         android:id="@+id/mhvp_header"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -17,12 +17,12 @@
         android:orientation="vertical"
         >
 
-        <com.knowbox.teacher.widgets.headerviewpager.SizeSensitiveLinearLayout
+        <com.buang.welewolf.widgets.headerviewpager.SizeSensitiveLinearLayout
             android:id="@+id/mhvp_headerCustom"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
-        </com.knowbox.teacher.widgets.headerviewpager.SizeSensitiveLinearLayout>
+        </com.buang.welewolf.widgets.headerviewpager.SizeSensitiveLinearLayout>
 
         <!--<LinearLayout-->
         <!--android:id="@+id/tabs_area"-->
@@ -43,6 +43,6 @@
         <!--android:src="@drawable/switch_grid"-->
         <!--android:scaleType="centerCrop"/>-->
         <!--</LinearLayout>-->
-    </com.knowbox.teacher.widgets.headerviewpager.TranslatableLinearLayout>
+    </com.buang.welewolf.widgets.headerviewpager.TranslatableLinearLayout>
 
 </merge>

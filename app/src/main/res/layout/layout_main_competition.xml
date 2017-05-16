@@ -48,7 +48,7 @@
         android:layout_height="match_parent"
         android:layout_marginTop="90dp">
 
-        <com.knowbox.teacher.widgets.LoadMoreListView
+        <com.buang.welewolf.widgets.LoadMoreListView
             android:id="@+id/competition_list"
             android:layout_width="match_parent"
             android:layout_height="match_parent"

@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     android:background="@color/color_white_100">
 
-    <com.knowbox.teacher.widgets.ResizeLayout
+    <com.buang.welewolf.widgets.ResizeLayout
         android:id="@+id/login_verify_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -71,7 +71,7 @@
                 android:textColor="@color/color_text_primary"
                 android:textSize="13dp" />
 
-            <com.knowbox.teacher.widgets.CleanableEditText
+            <com.buang.welewolf.widgets.CleanableEditText
                 android:id="@+id/login_verify_code"
                 android:layout_width="wrap_content"
                 android:layout_height="45dp"
@@ -103,7 +103,7 @@
             android:layout_weight="1"
             android:background="@color/transparent" />
 
-    </com.knowbox.teacher.widgets.ResizeLayout>
+    </com.buang.welewolf.widgets.ResizeLayout>
 
     <RelativeLayout
         android:id="@+id/title_layout"

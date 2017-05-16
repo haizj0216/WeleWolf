@@ -90,9 +90,9 @@
         android:max="100"
         android:visibility="gone"/>
 
-    <com.knowbox.teacher.modules.webactivity.BaseWebView
+    <com.buang.welewolf.modules.webactivity.BaseWebView
         android:id="@+id/activity_webview"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/activity_webview_progress"></com.knowbox.teacher.modules.webactivity.BaseWebView>
+        android:layout_below="@id/activity_webview_progress"></com.buang.welewolf.modules.webactivity.BaseWebView>
 </RelativeLayout>

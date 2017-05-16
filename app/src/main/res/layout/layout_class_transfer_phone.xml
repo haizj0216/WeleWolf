@@ -34,7 +34,7 @@
             android:background="@color/color_divider"
             android:layout_marginLeft="@dimen/margin_left_or_right"/>
 
-        <com.knowbox.teacher.widgets.CleanableEditText
+        <com.buang.welewolf.widgets.CleanableEditText
             android:id="@+id/class_transfer_phone_edit"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

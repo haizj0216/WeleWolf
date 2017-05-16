@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.knowbox.teacher.widgets.AddClassView xmlns:android="http://schemas.android.com/apk/res/android"
+<com.buang.welewolf.widgets.AddClassView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="center"
@@ -20,19 +20,19 @@
             android:layout_marginRight="30dp"
             android:orientation="horizontal" >
 
-            <com.knowbox.teacher.widgets.numberpicker.NumberPicker
+            <com.buang.welewolf.widgets.numberpicker.NumberPicker
                 android:id="@+id/regist_step_years"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1" />
 
-            <com.knowbox.teacher.widgets.numberpicker.NumberPicker
+            <com.buang.welewolf.widgets.numberpicker.NumberPicker
                 android:id="@+id/regist_step_grade"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1" />
 
-            <com.knowbox.teacher.widgets.numberpicker.NumberPicker
+            <com.buang.welewolf.widgets.numberpicker.NumberPicker
                 android:id="@+id/regist_step_class"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -52,4 +52,4 @@
             android:textSize="15dp" />
     </LinearLayout>
 
-</com.knowbox.teacher.widgets.AddClassView>
+</com.buang.welewolf.widgets.AddClassView>

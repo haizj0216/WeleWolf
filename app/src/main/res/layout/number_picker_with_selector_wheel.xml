@@ -19,7 +19,7 @@
 
 <merge xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <view class="com.knowbox.teacher.widgets.numberpicker.NumberPicker$CustomEditText"
+    <view class="com.buang.welewolf.widgets.numberpicker.NumberPicker$CustomEditText"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:textColor="?android:attr/textColorPrimary"
         android:id="@+id/np__numberpicker_input"
