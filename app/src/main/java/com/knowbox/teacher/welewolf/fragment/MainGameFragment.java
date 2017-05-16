@@ -17,6 +17,7 @@ public class MainGameFragment extends BaseUIFragment<UIFragmentHelper> {
         super.onCreateImpl(savedInstanceState);
         setSlideable(false);
         setTitleStyle(STYLE_NO_TITLE);
+        setStatusTintBarEnable(true);
     }
 
     @Override

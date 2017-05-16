@@ -1,0 +1,36 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/login"
+        android:scaleType="centerCrop" />
+
+    <Button
+        android:id="@+id/ivRegister"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="70dp"
+        android:layout_marginLeft="25dp"
+        android:layout_marginRight="25dp"
+        android:background="@drawable/login_btn_bg"
+        android:text="登录"
+        android:textColor="@color/color_504b8d"
+        android:textSize="16sp" />
+
+    <Button
+        android:id="@+id/ivLogin"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_above="@id/ivRegister"
+        android:layout_marginBottom="15dp"
+        android:layout_marginLeft="25dp"
+        android:layout_marginRight="25dp"
+        android:background="@drawable/login_btn_bg"
+        android:text="登录"
+        android:textColor="@color/color_504b8d"
+        android:textSize="16sp" />
+</RelativeLayout>

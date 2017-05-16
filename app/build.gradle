@@ -7,7 +7,7 @@ android {
         abortOnError false
     }
     compileSdkVersion 19
-    buildToolsVersion "23.0.3"
+    buildToolsVersion '25.0.0'
 
     defaultConfig {
         applicationId "com.buang.welewolf"

@@ -61,6 +61,9 @@ import com.knowbox.teacher.modules.utils.PackageUpdateTask.OnUpdateProgressListe
 import com.knowbox.teacher.modules.utils.UIFragmentHelper;
 import com.knowbox.teacher.modules.utils.Utils;
 import com.knowbox.teacher.modules.utils.VirtualClassUtils;
+import com.youme.voiceengine.VoiceEngineService;
+import com.youme.voiceengine.api;
+import com.youme.voiceengine.mgr.YouMeManager;
 
 import java.io.File;
 
@@ -119,8 +122,10 @@ public class MainActivity extends NavigateActivity {
 //			StrictMode.setThreadPolicy(new StrictMode.ThreadPolicy.Builder()
 //					.detectAll().penaltyLog().build());
 //		}
-
+		YouMeManager.Init(this);
 		super.onCreate(savedInstanceState);
+		Intent intent = new Intent(this,VoiceEngineService.class);
+		startService(intent);
 
 		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
 			//透明状态栏
