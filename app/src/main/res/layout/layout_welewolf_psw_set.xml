@@ -49,11 +49,12 @@
                 android:src="@drawable/icon_login_code" />
 
             <EditText
-                android:id="@+id/ivPhoneEdit"
+                android:id="@+id/ivCodeEdit"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginLeft="15dp"
                 android:background="@null"
+                android:inputType="number"
                 android:hint="请输入6位验证码"
                 android:textColor="@color/color_4c4b54"
                 android:textColorHint="@color/color_c1c1c1"
@@ -94,9 +95,21 @@
             android:layout_weight="1"
             android:background="@null"
             android:hint="请设置不少于6位密码"
+            android:inputType="textPassword"
             android:textColor="@color/color_4c4b54"
             android:textColorHint="@color/color_c1c1c1"
             android:textSize="17sp" />
+
+        <CheckBox
+            android:id="@+id/ivEye"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:button="@drawable/selector_login_eye"
+            android:gravity="center"
+            android:paddingBottom="15dp"
+            android:paddingRight="15dp"
+            android:paddingTop="15dp" />
     </LinearLayout>
 
     <Button

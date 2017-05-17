@@ -4,6 +4,7 @@
     android:orientation="vertical">
 
     <RelativeLayout
+        android:id="@+id/ivPhotoView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="15dp"
@@ -23,7 +24,7 @@
             android:layout_width="70dp"
             android:layout_height="70dp"
             android:layout_alignParentRight="true"
-            android:src="@drawable/icon_auth_photo" />
+            android:src="@drawable/icon_user_edit_photo" />
     </RelativeLayout>
 
     <RelativeLayout
@@ -82,7 +83,6 @@
         android:layout_marginLeft="15dp"
         android:layout_marginRight="15dp"
         android:layout_marginTop="20dp"
-        android:text="阿里"
         android:textColor="@color/color_4c4b54"
         android:textColorHint="@color/color_bcbcbc"
         android:textSize="17sp" />

@@ -10,8 +10,10 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.buang.welewolf.R;
+import com.buang.welewolf.base.utils.StringUtils;
 import com.buang.welewolf.modules.utils.UIFragmentHelper;
 import com.hyena.framework.app.fragment.BaseUIFragment;
+import com.hyena.framework.datacache.BaseObject;
 
 /**
  * Created by weilei on 17/5/16.
@@ -55,7 +57,7 @@ public class PhoneLoginFragment extends BaseUIFragment<UIFragmentHelper> {
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-
+                updateLoginBtn(mPhoneEdit.getText().toString(), mPswEdit.getText().toString());
             }
 
             @Override
@@ -72,7 +74,7 @@ public class PhoneLoginFragment extends BaseUIFragment<UIFragmentHelper> {
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-
+                updateLoginBtn(mPhoneEdit.getText().toString(), mPswEdit.getText().toString());
             }
 
             @Override
@@ -95,12 +97,34 @@ public class PhoneLoginFragment extends BaseUIFragment<UIFragmentHelper> {
                 case R.id.ivForgetPsw:
                     openSetPswFragment();
                     break;
+                case R.id.ivLogin:
+                    //TODO login
+                    finish();
+                    break;
             }
         }
     };
 
+    private void updateLoginBtn(String phone, String password) {
+        mLogin.setEnabled(checkPhonePsw(phone, password));
+    }
+
+    private boolean checkPhonePsw(String phone, String password) {
+        if (phone.length() == 11 && password.length() > 2 && password.length() < 20) {
+            return true;
+        }
+        return false;
+    }
+
     private void openSetPswFragment() {
-        PswSetFragment fragment = PswSetFragment.newFragment(getActivity(), PswSetFragment.class, null);
+        Bundle mBundle = new Bundle();
+        mBundle.putString("phone", mPhoneEdit.getText().toString());
+        PswSetFragment fragment = PswSetFragment.newFragment(getActivity(), PswSetFragment.class, mBundle);
         showFragment(fragment);
+    }
+
+    @Override
+    public BaseObject onProcess(int action, int pageNo, Object... params) {
+        return super.onProcess(action, pageNo, params);
     }
 }
