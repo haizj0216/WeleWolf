@@ -28,6 +28,8 @@ import com.buang.welewolf.modules.utils.BoxServiceManager;
 import java.util.Iterator;
 import java.util.List;
 
+import io.rong.imlib.RongIMClient;
+
 /**
  * 应用上下文
  * @author yangzc
@@ -53,6 +55,8 @@ public class App extends BaseApp {
 
 
 //		locationService = new LocationService(getApplicationContext());
+
+		RongIMClient.init(this);
 
 		//初始化崩溃统计
 		CrashHelper.init();

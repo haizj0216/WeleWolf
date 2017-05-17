@@ -11,6 +11,8 @@ import com.buang.welewolf.modules.homework.services.HomeworkService;
 import com.buang.welewolf.modules.homework.services.HomeworkServiceImp;
 import com.buang.welewolf.modules.message.services.EMChatService;
 import com.buang.welewolf.modules.message.services.EMChatServiceImpl;
+import com.buang.welewolf.modules.services.RongIMService;
+import com.buang.welewolf.modules.services.RongIMServiceImp;
 import com.hyena.framework.servcie.BaseServiceManager;
 import com.hyena.framework.servcie.debug.DebugService;
 import com.hyena.framework.servcie.debug.DebugServiceImpl;
@@ -24,6 +26,8 @@ import com.buang.welewolf.base.services.player.AudioPlayerServiceImp;
 import com.buang.welewolf.base.services.updateclass.UpdateClassService;
 import com.buang.welewolf.modules.login.services.LoginService;
 import com.buang.welewolf.modules.login.services.LoginServiceImpl;
+
+import io.rong.imlib.ipc.RongService;
 
 /**
  * 业务相关服务管理器
@@ -73,5 +77,6 @@ public class BoxServiceManager extends BaseServiceManager {
 		registService(UpdateService.SERVICE_NAME, new UpdateServiceImpl());
 		registService(UpdateClassService.SERVICE_NAME, new UpdateClassServiceImpl());
 		registService(AudioPlayerService.SERVICE_NAME, new AudioPlayerServiceImp());
+		registService(RongIMService.SERVICE_NAME, new RongIMServiceImp());
 	}
 }

@@ -34,6 +34,7 @@ import com.buang.welewolf.modules.login.services.UpdateJiaocaiListener;
 import com.buang.welewolf.modules.login.services.UserStateChangeListener;
 import com.buang.welewolf.modules.message.services.EMChatService;
 import com.buang.welewolf.modules.profile.MainSelectSubjectFragment;
+import com.buang.welewolf.modules.services.RongIMService;
 import com.buang.welewolf.modules.utils.BoxViewBuilder;
 import com.buang.welewolf.modules.utils.DialogUtils;
 import com.buang.welewolf.modules.utils.PackageUpdateTask;
@@ -61,6 +62,8 @@ import com.youme.voiceengine.VoiceEngineService;
 import com.youme.voiceengine.mgr.YouMeManager;
 
 import java.io.File;
+
+import io.rong.imlib.RongIMClient;
 
 /**
  * 主场景
@@ -137,6 +140,8 @@ public class MainActivity extends NavigateActivity {
 		if(!App.mIsEmChatConntcted){
 			showConflictDialog();
 		}
+		RongIMService rongIMService = (RongIMService) getSystemService(RongIMService.SERVICE_NAME);
+		rongIMService.connect();
 	}
 
 	private void initImpl(){
