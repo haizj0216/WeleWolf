@@ -32,12 +32,14 @@ import com.buang.welewolf.modules.login.SplashFragment;
 import com.buang.welewolf.modules.login.services.LoginService;
 import com.buang.welewolf.modules.login.services.UpdateJiaocaiListener;
 import com.buang.welewolf.modules.login.services.UserStateChangeListener;
-import com.buang.welewolf.modules.message.services.EMChatService;
+import com.buang.welewolf.modules.main.MainFragment;
 import com.buang.welewolf.modules.profile.MainSelectSubjectFragment;
 import com.buang.welewolf.modules.services.RongIMService;
 import com.buang.welewolf.modules.utils.BoxViewBuilder;
+import com.buang.welewolf.modules.utils.ConstantsUtils;
 import com.buang.welewolf.modules.utils.DialogUtils;
 import com.buang.welewolf.modules.utils.PackageUpdateTask;
+import com.buang.welewolf.modules.utils.UIFragmentHelper;
 import com.buang.welewolf.modules.utils.Utils;
 import com.buang.welewolf.modules.utils.VirtualClassUtils;
 import com.hyena.framework.app.activity.NavigateActivity;
@@ -52,18 +54,10 @@ import com.hyena.framework.servcie.debug.DebugModeListener;
 import com.hyena.framework.servcie.debug.DebugService;
 import com.hyena.framework.utils.ToastUtils;
 import com.hyena.framework.utils.UiThreadHandler;
-import com.hyphenate.EMConnectionListener;
-import com.hyphenate.EMError;
-import com.buang.welewolf.modules.main.MainFragment;
-import com.buang.welewolf.modules.message.services.EMChatLoginListener;
-import com.buang.welewolf.modules.utils.ConstantsUtils;
-import com.buang.welewolf.modules.utils.UIFragmentHelper;
 import com.youme.voiceengine.VoiceEngineService;
 import com.youme.voiceengine.mgr.YouMeManager;
 
 import java.io.File;
-
-import io.rong.imlib.RongIMClient;
 
 /**
  * 主场景
@@ -91,8 +85,6 @@ public class MainActivity extends NavigateActivity {
 	private UpdateService mUpdateService;
 	// Debug服务
 	private DebugService mDebugService;
-	// 消息服务
-	private EMChatService mEMChatService;
 
 	private ProgressDialog mProgressDialog;
 
@@ -164,12 +156,6 @@ public class MainActivity extends NavigateActivity {
 				mVersionChangeListener);
 		mUpdateService.checkVersion(true);
 
-		mEMChatService = (EMChatService) getSystemService(EMChatService.SERVICE_NAME);
-		mEMChatService.getObserver().addEMChatLoginListener(
-				mEmChatLoginListener);
-		mEMChatService.getObserver().addEMConnectionListener(
-				mEmConnectionListener);
-		mEMChatService.loginEMChat();
 		mDebugPanel = findViewById(R.id.main_debug_panel);
 		mDebugTxt = (TextView) findViewById(R.id.main_debug_txt);
 		findViewById(R.id.main_debug_clear).setOnClickListener(new View.OnClickListener() {
@@ -266,12 +252,6 @@ public class MainActivity extends NavigateActivity {
 			mUpdateService.getObserver().removeVersionChangeListener(
 					mVersionChangeListener);
 		}
-		if (mEMChatService != null) {
-			mEMChatService.getObserver().removeEMChatLoginListener(
-					mEmChatLoginListener);
-			mEMChatService.getObserver().removeEMConnectionListener(
-					mEmConnectionListener);
-		}
 //		MsgCenter.unRegisterLocalReceiver(mReceiver);
 		clearPrefsOnExit(false);
 	}
@@ -301,8 +281,6 @@ public class MainActivity extends NavigateActivity {
 
 		@Override
 		public void onLogout(UserItem user) {
-			if (mEMChatService != null)
-				mEMChatService.logoutEMChat();
 			UiThreadHandler.postDelayed(new Runnable() {
 				@Override
 				public void run() {
@@ -320,7 +298,6 @@ public class MainActivity extends NavigateActivity {
 		@Override
 		public void onLogin(final UserItem user) {
 			if (user == null) return;
-			if (mEMChatService != null) mEMChatService.loginEMChat();
 			LogUtil.d("MainActivity onLogin");
 			UiThreadHandler.post(new Runnable() {
 				@Override
@@ -340,9 +317,6 @@ public class MainActivity extends NavigateActivity {
 					}
 
 					clearPrefsOnExit(false);
-					if (mEMChatService != null) {
-						mEMChatService.loginEMChat();
-					}
 				}
 			});
 			((App)App.getAppContext()).onAppStarted();
@@ -390,28 +364,6 @@ public class MainActivity extends NavigateActivity {
 		}
 	};
 
-	private EMConnectionListener mEmConnectionListener = new EMConnectionListener() {
-
-		@Override
-		public void onDisconnected(int error) {
-			debug("emchat error: " + error);
-			if (error == EMError.USER_LOGIN_ANOTHER_DEVICE) {
-				// 显示帐号在其他设备登陆dialog
-				UiThreadHandler.post(new Runnable() {
-					@Override
-					public void run() {
-						showConflictDialog();
-					}
-				});
-			}
-		}
-
-		@Override
-		public void onConnected() {
-			
-		}
-	};
-
 	private Dialog mConflictDialog = null;
 
 	private void showConflictDialog() {
@@ -440,29 +392,6 @@ public class MainActivity extends NavigateActivity {
 	}
 
 	private static int mRetryTime = 0;
-	private EMChatLoginListener mEmChatLoginListener = new EMChatLoginListener() {
-		@Override
-		public void onSuccess() {
-			mRetryTime = 0;
-		}
-
-		@Override
-		public void onError(int reason, final String message) {
-			debug("onError");
-			if (reason == EMError.SERVER_TIMEOUT
-					|| reason == EMError.SERVER_BUSY
-					|| reason == EMError.SERVER_GET_DNSLIST_FAILED
-					|| reason == EMError.SERVER_NOT_REACHABLE
-					|| reason == EMError.SERVER_UNKNOWN_ERROR) {
-				if (mRetryTime < 3) {
-					mEMChatService.loginEMChat();
-					mRetryTime += 1;
-				} else {
-					mRetryTime = 0;
-				}
-			}
-		}
-	};
 
 	private Dialog mVersionDialog;
 

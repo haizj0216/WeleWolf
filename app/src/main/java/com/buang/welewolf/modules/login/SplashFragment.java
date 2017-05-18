@@ -16,14 +16,13 @@ import com.buang.welewolf.base.bean.OnlineGlobalInfo;
 import com.buang.welewolf.base.http.services.OnlineServices;
 import com.buang.welewolf.base.services.update.UpdateService;
 import com.buang.welewolf.base.utils.DirContext;
+import com.buang.welewolf.base.utils.HttpHelper;
 import com.buang.welewolf.base.utils.PreferencesController;
-import com.buang.welewolf.modules.message.services.EMChatService;
+import com.buang.welewolf.modules.login.services.LoginService;
+import com.buang.welewolf.modules.utils.ConstantsUtils;
 import com.hyena.framework.app.fragment.BaseUIFragment;
 import com.hyena.framework.clientlog.LogUtil;
 import com.hyena.framework.datacache.DataAcquirer;
-import com.buang.welewolf.base.utils.HttpHelper;
-import com.buang.welewolf.modules.login.services.LoginService;
-import com.buang.welewolf.modules.utils.ConstantsUtils;
 
 import java.io.File;
 
@@ -35,7 +34,6 @@ import java.io.File;
 public class SplashFragment extends BaseUIFragment {
 
     private LoginService mLoginService;
-    private EMChatService mEmChatService;
     public static boolean fileIsExists = false;
 
     @Override
@@ -128,8 +126,6 @@ public class SplashFragment extends BaseUIFragment {
             }
             mLoginService = (LoginService) getActivity().getSystemService(
                     LoginService.SERVICE_NAME);
-            mEmChatService = (EMChatService) getActivity().getSystemService(
-                    EMChatService.SERVICE_NAME);
             UpdateService mUpdateService = (UpdateService) getActivity().getSystemService(
                     UpdateService.SERVICE_NAME);
             if (mUpdateService != null) {
@@ -141,9 +137,6 @@ public class SplashFragment extends BaseUIFragment {
         @Override
         protected void onPostExecute(Void result) {
             super.onPostExecute(result);
-            if (mEmChatService != null) {
-                mEmChatService.initEMChat();
-            }
             if (mLoginService == null || getActivity() == null
                     || getActivity().isFinishing())
                 return;

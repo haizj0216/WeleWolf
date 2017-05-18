@@ -6,31 +6,30 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.text.TextUtils;
 
+import com.buang.welewolf.App;
+import com.buang.welewolf.base.bean.OnlineCompetitionListInfo;
 import com.buang.welewolf.base.database.bean.ClassInfoItem;
 import com.buang.welewolf.base.http.services.OnlineServices;
+import com.buang.welewolf.base.services.updateclass.UpdateClassService;
 import com.buang.welewolf.base.utils.ActionUtils;
+import com.buang.welewolf.base.utils.ChannelUtils;
 import com.buang.welewolf.modules.classes.AddGradeClassFragment;
 import com.buang.welewolf.modules.homework.assign.AssignSelectPublisherFragment;
+import com.buang.welewolf.modules.homework.competition.LoopDetailFragment;
 import com.buang.welewolf.modules.homework.competition.SingleTestDetailFragment;
+import com.buang.welewolf.modules.main.MainFragment;
 import com.buang.welewolf.modules.profile.ActivityWebViewFragment;
+import com.buang.welewolf.modules.profile.SettingsFragment;
 import com.buang.welewolf.modules.profile.UserAuthNotyetFragment;
 import com.buang.welewolf.modules.profile.UserInfoEditFragment;
-import com.buang.welewolf.modules.utils.*;
+import com.buang.welewolf.modules.utils.ConstantsUtils;
+import com.buang.welewolf.modules.utils.UmengConstant;
 import com.hyena.framework.app.fragment.BaseSubFragment;
 import com.hyena.framework.app.fragment.BaseUIFragment;
 import com.hyena.framework.clientlog.LogUtil;
 import com.hyena.framework.utils.BaseApp;
 import com.hyena.framework.utils.UiThreadHandler;
 import com.hyena.framework.utils.VersionUtils;
-import com.hyphenate.chat.EMMessage;
-import com.buang.welewolf.App;
-import com.buang.welewolf.base.bean.OnlineCompetitionListInfo;
-import com.buang.welewolf.base.database.bean.ChatListItem;
-import com.buang.welewolf.base.services.updateclass.UpdateClassService;
-import com.buang.welewolf.base.utils.ChannelUtils;
-import com.buang.welewolf.modules.homework.competition.LoopDetailFragment;
-import com.buang.welewolf.modules.main.MainFragment;
-import com.buang.welewolf.modules.profile.SettingsFragment;
 
 import org.apache.http.protocol.HTTP;
 
@@ -47,35 +46,6 @@ public class MessagePushUtils {
 
     public MessagePushUtils(BaseUIFragment fragment) {
         mFragment = fragment;
-    }
-
-    public void handleMessage(EMMessage message) {
-        if (message.getType() == EMMessage.Type.TXT) {
-            if (!TextUtils.isEmpty(message.getStringAttribute("apns", ""))) {
-                handleUrlLoading(message.getStringAttribute("apns", ""));
-                message.setUnread(false);
-                return;
-            }
-            String customType = message.getStringAttribute("type", "");//自定义类型
-            if (TextUtils.isEmpty(customType)) {
-                customType = String.valueOf(message.getIntAttribute("type", -1));
-            }
-            if (!TextUtils.isEmpty(customType)) {
-                try {
-                    int type = Integer.parseInt(customType);
-                    switch (type) {
-                        default:
-                            break;
-                    }
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            } else {
-//                openEmChatFragment(message);
-            }
-        } else {
-//            openEmChatFragment(message);
-        }
     }
 
     private void handleUrlLoading(String url) {
@@ -234,34 +204,6 @@ public class MessagePushUtils {
 
     private void openClassStudentListFragment(Hashtable<String, String> paramsMap) {
         ActionUtils.notifyMainTab(MainFragment.TYPE_TAB_TIPS_CLASS, paramsMap);
-    }
-
-    /**
-     * 打开聊天内容
-     * @param message
-     */
-    private void openEmChatFragment(EMMessage message) {
-        final ChatListItem item = new ChatListItem();
-        item.mUserType = (message.getChatType() == EMMessage.ChatType.Chat) ?
-                ChatListItem.USER_TYPE_STUDENT : ChatListItem.USER_TYPE_GROUP;
-        if (message.getChatType() == EMMessage.ChatType.Chat) {
-            item.mUserId = message.getFrom();
-        } else if (message.getChatType() == EMMessage.ChatType.GroupChat) {
-            item.mUserId = message.getTo();
-        }
-        item.mUserName = message.getStringAttribute("userName", "");
-        item.mHeadPhoto = message.getStringAttribute("userPhoto", "");
-
-        Bundle bundle = new Bundle();
-        bundle.putSerializable("chatItem", item);
-
-    }
-
-    /**
-     * 显示通知、活动、认证消息
-     * @param message
-     */
-    private void showNoticeFragment(EMMessage message) {
     }
 
     private void openClassListFragment() {

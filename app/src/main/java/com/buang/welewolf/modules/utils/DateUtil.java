@@ -6,8 +6,6 @@ package com.buang.welewolf.modules.utils;
 import android.text.format.DateFormat;
 
 import com.hyena.framework.utils.BaseApp;
-import com.hyphenate.util.DateUtils;
-import com.hyphenate.util.TimeInfo;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -121,47 +119,6 @@ public class DateUtil {
 	
 	public static String getTime(long time){
 		return mHourFmt.format(new Date(time * 1000l));
-	}
-
-	public static String getMessageTimeString(Date date) {
-		String var1 = null;
-		long var2 = date.getTime();
-		if(isSameDay(var2)) {
-			Calendar var4 = GregorianCalendar.getInstance();
-			var4.setTime(date);
-			DateFormat format = new DateFormat();
-			if (format.is24HourFormat(BaseApp.getAppContext())) {
-				var1 = "HH:mm";
-			} else {
-				int var5 = var4.get(11);
-				if(var5 > 17) {
-					var1 = "晚上 hh:mm";
-				} else if(var5 >= 0 && var5 <= 6) {
-					var1 = "凌晨 hh:mm";
-				} else if(var5 > 11 && var5 <= 17) {
-					var1 = "下午 hh:mm";
-				} else {
-					var1 = "上午 hh:mm";
-				}
-			}
-
-		} else if(isYesterday(var2)) {
-			var1 = "昨天 HH:mm";
-		} else {
-			var1 = "M月d日 HH:mm";
-		}
-
-		return (new SimpleDateFormat(var1, Locale.CHINA)).format(date);
-	}
-
-	private static boolean isSameDay(long var0) {
-		TimeInfo var2 = DateUtils.getTodayStartAndEndTime();
-		return var0 > var2.getStartTime() && var0 < var2.getEndTime();
-	}
-
-	public static boolean isYesterday(long var0) {
-		TimeInfo var2 = DateUtils.getYesterdayStartAndEndTime();
-		return var0 > var2.getStartTime() && var0 < var2.getEndTime();
 	}
 
 	/**

@@ -8,11 +8,13 @@ import android.app.ActivityManager.RunningAppProcessInfo;
 import android.content.Context;
 import android.util.Log;
 
+import com.buang.welewolf.base.database.KnowboxDataBase;
 import com.buang.welewolf.base.http.services.OnlineServices;
+import com.buang.welewolf.base.utils.BoxNetworkSensor;
 import com.buang.welewolf.base.utils.CrashHelper;
 import com.buang.welewolf.base.utils.DirContext;
-import com.buang.welewolf.modules.message.services.EMChatService;
 import com.buang.welewolf.modules.utils.BoxErrorMap;
+import com.buang.welewolf.modules.utils.BoxServiceManager;
 import com.hyena.framework.clientlog.LogUtil;
 import com.hyena.framework.clientlog.Logger;
 import com.hyena.framework.config.FrameworkConfig;
@@ -21,9 +23,6 @@ import com.hyena.framework.error.ErrorManager;
 import com.hyena.framework.network.NetworkProvider;
 import com.hyena.framework.servcie.ServiceProvider;
 import com.hyena.framework.utils.BaseApp;
-import com.buang.welewolf.base.database.KnowboxDataBase;
-import com.buang.welewolf.base.utils.BoxNetworkSensor;
-import com.buang.welewolf.modules.utils.BoxServiceManager;
 
 import java.util.Iterator;
 import java.util.List;
@@ -42,7 +41,6 @@ public class App extends BaseApp {
 	public static boolean ALLOW_MULTI_NODE = false;
 	
 	public static boolean mIsEmChatConntcted = true;
-	private EMChatService mEMChatService;
 //	public LocationService locationService;
 
 	@Override

@@ -31,12 +31,13 @@ import com.buang.welewolf.base.http.services.OnlineServices;
 import com.buang.welewolf.base.utils.ActionUtils;
 import com.buang.welewolf.base.utils.PreferencesController;
 import com.buang.welewolf.modules.login.LoginFragment;
-import com.buang.welewolf.modules.message.services.EMChatService;
-import com.buang.welewolf.modules.message.services.EMNewMessageListener;
 import com.buang.welewolf.modules.message.utils.MessagePushUtils;
 import com.buang.welewolf.modules.profile.ActivityWebViewFragment;
 import com.buang.welewolf.modules.utils.ConstantsUtils;
 import com.buang.welewolf.modules.utils.DialogUtils;
+import com.buang.welewolf.modules.utils.SubjectUtils;
+import com.buang.welewolf.modules.utils.ToastUtils;
+import com.buang.welewolf.modules.utils.UIFragmentHelper;
 import com.buang.welewolf.modules.utils.UmengConstant;
 import com.buang.welewolf.modules.utils.Utils;
 import com.buang.welewolf.modules.utils.VirtualClassUtils;
@@ -51,13 +52,7 @@ import com.hyena.framework.datacache.DataAcquirer;
 import com.hyena.framework.utils.BaseApp;
 import com.hyena.framework.utils.MsgCenter;
 import com.hyena.framework.utils.UiThreadHandler;
-import com.hyphenate.chat.EMClient;
-import com.hyphenate.chat.EMConversation;
-import com.hyphenate.chat.EMMessage;
 import com.knowbox.base.service.share.ShareService;
-import com.buang.welewolf.modules.utils.SubjectUtils;
-import com.buang.welewolf.modules.utils.ToastUtils;
-import com.buang.welewolf.modules.utils.UIFragmentHelper;
 
 import org.apache.http.protocol.HTTP;
 import org.json.JSONException;
@@ -68,9 +63,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Hashtable;
-import java.util.Iterator;
 import java.util.List;
-import java.util.Map;
 import java.util.Stack;
 
 /**
@@ -103,8 +96,7 @@ public class MainFragment extends BaseUIFragment<UIFragmentHelper> {
 	private Dialog mNotifitionDialog;
 
 	private ShareService mShareService;
-	private EMChatService mEmChatService;
-	
+
 	public static final String ACTION_TAB_TIPS = "action_tab_tips";
 	public static final int TYPE_TAB_TIPS_CLASS = 0;
 	public static final int TYPE_TAB_TIPS_BANK = 1;
@@ -117,9 +109,6 @@ public class MainFragment extends BaseUIFragment<UIFragmentHelper> {
 		super.onCreateImpl(savedInstanceState);
 		setSlideable(false);
 		setTitleStyle(STYLE_NO_TITLE);
-		mEmChatService = (EMChatService) getSystemService(EMChatService.SERVICE_NAME);
-		mEmChatService.getObserver().addEMNewMessageListener(
-				mNewMessageListener);
 	}
 
 	@Override
@@ -175,23 +164,6 @@ public class MainFragment extends BaseUIFragment<UIFragmentHelper> {
 		}
 	}
 
-
-	private EMNewMessageListener mNewMessageListener = new EMNewMessageListener() {
-		@Override
-		public void onNewMessage(EMMessage message) {
-		}
-
-		@Override
-		public void onClearMessage() {
-		}
-
-		@Override
-		public void onApnsMessage(EMMessage message) {
-			MessagePushUtils utils = new MessagePushUtils(MainFragment.this);
-			utils.handleMessage(message);
-		}
-	};
-
 	/**
 	 * 处理HandlerURL
 	 *
@@ -244,80 +216,6 @@ public class MainFragment extends BaseUIFragment<UIFragmentHelper> {
 	}
 
 
-	private void updateUnReadMessage() {
-		List<EMMessage> mApnsMessages = new ArrayList<EMMessage>();
-		Map<String, EMConversation> conversationTable = EMClient
-				.getInstance().chatManager().getAllConversations();//环信的消息管理器获取所有的谈话存入集合
-		if(conversationTable != null) {//如果有谈话
-			Iterator<String> keyIterator = conversationTable.keySet().iterator();
-			while(keyIterator.hasNext()) {
-				String conversationId = keyIterator.next();
-				EMConversation conversation = conversationTable.get(conversationId);
-				EMMessage message = conversation.getLastMessage();//获得最后一条的消息
-				if (message != null) {
-					if (!TextUtils.isEmpty(message.getStringAttribute("apns", ""))) {
-						if (message.isUnread()) {
-							mApnsMessages.add(message);
-						}
-					}
-				}
-			}
-		}
-		if (mApnsMessages.size() > 0) {
-			showUnReadApnsMessage(mApnsMessages.get(mApnsMessages.size() - 1));
-		}
-	}
-
-	private void showUnReadApnsMessage(final EMMessage message) {
-		if (mNotifitionDialog != null && mNotifitionDialog.isShowing()) {
-			mNotifitionDialog.dismiss();
-		}
-		String image = message.getStringAttribute("em_push_image", "");
-		String ext = message.getStringAttribute("em_apns_ext", "");
-		String title = message.getStringAttribute("em_push_title", "");
-		if (!TextUtils.isEmpty(ext)) {
-			JSONObject object = null;
-			try {
-				object = new JSONObject(ext);
-				title = object.optString("em_push_title");
-			} catch (JSONException e) {
-				e.printStackTrace();
-			}
-		}
-		if (TextUtils.isEmpty(image)) {
-			if(message.getIntAttribute("status", -1) == 0) {
-				mNotifitionDialog = DialogUtils.getMessageDialog(getActivity(), "", "查看", "关闭", title, new DialogUtils.OnDialogButtonClickListener() {
-					@Override
-					public void onItemClick(Dialog dialog, int btnId) {
-						if (btnId == DialogUtils.OnDialogButtonClickListener.BUTTON_CONFIRM) {
-							MessagePushUtils utils = new MessagePushUtils(MainFragment.this);
-							utils.handleMessage(message);
-						}
-						mNotifitionDialog.dismiss();
-					}
-				});
-				mNotifitionDialog.show();
-			} else {
-				MessagePushUtils utils = new MessagePushUtils(MainFragment.this);
-				utils.handleMessage(message);
-			}
-		} else {
-			mNotifitionDialog = DialogUtils.getActivityDialog(getActivity(), image, new View.OnClickListener() {
-				@Override
-				public void onClick(View v) {
-					MessagePushUtils pushUtils = new MessagePushUtils(MainFragment.this);
-					pushUtils.handleMessage(message);
-					mNotifitionDialog.dismiss();
-				}
-			}, new DialogUtils.OnLoadCompleteListener() {
-				@Override
-				public void onLoadComplete() {
-					mNotifitionDialog.show();
-				}
-			});
-		}
-		message.setUnread(false);
-	}
 
 	@Override
 	public void onNewIntent(Intent intent) {
@@ -328,11 +226,6 @@ public class MainFragment extends BaseUIFragment<UIFragmentHelper> {
 			if (!TextUtils.isEmpty(dataString) && !TextUtils.isEmpty(scheme)) {
 				handleUrlLoading(dataString);
 			} else {
-				if (intent.hasExtra("message")) {
-					EMMessage message = intent.getParcelableExtra("message");
-					MessagePushUtils pushUtils = new MessagePushUtils(this);
-					pushUtils.handleMessage(message);
-				}
 			}
 		}
 	}
@@ -543,9 +436,6 @@ public class MainFragment extends BaseUIFragment<UIFragmentHelper> {
 		if(mNotifitionDialog != null && mNotifitionDialog.isShowing()) {
 			mNotifitionDialog.dismiss();
 		}
-		if (mEmChatService != null) {
-			mEmChatService.getObserver().removeEMNewMessageListener(mNewMessageListener);
-		}
 		try {
 			removeAllFragment();
 		} catch (Exception e) {
@@ -602,15 +492,12 @@ public class MainFragment extends BaseUIFragment<UIFragmentHelper> {
 		protected void onPostExecute(BaseObject result) {
 			super.onPostExecute(result);
 			if (result == null) {
-				updateUnReadMessage();
 				return;
 			}
 			try {
 				OnlineGlobalInfo info = (OnlineGlobalInfo)result;
 				if (info != null && info.mInfos != null && info.mInfos.size() > 0) {
 					showNotifyDialog(info);
-				} else {
-					updateUnReadMessage();
 				}
 				if (info != null && info.maxQuestionNumPerHomework > 0) {
 					PreferencesController.setInt(ConstantsUtils.MAX_QUESTION_NUM_PREHOMEWORK, info.maxQuestionNumPerHomework);
