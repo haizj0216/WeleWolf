@@ -1,5 +1,8 @@
 package com.buang.welewolf.modules.services;
 
+import com.buang.welewolf.modules.utils.ToastUtils;
+import com.hyena.framework.clientlog.LogUtil;
+
 import io.rong.imlib.RongIMClient;
 
 /**
@@ -8,7 +11,7 @@ import io.rong.imlib.RongIMClient;
 
 public class RongIMServiceImp implements RongIMService {
 
-    private static String token = "WV/a5Hda3Gd21JuAXiMfyNsXl1pzRNjW6JeLItQRxhIGTg9hcL5uTR5QQR9bQCtheW8jQzFYzyGQDxbEeboS/w==";
+    private static String token = "lhWoeEat+RRfp7qIKUPZYdsXl1pzRNjW6JeLItQRxhIGTg9hcL5uTaRwli+WfUp1x5LXci0Iu8vYYXzvQu/OXg==";
     private RongIMObserver observer = new RongIMObserver();
 
     @Override
@@ -27,6 +30,7 @@ public class RongIMServiceImp implements RongIMService {
             @Override
             public void onSuccess(String s) {
                 observer.notifyOnConnectSuccess(s);
+                LogUtil.d("RongUserID", "targetID:" + s);
             }
 
             @Override

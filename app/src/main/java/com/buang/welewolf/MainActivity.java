@@ -132,8 +132,6 @@ public class MainActivity extends NavigateActivity {
 		if(!App.mIsEmChatConntcted){
 			showConflictDialog();
 		}
-		RongIMService rongIMService = (RongIMService) getSystemService(RongIMService.SERVICE_NAME);
-		rongIMService.connect();
 	}
 
 	private void initImpl(){

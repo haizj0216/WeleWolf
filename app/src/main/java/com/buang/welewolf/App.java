@@ -27,6 +27,7 @@ import com.hyena.framework.utils.BaseApp;
 import java.util.Iterator;
 import java.util.List;
 
+import io.rong.imkit.RongIM;
 import io.rong.imlib.RongIMClient;
 
 /**
@@ -54,7 +55,7 @@ public class App extends BaseApp {
 
 //		locationService = new LocationService(getApplicationContext());
 
-		RongIMClient.init(this);
+		RongIM.init(this);
 
 		//初始化崩溃统计
 		CrashHelper.init();

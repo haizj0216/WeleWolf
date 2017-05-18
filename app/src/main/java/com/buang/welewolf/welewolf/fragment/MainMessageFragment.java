@@ -1,31 +1,98 @@
 package com.buang.welewolf.welewolf.fragment;
 
+import android.content.Intent;
+import android.content.SharedPreferences;
+import android.net.Uri;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
+import android.text.TextUtils;
 import android.view.View;
 
-import com.hyena.framework.app.fragment.BaseUIFragment;
+import com.buang.welewolf.R;
+import com.buang.welewolf.modules.services.OnRongIMConnectListener;
+import com.buang.welewolf.modules.services.RongIMService;
+import com.buang.welewolf.modules.utils.ToastUtils;
 import com.buang.welewolf.modules.utils.UIFragmentHelper;
+import com.hyena.framework.app.fragment.BaseUIFragment;
+import com.hyena.framework.datacache.BaseObject;
+
+import java.util.List;
+
+import io.rong.imkit.RongIM;
+import io.rong.imkit.fragment.ConversationListFragment;
+import io.rong.imlib.RongIMClient;
+import io.rong.imlib.model.Conversation;
+import io.rong.message.ContactNotificationMessage;
 
 /**
  * Created by weilei on 17/4/24.
  */
 public class MainMessageFragment extends BaseUIFragment<UIFragmentHelper> {
 
+    private final int ACTION_GET_CONVERSATION = 1;
+
+    private ConversationListFragment mConversationListFragment;
+    private RongIMService rongIMService;
+
     @Override
     public void onCreateImpl(Bundle savedInstanceState) {
         super.onCreateImpl(savedInstanceState);
         setSlideable(false);
         setTitleStyle(STYLE_NO_TITLE);
-        setStatusTintBarEnable(true);
+        rongIMService = (RongIMService) getSystemService(RongIMService.SERVICE_NAME);
+        rongIMService.getObserver().addOnRongIMConnectListener(onRongIMConnectListener);
     }
 
     @Override
     public View onCreateViewImpl(Bundle savedInstanceState) {
-        return View.inflate(getActivity(), com.buang.welewolf.R.layout.layout_main_message, null);
+        return View.inflate(getActivity(), R.layout.layout_main_message, null);
     }
 
     @Override
     public void onViewCreatedImpl(View view, Bundle savedInstanceState) {
         super.onViewCreatedImpl(view, savedInstanceState);
+        rongIMService.connect();
+        mConversationListFragment = (ConversationListFragment) getActivity().getSupportFragmentManager().findFragmentById(R.id.ivConversationList);
+
+    }
+
+    private void initFragment() {
+        Uri uri = Uri.parse("rong://" + getActivity().getApplicationInfo().packageName).buildUpon()
+                .appendPath("conversationlist")
+                .appendQueryParameter(Conversation.ConversationType.PRIVATE.getName(), "true") //设置私聊会话非聚合显示
+                .appendQueryParameter(Conversation.ConversationType.GROUP.getName(), "true")//设置群组会话聚合显示
+                .appendQueryParameter(Conversation.ConversationType.DISCUSSION.getName(), "false")//设置讨论组会话非聚合显示
+                .appendQueryParameter(Conversation.ConversationType.SYSTEM.getName(), "false")//设置系统会话非聚合显示
+                .build();
+
+        mConversationListFragment.setUri(uri);
+    }
+
+    OnRongIMConnectListener onRongIMConnectListener = new OnRongIMConnectListener() {
+        @Override
+        public void onLoginSuccess(String s) {
+            ToastUtils.showShortToast(getActivity(), "连接成功" + s);
+            initFragment();
+        }
+
+        @Override
+        public void onLoginError(RongIMClient.ErrorCode errorCode) {
+
+        }
+    };
+
+    @Override
+    public BaseObject onProcess(int action, int pageNo, Object... params) {
+        if (action == ACTION_GET_CONVERSATION) {
+
+        }
+        return super.onProcess(action, pageNo, params);
+    }
+
+    @Override
+    public void onDestroyImpl() {
+        super.onDestroyImpl();
+        rongIMService.getObserver().removeOnRongIMConnectListener(onRongIMConnectListener);
     }
 }

@@ -99,13 +99,10 @@
             android:background="@color/color_divider" />
     </RelativeLayout>
 
-    <ListView
-        android:id="@+id/ivlistview"
+    <fragment
+        android:id="@+id/ivConversationList"
+        android:name="io.rong.imkit.fragment.ConversationListFragment"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:cacheColorHint="@android:color/transparent"
-        android:divider="@android:color/transparent"
-        android:dividerHeight="0dp"
-        android:listSelector="@android:color/transparent" />
+        android:layout_height="wrap_content" />
 
 </LinearLayout>
