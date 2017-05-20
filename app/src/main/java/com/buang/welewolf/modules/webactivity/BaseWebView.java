@@ -12,19 +12,17 @@ import android.webkit.WebChromeClient;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
-import com.buang.welewolf.modules.classes.AddGradeClassFragment;
+import com.buang.welewolf.modules.message.utils.MessagePushUtils;
 import com.buang.welewolf.modules.profile.ActivityWebViewFragment;
-import com.buang.welewolf.modules.profile.UserAuthNotyetFragment;
+import com.buang.welewolf.modules.utils.ConstantsUtils;
+import com.buang.welewolf.modules.utils.DialogUtils;
+import com.buang.welewolf.modules.utils.ToastUtils;
 import com.hyena.framework.app.fragment.BaseUIFragment;
 import com.hyena.framework.clientlog.LogUtil;
 import com.hyena.framework.utils.UiThreadHandler;
 import com.knowbox.base.service.share.ShareContent;
 import com.knowbox.base.service.share.ShareListener;
 import com.knowbox.base.service.share.ShareService;
-import com.buang.welewolf.modules.message.utils.MessagePushUtils;
-import com.buang.welewolf.modules.utils.ConstantsUtils;
-import com.buang.welewolf.modules.utils.DialogUtils;
-import com.buang.welewolf.modules.utils.ToastUtils;
 
 import org.apache.http.protocol.HTTP;
 import org.json.JSONArray;
@@ -282,24 +280,10 @@ public class BaseWebView extends WebView{
                     handleUrlLoading(array.getString(i));
                 }
             }
-        } else if ("Authentication".equals(methodName)){
-            UserAuthNotyetFragment fragment = (UserAuthNotyetFragment) Fragment.
-                    instantiate(mFragment.getActivity(), UserAuthNotyetFragment.class.getName());
-            mFragment.showFragment(fragment);
         } else if("openNewWindow".equals(methodName)) {
             String title = paramsMap.get("title");
             String url = paramsMap.get("url");
             jsBridge.openWindow(title, url);
-        } else if("createClass".equals(methodName)) {
-            Bundle mBundle = new Bundle();
-            mBundle.putInt("type", AddGradeClassFragment.TYPE_ADD_CLASS);
-            AddGradeClassFragment fragment = (AddGradeClassFragment) Fragment
-                    .instantiate(mFragment.getActivity(),
-                            AddGradeClassFragment.class.getName(), mBundle);
-            mFragment.showFragment(fragment);
-            if (mOnWebViewListener != null) {
-                mOnWebViewListener.onFinishFragment();
-            }
         } else if("AssignHomework".equals(methodName)) {
             if (mOnWebViewListener != null) {
                 mOnWebViewListener.onFinishFragment();

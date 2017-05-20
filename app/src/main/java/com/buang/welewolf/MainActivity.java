@@ -25,16 +25,12 @@ import com.buang.welewolf.base.services.update.CheckVersionListener;
 import com.buang.welewolf.base.services.update.UpdateService;
 import com.buang.welewolf.base.utils.DirContext;
 import com.buang.welewolf.base.utils.PreferencesController;
-import com.buang.welewolf.modules.homework.assign.AssignSelectPublisherFragment;
 import com.buang.welewolf.modules.login.IntroduceFragment;
-import com.buang.welewolf.modules.login.LoginFragment;
 import com.buang.welewolf.modules.login.SplashFragment;
 import com.buang.welewolf.modules.login.services.LoginService;
 import com.buang.welewolf.modules.login.services.UpdateJiaocaiListener;
 import com.buang.welewolf.modules.login.services.UserStateChangeListener;
 import com.buang.welewolf.modules.main.MainFragment;
-import com.buang.welewolf.modules.profile.MainSelectSubjectFragment;
-import com.buang.welewolf.modules.services.RongIMService;
 import com.buang.welewolf.modules.utils.BoxViewBuilder;
 import com.buang.welewolf.modules.utils.ConstantsUtils;
 import com.buang.welewolf.modules.utils.DialogUtils;
@@ -42,6 +38,7 @@ import com.buang.welewolf.modules.utils.PackageUpdateTask;
 import com.buang.welewolf.modules.utils.UIFragmentHelper;
 import com.buang.welewolf.modules.utils.Utils;
 import com.buang.welewolf.modules.utils.VirtualClassUtils;
+import com.buang.welewolf.welewolf.login.LoginFragment;
 import com.hyena.framework.app.activity.NavigateActivity;
 import com.hyena.framework.app.fragment.BaseFragment;
 import com.hyena.framework.app.fragment.BaseUIFragment;
@@ -199,24 +196,14 @@ public class MainActivity extends NavigateActivity {
 			case SCENE_SPLASH:
 				showSplashWindows();
 				break;
-
 			case SCENE_INTRODUCE:
 				showIntroduceWindow();
 				break;
-
 			case SCENE_MAIN:
 				showMainWindows();
 				break;
-
-			case SCENE_SUBJECT:
-				showSubjectFragment();
-				break;
-
 			case SCENE_LOGIN:
 				showLoginFragment();
-				break;
-			case SCENE_BOOK:
-				showSelectBook();
 				break;
 			default:
 				break;
@@ -261,18 +248,6 @@ public class MainActivity extends NavigateActivity {
 	 */
 	private void clearPrefsOnExit(boolean isLogOut) {
 	}
-
-//	BroadcastReceiver mReceiver = new BroadcastReceiver() {
-//		@Override
-//		public void onReceive(Context context, Intent intent) {
-//			String action = intent.getAction();
-//			if (action.equals(ActionUtils.ACTION_TEACHINGMATERIAL_UPDATE)) {
-//				if (intent.getBooleanExtra(ConstantsUtils.IS_NEWUSER, false)) {
-//					showScene(SCENE_MAIN);
-//				}
-//			}
-//		}
-//	};
 
 	// 用户状态变化监听器
 	private UserStateChangeListener mStateChangeListener = new UserStateChangeListener() {
@@ -478,20 +453,13 @@ public class MainActivity extends NavigateActivity {
 		fragment.setSplashActionListener(new SplashFragment.SplashActionListener() {
 			@Override
 			public void onShowMainWindows() {//处于登录转态
-				if (TextUtils.isEmpty(Utils.getLoginUserItem().gradePart)) {
-					showScene(SCENE_SUBJECT);
-				} else if (TextUtils.isEmpty(Utils.getLoginUserItem().mEditionId) ||
-						TextUtils.isEmpty(Utils.getLoginUserItem().mBookId)) {
-					showScene(SCENE_BOOK);
-				}else {
-					showScene(SCENE_MAIN);
-				}
+				showScene(SCENE_MAIN);
 				initImpl();
 			}
 
 			@Override
 			public void onShowIntroduceWindow() {
-				showScene(SCENE_INTRODUCE);
+				showScene(SCENE_MAIN);
 				initImpl();
 			}
 		});
@@ -506,41 +474,6 @@ public class MainActivity extends NavigateActivity {
 		IntroduceFragment fragment = (IntroduceFragment) Fragment.instantiate(
 				this, IntroduceFragment.class.getName(), null);
 		fragment.setAnimationType(BaseUIFragment.AnimType.ANIM_NONE);
-		showFragment(fragment);
-		removeAllFragment();
-	}
-
-	/**
-	 * 学科选择页
-	 */
-	private void showSubjectFragment() {
-		LogUtil.d("showSubjectFragment");
-		Bundle mBundle = new Bundle();
-		mBundle.putInt(ConstantsUtils.SUBJECT_FROM, MainSelectSubjectFragment.FROM_MAINACTIVITY);
-		MainSelectSubjectFragment fragment = MainSelectSubjectFragment.newFragment(this,
-				MainSelectSubjectFragment.class, mBundle, BaseUIFragment.AnimType.ANIM_NONE);
-		fragment.setOnSubjectSelectListener(new MainSelectSubjectFragment.OnSubjectSelectListener() {
-			@Override
-			public void onSubjectSelect() {
-				showScene(SCENE_BOOK);
-//				showScene(SCENE_MAIN);
-			}
-		});
-		showFragment(fragment);
-		removeAllFragment();
-	}
-
-	/**
-	 * 选择学段之后教材选择
-	 */
-	private void showSelectBook() {
-		LogUtil.d("showSelectBook");
-		Bundle bundle = new Bundle();
-		bundle.putBoolean(ConstantsUtils.FORCE_SETTING, true);
-		bundle.putBoolean(ConstantsUtils.IS_NEWUSER, true);//没有设置教材的用户再此定义为新用户
-		bundle.putString(ConstantsUtils.CLAZZ_NAME, MainActivity.class.getName());
-		AssignSelectPublisherFragment fragment = AssignSelectPublisherFragment
-				.newFragment(this, AssignSelectPublisherFragment.class, bundle, BaseUIFragment.AnimType.ANIM_NONE);
 		showFragment(fragment);
 		removeAllFragment();
 	}

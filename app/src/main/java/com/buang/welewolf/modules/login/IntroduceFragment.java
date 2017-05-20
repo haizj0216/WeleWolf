@@ -5,6 +5,7 @@ import android.support.v4.view.ViewPager;
 import android.view.KeyEvent;
 import android.view.View;
 
+import com.buang.welewolf.welewolf.login.LoginFragment;
 import com.hyena.framework.app.adapter.SimplePagerAdapter;
 import com.hyena.framework.app.fragment.BaseUIFragment;
 import com.hyena.framework.utils.BaseApp;

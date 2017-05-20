@@ -8,10 +8,6 @@ import com.buang.welewolf.base.services.player.AudioPlayerService;
 import com.buang.welewolf.base.services.player.AudioPlayerServiceImp;
 import com.buang.welewolf.base.services.update.UpdateService;
 import com.buang.welewolf.base.services.update.UpdateServiceImpl;
-import com.buang.welewolf.base.services.updateclass.UpdateClassService;
-import com.buang.welewolf.base.services.updateclass.UpdateClassServiceImpl;
-import com.buang.welewolf.modules.homework.services.HomeworkService;
-import com.buang.welewolf.modules.homework.services.HomeworkServiceImp;
 import com.buang.welewolf.modules.login.services.LoginService;
 import com.buang.welewolf.modules.login.services.LoginServiceImpl;
 import com.buang.welewolf.modules.services.RongIMService;
@@ -57,7 +53,6 @@ public class BoxServiceManager extends BaseServiceManager {
 		registService(LoginService.SERVICE_NAME, new LoginServiceImpl());//登录服务
 		registService(DebugService.SERVICE_NAME, new DebugServiceImpl());//Debug服务
 		registService(ShareService.SERVICE_NAME, new ShareSDKService());
-		registService(HomeworkService.SERVICE_NAME, new HomeworkServiceImp());
 		registService(UploadService.SERVICE_NAME_QINIU, new QNUploadServiceImpl(){
 			@Override
 			public String getPicTokenUrl() {
@@ -70,7 +65,6 @@ public class BoxServiceManager extends BaseServiceManager {
 			}
 		});
 		registService(UpdateService.SERVICE_NAME, new UpdateServiceImpl());
-		registService(UpdateClassService.SERVICE_NAME, new UpdateClassServiceImpl());
 		registService(AudioPlayerService.SERVICE_NAME, new AudioPlayerServiceImp());
 		registService(RongIMService.SERVICE_NAME, new RongIMServiceImp());
 	}
