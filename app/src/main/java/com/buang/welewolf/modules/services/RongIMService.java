@@ -1,5 +1,7 @@
 package com.buang.welewolf.modules.services;
 
+import android.content.Context;
+
 import com.hyena.framework.servcie.BaseService;
 
 import java.util.List;
@@ -19,4 +21,9 @@ public interface RongIMService extends BaseService {
     public void connect();
 
     public void disConnect();
+
+    public void logout();
+
+    public void startConversation(Context context, Conversation.ConversationType conversationType, String targetId, String title);
+
 }

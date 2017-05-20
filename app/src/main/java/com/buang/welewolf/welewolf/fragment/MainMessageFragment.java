@@ -1,15 +1,12 @@
 package com.buang.welewolf.welewolf.fragment;
 
-import android.content.Intent;
-import android.content.SharedPreferences;
+import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentTransaction;
-import android.text.TextUtils;
 import android.view.View;
 
 import com.buang.welewolf.R;
+import com.buang.welewolf.modules.message.ConversationActivity;
 import com.buang.welewolf.modules.services.OnRongIMConnectListener;
 import com.buang.welewolf.modules.services.RongIMService;
 import com.buang.welewolf.modules.utils.ToastUtils;
@@ -17,13 +14,11 @@ import com.buang.welewolf.modules.utils.UIFragmentHelper;
 import com.hyena.framework.app.fragment.BaseUIFragment;
 import com.hyena.framework.datacache.BaseObject;
 
-import java.util.List;
-
 import io.rong.imkit.RongIM;
 import io.rong.imkit.fragment.ConversationListFragment;
+import io.rong.imkit.model.UIConversation;
 import io.rong.imlib.RongIMClient;
 import io.rong.imlib.model.Conversation;
-import io.rong.message.ContactNotificationMessage;
 
 /**
  * Created by weilei on 17/4/24.
@@ -53,8 +48,9 @@ public class MainMessageFragment extends BaseUIFragment<UIFragmentHelper> {
     public void onViewCreatedImpl(View view, Bundle savedInstanceState) {
         super.onViewCreatedImpl(view, savedInstanceState);
         rongIMService.connect();
-        mConversationListFragment = (ConversationListFragment) getActivity().getSupportFragmentManager().findFragmentById(R.id.ivConversationList);
-
+        if (mConversationListFragment == null) {
+            mConversationListFragment = (ConversationListFragment) getActivity().getSupportFragmentManager().findFragmentById(R.id.ivConversationList);
+        }
     }
 
     private void initFragment() {
@@ -80,7 +76,23 @@ public class MainMessageFragment extends BaseUIFragment<UIFragmentHelper> {
         public void onLoginError(RongIMClient.ErrorCode errorCode) {
 
         }
+
+        @Override
+        public void onLoginOut() {
+
+        }
+
+        @Override
+        public void onDisconnect() {
+
+        }
+
+        @Override
+        public void onConnectStatus(RongIMClient.ConnectionStatusListener.ConnectionStatus status) {
+
+        }
     };
+
 
     @Override
     public BaseObject onProcess(int action, int pageNo, Object... params) {

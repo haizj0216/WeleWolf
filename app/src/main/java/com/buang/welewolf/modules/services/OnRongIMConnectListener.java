@@ -11,4 +11,10 @@ public interface OnRongIMConnectListener {
     public void onLoginSuccess(String s);
 
     public void onLoginError(RongIMClient.ErrorCode errorCode);
+
+    public void onLoginOut();
+
+    public void onDisconnect();
+
+    public void onConnectStatus(RongIMClient.ConnectionStatusListener.ConnectionStatus status);
 }

@@ -33,4 +33,21 @@ public class RongIMObserver {
         }
     }
 
+    public void notifyDisConnect() {
+        for (int i = 0; i < rongIMConnectListeners.size(); i++) {
+            rongIMConnectListeners.get(i).onDisconnect();
+        }
+    }
+
+    public void notifyLogout() {
+        for (int i = 0; i < rongIMConnectListeners.size(); i++) {
+            rongIMConnectListeners.get(i).onLoginOut();
+        }
+    }
+    public void notifyConnectStatus(RongIMClient.ConnectionStatusListener.ConnectionStatus status) {
+        for (int i = 0; i < rongIMConnectListeners.size(); i++) {
+            rongIMConnectListeners.get(i).onConnectStatus(status);
+        }
+    }
+
 }
