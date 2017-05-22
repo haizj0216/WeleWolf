@@ -6,7 +6,6 @@ package com.buang.welewolf.base.bean;
 import android.text.TextUtils;
 
 import com.hyena.framework.datacache.BaseObject;
-import com.buang.welewolf.base.database.bean.ClassInfoItem;
 import com.buang.welewolf.base.database.bean.UserItem;
 import com.buang.welewolf.base.utils.PreferencesController;
 import com.buang.welewolf.modules.utils.ConstantsUtils;
@@ -24,7 +23,6 @@ import java.util.List;
 public class OnlineLoginInfo extends BaseObject {
 	
 	public UserItem mUserItem;
-	public List<ClassInfoItem> mClassItems;
 	public String mMessage;
 	//{"code":99999,"message":"success","requestId":"58a7eeb68cfae242","data":[]}
 	
@@ -114,39 +112,6 @@ public class OnlineLoginInfo extends BaseObject {
 				PreferencesController.setBoolean(ConstantsUtils.PREFS_ISNEW_TEACHER, isNew);
 			}
 
-			if(json.has("classList")){
-				JSONArray bArray = json.optJSONArray("classList");
-				mClassItems = new ArrayList<ClassInfoItem>();
-				for (int i = 0; i < bArray.length(); i++) {
-					ClassInfoItem info = new ClassInfoItem();
-					JSONObject bitemJson = bArray.optJSONObject(i);
-					String classID = bitemJson.optString("classID");
-					String classCode = bitemJson.optString("classCode");
-					String className = bitemJson.optString("className");
-					String _subject = bitemJson.optString("subject");
-					String courseID = bitemJson.optString("courseID");
-					int studentNum = bitemJson.optInt("studentCount");
-					int isClose = bitemJson.optInt("isClose");
-					String groupId = bitemJson.optString("groupID");
-					String grade = bitemJson.optString("grade");
-					String createTime = bitemJson.optString("createTime");
-					String image = bitemJson.optString("image");
-					
-					info.subjectId = bitemJson.optInt("subjectCode");
-					info.classId = classID;
-					info.className = className;
-					info.classCode = classCode;
-					info.subject = _subject;
-					info.courseId = courseID;
-					info.studentNum = studentNum;
-					info.groupId = groupId;
-					info.grade = grade;
-					info.createTime = createTime;
-					info.mHeadPhoto = image;
-					info.state = isClose;
-					mClassItems.add(info);
-				}
-			}
 		}else{
 			String result = data.optString("code");
 			if (result.equals("failure")) {

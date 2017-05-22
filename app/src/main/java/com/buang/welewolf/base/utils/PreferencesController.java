@@ -6,8 +6,6 @@ import android.content.SharedPreferences;
 import android.content.SharedPreferences.OnSharedPreferenceChangeListener;
 
 import com.hyena.framework.utils.BaseApp;
-import com.buang.welewolf.base.bean.OnlineHomeworkSectionsInfo.SectionInfo;
-import com.buang.welewolf.base.database.bean.HomeworkItem;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -181,19 +179,6 @@ public class PreferencesController {
 		mEditor.commit();
 	}
 	
-	public static void setPreloadState(String homeworkId, int status){
-		getInstance().setIntValue("preload_" + homeworkId, status);
-	}
-	
-	public static int getPreoadState(String homeworkId){
-		int status = getInstance().getIntValue("preload_" + homeworkId, HomeworkItem.STATUS_INIT);
-		return status;
-	}
-	
-	public static void setStringList(String key, List<String> list) {
-		getInstance().setStringListValue(key, list);
-	}
-	
 	private void setStringListValue(String key, List<String> list) {
 		if(list == null || list.isEmpty()) {
 			mEditor.remove(key + "_size");
@@ -254,45 +239,6 @@ public class PreferencesController {
 		for(int i = 0; i< size; i++) {
 			int string = mSharedPreferences.getInt(key + "_" + i, 0);
 			lists.add(string);
-		}
-		return lists;
-	}
-	
-	public static void setSectionInfo(String key, List<SectionInfo> list) {
-		getInstance().setSectionInfoValue(key, list);
-	}
-	
-	private void setSectionInfoValue(String key, List<SectionInfo> list) {
-		if(list == null || list.isEmpty()) {
-			mEditor.remove(key + "_size");
-			mEditor.commit();
-			return;
-		}
-		int size = list.size();
-		mEditor.putInt(key + "_size",list.size());
-		for (int i = 0; i< size; i++) {
-			mEditor.remove(key + "_" + i + "_name");
-			mEditor.putString(key + "_" + i + "_name", list.get(i).mSectionName);
-			mEditor.remove(key + "_" + i + "_value");
-			mEditor.putString(key + "_" + i + "_value", list.get(i).mSectionId);
-		}
-		mEditor.commit();
-	}
-	
-	public static List<SectionInfo> getSectionInfoList(String key) {
-		return getInstance().getSectionInfoListValue(key);
-	}
-	
-	private List<SectionInfo> getSectionInfoListValue(String key) {
-		int size = mSharedPreferences.getInt(key + "_size", 0);
-		if(size == 0) 
-			return null;
-		List<SectionInfo> lists = new ArrayList<SectionInfo>();
-		for(int i = 0; i< size; i++) {
-			SectionInfo info = new SectionInfo();
-			info.mSectionName = mSharedPreferences.getString(key + "_" + i + "_name", "");
-			info.mSectionId = mSharedPreferences.getString(key + "_" + i + "_value", "");
-			lists.add(info);
 		}
 		return lists;
 	}

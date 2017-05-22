@@ -32,7 +32,6 @@ import com.hyena.framework.utils.UiThreadHandler;
 import com.knowbox.base.utils.ImageFetcher;
 import com.knowbox.base.utils.ImageFetcher.ImageFetcherListener;
 import com.buang.welewolf.modules.utils.ConstantsUtils;
-import com.buang.welewolf.modules.utils.TemplateUtils;
 
 import org.xml.sax.XMLReader;
 
@@ -364,62 +363,7 @@ public class StringUtils {
 	 * @param html
 	 */
 	public static void setStemHtml(final WebView webView, final String html, final String color) {
-		UiThreadHandler.postDelayed(new Runnable() {
-			@Override
-			public void run() {
-				StringBuffer scriptBuffer = new StringBuffer();
-				int maxWidth = UIUtils.px2dip(webView.getWidth()- 40);
-				scriptBuffer.append( "<script type=\"text/javascript\">")
-						.append("window.onload=scaleimage;function scaleimage(){")
-						.append("for(var i=0;i< document.getElementsByTagName(\"img\").length;i++)")
-						.append("{var imgeElement = document.getElementsByTagName(\"img\")[i];")
-						.append("imgeElement.style.maxWidth=\""+maxWidth+"px\";}}")
-						.append("</script>");
-				try {
-					File file = new File(new TemplateUtils().getTemplatePath("question_trunk.html"));
-					byte data[];
-					String baseUrl;
-					if (file.exists()) {
-						data = FileUtils.getBytes(file);
-						baseUrl = "file://" + file.getParentFile().getAbsolutePath() + File.separator;
-					} else {
-						data = FileUtils.getBytes(webView.getContext().getResources().getAssets().open("question_trunk.html"));
-						baseUrl = "file:///android_asset/";
-					}
-					if (data == null || data.length == 0) {
-						data = FileUtils.getBytes(webView.getContext().getResources().getAssets().open("question_trunk.html"));
-					}
-					String sTrunkTemplate = new String(data);
-					sTrunkTemplate = sTrunkTemplate.replace("${script}", scriptBuffer.toString());
-					sTrunkTemplate = sTrunkTemplate.replace("${html}", html);
-					sTrunkTemplate = TemplateUtils.clearExtraLlktCss(sTrunkTemplate);
-					sTrunkTemplate = TemplateUtils.replaceBundleJs(sTrunkTemplate);
-					sTrunkTemplate = TemplateUtils.replaceLlktCss(sTrunkTemplate);
 
-					if (!TextUtils.isEmpty(color)) {
-						sTrunkTemplate = sTrunkTemplate.replace("#5e6166", color);
-					}
-					if (webView != null) {
-						webView.getSettings().setJavaScriptEnabled(true);
-						webView.getSettings().setUserAgentString(ConstantsUtils.WEB_USER_AGENT);
-						webView.loadDataWithBaseURL(baseUrl, sTrunkTemplate, "text/html", "UTF-8", null);
-					}
-				} catch (IOException e) {
-					e.printStackTrace();
-				}
-
-			}
-		}, 100);
-
-	}
-
-	/**
-	 * 初始化题干内容
-	 *
-	 * @param html
-	 */
-	public static void setStemHtml(final WebView webView, final String html) {
-		setStemHtml(webView, html, "");
 	}
 
 	/**

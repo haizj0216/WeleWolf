@@ -11,7 +11,6 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v4.app.Fragment;
-import android.text.TextUtils;
 import android.view.MotionEvent;
 import android.view.View;
 import android.webkit.WebView;
@@ -19,7 +18,6 @@ import android.widget.TextView;
 
 import com.buang.welewolf.base.bean.OnlineVersion;
 import com.buang.welewolf.base.database.bean.UserItem;
-import com.buang.welewolf.base.database.tables.QuestionTable;
 import com.buang.welewolf.base.http.services.OnlineServices;
 import com.buang.welewolf.base.services.update.CheckVersionListener;
 import com.buang.welewolf.base.services.update.UpdateService;
@@ -36,7 +34,6 @@ import com.buang.welewolf.modules.utils.ConstantsUtils;
 import com.buang.welewolf.modules.utils.DialogUtils;
 import com.buang.welewolf.modules.utils.PackageUpdateTask;
 import com.buang.welewolf.modules.utils.UIFragmentHelper;
-import com.buang.welewolf.modules.utils.Utils;
 import com.buang.welewolf.modules.utils.VirtualClassUtils;
 import com.buang.welewolf.welewolf.login.LoginFragment;
 import com.hyena.framework.app.activity.NavigateActivity;
@@ -257,8 +254,6 @@ public class MainActivity extends NavigateActivity {
 			UiThreadHandler.postDelayed(new Runnable() {
 				@Override
 				public void run() {
-					QuestionTable table = DataBaseManager.getDataBaseManager().getTable(QuestionTable.class);
-					table.clearQuestions();
 					clearPrefsOnExit(true);
 					//登出之后显示登录页
 					showScene(SCENE_LOGIN);
@@ -275,8 +270,6 @@ public class MainActivity extends NavigateActivity {
 			UiThreadHandler.post(new Runnable() {
 				@Override
 				public void run() {
-					QuestionTable table = DataBaseManager.getDataBaseManager().getTable(QuestionTable.class);
-					table.clearQuestions();
 
 					if(user.gradePart.isEmpty()) {
 						showScene(SCENE_SUBJECT);

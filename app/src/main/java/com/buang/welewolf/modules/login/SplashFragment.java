@@ -12,7 +12,6 @@ import android.view.KeyEvent;
 import android.view.View;
 import android.widget.ImageView;
 
-import com.buang.welewolf.base.bean.OnlineGlobalInfo;
 import com.buang.welewolf.base.http.services.OnlineServices;
 import com.buang.welewolf.base.services.update.UpdateService;
 import com.buang.welewolf.base.utils.DirContext;
@@ -79,10 +78,6 @@ public class SplashFragment extends BaseUIFragment {
 
         SplashTask mSplashTask = new SplashTask();
         mSplashTask.execute();
-
-        DataLoaderTask mLoadTask = new DataLoaderTask();
-        mLoadTask.execute();
-
     }
 
     public static Bitmap createSplashBitmap(String path) {
@@ -154,55 +149,6 @@ public class SplashFragment extends BaseUIFragment {
         }
     }
 
-    private class DataLoaderTask extends AsyncTask<Object, Void, Void> {
-
-        public DataLoaderTask() {
-            super();
-        }
-
-        @Override
-        protected Void doInBackground(Object... params) {
-            try {
-                String url = OnlineServices.getTeacherGlobalInfoUrl();
-                OnlineGlobalInfo result = new DataAcquirer<OnlineGlobalInfo>().acquire(
-                        url, new OnlineGlobalInfo(), -1);
-                if (result != null && result.isAvailable() && result.mGreets.size() > 0) {
-                    OnlineGlobalInfo.OnlineGreetItem mGreetItem = result.mGreets.get(0);
-                    final String fileName = DirContext.getImageCacheDir() + File.separator
-                            + "greetingimages";
-                    if (!SplashFragment.fileIsExists || TextUtils.isEmpty(PreferencesController.getStringValue(ConstantsUtils.GREETING_BOUTH_TIME))
-                            || !String.valueOf(mGreetItem.timestamp).equals(PreferencesController.getStringValue(ConstantsUtils.GREETING_BOUTH_TIME))) {
-
-                        final String loadUrl = mGreetItem.mImageUrl;
-                        final String jumpUrl = mGreetItem.mJumpUrl;
-                        final long time = mGreetItem.timestamp;
-                        HttpHelper.storeFile(loadUrl, fileName, new HttpHelper.ProgressListener() {
-                            @Override
-                            public void onStart(long total) {
-                            }
-
-                            @Override
-                            public void onAdvance(long len, long total) {
-                            }
-
-                            @Override
-                            public void onComplete(boolean isSuccess) {
-                                if (isSuccess) {
-                                    PreferencesController.setStringValue(ConstantsUtils.GREETING_IMAGEURL, loadUrl);
-                                    PreferencesController.setStringValue(ConstantsUtils.GREETING_JUMPURL, jumpUrl);
-                                    PreferencesController.setStringValue(ConstantsUtils.GREETING_IMG_FIELPATH, fileName);
-                                    PreferencesController.setStringValue(ConstantsUtils.GREETING_BOUTH_TIME, String.valueOf(time));
-                                }
-                            }
-                        });
-                    }
-                }
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-            return null;
-        }
-    }
 
     private SplashActionListener mActionListener;
 

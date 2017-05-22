@@ -2,10 +2,7 @@ package com.buang.welewolf.base.database;
 
 import android.content.Context;
 
-import com.buang.welewolf.base.database.tables.AnswerTable;
-import com.buang.welewolf.base.database.tables.ClassInfoTable;
 import com.buang.welewolf.base.database.tables.CorrectFailureTable;
-import com.buang.welewolf.base.database.tables.QuestionTable;
 import com.buang.welewolf.base.database.tables.UserTable;
 import com.hyena.framework.database.BaseDataBaseHelper;
 import com.hyena.framework.database.DataBaseHelper;
@@ -32,10 +29,6 @@ public class KnowboxDataBase extends BaseDataBaseHelper {
     @Override
     public void initTablesImpl(DataBaseHelper db) {
         mDataBaseHelper = db;
-        addTable(AnswerTable.class, new AnswerTable(db));//答案内容表
-//        addTable(ClassInfoTable.class, new ClassInfoTable(db));//班级信息表
-        addTable(CorrectFailureTable.class, new ClassInfoTable(db));//上传失败表
-        addTable(QuestionTable.class, new QuestionTable(db));//题目信息表
         addTable(UserTable.class, new UserTable(db));//用户表
     }
 }
