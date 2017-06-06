@@ -55,6 +55,7 @@ public class GuildInfoFragment extends BaseUIFragment<UIFragmentHelper> {
                     finish();
                     break;
                 case R.id.rvMembers:
+                    openMemberListFragment();
                     break;
             }
         }
@@ -81,6 +82,7 @@ public class GuildInfoFragment extends BaseUIFragment<UIFragmentHelper> {
     }
 
     private void openMemberListFragment() {
-
+        GuildMemberFragment fragment = GuildMemberFragment.newFragment(getActivity(), GuildMemberFragment.class, null);
+        showFragment(fragment);
     }
 }

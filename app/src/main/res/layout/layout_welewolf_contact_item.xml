@@ -28,7 +28,7 @@
         android:ellipsize="end"
         android:lines="1"
         android:text="Alice"
-        android:textColor="@color/color_text_main"
+        android:textColor="@color/color_4c4b54"
         android:textSize="16dp" />
 
     <TextView

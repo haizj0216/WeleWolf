@@ -1,0 +1,74 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="60dp"
+    android:gravity="center_vertical"
+    android:minHeight="60dp">
+
+    <ImageView
+        android:id="@+id/ivHead"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginLeft="15dp"
+        android:src="@drawable/bt_message_default_head" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tvName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:lines="1"
+            android:text="啦啦啦啦啦"
+            android:textColor="@color/color_4c4b54"
+            android:textSize="14dp" />
+
+        <TextView
+            android:id="@+id/tvLevel"
+            android:layout_width="50dp"
+            android:layout_height="18dp"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/bg_level"
+            android:ellipsize="end"
+            android:gravity="center"
+            android:lines="1"
+            android:text="LV.10"
+            android:textColor="@color/white"
+            android:textSize="13dp" />
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tvPost"
+        android:layout_width="70dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="会长"
+        android:textColor="@color/color_4c4b54"
+        android:textSize="14dp" />
+
+    <TextView
+        android:id="@+id/tvActive"
+        android:layout_width="50dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="23456"
+        android:textColor="@color/color_4c4b54"
+        android:textSize="14dp" />
+
+    <TextView
+        android:id="@+id/tvOnline"
+        android:layout_width="70dp"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="10dp"
+        android:gravity="center"
+        android:text="4小时前"
+        android:textColor="@color/color_4c4b54"
+        android:textSize="14dp" />
+
+</LinearLayout>

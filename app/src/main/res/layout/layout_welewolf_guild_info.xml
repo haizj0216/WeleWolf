@@ -93,7 +93,7 @@
                     android:layout_below="@id/ivName"
                     android:layout_centerHorizontal="true"
                     android:layout_marginTop="10dp"
-                    android:background="@drawable/bg_auth_shooting"
+                    android:background="@drawable/bg_level"
                     android:padding="2dp"
                     android:text="五星公会"
                     android:textColor="@color/white"

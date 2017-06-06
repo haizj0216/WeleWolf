@@ -1,0 +1,99 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/color_23213a">
+
+        <ImageView
+            android:id="@+id/ivBack"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="5dp"
+            android:padding="10dp"
+            android:src="@drawable/bt_title_back" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_centerHorizontal="true">
+
+            <RelativeLayout
+                android:id="@+id/rvRecommend"
+                android:layout_width="85dp"
+                android:layout_height="fill_parent"
+                android:layout_weight="1">
+
+                <TextView
+                    android:id="@+id/training_ranking"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:text="推荐"
+                    android:textColor="@color/color_tab_findbuild"
+                    android:textSize="16dp" />
+
+                <View
+                    android:id="@+id/tab_blockade_bottom"
+                    android:layout_width="fill_parent"
+                    android:layout_height="5px"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginBottom="1dp"
+                    android:background="@drawable/bg_tab_findbuild" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/rvRank"
+                android:layout_width="85dp"
+                android:layout_height="fill_parent"
+                android:layout_weight="1">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:text="排行"
+                    android:textColor="@color/color_tab_findbuild"
+                    android:textSize="16dp" />
+
+                <View
+                    android:id="@+id/tab_homework_bottom"
+                    android:layout_width="fill_parent"
+                    android:layout_height="5px"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginBottom="1dp"
+                    android:background="@drawable/bg_tab_findbuild" />
+            </RelativeLayout>
+        </LinearLayout>
+    </RelativeLayout>
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/rViewPager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="50dp" />
+
+    <ImageView
+        android:id="@+id/ivFind"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginBottom="40dp"
+        android:layout_marginRight="20dp"
+        android:src="@drawable/icon_guild_find" />
+
+    <ImageView
+        android:id="@+id/ivCreate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="40dp"
+        android:layout_marginRight="20dp"
+        android:layout_toLeftOf="@id/ivFind"
+        android:src="@drawable/icon_guild_create" />
+
+</RelativeLayout>

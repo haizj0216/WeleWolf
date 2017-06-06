@@ -1,0 +1,63 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="33dp"
+        android:background="@color/color_main_background"
+        android:gravity="center_vertical">
+
+        <TextView
+            android:layout_width="65dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="头像"
+            android:textColor="@color/color_a1a1a1"
+            android:textSize="14dp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="昵称"
+            android:textColor="@color/color_a1a1a1"
+            android:textSize="14dp" />
+
+        <TextView
+            android:layout_width="70dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="职位"
+            android:textColor="@color/color_a1a1a1"
+            android:textSize="14dp" />
+
+        <TextView
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="活跃值"
+            android:textColor="@color/color_a1a1a1"
+            android:textSize="14dp" />
+
+        <TextView
+            android:layout_width="70dp"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="10dp"
+            android:gravity="center"
+            android:text="最近登录"
+            android:textColor="@color/color_a1a1a1"
+            android:textSize="14dp" />
+    </LinearLayout>
+
+    <ListView
+        android:id="@+id/lvListView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:cacheColorHint="@color/transparent"
+        android:divider="@color/color_divider"
+        android:dividerHeight="1px"
+        android:listSelector="@color/transparent" />
+</LinearLayout>

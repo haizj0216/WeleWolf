@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.buang.welewolf.R;
+import com.buang.welewolf.modules.guild.FindGuildFragment;
 import com.buang.welewolf.modules.guild.GuildInfoFragment;
 import com.buang.welewolf.modules.message.ContactsFragment;
 import com.buang.welewolf.modules.services.OnRongIMConnectListener;
@@ -51,6 +52,7 @@ public class MainMessageFragment extends BaseUIFragment<UIFragmentHelper> {
         }
         view.findViewById(R.id.ivGuild).setOnClickListener(onClickListener);
         view.findViewById(R.id.main_message_contacts).setOnClickListener(onClickListener);
+        view.findViewById(R.id.main_message_search).setOnClickListener(onClickListener);
     }
 
     private void initFragment() {
@@ -75,6 +77,9 @@ public class MainMessageFragment extends BaseUIFragment<UIFragmentHelper> {
                     break;
                 case R.id.main_message_contacts:
                     showFragment(ContactsFragment.newFragment(getActivity(), ContactsFragment.class, null));
+                    break;
+                case R.id.main_message_search:
+                    showFragment(FindGuildFragment.newFragment(getActivity(), FindGuildFragment.class, null));
                     break;
             }
         }
