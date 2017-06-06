@@ -1,12 +1,12 @@
 package com.buang.welewolf.welewolf.fragment;
 
-import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 
 import com.buang.welewolf.R;
-import com.buang.welewolf.modules.message.ConversationActivity;
+import com.buang.welewolf.modules.guild.GuildInfoFragment;
+import com.buang.welewolf.modules.message.ContactsFragment;
 import com.buang.welewolf.modules.services.OnRongIMConnectListener;
 import com.buang.welewolf.modules.services.RongIMService;
 import com.buang.welewolf.modules.utils.ToastUtils;
@@ -14,9 +14,7 @@ import com.buang.welewolf.modules.utils.UIFragmentHelper;
 import com.hyena.framework.app.fragment.BaseUIFragment;
 import com.hyena.framework.datacache.BaseObject;
 
-import io.rong.imkit.RongIM;
 import io.rong.imkit.fragment.ConversationListFragment;
-import io.rong.imkit.model.UIConversation;
 import io.rong.imlib.RongIMClient;
 import io.rong.imlib.model.Conversation;
 
@@ -51,6 +49,8 @@ public class MainMessageFragment extends BaseUIFragment<UIFragmentHelper> {
         if (mConversationListFragment == null) {
             mConversationListFragment = (ConversationListFragment) getActivity().getSupportFragmentManager().findFragmentById(R.id.ivConversationList);
         }
+        view.findViewById(R.id.ivGuild).setOnClickListener(onClickListener);
+        view.findViewById(R.id.main_message_contacts).setOnClickListener(onClickListener);
     }
 
     private void initFragment() {
@@ -64,6 +64,21 @@ public class MainMessageFragment extends BaseUIFragment<UIFragmentHelper> {
 
         mConversationListFragment.setUri(uri);
     }
+
+    View.OnClickListener onClickListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            int id = v.getId();
+            switch (id) {
+                case R.id.ivGuild:
+                    showFragment(GuildInfoFragment.newFragment(getActivity(), GuildInfoFragment.class, null));
+                    break;
+                case R.id.main_message_contacts:
+                    showFragment(ContactsFragment.newFragment(getActivity(), ContactsFragment.class, null));
+                    break;
+            }
+        }
+    };
 
     OnRongIMConnectListener onRongIMConnectListener = new OnRongIMConnectListener() {
         @Override

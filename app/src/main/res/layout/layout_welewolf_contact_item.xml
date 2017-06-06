@@ -1,0 +1,48 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="80dp"
+    android:gravity="center_vertical"
+    android:minHeight="80dp">
+
+    <ImageView
+        android:id="@+id/ivHead"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginLeft="15dp"
+        android:src="@drawable/bt_message_default_head" />
+
+    <ImageView
+        android:id="@+id/ivSex"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@id/ivHead"
+        android:layout_alignRight="@id/ivHead"
+        android:src="@drawable/icon_windows_female" />
+
+    <TextView
+        android:id="@+id/tvName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_toRightOf="@id/ivHead"
+        android:ellipsize="end"
+        android:lines="1"
+        android:text="Alice"
+        android:textColor="@color/color_text_main"
+        android:textSize="16dp" />
+
+    <TextView
+        android:id="@+id/tvMsg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tvName"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginTop="5dp"
+        android:layout_toRightOf="@id/ivHead"
+        android:ellipsize="end"
+        android:lines="1"
+        android:text="好好玩啊"
+        android:textColor="@color/color_a1a1a1"
+        android:textSize="14dp" />
+</RelativeLayout>

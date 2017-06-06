@@ -138,6 +138,7 @@ public class ConstantsUtils {
     public final static String KEY_BUNDLE_STATUS = "bundle_match_status";
     public final static String KEY_BUNDLE_CHAM_ITEM = "bundle_match_item";
     public final static String KEY_BUNDLE_QUESTION_LIST = "bundle_question_list";
+    public final static String KEY_BUNDLE_CONTACT_INFO = "bundle_contact_info";
 
     public final static int MATCH_STATUS_NOTSTART = 1;
     public final static int MATCH_STATUS_FINISHED = 5;
