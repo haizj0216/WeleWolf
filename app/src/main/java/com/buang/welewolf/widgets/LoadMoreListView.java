@@ -13,7 +13,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.buang.welewolf.widgets.pulltorefresh.PullToRefreshBase;
-import com.knowbox.base.utils.UIUtils;
+import com.hyena.framework.utils.UIUtils;
 
 /**
  * 获取更多列表

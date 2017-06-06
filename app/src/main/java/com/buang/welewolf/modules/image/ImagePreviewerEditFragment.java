@@ -16,11 +16,11 @@ import android.widget.TextView;
 import com.buang.welewolf.widgets.photoview.PhotoView;
 import com.buang.welewolf.widgets.photoview.PhotoViewAttacher;
 import com.hyena.framework.app.fragment.BaseUIFragment;
-import com.knowbox.base.utils.ImageFetcher;
 import com.buang.welewolf.R;
 import com.buang.welewolf.modules.utils.DialogUtils;
 import com.buang.welewolf.modules.utils.DialogUtils.OnDialogButtonClickListener;
 import com.buang.welewolf.modules.utils.UIFragmentHelper;
+import com.hyena.framework.utils.ImageFetcher;
 
 import java.util.ArrayList;
 import java.util.List;

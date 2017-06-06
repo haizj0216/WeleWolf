@@ -18,17 +18,17 @@ import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.buang.welewolf.base.bean.BannerInfoItem;
 import com.buang.welewolf.base.bean.OnlineRankItemInfo;
 import com.buang.welewolf.base.bean.OnlineRankListInfo;
 import com.buang.welewolf.base.bean.OnlineStudentInfo;
 import com.buang.welewolf.modules.profile.ActivityWebViewFragment;
+import com.buang.welewolf.modules.utils.UIFragmentHelper;
 import com.hyena.framework.app.adapter.SingleTypeAdapter;
 import com.hyena.framework.app.fragment.BaseUIFragment;
+import com.hyena.framework.utils.ImageFetcher;
 import com.hyena.framework.utils.RoundDisplayer;
 import com.hyena.framework.utils.UIUtils;
-import com.knowbox.base.utils.ImageFetcher;
-import com.buang.welewolf.base.bean.BannerInfoItem;
-import com.buang.welewolf.modules.utils.UIFragmentHelper;
 
 import java.util.ArrayList;
 import java.util.List;

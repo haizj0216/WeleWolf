@@ -6,10 +6,8 @@ package com.buang.welewolf.modules.main;
 import android.app.Dialog;
 import android.content.BroadcastReceiver;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -19,25 +17,15 @@ import android.support.v4.view.ViewPager.OnPageChangeListener;
 import android.text.TextUtils;
 import android.view.KeyEvent;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 
 import com.buang.welewolf.App;
-import com.buang.welewolf.base.http.services.OnlineServices;
 import com.buang.welewolf.base.utils.ActionUtils;
-import com.buang.welewolf.base.utils.PreferencesController;
 import com.buang.welewolf.modules.message.utils.MessagePushUtils;
-import com.buang.welewolf.modules.profile.ActivityWebViewFragment;
-import com.buang.welewolf.modules.utils.ConstantsUtils;
-import com.buang.welewolf.modules.utils.DialogUtils;
-import com.buang.welewolf.modules.utils.SubjectUtils;
 import com.buang.welewolf.modules.utils.ToastUtils;
 import com.buang.welewolf.modules.utils.UIFragmentHelper;
-import com.buang.welewolf.modules.utils.UmengConstant;
-import com.buang.welewolf.modules.utils.Utils;
-import com.buang.welewolf.modules.utils.VirtualClassUtils;
 import com.buang.welewolf.welewolf.fragment.MainGameFragment;
 import com.buang.welewolf.welewolf.fragment.MainMessageFragment;
 import com.buang.welewolf.welewolf.fragment.MainRankFragment;
@@ -45,24 +33,16 @@ import com.buang.welewolf.welewolf.login.LoginFragment;
 import com.hyena.framework.app.fragment.BaseSubFragment;
 import com.hyena.framework.app.fragment.BaseUIFragment;
 import com.hyena.framework.clientlog.LogUtil;
-import com.hyena.framework.datacache.BaseObject;
-import com.hyena.framework.datacache.DataAcquirer;
 import com.hyena.framework.utils.BaseApp;
 import com.hyena.framework.utils.MsgCenter;
 import com.hyena.framework.utils.UiThreadHandler;
-import com.knowbox.base.service.share.ShareService;
 
 import org.apache.http.protocol.HTTP;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 import java.net.URLDecoder;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.Hashtable;
 import java.util.List;
-import java.util.Stack;
 
 /**
  * 主场景
@@ -92,8 +72,6 @@ public class MainFragment extends BaseUIFragment<UIFragmentHelper> {
 	private View mLoadingView;
 	private ImageView mLoadingImg;
 	private Dialog mNotifitionDialog;
-
-	private ShareService mShareService;
 
 	public static final String ACTION_TAB_TIPS = "action_tab_tips";
 	public static final int TYPE_TAB_TIPS_CLASS = 0;
@@ -144,9 +122,6 @@ public class MainFragment extends BaseUIFragment<UIFragmentHelper> {
 
 		mViewPager.setCurrentItem(SCENE_GAME);
 		setCurrentTab(SCENE_GAME);
-
-		mShareService = (ShareService) getActivity().getSystemService(ShareService.SERVICE_NAME);
-		mShareService.initConfig(getActivity());
 
 		IntentFilter intentFilter = new IntentFilter();
 		intentFilter.addAction(ACTION_TAB_TIPS);
@@ -251,10 +226,6 @@ public class MainFragment extends BaseUIFragment<UIFragmentHelper> {
 				break;
 			}
 			case com.buang.welewolf.R.id.main_tab_message: {
-				if (VirtualClassUtils.getInstance(getActivity()).isVirtualToken()) {
-					ActionUtils.notifyVirtualTip();
-					break;
-				}
 				mViewPager.setCurrentItem(SCENE_MESSAGE, true);
 				break;
 			}
@@ -268,13 +239,6 @@ public class MainFragment extends BaseUIFragment<UIFragmentHelper> {
 
 		@Override
 		public void onPageSelected(int position) {
-			if (VirtualClassUtils.getInstance(getActivity()).isVirtualToken()) {
-				if (position > SCENE_LIST) {
-					ActionUtils.notifyVirtualTip();
-					setCurrentItem(SCENE_LIST);
-					return;
-				}
-			}
 			setCurrentTab(position);
 		}
 

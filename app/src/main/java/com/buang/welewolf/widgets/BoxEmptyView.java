@@ -12,8 +12,8 @@ import android.widget.TextView;
 
 import com.hyena.framework.app.widget.EmptyView;
 import com.hyena.framework.network.NetworkProvider;
+import com.hyena.framework.utils.UIUtils;
 import com.hyena.framework.utils.UiThreadHandler;
-import com.knowbox.base.utils.UIUtils;
 
 /**
  * 盒子空页面

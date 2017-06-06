@@ -22,10 +22,10 @@ import android.widget.TextView;
 
 import com.buang.welewolf.widgets.CropCanvas;
 import com.hyena.framework.app.fragment.BaseUIFragment;
-import com.knowbox.base.utils.UIUtils;
 import com.buang.welewolf.base.utils.ImageUtil;
 import com.buang.welewolf.modules.utils.ToastUtils;
 import com.buang.welewolf.modules.utils.UIFragmentHelper;
+import com.hyena.framework.utils.UIUtils;
 import com.nostra13.universalimageloader.core.ImageLoader;
 
 /**

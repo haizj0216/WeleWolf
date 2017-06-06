@@ -8,9 +8,8 @@ import android.widget.ImageView;
 
 import com.hyena.framework.app.fragment.BaseUIFragment;
 import com.hyena.framework.utils.BaseApp;
+import com.hyena.framework.utils.ImageFetcher;
 import com.hyena.framework.utils.UiThreadHandler;
-import com.knowbox.base.utils.ImageFetcher;
-import com.knowbox.base.utils.ImageFetcher.ImageFetcherListener;
 import com.buang.welewolf.R;
 import com.buang.welewolf.modules.utils.ToastUtils;
 import com.buang.welewolf.modules.utils.UIFragmentHelper;
@@ -33,7 +32,7 @@ public class PicturePreviewFragment extends BaseUIFragment<UIFragmentHelper> {
 		mDelete = (ImageView) view.findViewById(R.id.img_preview_delete);
 		String url = getArguments().getString("url");
 		ImageFetcher.getImageFetcher().loadImage(url, "",
-				new ImageFetcherListener() {
+				new ImageFetcher.ImageFetcherListener() {
 
 					@Override
 					public void onLoadComplete(String imageUrl,

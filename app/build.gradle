@@ -76,7 +76,6 @@ android {
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
-    compile project(':base-release')
     compile project(':IMKit')
     compile project(':sticker')
     compile 'com.github.yangzc:AndroidSupport:1.0.2'

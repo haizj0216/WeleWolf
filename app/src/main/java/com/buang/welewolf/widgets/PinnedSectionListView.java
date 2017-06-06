@@ -27,7 +27,7 @@ import android.widget.SectionIndexer;
 
 import com.buang.welewolf.BuildConfig;
 import com.buang.welewolf.widgets.pulltorefresh.PullToRefreshBase;
-import com.knowbox.base.utils.UIUtils;
+import com.hyena.framework.utils.UIUtils;
 
 /**
  * ListView, which is capable to pin section views at its top while the rest is still scrolled.

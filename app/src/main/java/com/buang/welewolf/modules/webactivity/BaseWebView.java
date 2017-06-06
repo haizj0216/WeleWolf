@@ -20,20 +20,12 @@ import com.buang.welewolf.modules.utils.ToastUtils;
 import com.hyena.framework.app.fragment.BaseUIFragment;
 import com.hyena.framework.clientlog.LogUtil;
 import com.hyena.framework.utils.UiThreadHandler;
-import com.knowbox.base.service.share.ShareContent;
-import com.knowbox.base.service.share.ShareListener;
-import com.knowbox.base.service.share.ShareService;
 
 import org.apache.http.protocol.HTTP;
 import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 import java.net.URLDecoder;
-import java.util.HashMap;
 import java.util.Hashtable;
-
-import cn.sharesdk.framework.Platform;
 
 /**
  * 活动webview
@@ -43,7 +35,6 @@ public class BaseWebView extends WebView{
 
     public boolean mShowLoadingWhenLoadPage = true;
     public boolean mJsHandleBack = false;
-    private ShareService mShareService;
     private ClipboardManager mClipboardManager;
     private Dialog mCurrentDialog;
 
@@ -51,7 +42,6 @@ public class BaseWebView extends WebView{
 
     public BaseWebView(Context context, AttributeSet attrs) {
         super(context, attrs);
-        mShareService = (ShareService) context.getSystemService(ShareService.SERVICE_NAME);
         mClipboardManager = (ClipboardManager) context.getSystemService(Context.CLIPBOARD_SERVICE);    }
 
     @Override
@@ -334,51 +324,51 @@ public class BaseWebView extends WebView{
          * @param data
          */
         public void doShare(String platform, String data, final String jsCallBack) {
-            try {
-                JSONObject json = new JSONObject(data);
-                ShareContent content = new ShareContent();
-                content.mShareContent = json.optString("text");
-                content.mShareUrl = json.optString("url");
-                content.mDescription = json.optString("description");
-
-                content.mUrlImage = json.optString("imageUrl");
-                content.mShareTitle = json.optString("title");
-                content.mShareTitleUrl = json.optString("titleUrl");
-                content.mSiteName = json.optString("site");
-                content.mSiteUrl = json.optString("siteUrl");
-
-                ShareListener listener = new ShareListener() {
-                    @Override
-                    public void onComplete(Platform platform, int i, HashMap<String, Object> hashMap) {
-                        if (!TextUtils.isEmpty(jsCallBack))
-                            runJs(jsCallBack, "success");
-                    }
-
-                    @Override
-                    public void onError(Platform platform, int i, Throwable throwable) {
-                        if (!TextUtils.isEmpty(jsCallBack))
-                            runJs(jsCallBack, "fail");
-                    }
-
-                    @Override
-                    public void onCancel(Platform platform, int i) {
-                        if (!TextUtils.isEmpty(jsCallBack))
-                            runJs(jsCallBack, "cancel");
-                    }
-                };
-
-                if ("QQ".equals(platform)) {
-                    mShareService.shareToQQ(mFragment.getActivity(), content, listener);
-                } else if ("QQZone".equals(platform)) {
-                    mShareService.shareToQQZone(mFragment.getActivity(), content, listener);
-                } else if ("WX".equals(platform)) {
-                    mShareService.shareToWX(mFragment.getActivity(), content, listener);
-                } else if ("WXCircle".equals(platform)) {
-                    mShareService.shareToWXCircle(mFragment.getActivity(), content, listener);
-                }
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }
+//            try {
+//                JSONObject json = new JSONObject(data);
+//                ShareContent content = new ShareContent();
+//                content.mShareContent = json.optString("text");
+//                content.mShareUrl = json.optString("url");
+//                content.mDescription = json.optString("description");
+//
+//                content.mUrlImage = json.optString("imageUrl");
+//                content.mShareTitle = json.optString("title");
+//                content.mShareTitleUrl = json.optString("titleUrl");
+//                content.mSiteName = json.optString("site");
+//                content.mSiteUrl = json.optString("siteUrl");
+//
+//                ShareListener listener = new ShareListener() {
+//                    @Override
+//                    public void onComplete(Platform platform, int i, HashMap<String, Object> hashMap) {
+//                        if (!TextUtils.isEmpty(jsCallBack))
+//                            runJs(jsCallBack, "success");
+//                    }
+//
+//                    @Override
+//                    public void onError(Platform platform, int i, Throwable throwable) {
+//                        if (!TextUtils.isEmpty(jsCallBack))
+//                            runJs(jsCallBack, "fail");
+//                    }
+//
+//                    @Override
+//                    public void onCancel(Platform platform, int i) {
+//                        if (!TextUtils.isEmpty(jsCallBack))
+//                            runJs(jsCallBack, "cancel");
+//                    }
+//                };
+//
+//                if ("QQ".equals(platform)) {
+//                    mShareService.shareToQQ(mFragment.getActivity(), content, listener);
+//                } else if ("QQZone".equals(platform)) {
+//                    mShareService.shareToQQZone(mFragment.getActivity(), content, listener);
+//                } else if ("WX".equals(platform)) {
+//                    mShareService.shareToWX(mFragment.getActivity(), content, listener);
+//                } else if ("WXCircle".equals(platform)) {
+//                    mShareService.shareToWXCircle(mFragment.getActivity(), content, listener);
+//                }
+//            } catch (JSONException e) {
+//                e.printStackTrace();
+//            }
         }
     }
 

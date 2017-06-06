@@ -16,7 +16,6 @@ import android.text.Html.TagHandler;
 import android.text.Spannable;
 import android.text.SpannableString;
 import android.text.Spanned;
-import android.text.TextUtils;
 import android.text.style.ClickableSpan;
 import android.text.style.ImageSpan;
 import android.view.View;
@@ -26,19 +25,14 @@ import android.widget.TextView;
 import com.hyena.framework.app.coretext.span.ClickableImageSpan;
 import com.hyena.framework.security.MD5Util;
 import com.hyena.framework.utils.BaseApp;
+import com.hyena.framework.utils.ImageFetcher;
 import com.hyena.framework.utils.ToastUtils;
-import com.hyena.framework.utils.UIUtils;
-import com.hyena.framework.utils.UiThreadHandler;
-import com.knowbox.base.utils.ImageFetcher;
-import com.knowbox.base.utils.ImageFetcher.ImageFetcherListener;
-import com.buang.welewolf.modules.utils.ConstantsUtils;
 
 import org.xml.sax.XMLReader;
 
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import java.io.IOException;
 import java.math.BigDecimal;
 import java.text.DecimalFormat;
 import java.util.regex.Matcher;
@@ -55,7 +49,6 @@ public class StringUtils {
 	/**
 	 * 校验Tag Alias 只能是数字,英文字母和中文
 	 *
-	 * @param s
 	 * @return
 	 */
 	public static boolean isValidTagAndAlias(String str) {
@@ -160,7 +153,7 @@ public class StringUtils {
 		@Override
 		public Drawable getDrawable(String source) {
 			final URLDrawable urlDrawable = new URLDrawable();
-			ImageFetcher.getImageFetcher().loadImage(source, "", new ImageFetcherListener() {
+			ImageFetcher.getImageFetcher().loadImage(source, "", new ImageFetcher.ImageFetcherListener() {
 				@Override
 				public void onLoadComplete(String imageUrl, Bitmap bitmap, Object object) {
 					if(bitmap == null)

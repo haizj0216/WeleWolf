@@ -34,14 +34,12 @@ import com.buang.welewolf.modules.utils.ConstantsUtils;
 import com.buang.welewolf.modules.utils.DialogUtils;
 import com.buang.welewolf.modules.utils.PackageUpdateTask;
 import com.buang.welewolf.modules.utils.UIFragmentHelper;
-import com.buang.welewolf.modules.utils.VirtualClassUtils;
 import com.buang.welewolf.welewolf.login.LoginFragment;
 import com.hyena.framework.app.activity.NavigateActivity;
 import com.hyena.framework.app.fragment.BaseFragment;
 import com.hyena.framework.app.fragment.BaseUIFragment;
 import com.hyena.framework.app.fragment.UIViewFactory;
 import com.hyena.framework.clientlog.LogUtil;
-import com.hyena.framework.database.DataBaseManager;
 import com.hyena.framework.datacache.BaseObject;
 import com.hyena.framework.datacache.DataAcquirer;
 import com.hyena.framework.servcie.debug.DebugModeListener;
@@ -120,7 +118,6 @@ public class MainActivity extends NavigateActivity {
 			}
 		}
 		//umeng channel
-		VirtualClassUtils.getInstance(this).initPrefs();
 		UIViewFactory.getViewFactory().registViewBuilder(new BoxViewBuilder());
 		showScene(SCENE_SPLASH);
 		if(!App.mIsEmChatConntcted){

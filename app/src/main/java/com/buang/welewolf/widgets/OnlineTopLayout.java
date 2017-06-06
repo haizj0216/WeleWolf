@@ -6,7 +6,8 @@ import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.Scroller;
 
-import com.knowbox.base.utils.UIUtils;
+import com.hyena.framework.utils.UIUtils;
+
 
 /**
  * @name 自定义控件：动画布局

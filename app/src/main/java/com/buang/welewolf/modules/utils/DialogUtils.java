@@ -28,7 +28,6 @@ import android.view.View.OnTouchListener;
 import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
 import android.view.WindowManager;
-import android.webkit.WebView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.CheckBox;
 import android.widget.EditText;
@@ -42,15 +41,14 @@ import android.widget.TextView;
 
 import com.buang.welewolf.base.database.bean.UserItem;
 import com.buang.welewolf.base.utils.ImageUtil;
-import com.buang.welewolf.base.utils.StringUtils;
 import com.buang.welewolf.widgets.AddClassView;
 import com.buang.welewolf.widgets.numberpicker.NumberPicker;
 import com.buang.welewolf.widgets.numberpicker.NumberPicker.OnValueChangeListener;
 import com.hyena.framework.app.adapter.SingleTypeAdapter;
 import com.hyena.framework.app.fragment.bean.MenuItem;
 import com.hyena.framework.utils.BaseApp;
-import com.knowbox.base.utils.ImageFetcher;
-import com.knowbox.base.utils.UIUtils;
+import com.hyena.framework.utils.ImageFetcher;
+import com.hyena.framework.utils.UIUtils;
 
 import java.text.DecimalFormat;
 import java.util.ArrayList;
