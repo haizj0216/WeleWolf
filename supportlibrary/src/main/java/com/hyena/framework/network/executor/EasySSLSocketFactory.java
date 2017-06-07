@@ -1,0 +1,108 @@
+package com.hyena.framework.network.executor;
+
+import org.apache.http.conn.scheme.LayeredSocketFactory;
+import org.apache.http.conn.scheme.SocketFactory;
+import org.apache.http.params.HttpConnectionParams;
+import org.apache.http.params.HttpParams;
+
+import java.io.IOException;
+import java.net.InetAddress;
+import java.net.InetSocketAddress;
+import java.net.Socket;
+
+import javax.net.ssl.SSLContext;
+import javax.net.ssl.SSLSocket;
+import javax.net.ssl.TrustManager;
+
+/**
+ * 允许接受自签名证书的Socket工厂
+ * 
+ * @author wangzengyang 2012-11-2
+ * 
+ */
+public class EasySSLSocketFactory implements SocketFactory,
+		LayeredSocketFactory {
+
+	private SSLContext sslContext = null;
+
+	private static SSLContext createEasySSLContext() throws IOException {
+		try {
+			SSLContext context = SSLContext.getInstance("TLS");
+			context.init(null,
+					new TrustManager[] { new EasyX509TrustManager() }, null);
+			return context;
+		} catch (Exception e) {
+			throw new IOException(e.getMessage());
+		}
+	}
+
+	private SSLContext getSSLContext() throws IOException {
+		if (this.sslContext == null) {
+			this.sslContext = createEasySSLContext();
+		}
+		return this.sslContext;
+	}
+
+	/**
+	 * @see SocketFactory#connectSocket(Socket,
+	 *      String, int, InetAddress, int,
+	 *      HttpParams)
+	 */
+	public Socket connectSocket(Socket sock, String host, int port,
+			InetAddress localAddress, int localPort, HttpParams params)
+			throws IOException {
+		int connTimeout = HttpConnectionParams.getConnectionTimeout(params);
+		int soTimeout = HttpConnectionParams.getSoTimeout(params);
+
+		InetSocketAddress remoteAddress = new InetSocketAddress(host, port);
+		SSLSocket sslsock = (SSLSocket) ((sock != null) ? sock : createSocket());
+
+		if ((localAddress != null) || (localPort > 0)) {
+			// we need to bind explicitly
+			if (localPort < 0) {
+				localPort = 0; // indicates "any"
+			}
+			InetSocketAddress isa = new InetSocketAddress(localAddress,
+					localPort);
+			sslsock.bind(isa);
+		}
+
+		sslsock.connect(remoteAddress, connTimeout);
+		sslsock.setSoTimeout(soTimeout);
+		return sslsock;
+
+	}
+
+	/**
+	 * @see SocketFactory#createSocket()
+	 */
+	public Socket createSocket() throws IOException {
+		return getSSLContext().getSocketFactory().createSocket();
+	}
+
+	/**
+	 * @see SocketFactory#isSecure(Socket)
+	 */
+	public boolean isSecure(Socket socket) throws IllegalArgumentException {
+		return true;// 不判断socket，直接返回true
+	}
+
+	/**
+	 * @see LayeredSocketFactory#createSocket(Socket,
+	 *      String, int, boolean)
+	 */
+	public Socket createSocket(Socket socket, String host, int port,
+			boolean autoClose) throws IOException {
+		return getSSLContext().getSocketFactory().createSocket(socket, host,
+				port, autoClose);
+	}
+
+	public boolean equals(Object obj) {
+		return ((obj != null) && obj.getClass().equals(
+				EasySSLSocketFactory.class));
+	}
+
+	public int hashCode() {
+		return EasySSLSocketFactory.class.hashCode();
+	}
+}

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="common_status_bar" type="id"/>
+    <item name="common_title_bar" type="id"/>
+    <item name="main_container" type="id"/>
+    <item name="main_subpage_container" type="id"/>
+    <item name="refresh_footer" type="id"/>
+    <item name="refresh_header" type="id"/>
+    <item name="activity_main" type="layout"/>
+    <string name="app_name">Support</string>
+</resources>

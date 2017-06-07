@@ -6,7 +6,7 @@ android {
         checkReleaseBuilds false
         abortOnError false
     }
-    compileSdkVersion 19
+    compileSdkVersion 23
     buildToolsVersion '25.0.0'
 
     defaultConfig {
@@ -78,7 +78,7 @@ dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     compile project(':IMKit')
     compile project(':sticker')
-    compile 'com.github.yangzc:AndroidSupport:1.0.2'
+    compile project(':supportlibrary')
     compile(name: 'android-gif-drawable-1.1.14', ext: 'aar')
     compile(name: 'SMSSDK-2.1.4', ext: 'aar')
 }

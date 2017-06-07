@@ -233,6 +233,7 @@ public class MainActivity extends NavigateActivity {
 		}
 //		MsgCenter.unRegisterLocalReceiver(mReceiver);
 		clearPrefsOnExit(false);
+		YouMeManager.Uninit();
 	}
 
 	/**

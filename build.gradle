@@ -3,7 +3,6 @@
 buildscript {
     repositories {
         mavenCentral()
-        maven { url "https://dl.bintray.com/hyena/maven" }
         jcenter()
     }
     dependencies {
@@ -17,7 +16,6 @@ buildscript {
 allprojects {
     repositories {
         mavenCentral()
-        maven {url "https://dl.bintray.com/hyena/maven" }
         jcenter()
     }
 }
