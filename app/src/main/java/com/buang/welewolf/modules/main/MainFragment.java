@@ -22,6 +22,7 @@ import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 
 import com.buang.welewolf.App;
+import com.buang.welewolf.base.services.share.ShareService;
 import com.buang.welewolf.base.utils.ActionUtils;
 import com.buang.welewolf.modules.message.utils.MessagePushUtils;
 import com.buang.welewolf.modules.utils.ToastUtils;
@@ -77,6 +78,7 @@ public class MainFragment extends BaseUIFragment<UIFragmentHelper> {
 	public static final int TYPE_TAB_TIPS_CLASS = 0;
 	public static final int TYPE_TAB_TIPS_BANK = 1;
 	public static final int TYPE_TAB_TIPS_PROFILE = 2;
+	private ShareService mShareService;
 //	private LocationService locationService;
 //	private int mStartUpCount;
 
@@ -122,6 +124,9 @@ public class MainFragment extends BaseUIFragment<UIFragmentHelper> {
 
 		mViewPager.setCurrentItem(SCENE_GAME);
 		setCurrentTab(SCENE_GAME);
+
+		mShareService = (ShareService) getActivity().getSystemService(ShareService.SERVICE_NAME);
+		mShareService.initConfig(getActivity());
 
 		IntentFilter intentFilter = new IntentFilter();
 		intentFilter.addAction(ACTION_TAB_TIPS);

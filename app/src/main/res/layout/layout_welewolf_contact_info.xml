@@ -77,48 +77,58 @@
 
                 <ImageView
                     android:id="@+id/ivHead"
-                    android:layout_width="60dp"
-                    android:layout_height="60dp"
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
                     android:layout_marginLeft="15dp"
-                    android:layout_marginTop="80dp"
+                    android:layout_marginTop="70dp"
+                    android:background="@drawable/bg_write_circle"
+                    android:padding="1dp"
                     android:src="@drawable/bt_message_default_head" />
+
+                <ImageView
+                    android:id="@+id/ivSex"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBottom="@id/ivHead"
+                    android:layout_alignRight="@id/ivHead"
+                    android:src="@drawable/icon_windows_male" />
 
                 <TextView
                     android:id="@+id/ivName"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignTop="@id/ivHead"
-                    android:layout_marginLeft="5dp"
+                    android:layout_marginLeft="15dp"
                     android:layout_toRightOf="@id/ivHead"
                     android:text="小仙女"
                     android:textColor="@color/white"
-                    android:textSize="15dp" />
+                    android:textSize="16dp" />
 
                 <TextView
                     android:id="@+id/ivLevel"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="40dp"
+                    android:layout_height="15dp"
                     android:layout_below="@id/ivName"
-                    android:layout_marginLeft="5dp"
-                    android:layout_marginTop="2dp"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginTop="8dp"
                     android:layout_toRightOf="@id/ivHead"
                     android:background="@drawable/bg_auth_shooting"
-                    android:padding="2dp"
+                    android:gravity="center"
                     android:text="LV.8"
                     android:textColor="@color/white"
-                    android:textSize="12dp" />
+                    android:textSize="11dp" />
 
                 <TextView
                     android:id="@+id/ivID"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/ivLevel"
-                    android:layout_marginLeft="5dp"
-                    android:layout_marginTop="2dp"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginTop="8dp"
                     android:layout_toRightOf="@id/ivHead"
                     android:text="ID：121218"
                     android:textColor="@color/white"
-                    android:textSize="12dp" />
+                    android:textSize="14dp" />
 
             </RelativeLayout>
 
@@ -133,7 +143,7 @@
                 android:layout_marginLeft="15dp"
                 android:layout_marginTop="10dp"
                 android:text="个性签名"
-                android:textColor="@color/color_text_primary"
+                android:textColor="@color/color_a1a1a1"
                 android:textSize="14dp" />
 
             <TextView
@@ -145,7 +155,7 @@
                 android:layout_marginRight="15dp"
                 android:layout_marginTop="10dp"
                 android:text="这家伙很懒，什么都没说"
-                android:textColor="@color/color_text_main"
+                android:textColor="@color/color_4c4b54"
                 android:textSize="15dp" />
 
             <View
@@ -155,7 +165,7 @@
 
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="70dp">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -163,7 +173,7 @@
                     android:layout_marginLeft="15dp"
                     android:layout_marginTop="15dp"
                     android:text="战绩"
-                    android:textColor="@color/color_text_primary"
+                    android:textColor="@color/color_a1a1a1"
                     android:textSize="15dp" />
 
                 <TextView
@@ -173,7 +183,7 @@
                     android:layout_marginLeft="100dp"
                     android:layout_marginTop="15dp"
                     android:text="狼人杀 286局"
-                    android:textColor="@color/color_text_main"
+                    android:textColor="@color/color_4c4b54"
                     android:textSize="15dp" />
 
                 <TextView
@@ -185,7 +195,7 @@
                     android:layout_marginLeft="100dp"
                     android:layout_marginTop="5dp"
                     android:text="胜 159"
-                    android:textColor="@color/color_text_main"
+                    android:textColor="@color/color_504b8d"
                     android:textSize="15dp" />
 
                 <TextView
@@ -196,7 +206,7 @@
                     android:layout_marginLeft="10dp"
                     android:layout_toRightOf="@id/tvWin"
                     android:text="败29"
-                    android:textColor="@color/color_red"
+                    android:textColor="@color/color_fc7070"
                     android:textSize="15dp" />
 
                 <TextView
@@ -207,7 +217,7 @@
                     android:layout_marginLeft="10dp"
                     android:layout_toRightOf="@id/tvLost"
                     android:text="(胜率55.8%)"
-                    android:textColor="@color/color_text_main"
+                    android:textColor="@color/color_4c4b54"
                     android:textSize="15dp" />
             </RelativeLayout>
 
@@ -218,25 +228,27 @@
 
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
+                android:layout_height="45dp"
                 android:gravity="center_vertical">
 
                 <TextView
-                    android:layout_width="60dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="15dp"
                     android:text="人气值"
-                    android:textColor="@color/color_text_primary"
+                    android:textColor="@color/color_a1a1a1"
                     android:textSize="14dp" />
 
                 <TextView
-                    android:id="@+id/tvWelfare"
-                    android:layout_width="match_parent"
+                    android:id="@+id/tvWelefare"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="100dp"
                     android:layout_marginRight="15dp"
+                    android:drawablePadding="10dp"
+                    android:drawableRight="@drawable/icon_rule"
                     android:text="10006"
-                    android:textColor="@color/color_text_main"
+                    android:textColor="@color/color_4c4b54"
                     android:textSize="15dp" />
             </RelativeLayout>
 
@@ -249,9 +261,16 @@
                     android:layout_width="60dp"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="15dp"
+                    android:layout_marginTop="15dp"
                     android:text="收到礼物"
-                    android:textColor="@color/color_text_primary"
+                    android:textColor="@color/color_a1a1a1"
                     android:textSize="14dp" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1px"
+                    android:layout_marginLeft="100dp"
+                    android:background="@color/color_divider" />
 
                 <com.hyena.framework.app.widget.AccuracGridView
                     android:id="@+id/giftGrid"
