@@ -9,6 +9,8 @@ import com.buang.welewolf.base.services.share.ShareSDKService;
 import com.buang.welewolf.base.services.share.ShareService;
 import com.buang.welewolf.base.services.update.UpdateService;
 import com.buang.welewolf.base.services.update.UpdateServiceImpl;
+import com.buang.welewolf.base.services.upload.QNUploadServiceImpl;
+import com.buang.welewolf.base.services.upload.UploadService;
 import com.buang.welewolf.modules.login.services.LoginService;
 import com.buang.welewolf.modules.login.services.LoginServiceImpl;
 import com.buang.welewolf.modules.services.RongIMService;
@@ -52,5 +54,16 @@ public class BoxServiceManager extends BaseServiceManager {
 		registService(AudioPlayerService.SERVICE_NAME, new AudioPlayerServiceImp());
 		registService(RongIMService.SERVICE_NAME, new RongIMServiceImp());
 		registService(ShareService.SERVICE_NAME, new ShareSDKService());
+		registService(UploadService.SERVICE_NAME_QINIU, new QNUploadServiceImpl() {
+			@Override
+			public String getPicTokenUrl() {
+				return null;
+			}
+
+			@Override
+			public String getRecordTokenUrl() {
+				return null;
+			}
+		});
 	}
 }

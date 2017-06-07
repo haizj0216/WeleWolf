@@ -100,8 +100,17 @@
                     android:pathPrefix="/conversation/"
                     android:scheme="rong" />
             </intent-filter>
-
         </activity>
+        <receiver
+            android:name=".modules.message.SealNotificationReceiver"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="io.rong.push.intent.MESSAGE_ARRIVED" />
+                <action android:name="io.rong.push.intent.MI_MESSAGE_ARRIVED" />
+                <action android:name="io.rong.push.intent.MESSAGE_CLICKED" />
+                <action android:name="io.rong.push.intent.MI_MESSAGE_CLICKED" />
+            </intent-filter>
+        </receiver>
     </application>
 
 </manifest>
