@@ -15,6 +15,8 @@ import com.buang.welewolf.modules.login.services.LoginService;
 
 import java.util.UUID;
 
+import cn.smssdk.SMSSDK;
+
 public class Utils {
 
     public static UserItem getLoginUserItem() {
@@ -52,6 +54,30 @@ public class Utils {
         UUID deviceUuid = new UUID(androidId.hashCode(), ((long) tmDevice.hashCode() << 32) | tmSerial.hashCode());
         String uniqueId = deviceUuid.toString();
         return uniqueId;
+    }
+
+    public static String getCurrentCountry() {
+        String mcc = getMCC();
+        String[] country = null;
+        if (!TextUtils.isEmpty(mcc)) {
+            country = SMSSDK.getCountryByMCC(mcc);
+        }
+
+        if (country == null) {
+            country = SMSSDK.getCountry("42");
+        }
+        return country[1];
+    }
+
+    public static String getMCC() {
+        TelephonyManager tm = (TelephonyManager) BaseApp.getAppContext().getSystemService(Context.TELEPHONY_SERVICE);
+        // 返回当前手机注册的网络运营商所在国家的MCC+MNC. 如果没注册到网络就为空.
+        String networkOperator = tm.getNetworkOperator();
+        if (!TextUtils.isEmpty(networkOperator)) {
+            return networkOperator;
+        }
+        // 返回SIM卡运营商所在国家的MCC+MNC. 5位或6位. 如果没有SIM卡返回空
+        return tm.getSimOperator();
     }
 
 }

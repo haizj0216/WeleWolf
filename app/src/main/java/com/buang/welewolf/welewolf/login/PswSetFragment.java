@@ -13,9 +13,12 @@ import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.buang.welewolf.R;
+import com.buang.welewolf.modules.utils.ToastUtils;
 import com.buang.welewolf.modules.utils.UIFragmentHelper;
+import com.buang.welewolf.modules.utils.Utils;
 import com.hyena.framework.app.fragment.BaseUIFragment;
 
 import cn.smssdk.EventHandler;
@@ -34,14 +37,23 @@ public class PswSetFragment extends BaseUIFragment<UIFragmentHelper> {
     private EditText mPswEdit;
 
     private String phoneNum;
+    private String country;
 
     private Handler mHandler = new Handler() {
         public void handleMessage(Message message) {
             int what = message.what;
             switch (what) {
-                case SMSSDK.EVENT_SUBMIT_VERIFICATION_CODE:
-                    break;
                 case SMSSDK.EVENT_GET_VERIFICATION_CODE:
+                    ToastUtils.showShortToast(getActivity(), "验证码发送成功");
+                    break;
+                case SMSSDK.EVENT_SUBMIT_VERIFICATION_CODE:
+                    openEditInfoFragment();
+                    break;
+                case 101:
+                    ToastUtils.showShortToast(getActivity(), "验证码发送失败");
+                    break;
+                case 100:
+                    ToastUtils.showShortToast(getActivity(), "验证码错误");
                     break;
             }
         }
@@ -63,7 +75,7 @@ public class PswSetFragment extends BaseUIFragment<UIFragmentHelper> {
     public void onViewCreatedImpl(View view, Bundle savedInstanceState) {
         super.onViewCreatedImpl(view, savedInstanceState);
         getUIFragmentHelper().getTitleBar().setTitle("设置密码");
-//        SMSSDK.initSDK(getActivity(), "1decfb2e248c0", "b0ec8a80a79abd480c71499893628bfe");
+        SMSSDK.initSDK(getActivity(), "1decfb2e248c0", "b0ec8a80a79abd480c71499893628bfe");
         mEye = (CheckBox) view.findViewById(R.id.ivEye);
         mBtn = (Button) view.findViewById(R.id.ivConfirm);
         mSend = (Button) view.findViewById(R.id.ivSendCode);
@@ -82,20 +94,25 @@ public class PswSetFragment extends BaseUIFragment<UIFragmentHelper> {
             }
         });
 
-//        EventHandler eh = new EventHandler() {
-//
-//            @Override
-//            public void afterEvent(int event, int result, Object data) {
-//
-//                if (result == SMSSDK.RESULT_COMPLETE) {
-//                    mHandler.sendEmptyMessage(event);
-//                } else {
-//                    ((Throwable) data).printStackTrace();
-//                }
-//            }
-//        };
-//        SMSSDK.registerEventHandler(eh);
+        EventHandler eh = new EventHandler() {
 
+            @Override
+            public void afterEvent(int event, int result, Object data) {
+                if (result == SMSSDK.RESULT_COMPLETE) {
+                    mHandler.sendEmptyMessage(event);
+                } else {
+                    ((Throwable) data).printStackTrace();
+                    if (event == SMSSDK.EVENT_SUBMIT_VERIFICATION_CODE) {
+                        mHandler.sendEmptyMessage(100);
+                    } else if (event == SMSSDK.EVENT_GET_VERIFICATION_CODE) {
+                        mHandler.sendEmptyMessage(101);
+                    }
+                }
+            }
+        };
+        SMSSDK.registerEventHandler(eh);
+        SMSSDK.getSupportedCountries();
+        country = Utils.getCurrentCountry();
         mCodeEdit.addTextChangedListener(textWatcher);
         mPswEdit.addTextChangedListener(textWatcher);
     }
@@ -136,12 +153,12 @@ public class PswSetFragment extends BaseUIFragment<UIFragmentHelper> {
             int id = v.getId();
             switch (id) {
                 case R.id.ivConfirm:
-                    openEditInfoFragment();
+                    SMSSDK.submitVerificationCode(country, phoneNum, mCodeEdit.getText().toString());
                     break;
                 case R.id.ivSendCode:
                     timer.start();
                     mSend.setEnabled(false);
-//                    SMSSDK.getVerificationCode("ch", phoneNum);
+                    SMSSDK.getVerificationCode(country, phoneNum);
                     break;
             }
         }
@@ -150,7 +167,7 @@ public class PswSetFragment extends BaseUIFragment<UIFragmentHelper> {
     private void checkValid() {
         String code = mCodeEdit.getText().toString();
         String psw = mPswEdit.getText().toString();
-        if (code.length() == 6 && psw.length() >= 2 && psw.length() <= 20) {
+        if (code.length() > 0 && psw.length() >= 2 && psw.length() <= 20) {
             mBtn.setEnabled(true);
         } else {
             mBtn.setEnabled(false);
@@ -158,14 +175,14 @@ public class PswSetFragment extends BaseUIFragment<UIFragmentHelper> {
     }
 
     private void openEditInfoFragment() {
-//        SMSSDK.submitVerificationCode("ch", phoneNum, mCodeEdit.getText().toString());
         UserInfoEditFragment fragment = UserInfoEditFragment.newFragment(getActivity(), UserInfoEditFragment.class, null);
         showFragment(fragment);
     }
 
+
     @Override
     public void onDestroyImpl() {
         super.onDestroyImpl();
-//        SMSSDK.unregisterAllEventHandler();
+        SMSSDK.unregisterAllEventHandler();
     }
 }

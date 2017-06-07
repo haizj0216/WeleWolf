@@ -263,23 +263,11 @@ public class MainActivity extends NavigateActivity {
 
 		@Override
 		public void onLogin(final UserItem user) {
-			if (user == null) return;
 			LogUtil.d("MainActivity onLogin");
 			UiThreadHandler.post(new Runnable() {
 				@Override
 				public void run() {
-
-					if(user.gradePart.isEmpty()) {
-						showScene(SCENE_SUBJECT);
-					}else if (user.mBookId.equals("0")
-							|| user.mEditionId.equals("0")
-							|| user.mBookId.isEmpty()
-							|| user.mEditionId.isEmpty()) {
-						showScene(SCENE_BOOK);
-					}else {
-						showScene(SCENE_MAIN);
-					}
-
+					showScene(SCENE_MAIN);
 					clearPrefsOnExit(false);
 				}
 			});
