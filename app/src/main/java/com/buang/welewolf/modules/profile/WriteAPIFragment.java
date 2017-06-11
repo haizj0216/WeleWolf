@@ -29,6 +29,7 @@ public class WriteAPIFragment extends BaseUIFragment<UIFragmentHelper> {
     public void onViewCreatedImpl(View view, Bundle savedInstanceState) {
         super.onViewCreatedImpl(view, savedInstanceState);
         getUIFragmentHelper().getTitleBar().setTitle("填写你的APIPrefix");
+        getUIFragmentHelper().setTintBar(getResources().getColor(R.color.color_title_bar));
         TextView mDesc = (TextView) view.findViewById(R.id.desc);
         mDesc.setText("找不到想要的API？输入你自己的进行创建吧");
         TextView city = (TextView) view

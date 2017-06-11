@@ -6,7 +6,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:background="#2E2A39">
+        android:background="@color/color_title_bar">
 
         <ImageView
             android:layout_width="wrap_content"
@@ -37,7 +37,7 @@
                 android:id="@+id/ivUserView"
                 android:layout_width="match_parent"
                 android:layout_height="100dp"
-                android:background="#2E2A39">
+                android:background="@color/color_title_bar">
 
                 <ImageView
                     android:id="@+id/main_header_image"

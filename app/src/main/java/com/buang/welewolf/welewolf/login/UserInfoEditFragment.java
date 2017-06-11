@@ -63,6 +63,7 @@ public class UserInfoEditFragment extends BaseUIFragment<UIFragmentHelper> {
     public void onViewCreatedImpl(View view, Bundle savedInstanceState) {
         super.onViewCreatedImpl(view, savedInstanceState);
         getUIFragmentHelper().getTitleBar().setTitle("完善资料");
+        getUIFragmentHelper().setTintBar(getResources().getColor(R.color.color_title_bar));
         mPhoto = (ImageView) view.findViewById(R.id.ivPhoto);
         mPhotoView = view.findViewById(R.id.ivPhotoView);
         mSex = (RadioGroup) view.findViewById(R.id.ivSex);

@@ -30,6 +30,7 @@ public class PhoneRegisterFragment extends BaseUIFragment<UIFragmentHelper> {
     public void onViewCreatedImpl(View view, Bundle savedInstanceState) {
         super.onViewCreatedImpl(view, savedInstanceState);
         getUIFragmentHelper().getTitleBar().setTitle("手机号注册");
+        getUIFragmentHelper().setTintBar(getResources().getColor(R.color.color_title_bar));
         mPhone = (EditText) view.findViewById(R.id.ivPhoneEdit);
         mRegister = (Button) view.findViewById(R.id.ivRegister);
         mPhone.addTextChangedListener(new TextWatcher() {

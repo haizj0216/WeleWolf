@@ -9,7 +9,7 @@
         android:id="@+id/title_bar_layout"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:background="@color/color_23213a"
+        android:background="@color/color_title_bar"
         android:orientation="vertical">
 
         <ImageButton
@@ -162,7 +162,7 @@
 
     <fragment
         android:id="@+id/rong_content"
-        android:name="io.rong.imkit.fragment.ConversationFragment"
+        android:name="com.buang.welewolf.modules.message.ConversationFragmentEx"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 </LinearLayout>

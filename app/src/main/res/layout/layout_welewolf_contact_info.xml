@@ -40,7 +40,7 @@
 
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="160dp">
+                android:layout_height="180dp">
 
                 <ImageView
                     android:layout_width="match_parent"
@@ -51,6 +51,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="50dp"
                     android:layout_centerHorizontal="true"
+                    android:layout_marginTop="20dp"
                     android:gravity="center"
                     android:text="个人主页"
                     android:textColor="@color/white"
@@ -60,6 +61,7 @@
                     android:id="@+id/title_bar_back"
                     android:layout_width="50dp"
                     android:layout_height="50dp"
+                    android:layout_marginTop="20dp"
                     android:background="@null"
                     android:padding="15dp"
                     android:src="@drawable/bt_title_back_dark" />
@@ -70,6 +72,7 @@
                     android:layout_height="50dp"
                     android:layout_alignParentRight="true"
                     android:layout_marginRight="15dp"
+                    android:layout_marginTop="20dp"
                     android:gravity="center_vertical"
                     android:text="设置"
                     android:textColor="@color/white"
@@ -80,7 +83,7 @@
                     android:layout_width="70dp"
                     android:layout_height="70dp"
                     android:layout_marginLeft="15dp"
-                    android:layout_marginTop="70dp"
+                    android:layout_marginTop="90dp"
                     android:background="@drawable/bg_write_circle"
                     android:padding="1dp"
                     android:src="@drawable/bt_message_default_head" />
@@ -181,7 +184,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="100dp"
-                    android:layout_marginTop="15dp"
+                    android:layout_marginTop="10dp"
                     android:text="狼人杀 286局"
                     android:textColor="@color/color_4c4b54"
                     android:textSize="15dp" />
@@ -191,7 +194,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/tvTotal"
-                    android:layout_marginBottom="15dp"
                     android:layout_marginLeft="100dp"
                     android:layout_marginTop="5dp"
                     android:text="胜 159"

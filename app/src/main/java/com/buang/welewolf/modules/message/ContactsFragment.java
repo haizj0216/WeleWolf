@@ -49,6 +49,7 @@ public class ContactsFragment extends BaseUIFragment<UIFragmentHelper> {
     @Override
     public void onViewCreatedImpl(View view, Bundle savedInstanceState) {
         super.onViewCreatedImpl(view, savedInstanceState);
+        getUIFragmentHelper().setTintBar(getResources().getColor(R.color.color_title_bar));
         mListView = (ListView) view.findViewById(R.id.listview);
         mAdapter = new ContactAdapter(getActivity());
         mListView.setAdapter(mAdapter);

@@ -28,5 +28,6 @@ public class GuildSettingFragment extends BaseUIFragment<UIFragmentHelper> {
     public void onViewCreatedImpl(View view, Bundle savedInstanceState) {
         super.onViewCreatedImpl(view, savedInstanceState);
         getUIFragmentHelper().getTitleBar().setTitle("公会设置");
+        getUIFragmentHelper().setTintBar(getResources().getColor(R.color.color_title_bar));
     }
 }

@@ -75,6 +75,7 @@ public class PswSetFragment extends BaseUIFragment<UIFragmentHelper> {
     public void onViewCreatedImpl(View view, Bundle savedInstanceState) {
         super.onViewCreatedImpl(view, savedInstanceState);
         getUIFragmentHelper().getTitleBar().setTitle("设置密码");
+        getUIFragmentHelper().setTintBar(getResources().getColor(R.color.color_title_bar));
         SMSSDK.initSDK(getActivity(), "1decfb2e248c0", "b0ec8a80a79abd480c71499893628bfe");
         mEye = (CheckBox) view.findViewById(R.id.ivEye);
         mBtn = (Button) view.findViewById(R.id.ivConfirm);

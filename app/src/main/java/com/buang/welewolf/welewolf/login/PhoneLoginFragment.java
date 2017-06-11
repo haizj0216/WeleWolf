@@ -37,7 +37,7 @@ public class PhoneLoginFragment extends BaseUIFragment<UIFragmentHelper> {
     public void onViewCreatedImpl(View view, Bundle savedInstanceState) {
         super.onViewCreatedImpl(view, savedInstanceState);
         getUIFragmentHelper().getTitleBar().setTitle("手机号登录");
-
+        getUIFragmentHelper().setTintBar(getResources().getColor(R.color.color_title_bar));
         mPhoneEdit = (EditText) view.findViewById(R.id.ivPhoneEdit);
         mPswEdit = (EditText) view.findViewById(R.id.ivPswEdit);
         mLogin = (Button) view.findViewById(R.id.ivLogin);

@@ -6,7 +6,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:background="#2E2A39"
+        android:background="@color/color_title_bar"
         android:gravity="center_vertical"
         android:paddingLeft="15dp"
         android:text="排行榜"

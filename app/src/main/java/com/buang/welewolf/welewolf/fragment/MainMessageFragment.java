@@ -46,6 +46,7 @@ public class MainMessageFragment extends BaseUIFragment<UIFragmentHelper> {
     @Override
     public void onViewCreatedImpl(View view, Bundle savedInstanceState) {
         super.onViewCreatedImpl(view, savedInstanceState);
+        getUIFragmentHelper().setTintBar(getResources().getColor(R.color.color_title_bar));
         rongIMService.connect();
         if (mConversationListFragment == null) {
             mConversationListFragment = (ConversationListFragment) getActivity().getSupportFragmentManager().findFragmentById(R.id.ivConversationList);

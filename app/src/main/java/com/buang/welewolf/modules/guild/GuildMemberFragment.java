@@ -43,6 +43,7 @@ public class GuildMemberFragment extends BaseUIFragment<UIFragmentHelper> {
     public void onViewCreatedImpl(View view, Bundle savedInstanceState) {
         super.onViewCreatedImpl(view, savedInstanceState);
         getUIFragmentHelper().getTitleBar().setTitle("公会成员");
+        getUIFragmentHelper().setTintBar(getResources().getColor(R.color.color_title_bar));
         mListView = (ListView) view.findViewById(R.id.lvListView);
         mAdapter = new MemberAdapter(getActivity());
         mListView.setAdapter(mAdapter);

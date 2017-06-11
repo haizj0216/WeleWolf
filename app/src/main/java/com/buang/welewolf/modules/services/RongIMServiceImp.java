@@ -4,6 +4,8 @@ import android.content.Context;
 import android.util.Log;
 import android.view.View;
 
+import com.buang.welewolf.modules.message.bean.CmdMEssage;
+import com.buang.welewolf.modules.message.bean.CustomizeMessage;
 import com.buang.welewolf.modules.utils.ToastUtils;
 import com.hyena.framework.clientlog.LogUtil;
 
@@ -56,6 +58,8 @@ public class RongIMServiceImp implements RongIMService {
     }
 
     private void initRongIM() {
+        RongIM.registerMessageType(CmdMEssage.class);
+        RongIM.registerMessageType(CustomizeMessage.class);
         RongIM.setConnectionStatusListener(connectionStatusListener);
         RongIM.getInstance().setSendMessageListener(new RongIM.OnSendMessageListener() {
             @Override

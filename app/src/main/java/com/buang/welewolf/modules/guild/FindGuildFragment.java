@@ -39,6 +39,7 @@ public class FindGuildFragment extends BaseUIFragment<UIFragmentHelper> {
     @Override
     public void onViewCreatedImpl(View view, Bundle savedInstanceState) {
         super.onViewCreatedImpl(view, savedInstanceState);
+        getUIFragmentHelper().setTintBar(getResources().getColor(R.color.color_title_bar));
         mRecommend = view.findViewById(R.id.rvRecommend);
         mRank = view.findViewById(R.id.rvRank);
         mViewPager = (ViewPager) view.findViewById(R.id.rViewPager);

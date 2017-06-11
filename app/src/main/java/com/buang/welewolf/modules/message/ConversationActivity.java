@@ -58,7 +58,7 @@ public class ConversationActivity extends FragmentActivity {
     public static final int SET_VOICE_TYPING_TITLE = 2;
     public static final int SET_TARGET_ID_TITLE = 0;
 
-    private ConversationFragment fragment;
+    private ConversationFragmentEx fragment;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -107,7 +107,7 @@ public class ConversationActivity extends FragmentActivity {
                 }
             }
         });
-        fragment = (ConversationFragment) getSupportFragmentManager().findFragmentById(R.id.rong_content);
+        fragment = (ConversationFragmentEx) getSupportFragmentManager().findFragmentById(R.id.rong_content);
         enterFragment(mConversationType, mTargetId);
     }
 

@@ -18,6 +18,7 @@ import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.buang.welewolf.R;
 import com.buang.welewolf.base.bean.BannerInfoItem;
 import com.buang.welewolf.base.bean.OnlineRankItemInfo;
 import com.buang.welewolf.base.bean.OnlineRankListInfo;
@@ -89,6 +90,7 @@ public class MainRankFragment extends BaseUIFragment<UIFragmentHelper> {
     @Override
     public void onViewCreatedImpl(View view, Bundle savedInstanceState) {
         super.onViewCreatedImpl(view, savedInstanceState);
+        getUIFragmentHelper().setTintBar(getResources().getColor(R.color.color_title_bar));
         mListView = (ListView) view.findViewById(com.buang.welewolf.R.id.main_list_listview);
 
         initData();

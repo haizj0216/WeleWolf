@@ -29,7 +29,7 @@ public class MainGameFragment extends BaseUIFragment<UIFragmentHelper> {
     @Override
     public void onViewCreatedImpl(View view, Bundle savedInstanceState) {
         super.onViewCreatedImpl(view, savedInstanceState);
-
+        getUIFragmentHelper().setTintBar(getResources().getColor(R.color.color_title_bar));
         view.findViewById(R.id.ivUserView).setOnClickListener(onClickListener);
     }
 

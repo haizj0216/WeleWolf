@@ -13,6 +13,7 @@ import android.os.Message;
 import android.support.v4.app.Fragment;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.WindowManager;
 import android.webkit.WebView;
 import android.widget.TextView;
 
@@ -111,13 +112,12 @@ public class MainActivity extends NavigateActivity {
 
 		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
 			//透明状态栏
-//			getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+			getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
 			//wewview开启调试模式
 			if (0 != (getApplicationInfo().flags &= ApplicationInfo.FLAG_DEBUGGABLE)) {
 				WebView.setWebContentsDebuggingEnabled(true);
 			}
 		}
-		//umeng channel
 		UIViewFactory.getViewFactory().registViewBuilder(new BoxViewBuilder());
 		showScene(SCENE_SPLASH);
 		if(!App.mIsEmChatConntcted){
