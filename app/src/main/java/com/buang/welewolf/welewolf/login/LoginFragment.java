@@ -51,7 +51,9 @@ public class LoginFragment extends BaseUIFragment<UIFragmentHelper> {
     }
 
     private void openRegisterFragment() {
-        PhoneRegisterFragment fragment = PhoneRegisterFragment.newFragment(getActivity(), PhoneRegisterFragment.class, null);
+        Bundle mBundle = new Bundle();
+        mBundle.putInt("from", PhoneRegisterFragment.FROM_REGISTER);
+        PhoneRegisterFragment fragment = PhoneRegisterFragment.newFragment(getActivity(), PhoneRegisterFragment.class, mBundle);
         showFragment(fragment);
     }
 

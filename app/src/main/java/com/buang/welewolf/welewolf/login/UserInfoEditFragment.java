@@ -6,21 +6,44 @@ import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.support.annotation.IdRes;
+import android.text.TextUtils;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RadioGroup;
+import android.widget.Toast;
 
 import com.buang.welewolf.R;
+import com.buang.welewolf.base.bean.OnlineLoginInfo;
+import com.buang.welewolf.base.database.bean.UserItem;
+import com.buang.welewolf.base.database.tables.UserTable;
+import com.buang.welewolf.base.http.services.OnlineServices;
+import com.buang.welewolf.base.services.upload.UploadListener;
+import com.buang.welewolf.base.services.upload.UploadService;
+import com.buang.welewolf.base.services.upload.UploadTask;
 import com.buang.welewolf.base.utils.DirContext;
+import com.buang.welewolf.base.utils.FileUtils;
+import com.buang.welewolf.base.utils.ImageUtil;
 import com.buang.welewolf.modules.utils.DialogUtils;
 import com.buang.welewolf.modules.utils.ToastUtils;
 import com.buang.welewolf.modules.utils.UIFragmentHelper;
 import com.hyena.framework.app.fragment.BaseUIFragment;
 import com.hyena.framework.app.fragment.bean.MenuItem;
+import com.hyena.framework.database.DataBaseManager;
+import com.hyena.framework.datacache.BaseObject;
+import com.hyena.framework.datacache.DataAcquirer;
+import com.hyena.framework.utils.ImageFetcher;
+import com.hyena.framework.utils.ImageUtils;
+import com.hyena.framework.utils.RoundDisplayer;
+import com.hyena.framework.utils.UIUtils;
 import com.hyena.framework.utils.UiThreadHandler;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -34,8 +57,6 @@ public class UserInfoEditFragment extends BaseUIFragment<UIFragmentHelper> {
     private static final int REQCODE_CAMERA = 0xA0;
     private static final int REQCODE_PICKER = 0xA1;
     private static final int REQCODE_FROM_CROP = 0xA2;
-    public static final String ACTION_INFOEDIT_CHANGE = "com.knowbox.infoedit.changed";
-    private static final int ACTION_UPDATE_USERINFO = 1;
 
     private Dialog mDialog;
     private ImageView mPhoto;
@@ -45,7 +66,8 @@ public class UserInfoEditFragment extends BaseUIFragment<UIFragmentHelper> {
     private Button mButton;
 
     private File headImageFile;
-
+    private String imageUrl;
+    private int sex;
 
     @Override
     public void onCreateImpl(Bundle savedInstanceState) {
@@ -63,6 +85,7 @@ public class UserInfoEditFragment extends BaseUIFragment<UIFragmentHelper> {
     public void onViewCreatedImpl(View view, Bundle savedInstanceState) {
         super.onViewCreatedImpl(view, savedInstanceState);
         getUIFragmentHelper().getTitleBar().setTitle("完善资料");
+        getUIFragmentHelper().getTitleBar().setBackBtnVisible(false);
         getUIFragmentHelper().setTintBar(getResources().getColor(R.color.color_title_bar));
         mPhoto = (ImageView) view.findViewById(R.id.ivPhoto);
         mPhotoView = view.findViewById(R.id.ivPhotoView);
@@ -72,6 +95,16 @@ public class UserInfoEditFragment extends BaseUIFragment<UIFragmentHelper> {
 
         mPhotoView.setOnClickListener(onClickListener);
         mButton.setOnClickListener(onClickListener);
+        mSex.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, @IdRes int checkedId) {
+                if (checkedId == R.id.ivMale) {
+                    sex = 0;
+                } else if (checkedId == R.id.ivFemale) {
+                    sex = 1;
+                }
+            }
+        });
     }
 
     View.OnClickListener onClickListener = new View.OnClickListener() {
@@ -83,12 +116,49 @@ public class UserInfoEditFragment extends BaseUIFragment<UIFragmentHelper> {
                     updateUserHeadImg();
                     break;
                 case R.id.ivConfirm:
-                    ToastUtils.showShortToast(getActivity(), "恭喜进入狼人杀");
-                    removeAllFragment();
+                    try {
+                        loadData();
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
                     break;
             }
         }
     };
+
+    private void loadData() throws JSONException {
+        UIUtils.hideInputMethod(getActivity());
+        if (TextUtils.isEmpty(imageUrl)) {
+            ToastUtils.showShortToast(getActivity(), "请上传头像");
+            return;
+        }
+        if (mName.getText().length() > 20 || mName.getText().length() < 2) {
+            ToastUtils.showShortToast(getActivity(), "请输入正确的名称");
+            return;
+        }
+
+        JSONObject jsonObject = new JSONObject();
+        jsonObject.put("userName", mName.getText().toString());
+        jsonObject.put("sex", sex);
+        jsonObject.put("headPhoto", imageUrl);
+        loadDefaultData(PAGE_MORE, jsonObject.toString());
+    }
+
+
+    @Override
+    public BaseObject onProcess(int action, int pageNo, Object... params) {
+        String url = OnlineServices.getFormatUserInfoUrl();
+        OnlineLoginInfo result = new DataAcquirer<OnlineLoginInfo>().post(url, (String) params[0], new OnlineLoginInfo());
+        return result;
+    }
+
+    @Override
+    public void onGet(int action, int pageNo, BaseObject result, Object... params) {
+        super.onGet(action, pageNo, result, params);
+        UserItem user = ((OnlineLoginInfo) result).mUserItem;
+        DataBaseManager.getDataBaseManager().getTable(UserTable.class).updateCurrentUserInfo(user);
+        finish();
+    }
 
     /**
      * 修改用户头像
@@ -104,12 +174,18 @@ public class UserInfoEditFragment extends BaseUIFragment<UIFragmentHelper> {
                                             int position, long arg3) {
                         // 调用系统相机拍照
                         if (position == 0) {
-                            Intent intent = new Intent(
-                                    MediaStore.ACTION_IMAGE_CAPTURE);
-                            intent.putExtra(MediaStore.EXTRA_OUTPUT,
-                                    Uri.fromFile(headImageFile));
-                            intent.putExtra("return-data", false);
-                            startActivityForResult(intent, REQCODE_CAMERA);
+                            try {
+                                Intent intent = new Intent(
+                                        MediaStore.ACTION_IMAGE_CAPTURE);
+                                intent.putExtra(MediaStore.EXTRA_OUTPUT,
+                                        Uri.fromFile(headImageFile));
+                                intent.putExtra("return-data", false);
+                                startActivityForResult(intent, REQCODE_CAMERA);
+                            } catch (Exception e) {
+                                e.printStackTrace();
+                                ToastUtils.showShortToast(getActivity(), "打开相机失败");
+                            }
+
                         }
 
                         // 调用图片浏览器
@@ -149,7 +225,7 @@ public class UserInfoEditFragment extends BaseUIFragment<UIFragmentHelper> {
                     UiThreadHandler.post(new Runnable() {
                         @Override
                         public void run() {
-                            mPhoto.setImageBitmap(bitmap);
+                            uploadImage(bitmap);
                         }
                     });
                 }
@@ -172,5 +248,62 @@ public class UserInfoEditFragment extends BaseUIFragment<UIFragmentHelper> {
         intent.putExtra("outputY", 150);
         intent.putExtra("return-data", true);
         startActivityForResult(intent, REQCODE_FROM_CROP);
+    }
+
+    private void uploadImage(Bitmap bitmap) {
+        if (bitmap != null) {
+            FileUtils.saveBitmap(bitmap, headImageFile);
+            // 上传七牛云
+            final byte[] imageData = ImageUtil.getBitmapBytes(headImageFile, 100, 200, 200);
+            if (getActivity() == null) {//崩溃处理
+                return;
+            }
+            UploadService uploadService = (UploadService) getActivity().getSystemService(UploadService.SERVICE_NAME_QINIU);
+            uploadService.upload(new UploadTask(UploadTask.TYPE_PICTURE, imageData), new UploadListener() {
+                @Override
+                public void onUploadStarted(UploadTask uploadTask) {
+                }
+
+                @Override
+                public void onUploadProgress(UploadTask uploadTask, double v) {
+
+                }
+
+                @Override
+                public void onUploadComplete(UploadTask uploadTask, final String s) {
+                    imageUrl = s;
+                    UiThreadHandler.post(new Runnable() {
+                        @Override
+                        public void run() {
+                            ImageFetcher.getImageFetcher().loadImage(s, mPhoto, R.drawable.bt_message_default_head, new RoundDisplayer());
+                        }
+                    });
+                }
+
+                @Override
+                public void onUploadError(UploadTask uploadTask, int i, String s, String s1) {
+                    UiThreadHandler.post(new Runnable() {
+                        @Override
+                        public void run() {
+                            Toast.makeText(getActivity(), "上传头像失败", Toast.LENGTH_SHORT).show();
+                        }
+                    });
+                }
+
+                @Override
+                public void onRetry(UploadTask uploadTask, int i, String s, String s1) {
+
+                }
+
+            });
+        }
+    }
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (keyCode == KeyEvent.KEYCODE_BACK) {
+            return true;
+        }
+        return super.onKeyDown(keyCode, event);
     }
 }

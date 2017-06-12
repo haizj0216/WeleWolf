@@ -6,7 +6,6 @@ package com.buang.welewolf.modules.login.services;
 import com.buang.welewolf.base.database.bean.UserItem;
 import com.buang.welewolf.widgets.AdvanceTimer;
 import com.hyena.framework.servcie.BaseService;
-import com.buang.welewolf.modules.login.services.LoginServiceImpl.RegistUserInfoBuilder;
 
 /**
  * 用户相关服务
@@ -37,14 +36,6 @@ public interface LoginService extends BaseService {
 	public void login(final String loginName, final String passwd,
 			final LoginListener listener);
 
-	/**
-	 * 短信验证登录
-	 * @param loginName
-	 * @param smsCode
-	 * @param listener
-	 */
-	public void smsLogin(final String loginName, final String smsCode,
-						 final SmsLoginListener listener);
 
 	/**
 	 * 登出
@@ -58,12 +49,6 @@ public interface LoginService extends BaseService {
 	 */
 	public LoginServiceObserver getServiceObvserver();
 	
-	/**
-	 * 获得用户信息构造器
-	 * @return
-	 */
-	public RegistUserInfoBuilder getUserInfoBuilder();
-
 	/**
 	 * 执行倒计时
 	 * @param time
@@ -80,14 +65,7 @@ public interface LoginService extends BaseService {
 
 	public void releaseTimer();
 
-	/**
-	 *
-	 * @param clazzName 发送的类
-	 */
-	public void updateJiaoCai(String clazzName);
-
 	public void clearUserInfo();
 
-	public void updateSchool(String[] keys, String[] values, boolean isUserDefined);
 
 }

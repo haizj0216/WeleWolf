@@ -133,27 +133,11 @@ public class UserTable extends BaseTable<UserItem> {
 		UserItem user = new UserItem();
 		user.userId = userId;
 		user.loginName = loginname;
-		user.subjectCode = subjectCode;
 		user.userName = username;
-		user.school = school;
 		user.token = token;
 		user.headPhoto = hPhoto;
 		user.birthday = birthday;
 		user.sex = sex;
-		user.gradePart = grade;
-		user.subject = subject;
-		user.authImage = authImage;
-		user.authError = authError;
-		user.authenticationStatus = authStatus;
-		user.realName = readName;
-		user.documentNumber = documCode;
-		user.idCard = idCard;
-		user.mCertTime = certTime;
-		user.mEditionId = teachingID;
-		user.mEditionName = teachingName;
-		user.mBookName = jiaoCaiName;
-		user.mBookId = jiaoCaiId;
-		user.schoolName = schoolName;
 		return user;
 	}
 
@@ -163,27 +147,11 @@ public class UserTable extends BaseTable<UserItem> {
 		values.put(UserTable.USERID, item.userId);
 		values.put(UserTable.LOGINNAME, item.loginName);
 		values.put(UserTable.USERNAME, item.userName);
-		values.put(UserTable.SUBJECTCODE, item.subjectCode);
-		values.put(UserTable.SCHOOL, item.school);
 		values.put(UserTable.PASSWORD, item.password);
 		values.put(UserTable.TOKEN, item.token);
 		values.put(UserTable.HEADPHOTO, item.headPhoto);
 		values.put(UserTable.BIRTHDAY, item.birthday);
 		values.put(UserTable.SEX, item.sex);
-		values.put(UserTable.GRADE, item.gradePart);
-		values.put(UserTable.SUBJECT, item.subject);
-		values.put(UserTable.AUTHERROR, item.authError);
-		values.put(UserTable.AUTHSTATUS, item.authenticationStatus);
-		values.put(UserTable.AUTHIMAGE, item.authImage);
-		values.put(UserTable.REALNAME, item.realName);
-		values.put(UserTable.DOCUMNUMBER, item.documentNumber);
-		values.put(UserTable.IDCARD, item.idCard);
-		values.put(UserTable.CERTTIME, item.mCertTime);
-		values.put(UserTable.BOOKID, item.mBookId);
-		values.put(UserTable.BOOKNAME, item.mBookName);
-		values.put(UserTable.EDITIONID, item.mEditionId);
-		values.put(UserTable.EDITIONNAME, item.mEditionName);
-		values.put(UserTable.SCHOOLNAME,item.schoolName);
 		return values;
 	}
 

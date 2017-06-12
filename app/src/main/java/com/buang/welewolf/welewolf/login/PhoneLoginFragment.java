@@ -10,10 +10,18 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.buang.welewolf.R;
+import com.buang.welewolf.base.bean.OnlineLoginInfo;
+import com.buang.welewolf.base.database.bean.UserItem;
+import com.buang.welewolf.base.database.tables.UserTable;
 import com.buang.welewolf.base.utils.StringUtils;
+import com.buang.welewolf.modules.login.services.LoginListener;
+import com.buang.welewolf.modules.login.services.LoginService;
+import com.buang.welewolf.modules.login.services.UserStateChangeListener;
+import com.buang.welewolf.modules.utils.ToastUtils;
 import com.buang.welewolf.modules.utils.UIFragmentHelper;
 import com.hyena.framework.app.fragment.BaseUIFragment;
-import com.hyena.framework.datacache.BaseObject;
+import com.hyena.framework.database.DataBaseManager;
+import com.hyena.framework.utils.UiThreadHandler;
 
 /**
  * Created by weilei on 17/5/16.
@@ -26,11 +34,15 @@ public class PhoneLoginFragment extends BaseUIFragment<UIFragmentHelper> {
     private Button mLogin;
     private TextView mForgetPsw;
     private TextView mNewUser;
+    private LoginService mLoginService;
 
     @Override
     public void onCreateImpl(Bundle savedInstanceState) {
         super.onCreateImpl(savedInstanceState);
         setSlideable(true);
+        mLoginService = (LoginService) getActivity().getSystemService(
+                LoginService.SERVICE_NAME);
+        mLoginService.getServiceObvserver().addUserStateChangeListener(userStateChangeListener);
     }
 
     @Override
@@ -95,13 +107,77 @@ public class PhoneLoginFragment extends BaseUIFragment<UIFragmentHelper> {
             int id = v.getId();
             switch (id) {
                 case R.id.ivForgetPsw:
-                    openSetPswFragment();
+                    openRegisterFragment(PhoneRegisterFragment.FROM_FORGET_PSW);
                     break;
                 case R.id.ivLogin:
-                    //TODO login
-                    finish();
+                    loginImp();
+                    break;
+                case R.id.ivNewUser:
+                    openRegisterFragment(PhoneRegisterFragment.FROM_REGISTER);
                     break;
             }
+        }
+    };
+
+    private void loginImp() {
+        mLoginService.login(mPhoneEdit.getText().toString(), mPswEdit.getText().toString(), mLoginListener);
+    }
+
+    private UserStateChangeListener userStateChangeListener = new UserStateChangeListener() {
+        @Override
+        public void onLogin(UserItem user) {
+            UiThreadHandler.post(new Runnable() {
+                @Override
+                public void run() {
+                    finish();
+                }
+            });
+        }
+
+        @Override
+        public void onLogout(UserItem user) {
+
+        }
+    };
+
+    private LoginListener mLoginListener = new LoginListener() {
+        @Override
+        public void onLoginStart() {
+            UiThreadHandler.post(new Runnable() {
+                @Override
+                public void run() {
+                    mLogin.setEnabled(false);
+                    getUIFragmentHelper().getLoadingView().showLoading();
+                }
+            });
+        }
+
+        @Override
+        public void onLoginSuccess(OnlineLoginInfo loginInfo) {
+            if (loginInfo != null && loginInfo.mUserItem != null) {
+                DataBaseManager.getDataBaseManager().getTable(UserTable.class)
+                        .addUserInfo(loginInfo.mUserItem);
+                UiThreadHandler.post(new Runnable() {
+                    @Override
+                    public void run() {
+                        showContent();
+                        mLogin.setEnabled(true);
+                        ToastUtils.showShortToast(getActivity(), "登录成功！");
+                    }
+                });
+            }
+        }
+
+        @Override
+        public void onLoginFailed(final String message) {
+            UiThreadHandler.post(new Runnable() {
+                @Override
+                public void run() {
+                    mLogin.setEnabled(true);
+                    showContent();
+                    ToastUtils.showShortToast(getActivity(), message);
+                }
+            });
         }
     };
 
@@ -110,21 +186,24 @@ public class PhoneLoginFragment extends BaseUIFragment<UIFragmentHelper> {
     }
 
     private boolean checkPhonePsw(String phone, String password) {
-        if (phone.length() == 11 && password.length() > 2 && password.length() < 20) {
+        if (StringUtils.isPhone(phone) && password.length() > 2 && password.length() < 20) {
             return true;
         }
         return false;
     }
 
-    private void openSetPswFragment() {
+    private void openRegisterFragment(int from) {
         Bundle mBundle = new Bundle();
-        mBundle.putString("phone", mPhoneEdit.getText().toString());
-        PswSetFragment fragment = PswSetFragment.newFragment(getActivity(), PswSetFragment.class, mBundle);
+        mBundle.putInt("from", from);
+        PhoneRegisterFragment fragment = PhoneRegisterFragment.newFragment(getActivity(), PhoneRegisterFragment.class, mBundle);
         showFragment(fragment);
     }
 
     @Override
-    public BaseObject onProcess(int action, int pageNo, Object... params) {
-        return super.onProcess(action, pageNo, params);
+    public void onDestroyImpl() {
+        super.onDestroyImpl();
+        if (mLoginService != null) {
+            mLoginService.getServiceObvserver().removeUserStateChangeListener(userStateChangeListener);
+        }
     }
 }

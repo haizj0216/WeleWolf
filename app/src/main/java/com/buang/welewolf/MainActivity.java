@@ -438,7 +438,7 @@ public class MainActivity extends NavigateActivity {
 
 			@Override
 			public void onShowIntroduceWindow() {
-				showScene(SCENE_MAIN);
+				showScene(SCENE_LOGIN);
 				initImpl();
 			}
 		});

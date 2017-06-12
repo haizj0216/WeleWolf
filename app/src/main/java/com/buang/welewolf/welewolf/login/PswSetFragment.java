@@ -16,10 +16,23 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.buang.welewolf.R;
+import com.buang.welewolf.base.bean.OnlineLoginInfo;
+import com.buang.welewolf.base.database.bean.UserItem;
+import com.buang.welewolf.base.database.tables.UserTable;
+import com.buang.welewolf.base.http.services.OnlineServices;
+import com.buang.welewolf.modules.login.services.LoginService;
 import com.buang.welewolf.modules.utils.ToastUtils;
 import com.buang.welewolf.modules.utils.UIFragmentHelper;
 import com.buang.welewolf.modules.utils.Utils;
 import com.hyena.framework.app.fragment.BaseUIFragment;
+import com.hyena.framework.database.DataBaseManager;
+import com.hyena.framework.datacache.BaseObject;
+import com.hyena.framework.datacache.DataAcquirer;
+import com.hyena.framework.utils.UIUtils;
+import com.hyena.framework.utils.UiThreadHandler;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import cn.smssdk.EventHandler;
 import cn.smssdk.SMSSDK;
@@ -39,6 +52,8 @@ public class PswSetFragment extends BaseUIFragment<UIFragmentHelper> {
     private String phoneNum;
     private String country;
 
+    private int from;
+
     private Handler mHandler = new Handler() {
         public void handleMessage(Message message) {
             int what = message.what;
@@ -47,7 +62,7 @@ public class PswSetFragment extends BaseUIFragment<UIFragmentHelper> {
                     ToastUtils.showShortToast(getActivity(), "验证码发送成功");
                     break;
                 case SMSSDK.EVENT_SUBMIT_VERIFICATION_CODE:
-                    openEditInfoFragment();
+                    loadRegister();
                     break;
                 case 101:
                     ToastUtils.showShortToast(getActivity(), "验证码发送失败");
@@ -64,6 +79,7 @@ public class PswSetFragment extends BaseUIFragment<UIFragmentHelper> {
         super.onCreateImpl(savedInstanceState);
         setSlideable(true);
         phoneNum = getArguments().getString("phone");
+        from = getArguments().getInt("from");
     }
 
     @Override
@@ -116,6 +132,12 @@ public class PswSetFragment extends BaseUIFragment<UIFragmentHelper> {
         country = Utils.getCurrentCountry();
         mCodeEdit.addTextChangedListener(textWatcher);
         mPswEdit.addTextChangedListener(textWatcher);
+        UiThreadHandler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                sendCode();
+            }
+        }, 200);
     }
 
     TextWatcher textWatcher = new TextWatcher() {
@@ -157,13 +179,28 @@ public class PswSetFragment extends BaseUIFragment<UIFragmentHelper> {
                     SMSSDK.submitVerificationCode(country, phoneNum, mCodeEdit.getText().toString());
                     break;
                 case R.id.ivSendCode:
-                    timer.start();
-                    mSend.setEnabled(false);
-                    SMSSDK.getVerificationCode(country, phoneNum);
+                    sendCode();
                     break;
             }
         }
     };
+
+    private void loadRegister() {
+        JSONObject json = new JSONObject();
+        try {
+            json.put("phoneNum", phoneNum);
+            json.put("password", mPswEdit.getText().toString());
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        loadDefaultData(PAGE_MORE, json.toString());
+    }
+
+    private void sendCode() {
+        timer.start();
+        mSend.setEnabled(false);
+        SMSSDK.getVerificationCode(country, phoneNum);
+    }
 
     private void checkValid() {
         String code = mCodeEdit.getText().toString();
@@ -175,11 +212,28 @@ public class PswSetFragment extends BaseUIFragment<UIFragmentHelper> {
         }
     }
 
-    private void openEditInfoFragment() {
-        UserInfoEditFragment fragment = UserInfoEditFragment.newFragment(getActivity(), UserInfoEditFragment.class, null);
-        showFragment(fragment);
+    @Override
+    public BaseObject onProcess(int action, int pageNo, Object... params) {
+        String url = null;
+        if (from == PhoneRegisterFragment.FROM_REGISTER) {
+            url = OnlineServices.getRegisterUrl();
+        } else if (from == PhoneRegisterFragment.FROM_FORGET_PSW) {
+            url = OnlineServices.getForgetPswUrl();
+        }
+        OnlineLoginInfo result = new DataAcquirer<OnlineLoginInfo>().post(url, (String) params[0], new OnlineLoginInfo());
+        return result;
     }
 
+    @Override
+    public void onGet(int action, int pageNo, BaseObject result, Object... params) {
+        super.onGet(action, pageNo, result, params);
+        UIUtils.hideInputMethod(getActivity());
+
+        UserItem user = ((OnlineLoginInfo) result).mUserItem;
+        DataBaseManager.getDataBaseManager().getTable(UserTable.class).insert(user);
+        ((LoginService) getActivity().getSystemService(LoginService.SERVICE_NAME))
+                .getServiceObvserver().notifyOnLogin(user);
+    }
 
     @Override
     public void onDestroyImpl() {

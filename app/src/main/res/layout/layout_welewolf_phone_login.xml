@@ -26,6 +26,7 @@
             android:layout_marginLeft="15dp"
             android:background="@null"
             android:hint="请输入手机号"
+            android:inputType="phone"
             android:textColor="@color/color_4c4b54"
             android:textColorHint="@color/color_c1c1c1"
             android:textSize="17sp" />

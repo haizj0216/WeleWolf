@@ -69,7 +69,7 @@ public class OnlineServices {
         buffer.append(getPhpUrlPrefix());
         buffer.append(commonUrl);
         try {
-            buffer.append("source=androidTeacher");
+            buffer.append("source=" + SOURCE);
             buffer.append("&version=" + VersionUtils.getVersionCode(App.getAppContext()));
             String channel = AnalyticsConfig.getChannel(App.getAppContext());
             if ("${UMENG_CHANNEL_VALUE}".equals(channel)) {
@@ -91,7 +91,7 @@ public class OnlineServices {
      * @return
      */
     public static String getLoginUrl() {
-        StringBuffer buffer = getPhpCommonUrl("user/teacher/passwd-login?");
+        StringBuffer buffer = getPhpCommonUrl("wolf/user/player/login?");
         return buffer.toString();
     }
 
@@ -152,6 +152,68 @@ public class OnlineServices {
             e.printStackTrace();
         }
 
+        return buffer.toString();
+    }
+
+    public static String getQiniuUploadTokenUrl(int type) {
+        StringBuffer buffer = new StringBuffer();
+        buffer.append("http://cow.knowbox.cn/");
+        buffer.append("common/app/get-bucket-token?");
+        buffer.append("source=androidTeacher");
+        buffer.append("&version=" + VersionUtils.getVersionCode(App.getAppContext()));
+        String channel = AnalyticsConfig.getChannel(App.getAppContext());
+        if ("${UMENG_CHANNEL_VALUE}".equals(channel)) {
+            channel = "buang";
+        }
+        buffer.append("&channel=" + channel);
+        if (!TextUtils.isEmpty(Utils.getToken())) {
+            buffer.append("&token=" + Utils.getToken());
+        }
+        buffer.append("&resource_type=" + type);
+        return buffer.toString();
+    }
+
+    /**
+     * 检查手机号
+     *
+     * @param phoneNum
+     * @param type
+     * @return
+     */
+    public static String getCheckPhoneUrl(String phoneNum, int type) {
+        StringBuffer buffer = getPhpCommonUrl("wolf/user/player/check?");
+        buffer.append("&phoneNum=" + phoneNum);
+        buffer.append("&checkType=" + type);
+        return buffer.toString();
+    }
+
+    /**
+     * 注册接口
+     *
+     * @return
+     */
+    public static String getRegisterUrl() {
+        StringBuffer buffer = getPhpCommonUrl("wolf/user/player/register?");
+        return buffer.toString();
+    }
+
+    /**
+     * 忘记密码
+     *
+     * @return
+     */
+    public static String getForgetPswUrl() {
+        StringBuffer buffer = getPhpCommonUrl("wolf/user/player/resetPassword?");
+        return buffer.toString();
+    }
+
+    /**
+     * 初始化个人资料
+     *
+     * @return
+     */
+    public static String getFormatUserInfoUrl() {
+        StringBuffer buffer = getPhpCommonUrl("wolf/user/player/formatUserInfo?");
         return buffer.toString();
     }
 

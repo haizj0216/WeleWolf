@@ -20,7 +20,7 @@ public class DirContext {
 	 * @return
 	 */
 	public static File getRootDir(){
-		File rootDir = new File(android.os.Environment.getExternalStorageDirectory(), "nbx_word_teacher");
+		File rootDir = new File(android.os.Environment.getExternalStorageDirectory(), "welewolf");
 		return rootDir;
 	}
 
