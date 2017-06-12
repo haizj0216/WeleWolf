@@ -1,0 +1,6 @@
+<EditText xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/evEdit"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:maxLength="200"
+    android:background="@color/white" />

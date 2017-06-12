@@ -17,7 +17,7 @@ import com.umeng.analytics.AnalyticsConfig;
  */
 public class OnlineServices {
 
-    public final static String SOURCE = "androidTeacher";
+    public final static String SOURCE = "AndroidWerewolf";
 
     //是否开启debug模式
     private static boolean DEBUG = false;
@@ -39,27 +39,28 @@ public class OnlineServices {
      */
     public static String getPhpUrlPrefix() {
         StringBuffer prefix = new StringBuffer();
-        if (DEBUG) {
-            int debugType = PreferencesController.getInt(ConstantsUtils.PREF_KEY_CONFIG_DEBUG_API, 1);
-            if (debugType == 0) {
-                prefix.append("http://cow.test.knowbox.cn/");//单词部落联调环境
-            } else if (debugType == 1) {
-                prefix.append("http://beta.cow.api.knowbox.cn/"); //测试环境
-            } else if (debugType == 2) {
-                prefix.append("http://preview.cow.api.knowbox.cn/"); //预览环境
-            } else if (debugType == 3) {
-                prefix.append("http://cow.knowbox.cn/"); //正式环境
-            } else if (debugType == 4) {
-                String apiPrefix = PreferencesController.getStringValue(ConstantsUtils.PREF_KEY_CONFIG_DEBUG_APIPREFIX);
-                if (TextUtils.isEmpty(apiPrefix)) {
-                    apiPrefix = "http://cow.knowbox.cn/";
-                }
-                prefix.append(apiPrefix);
-            }
-        } else {
-            prefix.append("http://cow.knowbox.cn/");
-//            prefix.append("http://beta.cow.api.knowbox.cn/");
-        }
+//        if (DEBUG) {
+//            int debugType = PreferencesController.getInt(ConstantsUtils.PREF_KEY_CONFIG_DEBUG_API, 1);
+//            if (debugType == 0) {
+//                prefix.append("http://cow.test.knowbox.cn/");//单词部落联调环境
+//            } else if (debugType == 1) {
+//                prefix.append("http://beta.cow.api.knowbox.cn/"); //测试环境
+//            } else if (debugType == 2) {
+//                prefix.append("http://preview.cow.api.knowbox.cn/"); //预览环境
+//            } else if (debugType == 3) {
+//                prefix.append("http://cow.knowbox.cn/"); //正式环境
+//            } else if (debugType == 4) {
+//                String apiPrefix = PreferencesController.getStringValue(ConstantsUtils.PREF_KEY_CONFIG_DEBUG_APIPREFIX);
+//                if (TextUtils.isEmpty(apiPrefix)) {
+//                    apiPrefix = "http://cow.knowbox.cn/";
+//                }
+//                prefix.append(apiPrefix);
+//            }
+//        } else {
+//            prefix.append("http://cow.knowbox.cn/");
+////            prefix.append("http://beta.cow.api.knowbox.cn/");
+//        }
+        prefix.append("http://47.93.44.115/");
         return prefix.toString();
     }
 
@@ -72,7 +73,7 @@ public class OnlineServices {
             buffer.append("&version=" + VersionUtils.getVersionCode(App.getAppContext()));
             String channel = AnalyticsConfig.getChannel(App.getAppContext());
             if ("${UMENG_CHANNEL_VALUE}".equals(channel)) {
-                channel = "knowbox";
+                channel = "buang";
             }
             buffer.append("&channel=" + channel);
             if (!TextUtils.isEmpty(Utils.getToken())) {
