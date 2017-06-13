@@ -10,19 +10,20 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.buang.welewolf.R;
-import com.buang.welewolf.base.bean.ContactInfo;
-import com.buang.welewolf.base.bean.OnlineContactListInfo;
+import com.buang.welewolf.base.bean.OnlineFriendListInfo;
+import com.buang.welewolf.base.database.bean.UserItem;
+import com.buang.welewolf.base.http.services.OnlineServices;
 import com.buang.welewolf.modules.guild.ContactInfoFragment;
 import com.buang.welewolf.modules.utils.ConstantsUtils;
 import com.buang.welewolf.modules.utils.UIFragmentHelper;
 import com.hyena.framework.app.adapter.SingleTypeAdapter;
 import com.hyena.framework.app.fragment.BaseUIFragment;
+import com.hyena.framework.datacache.BaseObject;
+import com.hyena.framework.datacache.DataAcquirer;
 import com.hyena.framework.utils.ImageFetcher;
 import com.hyena.framework.utils.RoundDisplayer;
 
 import java.util.ArrayList;
-
-import io.rong.imkit.model.UIConversation;
 
 /**
  * Created by weilei on 17/5/19.
@@ -32,7 +33,7 @@ public class ContactsFragment extends BaseUIFragment<UIFragmentHelper> {
 
     private ListView mListView;
     private ContactAdapter mAdapter;
-    private OnlineContactListInfo onlineContactListInfo;
+    private OnlineFriendListInfo onlineContactListInfo;
 
     @Override
     public void onCreateImpl(Bundle savedInstanceState) {
@@ -60,9 +61,11 @@ public class ContactsFragment extends BaseUIFragment<UIFragmentHelper> {
                 openContactFragment(mAdapter.getItem(position));
             }
         });
+
+        loadDefaultData(PAGE_MORE);
     }
 
-    private void openContactFragment(ContactInfo contactInfo) {
+    private void openContactFragment(UserItem contactInfo) {
         Bundle mBundle = new Bundle();
         mBundle.putSerializable(ConstantsUtils.KEY_BUNDLE_CONTACT_INFO, contactInfo);
         ContactInfoFragment fragment = ContactInfoFragment.newFragment(getActivity(), ContactInfoFragment.class, mBundle);
@@ -70,20 +73,45 @@ public class ContactsFragment extends BaseUIFragment<UIFragmentHelper> {
     }
 
     private void initData() {
-        onlineContactListInfo = new OnlineContactListInfo();
-        onlineContactListInfo.mContacts = new ArrayList<>();
+        onlineContactListInfo = new OnlineFriendListInfo();
+        onlineContactListInfo.userItems = new ArrayList<>();
         for (int i = 0; i < 10; i++) {
-            ContactInfo contactInfo = new ContactInfo();
-            contactInfo.name = "朱大壮" + i;
+            UserItem contactInfo = new UserItem();
+            contactInfo.userName = "朱大壮" + i;
             contactInfo.sign = "他很懒什么都没说";
-            contactInfo.sex = i % 2;
-            onlineContactListInfo.mContacts.add(contactInfo);
+            contactInfo.sex = String.valueOf(i % 2);
+            onlineContactListInfo.userItems.add(contactInfo);
         }
-        mAdapter.setItems(onlineContactListInfo.mContacts);
+        updateData();
+        showContent();
+    }
+
+    private void updateData() {
+        mAdapter.setItems(onlineContactListInfo.userItems);
         getUIFragmentHelper().getTitleBar().setTitle("我的好友(" + mAdapter.getCount() + ")");
     }
 
-    class ContactAdapter extends SingleTypeAdapter<ContactInfo> {
+    @Override
+    public BaseObject onProcess(int action, int pageNo, Object... params) {
+        String url = OnlineServices.getFriendListUrl();
+        OnlineFriendListInfo result = new DataAcquirer<OnlineFriendListInfo>().acquire(url, new OnlineFriendListInfo(), -1);
+        return result;
+    }
+
+    @Override
+    public void onGet(int action, int pageNo, BaseObject result, Object... params) {
+        super.onGet(action, pageNo, result, params);
+        onlineContactListInfo = (OnlineFriendListInfo) result;
+        updateData();
+    }
+
+    @Override
+    public void onFail(int action, int pageNo, BaseObject result, Object... params) {
+        super.onFail(action, pageNo, result, params);
+        initData();
+    }
+
+    class ContactAdapter extends SingleTypeAdapter<UserItem> {
 
         public ContactAdapter(Context context) {
             super(context);
@@ -100,17 +128,17 @@ public class ContactsFragment extends BaseUIFragment<UIFragmentHelper> {
             } else {
                 viewHolder = (ViewHolder) convertView.getTag();
             }
-            ContactInfo contactInfo = getItem(position);
+            UserItem contactInfo = getItem(position);
             viewHolder.mHead = (ImageView) convertView.findViewById(R.id.ivHead);
             viewHolder.mSex = (ImageView) convertView.findViewById(R.id.ivSex);
             viewHolder.mName = (TextView) convertView.findViewById(R.id.tvName);
             viewHolder.mMsg = (TextView) convertView.findViewById(R.id.tvMsg);
 
-            ImageFetcher.getImageFetcher().loadImage(contactInfo.head, viewHolder.mHead,
+            ImageFetcher.getImageFetcher().loadImage(contactInfo.headPhoto, viewHolder.mHead,
                     R.drawable.bt_message_default_head, new RoundDisplayer());
-            viewHolder.mName.setText(contactInfo.name);
+            viewHolder.mName.setText(contactInfo.userName);
             viewHolder.mMsg.setText(contactInfo.sign);
-            viewHolder.mSex.setImageResource(contactInfo.sex == 1 ? R.drawable.icon_windows_female : R.drawable.icon_windows_man);
+            viewHolder.mSex.setImageResource(contactInfo.sex.equals("1") ? R.drawable.icon_windows_female : R.drawable.icon_windows_man);
             return convertView;
         }
     }

@@ -9,8 +9,8 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.buang.welewolf.R;
-import com.buang.welewolf.base.bean.ContactInfo;
 import com.buang.welewolf.base.bean.OnlineMemberListInfo;
+import com.buang.welewolf.base.database.bean.UserItem;
 import com.buang.welewolf.modules.utils.UIFragmentHelper;
 import com.hyena.framework.app.adapter.SingleTypeAdapter;
 import com.hyena.framework.app.fragment.BaseUIFragment;
@@ -55,14 +55,14 @@ public class GuildMemberFragment extends BaseUIFragment<UIFragmentHelper> {
         onlineMemberListInfo.mMembers = new ArrayList<>();
         int size = 20;
         for (int i = 0; i < size; i++) {
-            ContactInfo contactInfo = new ContactInfo();
-            contactInfo.name = "李一" + "i";
+            UserItem contactInfo = new UserItem();
+            contactInfo.userName = "李一" + "i";
             onlineMemberListInfo.mMembers.add(contactInfo);
         }
         mAdapter.setItems(onlineMemberListInfo.mMembers);
     }
 
-    class MemberAdapter extends SingleTypeAdapter<ContactInfo> {
+    class MemberAdapter extends SingleTypeAdapter<UserItem> {
 
         public MemberAdapter(Context context) {
             super(context);

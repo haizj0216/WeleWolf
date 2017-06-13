@@ -1,5 +1,6 @@
 package com.buang.welewolf.base.bean;
 
+import com.buang.welewolf.base.database.bean.UserItem;
 import com.hyena.framework.datacache.BaseObject;
 
 import org.json.JSONObject;
@@ -12,7 +13,7 @@ import java.util.List;
 
 public class OnlineMemberListInfo extends BaseObject {
 
-    public List<ContactInfo> mMembers;
+    public List<UserItem> mMembers;
 
     @Override
     public void parse(JSONObject json) {

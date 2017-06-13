@@ -1,15 +1,13 @@
 package com.buang.welewolf.modules.guild;
 
-import android.annotation.TargetApi;
-import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.view.ViewCompat;
 import android.view.View;
 import android.widget.LinearLayout;
 
 import com.buang.welewolf.R;
-import com.buang.welewolf.base.bean.ContactInfo;
 import com.buang.welewolf.base.bean.OnlineMemberListInfo;
+import com.buang.welewolf.base.database.bean.UserItem;
 import com.buang.welewolf.modules.utils.UIFragmentHelper;
 import com.buang.welewolf.widgets.CustomScrollView;
 import com.hyena.framework.app.fragment.BaseUIFragment;
@@ -108,8 +106,8 @@ public class GuildInfoFragment extends BaseUIFragment<UIFragmentHelper> {
         memberListInfo.mMembers = new ArrayList<>();
         int size = 4;
         for (int i = 0; i < size; i++) {
-            ContactInfo contactInfo = new ContactInfo();
-            contactInfo.name = "李一" + "i";
+            UserItem contactInfo = new UserItem();
+            contactInfo.userName = "李一" + "i";
             memberListInfo.mMembers.add(contactInfo);
         }
         addBuildMember();

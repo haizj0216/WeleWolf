@@ -12,7 +12,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.buang.welewolf.R;
-import com.buang.welewolf.base.bean.ContactInfo;
+import com.buang.welewolf.base.database.bean.UserItem;
 import com.buang.welewolf.base.services.upload.UploadListener;
 import com.buang.welewolf.base.services.upload.UploadService;
 import com.buang.welewolf.base.services.upload.UploadTask;
@@ -53,7 +53,7 @@ public class ContactSettingFragment extends BaseUIFragment<UIFragmentHelper> {
     private File headImageFile;
     private Dialog mDialog;
 
-    private ContactInfo contactInfo;
+    private UserItem contactInfo;
     private ImageView mHeadView;
     private TextView mNameView;
     private TextView mSexView;
@@ -127,17 +127,17 @@ public class ContactSettingFragment extends BaseUIFragment<UIFragmentHelper> {
     }
 
     private void initData() {
-        contactInfo = new ContactInfo();
-        contactInfo.head = "http://XXX";
-        contactInfo.name = "朱大壮";
-        contactInfo.sex = 1;
+        contactInfo = new UserItem();
+        contactInfo.headPhoto = "http://XXX";
+        contactInfo.userName = "朱大壮";
+        contactInfo.sex = "1";
         contactInfo.sign = "来打我啊";
     }
 
     private void setContactView() {
-        ImageFetcher.getImageFetcher().loadImage(contactInfo.head, mHeadView, R.drawable.bt_message_default_head, new RoundDisplayer());
-        mNameView.setText(contactInfo.name);
-        mSexView.setText(contactInfo.sex == 0 ? "男" : "女");
+        ImageFetcher.getImageFetcher().loadImage(contactInfo.headPhoto, mHeadView, R.drawable.bt_message_default_head, new RoundDisplayer());
+        mNameView.setText(contactInfo.userName);
+        mSexView.setText(contactInfo.sex.equals("1") ? "男" : "女");
         mSignView.setText(contactInfo.sign);
     }
 

@@ -140,10 +140,10 @@ public class MainFragment extends BaseUIFragment<UIFragmentHelper> {
             mOnMainFragmentLoadListener.onMainLoad();
         }
 
-        if (TextUtils.isEmpty(Utils.getLoginUserItem().userName)) {
-            UserInfoEditFragment fragment = UserInfoEditFragment.newFragment(getActivity(), UserInfoEditFragment.class, null);
-            showFragment(fragment);
-        }
+//        if (TextUtils.isEmpty(Utils.getLoginUserItem().userName)) {
+//            UserInfoEditFragment fragment = UserInfoEditFragment.newFragment(getActivity(), UserInfoEditFragment.class, null);
+//            showFragment(fragment);
+//        }
 
     }
 

@@ -217,4 +217,185 @@ public class OnlineServices {
         return buffer.toString();
     }
 
+    /**
+     * 获取用户信息
+     *
+     * @param userID
+     * @return
+     */
+    public static String getUserInfoUrl(String userID) {
+        StringBuffer buffer = getPhpCommonUrl("wolf/user/player/get-user-info?");
+        buffer.append("&userID=" + userID);
+        return buffer.toString();
+    }
+
+    /**
+     * 好友列表
+     *
+     * @return
+     */
+    public static String getFriendListUrl() {
+        StringBuffer buffer = getPhpCommonUrl("wolf/friend/friend/list?");
+        return buffer.toString();
+    }
+
+    /**
+     * 添加好友
+     *
+     * @return
+     */
+    public static String getAddFriendUrl(String userID) {
+        StringBuffer buffer = getPhpCommonUrl("wolf/friend/friend/add?");
+        buffer.append("&userID=" + userID);
+        return buffer.toString();
+    }
+
+    /**
+     * 删除好友
+     *
+     * @return
+     */
+    public static String getDeleteFriendUrl(String userID) {
+        StringBuffer buffer = getPhpCommonUrl("wolf/friend/friend/delete?");
+        buffer.append("&userID=" + userID);
+        return buffer.toString();
+    }
+
+    /**
+     * 查找好友
+     *
+     * @param userID
+     * @return
+     */
+    public static String getFindFriendUrl(String userID) {
+        StringBuffer buffer = getPhpCommonUrl("wolf/friend/friend/find?");
+        buffer.append("&userID=" + userID);
+        return buffer.toString();
+    }
+
+    /**
+     * 举报用户
+     *
+     * @param userID
+     * @return
+     */
+    public static String getReportFriendUrl(String userID) {
+        StringBuffer buffer = getPhpCommonUrl("wolf/friend/friend/report?");
+        buffer.append("&userID=" + userID);
+        return buffer.toString();
+    }
+
+    /**
+     * @param userID
+     * @return
+     */
+    public static String getGuildInfoUrl(String userID) {
+        StringBuffer buffer = getPhpCommonUrl("wolf/guild/guild/get-info?");
+        buffer.append("&guildID=" + userID);
+        return buffer.toString();
+    }
+
+    /**
+     * 创建公会
+     *
+     * @param name
+     * @return
+     */
+    public static String getCreateGuildUrl(String name) {
+        StringBuffer buffer = getPhpCommonUrl("wolf/guild/guild/create?");
+        buffer.append("&guildName=" + name);
+        return buffer.toString();
+    }
+
+    /**
+     * 查找公会
+     *
+     * @param userID
+     * @return
+     */
+    public static String getFindGuildUrl(String userID) {
+        StringBuffer buffer = getPhpCommonUrl("wolf/guild/guild/find?");
+        buffer.append("&guildID=" + userID);
+        return buffer.toString();
+    }
+
+    /**
+     * 加入公会
+     *
+     * @param userID
+     * @return
+     */
+    public static String getJoinGuildUrl(String userID) {
+        StringBuffer buffer = getPhpCommonUrl("wolf/guild/guild/join?");
+        buffer.append("&guildID=" + userID);
+        return buffer.toString();
+    }
+
+    /**
+     * 退出公会
+     *
+     * @param userID
+     * @return
+     */
+    public static String getExitGuildUrl(String userID) {
+        StringBuffer buffer = getPhpCommonUrl("wolf/guild/guild/exit?");
+        buffer.append("&guildID=" + userID);
+        return buffer.toString();
+    }
+
+    /**
+     * 公会设置
+     *
+     * @return
+     */
+    public static String getEditGuildUrl() {
+        StringBuffer buffer = getPhpCommonUrl("wolf/guild/guild/edit?");
+        return buffer.toString();
+    }
+
+    /**
+     * 设置职务
+     *
+     * @return
+     */
+    public static String getSetJobUrl(String userId, int type) {
+        StringBuffer buffer = getPhpCommonUrl("wolf/guild/guild/set-job?");
+        return buffer.toString();
+    }
+
+    /**
+     * 移除成员
+     *
+     * @param userId
+     * @return
+     */
+    public static String getRemoveMemberUrl(String userId) {
+        StringBuffer buffer = getPhpCommonUrl("wolf/guild/guild/set-job?");
+        buffer.append("&userID=" + userId);
+        return buffer.toString();
+    }
+
+    /**
+     * 公会列表
+     *
+     * @param type
+     * @return
+     */
+    public static String getGuildListUrl(int type) {
+        StringBuffer buffer = getPhpCommonUrl("wolf/guild/guild/get-list?");
+        buffer.append("&type=" + type);
+        return buffer.toString();
+    }
+
+    /**
+     * 解散公会
+     *
+     * @param guildID
+     * @return
+     */
+    public static String getDeleteGuildUrl(String guildID) {
+        StringBuffer buffer = getPhpCommonUrl("wolf/guild/guild/get-list?");
+        buffer.append("&guildID=" + guildID);
+        return buffer.toString();
+    }
 }
