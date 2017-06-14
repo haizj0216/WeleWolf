@@ -1,5 +1,7 @@
 package com.buang.welewolf.base.bean;
 
+import android.text.TextUtils;
+
 import com.buang.welewolf.base.database.bean.UserItem;
 import com.hyena.framework.datacache.BaseObject;
 
@@ -37,8 +39,16 @@ public class OnlineGuildInfo extends BaseObject implements Serializable {
         if (data != null) {
             guildID = data.optString("guildID");
             guildName = data.optString("guildName");
-            mHeadPhoto = data.optString("headPhoto");
-            level = data.optInt("level");
+            mHeadPhoto = data.optString("guildPhoto");
+            if (TextUtils.isEmpty(mHeadPhoto)) {
+                mHeadPhoto = data.optString("headPhoto");
+            }
+            if (data.has("level")) {
+                level = data.optInt("level");
+            }
+            if (data.has("guildLevel")) {
+                level = data.optInt("guildLevel");
+            }
             sign = data.optString("sign");
             maxCount = data.optInt("maxCount");
             curCount = data.optInt("curCount");

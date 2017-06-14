@@ -79,9 +79,9 @@ public class UserItem extends BaseItem implements Serializable {
             recordInfo.lost = record.optInt("lost");
             recordInfo.rate = (float) record.optDouble("rate");
         }
-        if (json.has("unions")) {
+        if (json.has("guild")) {
             guildIno = new OnlineGuildInfo();
-            guildIno.parse(json.optJSONObject("unions"));
+            guildIno.parse(json.optJSONObject("guild"));
         }
     }
 }

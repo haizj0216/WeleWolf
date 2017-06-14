@@ -84,7 +84,7 @@
                     android:text="个人主页"
                     android:textColor="@color/white"
                     android:textSize="15dp"
-                    android:visibility="gone"/>
+                    android:visibility="gone" />
 
                 <ImageButton
                     android:id="@+id/title_bar_back"
@@ -260,6 +260,77 @@
                 android:background="@color/color_divider" />
 
             <RelativeLayout
+                android:id="@+id/rvGuild"
+                android:layout_width="match_parent"
+                android:layout_height="70dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginTop="15dp"
+                    android:text="公会"
+                    android:textColor="@color/color_a1a1a1"
+                    android:textSize="15dp" />
+
+                <ImageView
+                    android:id="@+id/ivGuildHead"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="100dp" />
+
+                <TextView
+                    android:id="@+id/tvGuildName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="40dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_toRightOf="@id/ivGuildHead"
+                    android:ellipsize="end"
+                    android:lines="1"
+                    android:text="小仙女"
+                    android:textColor="@color/color_4c4b54"
+                    android:textSize="15dp" />
+
+                <ImageView
+                    android:id="@+id/ivGuildLevel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/tvGuildName"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_toRightOf="@id/ivGuildHead"
+                    android:src="@drawable/icon_guild_level_1" />
+
+                <TextView
+                    android:id="@+id/tvGuildJob"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignTop="@id/ivGuildLevel"
+                    android:layout_marginLeft="10dp"
+                    android:layout_toRightOf="@id/ivGuildLevel"
+                    android:text="会长"
+                    android:textColor="@color/color_4c4b54"
+                    android:textSize="15dp" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="15dp"
+                    android:src="@drawable/icon_profile_more" />
+
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="10dp"
+                android:background="@color/color_divider" />
+
+            <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="45dp"
                 android:gravity="center_vertical">
@@ -347,9 +418,9 @@
             android:layout_marginTop="20dp"
             android:gravity="center"
             android:text="个人主页"
-            android:visibility="gone"
             android:textColor="@color/white"
-            android:textSize="15dp" />
+            android:textSize="15dp"
+            android:visibility="gone" />
 
         <TextView
             android:id="@+id/tvTopSetting"

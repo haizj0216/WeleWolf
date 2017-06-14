@@ -20,6 +20,7 @@ import com.buang.welewolf.modules.utils.DialogUtils;
 import com.buang.welewolf.modules.utils.ToastUtils;
 import com.buang.welewolf.modules.utils.UIFragmentHelper;
 import com.buang.welewolf.modules.utils.Utils;
+import com.buang.welewolf.modules.utils.WelewolfUtils;
 import com.buang.welewolf.widgets.CustomScrollView;
 import com.hyena.framework.app.fragment.BaseUIFragment;
 import com.hyena.framework.app.fragment.bean.MenuItem;
@@ -74,6 +75,12 @@ public class ContactInfoFragment extends BaseUIFragment<UIFragmentHelper> {
     private TextView mChatView;
     private TextView mFriendView;
 
+    private View mGuildView;
+    private ImageView mGuildHead;
+    private ImageView mGuildLevel;
+    private TextView mGuildName;
+    private TextView mGuildJob;
+
     private Dialog mDialog;
     private ImageView mTopBg;
 
@@ -125,6 +132,12 @@ public class ContactInfoFragment extends BaseUIFragment<UIFragmentHelper> {
         mChatView.setOnClickListener(onClickListener);
         mFriendView.setOnClickListener(onClickListener);
         mTopBg = (ImageView) view.findViewById(R.id.ivTopBg);
+
+        mGuildView = view.findViewById(R.id.rvGuild);
+        mGuildHead = (ImageView) view.findViewById(R.id.ivGuildHead);
+        mGuildName = (TextView) view.findViewById(R.id.tvGuildName);
+        mGuildLevel = (ImageView) view.findViewById(R.id.ivGuildLevel);
+        mGuildJob = (TextView) view.findViewById(R.id.tvGuildJob);
 
         ViewCompat.setAlpha(mTopBg, 0);
         mScrollView.setOnScrollListener(new CustomScrollView.OnCustomScrollListener() {
@@ -332,6 +345,16 @@ public class ContactInfoFragment extends BaseUIFragment<UIFragmentHelper> {
             mFriendView.setVisibility(View.GONE);
         } else {
             mFriendView.setVisibility(View.VISIBLE);
+        }
+
+        if (userItem.guildIno == null) {
+            mGuildView.setVisibility(View.GONE);
+        } else {
+            mGuildView.setVisibility(View.VISIBLE);
+            mGuildName.setText(userItem.guildIno.guildName);
+            mGuildLevel.setImageResource(WelewolfUtils.getGuildLevel(userItem.guildIno.level));
+            mGuildJob.setText(WelewolfUtils.getGuildJob(userItem.guildIno.job));
+            ImageFetcher.getImageFetcher().loadImage(userItem.guildIno.mHeadPhoto, mGuildHead, R.drawable.bt_message_default_head, new RoundDisplayer());
         }
     }
 
