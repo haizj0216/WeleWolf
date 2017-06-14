@@ -56,7 +56,7 @@ public class ContactInfoFragment extends BaseUIFragment<UIFragmentHelper> {
     private View mBackView;
     private TextView mSettingView;
     private TextView mTopSetting;
-
+    private TextView mTopName;
     private TextView mNameView;
     private TextView mLevelView;
     private TextView mIDView;
@@ -72,7 +72,10 @@ public class ContactInfoFragment extends BaseUIFragment<UIFragmentHelper> {
     private TextView mPopView;
     private AccuracGridView gridView;
     private TextView mChatView;
+    private TextView mFriendView;
+
     private Dialog mDialog;
+    private ImageView mTopBg;
 
     private boolean isMySelf;
     private boolean isBlackList;
@@ -100,11 +103,11 @@ public class ContactInfoFragment extends BaseUIFragment<UIFragmentHelper> {
         mSettingView.setOnClickListener(onClickListener);
         view.findViewById(R.id.title_bar_back).setOnClickListener(onClickListener);
         view.findViewById(R.id.ivTopBack).setOnClickListener(onClickListener);
-        view.findViewById(R.id.rvChat).setOnClickListener(onClickListener);
         mScrollView = (CustomScrollView) view.findViewById(R.id.svScrollview);
         mTopView = view.findViewById(R.id.rvTopLayou);
         gridView = (AccuracGridView) view.findViewById(R.id.giftGrid);
 
+        mTopName = (TextView) view.findViewById(R.id.tvTopName);
         mNameView = (TextView) view.findViewById(R.id.tvName);
         mLevelView = (TextView) view.findViewById(R.id.tvLevel);
         mIDView = (TextView) view.findViewById(R.id.tvID);
@@ -115,25 +118,29 @@ public class ContactInfoFragment extends BaseUIFragment<UIFragmentHelper> {
         mRateView = (TextView) view.findViewById(R.id.tvRate);
         mPopView = (TextView) view.findViewById(R.id.tvWelefare);
         mChatView = (TextView) view.findViewById(R.id.tvChat);
+        mFriendView = (TextView) view.findViewById(R.id.tvFriend);
         mHeadView = (ImageView) view.findViewById(R.id.ivHead);
         mSexView = (ImageView) view.findViewById(R.id.ivSex);
         mHeadBg = (ImageView) view.findViewById(R.id.ivHeadBg);
+        mChatView.setOnClickListener(onClickListener);
+        mFriendView.setOnClickListener(onClickListener);
+        mTopBg = (ImageView) view.findViewById(R.id.ivTopBg);
 
+        ViewCompat.setAlpha(mTopBg, 0);
         mScrollView.setOnScrollListener(new CustomScrollView.OnCustomScrollListener() {
             @Override
             public void onScroll(int scrollY) {
-                int height = UIUtils.dip2px(10);
+                int height = mTopView.getHeight();
+                LogUtil.d("scroll:", " scrollY+" + scrollY);
+                float alpha = (float) height / scrollY;
+                mTopView.setVisibility(View.VISIBLE);
+                ViewCompat.setAlpha(mTopBg, 1 - Math.abs(alpha));
+                mBackView.setVisibility(View.GONE);
+                mSettingView.setVisibility(View.GONE);
                 if (scrollY > height) {
-                    float alpha = (float) height / scrollY;
-                    LogUtil.d("scroll:", " +" + alpha);
-                    mTopView.setVisibility(View.VISIBLE);
-                    ViewCompat.setAlpha(mTopView, 1 - alpha);
-                    mBackView.setVisibility(View.GONE);
-                    mSettingView.setVisibility(View.GONE);
+                    mTopName.setVisibility(View.VISIBLE);
                 } else {
-                    mTopView.setVisibility(View.INVISIBLE);
-                    mBackView.setVisibility(View.VISIBLE);
-                    mSettingView.setVisibility(View.VISIBLE);
+                    mTopName.setVisibility(View.GONE);
                 }
             }
         });
@@ -200,14 +207,13 @@ public class ContactInfoFragment extends BaseUIFragment<UIFragmentHelper> {
                         showSettingDialog();
                     }
                     break;
-                case R.id.rvChat:
-                    if (onlineUserInfo.mUserItem.isFriend) {
-                        RongIMService service = (RongIMService) getSystemService(RongIMService.SERVICE_NAME);
-                        service.startConversation(getActivity(), Conversation.ConversationType.PRIVATE,
-                                onlineUserInfo.mUserItem.userId, onlineUserInfo.mUserItem.userName);
-                    } else {
-                        loadData(ACTION_ADD, PAGE_MORE, onlineUserInfo.mUserItem.userId);
-                    }
+                case R.id.tvChat:
+                    RongIMService service = (RongIMService) getSystemService(RongIMService.SERVICE_NAME);
+                    service.startConversation(getActivity(), Conversation.ConversationType.PRIVATE,
+                            onlineUserInfo.mUserItem.userId, onlineUserInfo.mUserItem.userName);
+                    break;
+                case R.id.tvFriend:
+                    loadData(ACTION_ADD, PAGE_MORE, onlineUserInfo.mUserItem.userId);
                     break;
             }
         }
@@ -294,6 +300,7 @@ public class ContactInfoFragment extends BaseUIFragment<UIFragmentHelper> {
     private void updateView() {
         UserItem userItem = onlineUserInfo.mUserItem;
         mNameView.setText(userItem.userName);
+        mTopName.setText(userItem.userName);
         mLevelView.setText("Lv." + userItem.level);
         mIDView.setText(userItem.userId);
         ImageFetcher.getImageFetcher().loadImage(userItem.headPhoto, mHeadView, R.drawable.bt_message_default_head,
@@ -315,16 +322,16 @@ public class ContactInfoFragment extends BaseUIFragment<UIFragmentHelper> {
         mWinView.setText("胜 " + userItem.recordInfo.win + "局");
         mRateView.setText("(胜率" + userItem.recordInfo.rate * 100 + "%）");
         mPopView.setText(userItem.popularity + "");
-        mSignView.setText(userItem.sign);
+        mSignView.setText(userItem.sign + userItem.sign + userItem.sign + userItem.sign + userItem.sign + userItem.sign + userItem.sign + userItem.sign + userItem.sign + userItem.sign);
         if (userItem.mGifts != null && userItem.mGifts.size() > 0) {
             GiftAdapter adapter = new GiftAdapter(getActivity());
             adapter.setItems(userItem.mGifts);
             gridView.setAdapter(adapter);
         }
         if (userItem.isFriend) {
-            mChatView.setText("发起聊天");
+            mFriendView.setVisibility(View.GONE);
         } else {
-            mChatView.setText("加为好友");
+            mFriendView.setVisibility(View.VISIBLE);
         }
     }
 

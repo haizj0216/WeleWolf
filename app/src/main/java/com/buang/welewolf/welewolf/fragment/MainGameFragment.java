@@ -7,6 +7,7 @@ import com.buang.welewolf.R;
 import com.buang.welewolf.base.bean.OnlineUserInfo;
 import com.buang.welewolf.base.http.services.OnlineServices;
 import com.buang.welewolf.modules.profile.SystemSettingFragment;
+import com.buang.welewolf.modules.services.GuildService;
 import com.buang.welewolf.modules.utils.Utils;
 import com.buang.welewolf.welewolf.login.LoginFragment;
 import com.buang.welewolf.welewolf.login.PhoneLoginFragment;
@@ -40,7 +41,7 @@ public class MainGameFragment extends BaseUIFragment<UIFragmentHelper> {
         getUIFragmentHelper().setTintBar(getResources().getColor(R.color.color_title_bar));
         view.findViewById(R.id.ivUserView).setOnClickListener(onClickListener);
         view.findViewById(R.id.ivSetting).setOnClickListener(onClickListener);
-//        loadData(ACTION_GET_USERINFO, PAGE_MORE, Utils.getLoginUserItem().userId);
+        loadData(ACTION_GET_USERINFO, PAGE_MORE, Utils.getLoginUserItem().userId);
     }
 
     View.OnClickListener onClickListener = new View.OnClickListener() {
@@ -77,5 +78,12 @@ public class MainGameFragment extends BaseUIFragment<UIFragmentHelper> {
     @Override
     public void onGet(int action, int pageNo, BaseObject result, Object... params) {
         super.onGet(action, pageNo, result, params);
+        if (action == ACTION_GET_USERINFO) {
+            OnlineUserInfo userInfo = (OnlineUserInfo) result;
+            if (userInfo.mUserItem.guildIno != null) {
+                GuildService guildService = (GuildService) getSystemService(GuildService.SERVICE_NAME);
+                guildService.setGuildInfo(userInfo.mUserItem.guildIno);
+            }
+        }
     }
 }

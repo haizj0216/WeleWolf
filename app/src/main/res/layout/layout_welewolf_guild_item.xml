@@ -26,17 +26,14 @@
             android:textColor="@color/color_4c4b54"
             android:textSize="16dp" />
 
-        <TextView
+        <ImageView
             android:id="@+id/tvLevel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/tvName"
             android:layout_marginLeft="10dp"
             android:layout_marginTop="14dp"
-            android:background="@drawable/bg_level"
-            android:text="五星公会"
-            android:textColor="@color/white"
-            android:textSize="16dp" />
+            android:src="@drawable/icon_guild_level_1" />
 
         <TextView
             android:id="@+id/tvMemberNumber"

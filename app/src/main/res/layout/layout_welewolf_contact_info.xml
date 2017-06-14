@@ -8,18 +8,38 @@
         android:layout_height="60dp"
         android:layout_alignParentBottom="true">
 
-        <TextView
-            android:id="@+id/tvChat"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:layout_centerInParent="true"
-            android:layout_marginLeft="15dp"
-            android:layout_marginRight="15dp"
-            android:background="@drawable/bg_auth_shooting"
-            android:gravity="center"
-            android:text="私聊"
-            android:textColor="@color/white"
-            android:textSize="16dp" />
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true">
+
+            <TextView
+                android:id="@+id/tvFriend"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:layout_weight="1"
+                android:background="@drawable/bg_auth_shooting"
+                android:gravity="center"
+                android:text="私聊"
+                android:textColor="@color/white"
+                android:textSize="16dp" />
+
+            <TextView
+                android:id="@+id/tvChat"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:layout_weight="1"
+                android:background="@drawable/bg_auth_shooting"
+                android:gravity="center"
+                android:text="私聊"
+                android:textColor="@color/white"
+                android:textSize="16dp" />
+        </LinearLayout>
+
 
         <View
             android:layout_width="match_parent"
@@ -48,7 +68,7 @@
                     android:id="@+id/ivHeadBg"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:scaleType="centerCrop"/>
+                    android:scaleType="centerCrop" />
 
                 <ImageView
                     android:layout_width="match_parent"
@@ -63,7 +83,8 @@
                     android:gravity="center"
                     android:text="个人主页"
                     android:textColor="@color/white"
-                    android:textSize="15dp" />
+                    android:textSize="15dp"
+                    android:visibility="gone"/>
 
                 <ImageButton
                     android:id="@+id/title_bar_back"
@@ -72,7 +93,8 @@
                     android:layout_marginTop="20dp"
                     android:background="@null"
                     android:padding="15dp"
-                    android:src="@drawable/bt_title_back_dark" />
+                    android:src="@drawable/bt_title_back_dark"
+                    android:visibility="gone" />
 
                 <TextView
                     android:id="@+id/tvSetting"
@@ -84,7 +106,8 @@
                     android:gravity="center_vertical"
                     android:text="设置"
                     android:textColor="@color/white"
-                    android:textSize="15dp" />
+                    android:textSize="15dp"
+                    android:visibility="gone" />
 
                 <ImageView
                     android:id="@+id/ivHead"
@@ -299,8 +322,13 @@
         android:id="@+id/rvTopLayou"
         android:layout_width="match_parent"
         android:layout_height="70dp"
-        android:background="@color/color_title_bar"
-        android:visibility="invisible">
+        android:visibility="visible">
+
+        <ImageView
+            android:id="@+id/ivTopBg"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/color_title_bar" />
 
         <ImageButton
             android:id="@+id/ivTopBack"
@@ -312,12 +340,14 @@
             android:src="@drawable/bt_title_back_dark" />
 
         <TextView
+            android:id="@+id/tvTopName"
             android:layout_width="wrap_content"
             android:layout_height="50dp"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="20dp"
             android:gravity="center"
             android:text="个人主页"
+            android:visibility="gone"
             android:textColor="@color/white"
             android:textSize="15dp" />
 

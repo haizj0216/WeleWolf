@@ -398,4 +398,16 @@ public class OnlineServices {
         buffer.append("&guildID=" + guildID);
         return buffer.toString();
     }
+
+    /**
+     * 获取公会成员列表
+     *
+     * @param guildID
+     * @return
+     */
+    public static String getGuildMemberListUrl(String guildID) {
+        StringBuffer buffer = getPhpCommonUrl("wolf/guild/guild/member-list?");
+        buffer.append("&guildID=" + guildID);
+        return buffer.toString();
+    }
 }

@@ -3,12 +3,13 @@
     android:layout_height="match_parent">
 
     <RelativeLayout
-        android:id="@+id/tvChat"
+        android:id="@+id/rvChat"
         android:layout_width="match_parent"
         android:layout_height="68dp"
         android:layout_alignParentBottom="true">
 
         <TextView
+            android:id="@+id/tvChat"
             android:layout_width="match_parent"
             android:layout_height="38dp"
             android:layout_centerInParent="true"
@@ -30,7 +31,7 @@
         android:id="@+id/svScrollview"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_above="@id/tvChat"
+        android:layout_above="@id/rvChat"
         android:scrollbars="none">
 
         <LinearLayout
@@ -41,6 +42,12 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="230dp">
+
+                <ImageView
+                    android:id="@+id/ivHeadBg"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="centerCrop"/>
 
                 <ImageView
                     android:layout_width="match_parent"
@@ -79,7 +86,7 @@
                     android:src="@drawable/bt_message_default_head" />
 
                 <TextView
-                    android:id="@+id/ivName"
+                    android:id="@+id/tvName"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/ivHead"
@@ -89,18 +96,14 @@
                     android:textColor="@color/white"
                     android:textSize="16dp" />
 
-                <TextView
+                <ImageView
                     android:id="@+id/ivLevel"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_below="@id/ivName"
+                    android:layout_below="@id/tvName"
                     android:layout_centerHorizontal="true"
                     android:layout_marginTop="10dp"
-                    android:background="@drawable/bg_level"
-                    android:padding="2dp"
-                    android:text="五星公会"
-                    android:textColor="@color/white"
-                    android:textSize="12dp" />
+                    android:src="@drawable/icon_guild_level_1"/>
             </RelativeLayout>
 
             <View
@@ -118,7 +121,7 @@
                 android:textSize="14dp" />
 
             <TextView
-                android:id="@+id/tvDeclartion"
+                android:id="@+id/tvSign"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="10dp"
@@ -135,6 +138,7 @@
                 android:background="@color/color_divider" />
 
             <TextView
+                android:id="@+id/tvCount"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:layout_marginLeft="15dp"

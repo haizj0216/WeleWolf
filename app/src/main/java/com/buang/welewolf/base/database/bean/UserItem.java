@@ -36,6 +36,7 @@ public class UserItem extends BaseItem implements Serializable {
     public String voipToken;
     public RecordInfo recordInfo;
     public int popularity;
+    public int job;
     public boolean isFriend;
     public List<GiftInfo> mGifts;
     public OnlineGuildInfo guildIno;
@@ -80,6 +81,7 @@ public class UserItem extends BaseItem implements Serializable {
         }
         if (json.has("unions")) {
             guildIno = new OnlineGuildInfo();
+            guildIno.parse(json.optJSONObject("unions"));
         }
     }
 }
