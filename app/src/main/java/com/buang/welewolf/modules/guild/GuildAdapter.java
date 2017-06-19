@@ -8,7 +8,7 @@ import android.widget.TextView;
 
 import com.buang.welewolf.R;
 import com.buang.welewolf.base.bean.OnlineGuildInfo;
-import com.buang.welewolf.modules.utils.WelewolfUtils;
+import com.buang.welewolf.modules.utils.WolfUtils;
 import com.hyena.framework.app.adapter.SingleTypeAdapter;
 
 /**
@@ -37,7 +37,7 @@ public class GuildAdapter extends SingleTypeAdapter<OnlineGuildInfo> {
         OnlineGuildInfo guildInfo = getItem(position);
         viewHolder.mName.setText(guildInfo.guildName);
         viewHolder.mNumber.setText(guildInfo.curCount + "/" + guildInfo.maxCount);
-        viewHolder.mLevel.setImageResource(WelewolfUtils.getGuildLevel(guildInfo.level));
+        viewHolder.mLevel.setImageResource(WolfUtils.getGuildLevel(guildInfo.level));
         return convertView;
     }
 

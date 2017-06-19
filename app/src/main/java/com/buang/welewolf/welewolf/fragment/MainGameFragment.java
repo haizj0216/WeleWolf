@@ -4,8 +4,10 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.buang.welewolf.R;
+import com.buang.welewolf.base.bean.OnlineRoomInfo;
 import com.buang.welewolf.base.bean.OnlineUserInfo;
 import com.buang.welewolf.base.http.services.OnlineServices;
+import com.buang.welewolf.modules.game.GameRoomFragment;
 import com.buang.welewolf.modules.profile.SystemSettingFragment;
 import com.buang.welewolf.modules.services.GuildService;
 import com.buang.welewolf.modules.utils.Utils;
@@ -13,6 +15,7 @@ import com.buang.welewolf.welewolf.login.LoginFragment;
 import com.buang.welewolf.welewolf.login.PhoneLoginFragment;
 import com.hyena.framework.app.fragment.BaseUIFragment;
 import com.buang.welewolf.modules.utils.UIFragmentHelper;
+import com.hyena.framework.app.fragment.GameFragment;
 import com.hyena.framework.datacache.BaseObject;
 import com.hyena.framework.datacache.DataAcquirer;
 
@@ -22,6 +25,7 @@ import com.hyena.framework.datacache.DataAcquirer;
 public class MainGameFragment extends BaseUIFragment<UIFragmentHelper> {
 
     private final int ACTION_GET_USERINFO = 1;
+    private final int ACTION_FIND_ROOM = 2;
 
     @Override
     public void onCreateImpl(Bundle savedInstanceState) {
@@ -41,6 +45,7 @@ public class MainGameFragment extends BaseUIFragment<UIFragmentHelper> {
         getUIFragmentHelper().setTintBar(getResources().getColor(R.color.color_title_bar));
         view.findViewById(R.id.ivUserView).setOnClickListener(onClickListener);
         view.findViewById(R.id.ivSetting).setOnClickListener(onClickListener);
+        view.findViewById(R.id.main_game_easy).setOnClickListener(onClickListener);
         loadData(ACTION_GET_USERINFO, PAGE_MORE, Utils.getLoginUserItem().userId);
     }
 
@@ -56,9 +61,18 @@ public class MainGameFragment extends BaseUIFragment<UIFragmentHelper> {
                 case R.id.ivSetting:
                     showFragment(SystemSettingFragment.newFragment(getActivity(), SystemSettingFragment.class, null));
                     break;
+                case R.id.main_game_easy:
+                    loadData(ACTION_FIND_ROOM, PAGE_MORE, "10000");
+                    break;
             }
         }
     };
+
+    private void openGameRoom(OnlineRoomInfo roomInfo) {
+        Bundle mBundle = new Bundle();
+        mBundle.putSerializable("room", roomInfo);
+        showFragment(GameRoomFragment.newFragment(getActivity(), GameRoomFragment.class, mBundle));
+    }
 
     @Override
     public void onPreAction(int action, int pageNo) {
@@ -70,6 +84,10 @@ public class MainGameFragment extends BaseUIFragment<UIFragmentHelper> {
         if (action == ACTION_GET_USERINFO) {
             String url = OnlineServices.getUserInfoUrl((String) params[0]);
             OnlineUserInfo result = new DataAcquirer<OnlineUserInfo>().acquire(url, new OnlineUserInfo(), -1);
+            return result;
+        } else if (action == ACTION_FIND_ROOM) {
+            String url = OnlineServices.getFindRoomUrl((String) params[0]);
+            OnlineRoomInfo result = new DataAcquirer<OnlineRoomInfo>().get(url, new OnlineRoomInfo());
             return result;
         }
         return super.onProcess(action, pageNo, params);
@@ -84,6 +102,8 @@ public class MainGameFragment extends BaseUIFragment<UIFragmentHelper> {
                 GuildService guildService = (GuildService) getSystemService(GuildService.SERVICE_NAME);
                 guildService.setGuildInfo(userInfo.mUserItem.guildIno);
             }
+        } else if (action == ACTION_FIND_ROOM) {
+            openGameRoom((OnlineRoomInfo) result);
         }
     }
 }

@@ -20,7 +20,7 @@ import com.buang.welewolf.modules.utils.DialogUtils;
 import com.buang.welewolf.modules.utils.ToastUtils;
 import com.buang.welewolf.modules.utils.UIFragmentHelper;
 import com.buang.welewolf.modules.utils.Utils;
-import com.buang.welewolf.modules.utils.WelewolfUtils;
+import com.buang.welewolf.modules.utils.WolfUtils;
 import com.buang.welewolf.widgets.CustomScrollView;
 import com.hyena.framework.app.fragment.BaseUIFragment;
 import com.hyena.framework.app.fragment.bean.MenuItem;
@@ -30,7 +30,6 @@ import com.hyena.framework.datacache.BaseObject;
 import com.hyena.framework.datacache.DataAcquirer;
 import com.hyena.framework.utils.ImageFetcher;
 import com.hyena.framework.utils.RoundDisplayer;
-import com.hyena.framework.utils.UIUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -352,8 +351,8 @@ public class ContactInfoFragment extends BaseUIFragment<UIFragmentHelper> {
         } else {
             mGuildView.setVisibility(View.VISIBLE);
             mGuildName.setText(userItem.guildIno.guildName);
-            mGuildLevel.setImageResource(WelewolfUtils.getGuildLevel(userItem.guildIno.level));
-            mGuildJob.setText(WelewolfUtils.getGuildJob(userItem.guildIno.job));
+            mGuildLevel.setImageResource(WolfUtils.getGuildLevel(userItem.guildIno.level));
+            mGuildJob.setText(WolfUtils.getGuildJob(userItem.guildIno.job));
             ImageFetcher.getImageFetcher().loadImage(userItem.guildIno.mHeadPhoto, mGuildHead, R.drawable.bt_message_default_head, new RoundDisplayer());
         }
     }

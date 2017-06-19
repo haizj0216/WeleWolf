@@ -6,11 +6,23 @@ import com.buang.welewolf.R;
  * Created by weilei on 17/6/13.
  */
 
-public class WelewolfUtils {
+public class WolfUtils {
     public static final int JOB_HUIZHANG = 1;
     public static final int JOB_FUHUIZHANG = 2;
     public static final int JOB_JINGYING = 3;
     public static final int JOB_XIAOLUOLUO = 4;
+
+    public static final int GAME_STATUS_DEAAD = 1;
+    public static final int GAME_STATUS_HANDUP = 2;
+    public static final int GAME_STATUS_SPEAKING = 3;
+    public static final int GAME_STATUS_READY = 4;
+
+    public static final int GAME_ROLE_WOLF = 1;
+    public static final int GAME_ROLE_HUNTER = 2;
+    public static final int GAME_ROLE_IDIOT = 3;
+    public static final int GAME_ROLE_PROPHET = 4;
+    public static final int GAME_ROLE_VILLAGE = 5;
+    public static final int GAME_ROLE_WITVH = 6;
 
     public static int getGuildLevel(int level) {
         int id = R.drawable.icon_guild_level_1;

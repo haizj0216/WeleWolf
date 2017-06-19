@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/rvGame"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        android:src="@drawable/bg_game_light" />
+
+    <RelativeLayout
+        android:id="@+id/rvNagi"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/ivBack"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="27dp"
+            android:src="@drawable/icon_game_back" />
+
+        <ImageView
+            android:id="@+id/ivSetting"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="27dp"
+            android:layout_toRightOf="@id/ivBack"
+            android:src="@drawable/icon_game_setting" />
+
+        <ImageView
+            android:id="@+id/ivHelp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="27dp"
+            android:src="@drawable/icon_game_help" />
+
+        <ImageView
+            android:id="@+id/ivZhao"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="15dp"
+            android:layout_marginTop="27dp"
+            android:layout_toLeftOf="@id/ivHelp"
+            android:src="@drawable/icon_game_zhao" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="41dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="17dp"
+            android:layout_marginTop="23dp"
+            android:background="@color/color_black_40"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp">
+
+            <TextView
+                android:id="@+id/tvNo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="1289房"
+                android:textColor="@color/white"
+                android:textSize="14dp" />
+
+            <TextView
+                android:id="@+id/tvType"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="简单模式"
+                android:textColor="@color/white"
+                android:textSize="14dp" />
+        </LinearLayout>
+
+    </RelativeLayout>
+
+    <include
+        android:id="@+id/bottom_bar"
+        layout="@layout/fragment_bottombar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="5dp" />
+
+    <ListView
+        android:id="@+id/lvLeftList"
+        android:layout_width="60dp"
+        android:layout_height="match_parent"
+        android:layout_above="@id/bottom_bar"
+        android:layout_below="@id/rvNagi"
+        android:layout_marginBottom="5dp"
+        android:layout_marginLeft="5dp"
+        android:cacheColorHint="@android:color/transparent"
+        android:divider="@null"
+        android:dividerHeight="5dp"
+        android:listSelector="@android:color/transparent"
+        android:scrollbars="none" />
+
+    <ListView
+        android:id="@+id/lvRightList"
+        android:layout_width="60dp"
+        android:layout_height="match_parent"
+        android:layout_above="@id/bottom_bar"
+        android:layout_alignParentRight="true"
+        android:layout_below="@id/rvNagi"
+        android:layout_marginBottom="5dp"
+        android:layout_marginRight="5dp"
+        android:cacheColorHint="@android:color/transparent"
+        android:divider="@null"
+        android:dividerHeight="5dp"
+        android:listSelector="@android:color/transparent"
+        android:scrollbars="none" />
+
+    <ListView
+        android:id="@+id/lvChatView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/bottom_bar"
+        android:layout_below="@id/rvNagi"
+        android:layout_marginBottom="5dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_toLeftOf="@id/lvRightList"
+        android:layout_toRightOf="@id/lvLeftList"
+        android:cacheColorHint="@android:color/transparent"
+        android:divider="@null"
+        android:dividerHeight="0dp"
+        android:listSelector="@android:color/transparent" />
+
+
+</RelativeLayout>

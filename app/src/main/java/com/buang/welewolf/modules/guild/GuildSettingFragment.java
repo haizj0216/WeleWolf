@@ -23,7 +23,7 @@ import com.buang.welewolf.modules.services.GuildService;
 import com.buang.welewolf.modules.utils.DialogUtils;
 import com.buang.welewolf.modules.utils.ToastUtils;
 import com.buang.welewolf.modules.utils.UIFragmentHelper;
-import com.buang.welewolf.modules.utils.WelewolfUtils;
+import com.buang.welewolf.modules.utils.WolfUtils;
 import com.hyena.framework.app.fragment.BaseUIFragment;
 import com.hyena.framework.app.fragment.bean.MenuItem;
 import com.hyena.framework.utils.ImageFetcher;
@@ -88,7 +88,7 @@ public class GuildSettingFragment extends BaseUIFragment<UIFragmentHelper> {
         mToggle = (ToggleButton) view.findViewById(R.id.tvToggle);
         mExitView = (TextView) view.findViewById(R.id.tvExit);
 
-        if (guildInfo.job == WelewolfUtils.JOB_HUIZHANG) {
+        if (guildInfo.job == WolfUtils.JOB_HUIZHANG) {
             mExitView.setText("解散公会");
             view.findViewById(R.id.lvGuildSetting).setVisibility(View.VISIBLE);
         } else {
@@ -137,7 +137,7 @@ public class GuildSettingFragment extends BaseUIFragment<UIFragmentHelper> {
         }
         String title = "退出公会";
         String message = "确认退出公会？";
-        if (guildInfo.job == WelewolfUtils.JOB_HUIZHANG) {
+        if (guildInfo.job == WolfUtils.JOB_HUIZHANG) {
             title = "解散公会";
             message = "确定要解散公会吗？";
         }
@@ -145,7 +145,7 @@ public class GuildSettingFragment extends BaseUIFragment<UIFragmentHelper> {
             @Override
             public void onItemClick(Dialog dialog, int btnId) {
                 if (btnId == DialogUtils.OnDialogButtonClickListener.BUTTON_CONFIRM) {
-                    if (guildInfo.job == WelewolfUtils.JOB_HUIZHANG) {
+                    if (guildInfo.job == WolfUtils.JOB_HUIZHANG) {
                         loadData(ACTION_DELETE, PAGE_MORE);
                     } else {
                         loadData(ACTION_EXIT, PAGE_MORE);

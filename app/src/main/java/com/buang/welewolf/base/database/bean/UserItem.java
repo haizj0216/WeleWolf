@@ -41,6 +41,10 @@ public class UserItem extends BaseItem implements Serializable {
     public List<GiftInfo> mGifts;
     public OnlineGuildInfo guildIno;
 
+    //游戏相关
+    public int gameStatus;
+    public int role;
+
     public class RecordInfo {
         public int win;
         public int lost;

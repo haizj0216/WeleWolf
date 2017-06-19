@@ -19,7 +19,7 @@ import com.buang.welewolf.modules.services.GuildService;
 import com.buang.welewolf.modules.utils.ConstantsUtils;
 import com.buang.welewolf.modules.utils.DialogUtils;
 import com.buang.welewolf.modules.utils.UIFragmentHelper;
-import com.buang.welewolf.modules.utils.WelewolfUtils;
+import com.buang.welewolf.modules.utils.WolfUtils;
 import com.hyena.framework.app.adapter.SingleTypeAdapter;
 import com.hyena.framework.app.fragment.BaseUIFragment;
 import com.hyena.framework.app.fragment.bean.MenuItem;
@@ -87,8 +87,8 @@ public class GuildMemberFragment extends BaseUIFragment<UIFragmentHelper> {
             openContactFragment(userItem);
         } else {
             if (mCurGuildInfo.guildID.equals(guildInfo.guildID)) {
-                if (mCurGuildInfo.job == WelewolfUtils.JOB_HUIZHANG ||
-                        mCurGuildInfo.job == WelewolfUtils.JOB_FUHUIZHANG) { //会长、副会长
+                if (mCurGuildInfo.job == WolfUtils.JOB_HUIZHANG ||
+                        mCurGuildInfo.job == WolfUtils.JOB_FUHUIZHANG) { //会长、副会长
                     showClickDialog(userItem);
                 } else {
                     openContactFragment(userItem);
@@ -201,7 +201,7 @@ public class GuildMemberFragment extends BaseUIFragment<UIFragmentHelper> {
             viewHolder.mName.setText(userItem.userName);
             ImageFetcher.getImageFetcher().loadImage(userItem.headPhoto, viewHolder.mHead, R.drawable.bt_message_default_head, new RoundDisplayer());
             viewHolder.mLevel.setText("Lv." + userItem.level);
-            viewHolder.mPost.setText(WelewolfUtils.getGuildJob(userItem.job));
+            viewHolder.mPost.setText(WolfUtils.getGuildJob(userItem.job));
             viewHolder.mPost.setText("" + userItem.popularity);
             return convertView;
         }

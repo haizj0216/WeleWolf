@@ -410,4 +410,15 @@ public class OnlineServices {
         buffer.append("&guildID=" + guildID);
         return buffer.toString();
     }
+
+    /**
+     * 查找房间
+     * @param roomId
+     * @return
+     */
+    public static String getFindRoomUrl(String roomId) {
+        StringBuffer buffer = getPhpCommonUrl("wolf/room/room/search-room?");
+        buffer.append("&roomID=" + roomId);
+        return buffer.toString();
+    }
 }

@@ -13,14 +13,12 @@ import com.buang.welewolf.base.bean.OnlineGuildListInfo;
 import com.buang.welewolf.base.http.services.OnlineServices;
 import com.buang.welewolf.modules.services.GuildService;
 import com.buang.welewolf.modules.utils.UIFragmentHelper;
-import com.buang.welewolf.modules.utils.WelewolfUtils;
+import com.buang.welewolf.modules.utils.WolfUtils;
 import com.hyena.framework.app.fragment.BaseUIFragment;
 import com.hyena.framework.datacache.BaseObject;
 import com.hyena.framework.datacache.DataAcquirer;
 import com.hyena.framework.utils.ImageFetcher;
 import com.hyena.framework.utils.RoundDisplayer;
-
-import java.util.ArrayList;
 
 /**
  * Created by weilei on 17/6/6.
@@ -84,7 +82,7 @@ public class RecommendGuildFragment extends BaseUIFragment<UIFragmentHelper> {
             final OnlineGuildInfo guildInfo = guildService.getGuildInfo();
             ImageFetcher.getImageFetcher().loadImage(guildInfo.mHeadPhoto, headView, R.drawable.icon_guild_default, new RoundDisplayer());
             mName.setText(guildInfo.guildName);
-            mLevel.setImageResource(WelewolfUtils.getGuildLevel(guildInfo.level));
+            mLevel.setImageResource(WolfUtils.getGuildLevel(guildInfo.level));
             mCount.setText(guildInfo.curCount + "/" + guildInfo.maxCount);
             guildView.setOnClickListener(new View.OnClickListener() {
                 @Override

@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="50dp"
+    android:layout_height="62dp"
+    android:background="@drawable/bg_game_role_right"
+    android:minHeight="62dp">
+
+    <FrameLayout
+        android:id="@+id/frame_layout"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="5dip"
+        android:layout_marginRight="5dip"
+        android:layout_marginTop="6dip">
+
+        <com.buang.welewolf.widgets.roundedimageview.RoundedImageView
+            android:id="@+id/ivHead"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/touxxiaophai"
+            app:riv_corner_radius_bottom_left="4dp"
+            app:riv_corner_radius_bottom_right="4dp"
+            app:riv_corner_radius_top_left="4dp"
+            app:riv_corner_radius_top_right="4dp" />
+
+        <ImageView
+            android:id="@+id/ivDead"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:adjustViewBounds="true"
+            android:scaleType="centerInside"
+            android:src="@drawable/room_dead"
+            android:visibility="gone" />
+
+        <ImageView
+            android:id="@+id/ivCover"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:adjustViewBounds="true"
+            android:src="@drawable/icon_lock"
+            android:visibility="gone" />
+
+        <ImageView
+            android:id="@+id/ivWolf"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|right"
+            android:src="@drawable/room_wolf"
+            android:visibility="gone" />
+
+        <ImageView
+            android:id="@+id/ivReady"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:src="@drawable/room_ready" />
+
+        <ImageView
+            android:id="@+id/ivLove"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/room_love_heart"
+            android:visibility="gone" />
+    </FrameLayout>
+
+    <TextView
+        android:id="@+id/tvIndex"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_game_role_no_right"
+        android:gravity="center"
+        android:text="1"
+        android:layout_alignParentRight="true"
+        android:textColor="@color/white"
+        android:textSize="14dp" />
+
+    <ImageView
+        android:id="@+id/ivSergeant"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:adjustViewBounds="true"
+        android:scaleType="fitStart"
+        android:src="@drawable/room_badge"
+        android:visibility="gone" />
+
+    <ImageView
+        android:id="@+id/ivHandUp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:adjustViewBounds="true"
+        android:scaleType="fitStart"
+        android:src="@drawable/room_put_up_hands"
+        android:visibility="gone" />
+
+    <TextView
+        android:id="@+id/tvName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/frame_layout"
+        android:layout_marginTop="2dp"
+        android:ellipsize="end"
+        android:gravity="center_horizontal"
+        android:lines="1"
+        android:text="你好"
+        android:textColor="@color/color_d3cef6"
+        android:textSize="8sp" />
+
+    <ImageView
+        android:id="@+id/ivSpeaking"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:scaleType="fitXY"
+        android:src="@drawable/icon_room_speaking"
+        android:visibility="gone" />
+
+
+</RelativeLayout>

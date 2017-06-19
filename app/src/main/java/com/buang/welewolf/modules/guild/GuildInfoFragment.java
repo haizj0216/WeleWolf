@@ -10,14 +10,12 @@ import android.widget.TextView;
 
 import com.buang.welewolf.R;
 import com.buang.welewolf.base.bean.OnlineGuildInfo;
-import com.buang.welewolf.base.bean.OnlineMemberListInfo;
-import com.buang.welewolf.base.database.bean.UserItem;
 import com.buang.welewolf.base.http.services.OnlineServices;
 import com.buang.welewolf.modules.services.GuildService;
 import com.buang.welewolf.modules.services.RongIMService;
 import com.buang.welewolf.modules.utils.DateUtil;
 import com.buang.welewolf.modules.utils.UIFragmentHelper;
-import com.buang.welewolf.modules.utils.WelewolfUtils;
+import com.buang.welewolf.modules.utils.WolfUtils;
 import com.buang.welewolf.widgets.CustomScrollView;
 import com.hyena.framework.app.fragment.BaseUIFragment;
 import com.hyena.framework.clientlog.LogUtil;
@@ -26,8 +24,6 @@ import com.hyena.framework.datacache.DataAcquirer;
 import com.hyena.framework.utils.ImageFetcher;
 import com.hyena.framework.utils.RoundDisplayer;
 import com.hyena.framework.utils.UIUtils;
-
-import java.util.ArrayList;
 
 import io.rong.imlib.model.Conversation;
 
@@ -137,7 +133,7 @@ public class GuildInfoFragment extends BaseUIFragment<UIFragmentHelper> {
                 }
             }
         });
-        mLevelView.setImageResource(WelewolfUtils.getGuildLevel(onlineGuildInfo.level));
+        mLevelView.setImageResource(WolfUtils.getGuildLevel(onlineGuildInfo.level));
         mSignView.setText(onlineGuildInfo.sign);
         mIDView.setText(onlineGuildInfo.guildID);
         mCreateView.setText(DateUtil.getDayString(onlineGuildInfo.createTime));
