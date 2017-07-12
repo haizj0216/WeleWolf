@@ -22,7 +22,7 @@ public class WolfUtils {
     public static final int GAME_ROLE_IDIOT = 3;
     public static final int GAME_ROLE_PROPHET = 4;
     public static final int GAME_ROLE_VILLAGE = 5;
-    public static final int GAME_ROLE_WITVH = 6;
+    public static final int GAME_ROLE_WITCH = 6;
 
     public static int getGuildLevel(int level) {
         int id = R.drawable.icon_guild_level_1;
@@ -96,5 +96,32 @@ public class WolfUtils {
                 break;
         }
         return job;
+    }
+
+    /**
+     * 各角色图片
+     * @param role
+     * @return
+     */
+    public static int getRoleId(int role) {
+        int id = R.drawable.icon_role_village;
+        switch (role) {
+            case GAME_ROLE_HUNTER:
+                id = R.drawable.icon_role_hunter;
+                break;
+            case GAME_ROLE_WOLF:
+                id = R.drawable.icon_role_wolf;
+                break;
+            case GAME_ROLE_IDIOT:
+                id = R.drawable.icon_role_idiot;
+                break;
+            case GAME_ROLE_WITCH:
+                id = R.drawable.icon_role_witch;
+                break;
+            case GAME_ROLE_VILLAGE:
+                id = R.drawable.icon_role_village;
+                break;
+        }
+        return id;
     }
 }

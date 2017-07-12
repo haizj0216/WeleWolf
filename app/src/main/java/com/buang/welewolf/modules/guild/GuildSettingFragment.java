@@ -17,6 +17,7 @@ import com.buang.welewolf.base.bean.OnlineGuildInfo;
 import com.buang.welewolf.base.services.upload.UploadListener;
 import com.buang.welewolf.base.services.upload.UploadService;
 import com.buang.welewolf.base.services.upload.UploadTask;
+import com.buang.welewolf.base.utils.DirContext;
 import com.buang.welewolf.base.utils.ImageUtil;
 import com.buang.welewolf.modules.profile.ModifyNameFragment;
 import com.buang.welewolf.modules.services.GuildService;
@@ -80,6 +81,7 @@ public class GuildSettingFragment extends BaseUIFragment<UIFragmentHelper> {
         super.onViewCreatedImpl(view, savedInstanceState);
         getUIFragmentHelper().getTitleBar().setTitle("公会设置");
         getUIFragmentHelper().setTintBar(getResources().getColor(R.color.color_title_bar));
+        headImageFile = new File(DirContext.getImageCacheDir() + "/guildphoto.jpg");
 
         mNameView = (TextView) view.findViewById(R.id.tvName);
         mHeadView = (ImageView) view.findViewById(R.id.ivHead);

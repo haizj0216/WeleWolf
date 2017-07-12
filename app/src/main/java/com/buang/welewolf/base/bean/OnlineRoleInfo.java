@@ -25,6 +25,7 @@ public class OnlineRoleInfo implements Serializable {
     public boolean isMyVoice;
     public boolean isMySelf;
     public boolean isVillage;
+    public String killUserID;
 
 
 //    player = {

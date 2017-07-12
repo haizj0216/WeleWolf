@@ -26,7 +26,9 @@ public class TextMsgView extends BaseMsgView {
     @Override
     public void setContent(MessageContent msgContent) {
         TextMessage msg = (TextMessage) msgContent;
-        username.setText(msg.getUserInfo().getName() + ": ");
-        msgText.setText(EmojiManager.parse(msg.getContent(), msgText.getTextSize()));
+        if (msg.getUserInfo() != null) {
+            username.setText(msg.getUserInfo().getName() + ": ");
+            msgText.setText(EmojiManager.parse(msg.getContent(), msgText.getTextSize()));
+        }
     }
 }

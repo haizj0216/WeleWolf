@@ -111,7 +111,7 @@ public class OnlineServices {
      * @return
      */
     public static String getLogOutUrl() {
-        StringBuffer buffer = getPhpCommonUrl("user/teacher/login-out?");
+        StringBuffer buffer = getPhpCommonUrl("wolf/user/player/login-out?");
         return buffer.toString();
     }
 
@@ -156,20 +156,7 @@ public class OnlineServices {
     }
 
     public static String getQiniuUploadTokenUrl(int type) {
-        StringBuffer buffer = new StringBuffer();
-        buffer.append("http://cow.knowbox.cn/");
-        buffer.append("common/app/get-bucket-token?");
-        buffer.append("source=androidTeacher");
-        buffer.append("&version=" + VersionUtils.getVersionCode(App.getAppContext()));
-        String channel = AnalyticsConfig.getChannel(App.getAppContext());
-        if ("${UMENG_CHANNEL_VALUE}".equals(channel)) {
-            channel = "buang";
-        }
-        buffer.append("&channel=" + channel);
-        if (!TextUtils.isEmpty(Utils.getToken())) {
-            buffer.append("&token=" + Utils.getToken());
-        }
-        buffer.append("&resource_type=" + type);
+        StringBuffer buffer = getPhpCommonUrl("wolf/common/app/get-bucket-token?");
         return buffer.toString();
     }
 
@@ -413,12 +400,112 @@ public class OnlineServices {
 
     /**
      * 查找房间
+     *
      * @param roomId
      * @return
      */
     public static String getFindRoomUrl(String roomId) {
         StringBuffer buffer = getPhpCommonUrl("wolf/room/room/search-room?");
         buffer.append("&roomID=" + roomId);
+        return buffer.toString();
+    }
+
+    /**
+     * 创建房间
+     *
+     * @param roomType
+     * @param level
+     * @param psw
+     * @return
+     */
+    public static String getCreateRoomUrl(int roomType, int level, String psw) {
+        StringBuffer buffer = getPhpCommonUrl("wolf/room/room/create-room?");
+        buffer.append("&roomType=" + roomType);
+        buffer.append("&levelLimit=" + level);
+        if (!TextUtils.isEmpty(psw)) {
+            buffer.append("&password=" + psw);
+        }
+        return buffer.toString();
+    }
+
+    /**
+     * 加入房间
+     *
+     * @param roomID
+     * @param psw
+     * @return
+     */
+    public static String getJoinRoomUrl(String roomID, String psw) {
+        StringBuffer buffer = getPhpCommonUrl("wolf/room/room/join-room?");
+        buffer.append("&roomID=" + roomID);
+        if (!TextUtils.isEmpty(psw)) {
+            buffer.append("&password=" + psw);
+        }
+        return buffer.toString();
+    }
+
+    /**
+     * 退出房间
+     *
+     * @param roomID
+     * @return
+     */
+    public static String getQuitRoomUrl(String roomID) {
+        StringBuffer buffer = getPhpCommonUrl("wolf/room/room/quit-room?");
+        buffer.append("&roomID=" + roomID);
+        return buffer.toString();
+    }
+
+    /**
+     * 准备、取消准备
+     *
+     * @param roomID
+     * @param status
+     * @return
+     */
+    public static String getGetReadyUrl(String roomID, int status) {
+        StringBuffer buffer = getPhpCommonUrl("wolf/room/room/get-ready?");
+        buffer.append("&roomID=" + roomID);
+        buffer.append("&readyStatus=" + status);
+        return buffer.toString();
+    }
+
+    /**
+     * 开始游戏
+     *
+     * @param roomID
+     * @return
+     */
+    public static String getStartGameUrl(String roomID) {
+        StringBuffer buffer = getPhpCommonUrl("wolf/room/room/start-game?");
+        buffer.append("&roomID=" + roomID);
+        return buffer.toString();
+    }
+
+    /**
+     * 锁定座位
+     *
+     * @param roomID
+     * @return
+     */
+    public static String getLockSeatUrl(String roomID, int index) {
+        StringBuffer buffer = getPhpCommonUrl("wolf/room/room/lock-seat?");
+        buffer.append("&roomID=" + roomID);
+        buffer.append("&seatIndex=" + index);
+        return buffer.toString();
+    }
+
+    /**
+     * 房间设置
+     *
+     * @param level
+     * @param psw
+     * @return
+     */
+    public static String getRoomSettingUrl(int level, int psw) {
+        StringBuffer buffer = getPhpCommonUrl("wolf/room/room/lock-seat?");
+        buffer.append("&levelLimit=" + level);
+        buffer.append("&password=" + psw);
         return buffer.toString();
     }
 }

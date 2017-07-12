@@ -1,0 +1,245 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/color_black_80">
+
+    <LinearLayout
+        android:layout_width="270dp"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:background="@drawable/bg_game_dialog"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="15dp"
+            android:layout_marginTop="15dp"
+            android:text="房间设置"
+            android:textColor="@color/white"
+            android:textSize="17dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="15dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:background="@color/white"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="15dp"
+                android:text="等级限制(当前选择:10级以上)"
+                android:textColor="@color/color_4c4b54"
+                android:textSize="15dp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:gravity="center_horizontal"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/tvLevel0"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:background="@drawable/bg_room_setting_selector"
+                    android:gravity="center"
+                    android:text="0级"
+                    android:textColor="@color/color_room_setting_level"
+                    android:textSize="14dp" />
+
+                <TextView
+                    android:id="@+id/tvLevel5"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="7dp"
+                    android:background="@drawable/bg_room_setting_selector"
+                    android:gravity="center"
+                    android:text="5级"
+                    android:textColor="@color/color_room_setting_level"
+                    android:textSize="14dp" />
+
+                <TextView
+                    android:id="@+id/tvLevel10"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="7dp"
+                    android:background="@drawable/bg_room_setting_selector"
+                    android:gravity="center"
+                    android:text="10级"
+                    android:textColor="@color/color_room_setting_level"
+                    android:textSize="14dp" />
+
+                <TextView
+                    android:id="@+id/tvLevel15"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="7dp"
+                    android:background="@drawable/bg_room_setting_selector"
+                    android:gravity="center"
+                    android:text="15级"
+                    android:textColor="@color/color_room_setting_level"
+                    android:textSize="14dp" />
+
+                <TextView
+                    android:id="@+id/tvLevel20"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="7dp"
+                    android:background="@drawable/bg_room_setting_selector"
+                    android:gravity="center"
+                    android:text="20级"
+                    android:textColor="@color/color_room_setting_level"
+                    android:textSize="14dp" />
+            </LinearLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_marginTop="20dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="10dp"
+                    android:text="房间密码"
+                    android:textColor="@color/color_4c4b54"
+                    android:textSize="15dp" />
+
+                <ToggleButton
+                    android:id="@+id/tvPsw"
+                    android:layout_width="52dp"
+                    android:layout_height="29dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="10dp"
+                    android:background="@drawable/toggle_button"
+                    android:button="@null"
+                    android:checked="true"
+                    android:text=""
+                    android:textOff=""
+                    android:textOn="" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <LinearLayout
+                    android:id="@+id/lvPsw"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp">
+
+                    <TextView
+                        android:id="@+id/tvPsw1"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_marginLeft="10dp"
+                        android:background="@drawable/icon_dialog_psw_enable"
+                        android:gravity="center"
+                        android:textColor="@color/color_2c3e50"
+                        android:textSize="16dp" />
+
+                    <TextView
+                        android:id="@+id/tvPsw2"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_marginLeft="7dp"
+                        android:background="@drawable/icon_dialog_psw_enable"
+                        android:gravity="center"
+                        android:textColor="@color/color_2c3e50"
+                        android:textSize="16dp" />
+
+                    <TextView
+                        android:id="@+id/tvPsw3"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_marginLeft="7dp"
+                        android:background="@drawable/icon_dialog_psw_enable"
+                        android:gravity="center"
+                        android:textColor="@color/color_2c3e50"
+                        android:textSize="16dp" />
+
+                    <TextView
+                        android:id="@+id/tvPsw4"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_marginLeft="7dp"
+                        android:background="@drawable/icon_dialog_psw_enable"
+                        android:gravity="center"
+                        android:textColor="@color/color_2c3e50"
+                        android:textSize="16dp" />
+                </LinearLayout>
+
+                <EditText
+                    android:id="@+id/evEdit"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:background="@null"
+                    android:cursorVisible="false"
+                    android:inputType="number"
+                    android:maxLength="4"
+                    android:textColor="@color/transparent" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_marginBottom="15dp"
+                android:layout_marginTop="20dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="10dp"
+                    android:text="是否允许观战"
+                    android:textColor="@color/color_4c4b54"
+                    android:textSize="15dp" />
+
+                <ToggleButton
+                    android:id="@+id/tvVisit"
+                    android:layout_width="52dp"
+                    android:layout_height="29dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="10dp"
+                    android:background="@drawable/toggle_button"
+                    android:button="@null"
+                    android:checked="true"
+                    android:text=""
+                    android:textOff=""
+                    android:textOn="" />
+            </RelativeLayout>
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="15dp">
+
+            <Button
+                android:id="@+id/bvConfirm"
+                android:layout_width="200dp"
+                android:layout_height="40dp"
+                android:background="@drawable/bg_dialog_button_yellow"
+                android:text="确认"
+                android:textColor="@color/white"
+                android:textSize="16dp" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+</RelativeLayout>

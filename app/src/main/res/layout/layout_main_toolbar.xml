@@ -43,29 +43,29 @@
                 android:visibility="gone"/>
         </RelativeLayout>
 
-        <RelativeLayout
-            android:id="@+id/main_tab_list"
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:layout_weight="1" >
+        <!--<RelativeLayout-->
+            <!--android:id="@+id/main_tab_list"-->
+            <!--android:layout_width="fill_parent"-->
+            <!--android:layout_height="fill_parent"-->
+            <!--android:layout_weight="1" >-->
 
-            <TextView
-                android:id="@+id/main_tab_list_txt"
-                style="@style/main_tab"
-                android:layout_centerInParent="true"
-                android:drawableTop="@drawable/tab_icon_stu"
-                android:text="排行榜" />
+            <!--<TextView-->
+                <!--android:id="@+id/main_tab_list_txt"-->
+                <!--style="@style/main_tab"-->
+                <!--android:layout_centerInParent="true"-->
+                <!--android:drawableTop="@drawable/tab_icon_stu"-->
+                <!--android:text="排行榜" />-->
 
-            <View
-                android:id="@+id/main_list_tips"
-                android:layout_width="10dp"
-                android:layout_height="10dp"
-                android:layout_alignRight="@id/main_tab_list_txt"
-                android:layout_marginTop="3dp"
-                android:layout_marginRight="21dp"
-                android:background="@drawable/bg_chat_noread_disabled"
-                android:visibility="gone"/>
-        </RelativeLayout>
+            <!--<View-->
+                <!--android:id="@+id/main_list_tips"-->
+                <!--android:layout_width="10dp"-->
+                <!--android:layout_height="10dp"-->
+                <!--android:layout_alignRight="@id/main_tab_list_txt"-->
+                <!--android:layout_marginTop="3dp"-->
+                <!--android:layout_marginRight="21dp"-->
+                <!--android:background="@drawable/bg_chat_noread_disabled"-->
+                <!--android:visibility="gone"/>-->
+        <!--</RelativeLayout>-->
 
         <RelativeLayout
             android:id="@+id/main_tab_message"

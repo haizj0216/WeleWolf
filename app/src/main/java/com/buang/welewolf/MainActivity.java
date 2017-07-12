@@ -60,6 +60,8 @@ import java.io.File;
 @SuppressLint("NewApi")
 public class MainActivity extends NavigateActivity {
 
+	private String AppKey = "YOUMEE8AD97B95594166FF2B47AA01266F24ED513AFD9", AppSecret = "y0ZNDWP9IOA9+RVjeV8Ovpm5DWCUMjnq4DwBooQ/WkAhhqhli1V0ZR3ock5ZQQUUGKsfs2nPQ61LwZaaYK3MUHPvCVQZGf4VEgyTX0MWQiToJ0L4dzXfUIbwKFOUohmPNhCbTfoi0P5OxnVYlleUuIQQXKaY1X1Vg0tNrqRdZEMBAAE=";
+
 	private static final String TAG = "MainActivity";
 	private static final int SCENE_LOGIN = 0x00000011;//登陆
 	private static final int SCENE_MAIN = 0x00000012;// 主场景

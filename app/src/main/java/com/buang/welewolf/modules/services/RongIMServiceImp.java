@@ -139,6 +139,10 @@ public class RongIMServiceImp implements RongIMService {
     }
 
     @Override
+    public void sendMessage(MessageContent messageContent) {
+    }
+
+    @Override
     public void startConversation(Context context, Conversation.ConversationType conversationType, String targetId, String title) {
         RongIM.getInstance().startConversation(context, conversationType, targetId, title);
     }

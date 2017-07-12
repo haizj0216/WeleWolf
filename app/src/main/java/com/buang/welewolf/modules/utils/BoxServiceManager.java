@@ -15,6 +15,8 @@ import com.buang.welewolf.base.services.upload.UploadService;
 import com.buang.welewolf.base.services.upload.UploadTask;
 import com.buang.welewolf.modules.login.services.LoginService;
 import com.buang.welewolf.modules.login.services.LoginServiceImpl;
+import com.buang.welewolf.modules.services.GameService;
+import com.buang.welewolf.modules.services.GameServiceImp;
 import com.buang.welewolf.modules.services.GuildService;
 import com.buang.welewolf.modules.services.GuildServiceImp;
 import com.buang.welewolf.modules.services.RongIMService;
@@ -59,6 +61,7 @@ public class BoxServiceManager extends BaseServiceManager {
         registService(RongIMService.SERVICE_NAME, new RongIMServiceImp());
         registService(ShareService.SERVICE_NAME, new ShareSDKService());
         registService(GuildService.SERVICE_NAME, new GuildServiceImp());
+        registService(GameService.SERVICE_NAME, new GameServiceImp());
         registService(UploadService.SERVICE_NAME_QINIU, new QNUploadServiceImpl() {
             @Override
             public String getPicTokenUrl() {

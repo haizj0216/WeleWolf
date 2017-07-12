@@ -58,27 +58,27 @@ public class MainFragment extends BaseUIFragment<UIFragmentHelper> {
     private static final String PREFS_ACTIVITY = "prefs_activity";
 
     public static final int SCENE_GAME = 0;
-    public static final int SCENE_LIST = 1;
-    public static final int SCENE_MESSAGE = 2;
+//    public static final int SCENE_LIST = 1;
+    public static final int SCENE_MESSAGE = 1;
 
     private int mCurrentTab;
     private View mTabGroup;
-    private View mTabList;
+//    private View mTabList;
     private View mTabGame;
     private View mTabMessage;
-    private View mTabClassTips;
-    private View mTabProfileTips;
-    private View mTabHomeworkTips;
+//    private View mTabClassTips;
+//    private View mTabProfileTips;
+//    private View mTabHomeworkTips;
     private List<BaseSubFragment> mSparseArray;
     private ViewPager mViewPager;
     private View mLoadingView;
     private ImageView mLoadingImg;
     private Dialog mNotifitionDialog;
 
-    public static final String ACTION_TAB_TIPS = "action_tab_tips";
-    public static final int TYPE_TAB_TIPS_CLASS = 0;
-    public static final int TYPE_TAB_TIPS_BANK = 1;
-    public static final int TYPE_TAB_TIPS_PROFILE = 2;
+//    public static final String ACTION_TAB_TIPS = "action_tab_tips";
+//    public static final int TYPE_TAB_TIPS_CLASS = 0;
+//    public static final int TYPE_TAB_TIPS_BANK = 1;
+//    public static final int TYPE_TAB_TIPS_PROFILE = 2;
     private ShareService mShareService;
 //	private LocationService locationService;
 //	private int mStartUpCount;
@@ -101,20 +101,20 @@ public class MainFragment extends BaseUIFragment<UIFragmentHelper> {
         super.onViewCreatedImpl(view, savedInstanceState);
         mSparseArray = new ArrayList<BaseSubFragment>();
         mSparseArray.add(MainGameFragment.newFragment(getActivity(), MainGameFragment.class, null, AnimType.ANIM_NONE));// 作业
-        mSparseArray.add(MainRankFragment.newFragment(getActivity(), MainRankFragment.class, null, AnimType.ANIM_NONE));// 题库
+//        mSparseArray.add(MainRankFragment.newFragment(getActivity(), MainRankFragment.class, null, AnimType.ANIM_NONE));// 题库
         mSparseArray.add(MainMessageFragment.newFragment(getActivity(), MainMessageFragment.class, null, AnimType.ANIM_NONE));// 我
 
         mTabGroup = view.findViewById(com.buang.welewolf.R.id.main_tab_group);
 
-        mTabList = view.findViewById(com.buang.welewolf.R.id.main_tab_list);
-        mTabList.setOnClickListener(mOnClickListener);
+//        mTabList = view.findViewById(com.buang.welewolf.R.id.main_tab_list);
+//        mTabList.setOnClickListener(mOnClickListener);
         mTabGame = view.findViewById(com.buang.welewolf.R.id.main_tab_game);
         mTabGame.setOnClickListener(mOnClickListener);
         mTabMessage = view.findViewById(com.buang.welewolf.R.id.main_tab_message);
         mTabMessage.setOnClickListener(mOnClickListener);
-        mTabClassTips = view.findViewById(com.buang.welewolf.R.id.main_list_tips);
-        mTabProfileTips = view.findViewById(com.buang.welewolf.R.id.main_message_tips);
-        mTabHomeworkTips = view.findViewById(com.buang.welewolf.R.id.main_game_tips);
+//        mTabClassTips = view.findViewById(com.buang.welewolf.R.id.main_list_tips);
+//        mTabProfileTips = view.findViewById(com.buang.welewolf.R.id.main_message_tips);
+//        mTabHomeworkTips = view.findViewById(com.buang.welewolf.R.id.main_game_tips);
         mViewPager = (ViewPager) view.findViewById(com.buang.welewolf.R.id.main_pagers);
         mViewPager.setOffscreenPageLimit(mSparseArray.size());
         mViewPager
@@ -130,7 +130,7 @@ public class MainFragment extends BaseUIFragment<UIFragmentHelper> {
         mShareService.initConfig(getActivity());
 
         IntentFilter intentFilter = new IntentFilter();
-        intentFilter.addAction(ACTION_TAB_TIPS);
+//        intentFilter.addAction(ACTION_TAB_TIPS);
         intentFilter.addAction(ActionUtils.ACTION_VIRTUAL_TIPS);
         intentFilter.addAction(ActionUtils.ACTION_MAIN_TAB);
         intentFilter.addAction(ActionUtils.ACTION_SHOW_REDBADGE);
@@ -232,10 +232,10 @@ public class MainFragment extends BaseUIFragment<UIFragmentHelper> {
                     mViewPager.setCurrentItem(SCENE_GAME, true);
                     break;
                 }
-                case com.buang.welewolf.R.id.main_tab_list: {
-                    mViewPager.setCurrentItem(SCENE_LIST, true);
-                    break;
-                }
+//                case com.buang.welewolf.R.id.main_tab_list: {
+//                    mViewPager.setCurrentItem(SCENE_LIST, true);
+//                    break;
+//                }
                 case com.buang.welewolf.R.id.main_tab_message: {
                     mViewPager.setCurrentItem(SCENE_MESSAGE, true);
                     break;
@@ -278,24 +278,24 @@ public class MainFragment extends BaseUIFragment<UIFragmentHelper> {
             case SCENE_MESSAGE: {
                 mTabMessage.setSelected(true);
                 mTabGame.setSelected(false);
-                mTabList.setSelected(false);
-                updateProfileTips(false);
+//                mTabList.setSelected(false);
+//                updateProfileTips(false);
                 break;
             }
             case SCENE_GAME: {
                 mTabMessage.setSelected(false);
                 mTabGame.setSelected(true);
-                mTabList.setSelected(false);
-                updateHomeworkTips(false);
+//                mTabList.setSelected(false);
+//                updateHomeworkTips(false);
                 break;
             }
-            case SCENE_LIST: {
-                mTabMessage.setSelected(false);
-                mTabGame.setSelected(false);
-                mTabList.setSelected(true);
-                updateClassTips(false);
-                break;
-            }
+//            case SCENE_LIST: {
+//                mTabMessage.setSelected(false);
+//                mTabGame.setSelected(false);
+//                mTabList.setSelected(true);
+//                updateClassTips(false);
+//                break;
+//            }
             default:
                 break;
         }
@@ -308,14 +308,15 @@ public class MainFragment extends BaseUIFragment<UIFragmentHelper> {
     private BroadcastReceiver mReceiver = new BroadcastReceiver() {
         public void onReceive(Context context, final Intent intent) {
             final String action = intent.getAction();
-            if (ACTION_TAB_TIPS.equals(action)) {
-                int type = intent.getIntExtra("type", -1);
-                boolean visible = intent.getBooleanExtra("visible", false);
-                updateTabTips(type, visible);
-            } else if (action.equals(ActionUtils.ACTION_VIRTUAL_TIPS)) {
+//            if (ACTION_TAB_TIPS.equals(action)) {
+//                int type = intent.getIntExtra("type", -1);
+//                boolean visible = intent.getBooleanExtra("visible", false);
+//                updateTabTips(type, visible);
+//            } else
+                if (action.equals(ActionUtils.ACTION_VIRTUAL_TIPS)) {
                 showLoginFragment();
             } else if (action.equals(ActionUtils.ACTION_MAIN_TAB)) {
-                int tab = intent.getIntExtra("tab", TYPE_TAB_TIPS_CLASS);
+                int tab = intent.getIntExtra("tab", SCENE_GAME);
                 setCurrentItem(tab);
                 removeAllFragment();
             } else if (action.equals(ActionUtils.ACTION_SHOW_REDBADGE)) {
@@ -332,19 +333,19 @@ public class MainFragment extends BaseUIFragment<UIFragmentHelper> {
     }
 
     private void updateTabTips(int type, boolean visible) {
-        switch (type) {
-            case TYPE_TAB_TIPS_CLASS:
-                updateHomeworkTips(visible);
-                break;
-            case TYPE_TAB_TIPS_BANK:
-                updateClassTips(visible);
-                break;
-            case TYPE_TAB_TIPS_PROFILE:
-                updateProfileTips(visible);
-                break;
-            default:
-                break;
-        }
+//        switch (type) {
+//            case TYPE_TAB_TIPS_CLASS:
+//                updateHomeworkTips(visible);
+//                break;
+//            case TYPE_TAB_TIPS_BANK:
+//                updateClassTips(visible);
+//                break;
+//            case TYPE_TAB_TIPS_PROFILE:
+//                updateProfileTips(visible);
+//                break;
+//            default:
+//                break;
+//        }
 
     }
 
@@ -359,23 +360,23 @@ public class MainFragment extends BaseUIFragment<UIFragmentHelper> {
         }
     }
 
-    public void updateProfileTips(boolean visible) {
-        if (mTabProfileTips != null) {
-            mTabProfileTips.setVisibility(visible ? View.VISIBLE : View.GONE);
-        }
-    }
-
-    public void updateClassTips(boolean hasTransfer) {
-        if (mTabClassTips != null) {
-            mTabClassTips.setVisibility(hasTransfer ? View.VISIBLE : View.GONE);
-        }
-    }
-
-    public void updateHomeworkTips(boolean visible) {
-        if (mTabHomeworkTips != null) {
-            mTabHomeworkTips.setVisibility(visible ? View.VISIBLE : View.GONE);
-        }
-    }
+//    public void updateProfileTips(boolean visible) {
+//        if (mTabProfileTips != null) {
+//            mTabProfileTips.setVisibility(visible ? View.VISIBLE : View.GONE);
+//        }
+//    }
+//
+//    public void updateClassTips(boolean hasTransfer) {
+//        if (mTabClassTips != null) {
+//            mTabClassTips.setVisibility(hasTransfer ? View.VISIBLE : View.GONE);
+//        }
+//    }
+//
+//    public void updateHomeworkTips(boolean visible) {
+//        if (mTabHomeworkTips != null) {
+//            mTabHomeworkTips.setVisibility(visible ? View.VISIBLE : View.GONE);
+//        }
+//    }
 
     private class MainFragmentAdapter extends FragmentPagerAdapter {
 

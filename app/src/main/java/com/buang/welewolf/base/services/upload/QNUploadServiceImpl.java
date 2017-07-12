@@ -16,6 +16,7 @@ import com.qiniu.android.storage.UpCompletionHandler;
 import com.qiniu.android.storage.UpProgressHandler;
 import com.qiniu.android.storage.UploadManager;
 import com.qiniu.android.storage.UploadOptions;
+import com.qiniu.android.storage.Zone;
 
 import org.json.JSONObject;
 
@@ -226,7 +227,10 @@ public abstract class QNUploadServiceImpl implements UploadService {
                         PToken = config.mToken;
                     }
                     final String token = PToken;
-                    Configuration config1 = (new Configuration.Builder()).build();
+                    Zone zone = new Zone("upload.qiniu.com", "up-z2.qiniu.com", "183.136.139.16");
+                    Configuration.Builder builder = new Configuration.Builder().zone(zone);
+                    Configuration config1 = (builder.build());
+
                     UploadManager manager = new UploadManager(config1);
                     UpCompletionHandler handler = new UpCompletionHandler() {
                         public void complete(String key, ResponseInfo response, JSONObject json) {

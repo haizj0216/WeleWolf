@@ -38,6 +38,7 @@ import android.widget.ImageView.ScaleType;
 
 import com.hyena.framework.clientlog.LogUtil;
 
+import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileDescriptor;
@@ -397,6 +398,14 @@ public class ImageUtil {
 			clear(sourceBitmap);
 		return scaledBitmap;
 	}
+
+	public static InputStream Bitmap2InputStream(Bitmap bm) {
+		ByteArrayOutputStream baos = new ByteArrayOutputStream();
+		bm.compress(Bitmap.CompressFormat.JPEG, 80, baos);
+		InputStream is = new ByteArrayInputStream(baos.toByteArray());
+		return is;
+	}
+
 
 	public static Options getBitmapOptions(String path, int maxSize) {
 		Options options = new Options();

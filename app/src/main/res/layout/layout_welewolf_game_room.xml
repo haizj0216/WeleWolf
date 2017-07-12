@@ -6,6 +6,7 @@
     android:layout_height="match_parent">
 
     <ImageView
+        android:id="@+id/ivRoomBg"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:scaleType="centerCrop"
@@ -90,50 +91,81 @@
         android:layout_alignParentBottom="true"
         android:layout_marginBottom="5dp" />
 
-    <ListView
-        android:id="@+id/lvLeftList"
-        android:layout_width="60dp"
-        android:layout_height="match_parent"
-        android:layout_above="@id/bottom_bar"
-        android:layout_below="@id/rvNagi"
-        android:layout_marginBottom="5dp"
-        android:layout_marginLeft="5dp"
-        android:cacheColorHint="@android:color/transparent"
-        android:divider="@null"
-        android:dividerHeight="5dp"
-        android:listSelector="@android:color/transparent"
-        android:scrollbars="none" />
-
-    <ListView
-        android:id="@+id/lvRightList"
-        android:layout_width="60dp"
-        android:layout_height="match_parent"
-        android:layout_above="@id/bottom_bar"
-        android:layout_alignParentRight="true"
-        android:layout_below="@id/rvNagi"
-        android:layout_marginBottom="5dp"
-        android:layout_marginRight="5dp"
-        android:cacheColorHint="@android:color/transparent"
-        android:divider="@null"
-        android:dividerHeight="5dp"
-        android:listSelector="@android:color/transparent"
-        android:scrollbars="none" />
-
-    <ListView
-        android:id="@+id/lvChatView"
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_above="@id/bottom_bar"
-        android:layout_below="@id/rvNagi"
-        android:layout_marginBottom="5dp"
-        android:layout_marginLeft="5dp"
-        android:layout_marginRight="5dp"
-        android:layout_toLeftOf="@id/lvRightList"
-        android:layout_toRightOf="@id/lvLeftList"
-        android:cacheColorHint="@android:color/transparent"
-        android:divider="@null"
-        android:dividerHeight="0dp"
-        android:listSelector="@android:color/transparent" />
+        android:layout_below="@id/rvNagi">
+
+        <Button
+            android:id="@+id/bvReady"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="5dp"
+            android:background="@drawable/bg_room_begin" />
+
+        <ListView
+            android:id="@+id/lvLeftList"
+            android:layout_width="60dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:layout_marginLeft="5dp"
+            android:cacheColorHint="@android:color/transparent"
+            android:divider="@null"
+            android:dividerHeight="5dp"
+            android:listSelector="@android:color/transparent"
+            android:scrollbars="none" />
+
+        <ListView
+            android:id="@+id/lvRightList"
+            android:layout_width="60dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginBottom="5dp"
+            android:layout_marginRight="5dp"
+            android:cacheColorHint="@android:color/transparent"
+            android:divider="@null"
+            android:dividerHeight="5dp"
+            android:listSelector="@android:color/transparent"
+            android:scrollbars="none" />
+
+        <ListView
+            android:id="@+id/lvChatView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@id/bvReady"
+            android:layout_marginBottom="5dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_toLeftOf="@id/lvRightList"
+            android:layout_toRightOf="@id/lvLeftList"
+            android:cacheColorHint="@android:color/transparent"
+            android:divider="@null"
+            android:dividerHeight="0dp"
+            android:listSelector="@android:color/transparent" />
+
+        <ImageView
+            android:id="@+id/ivCurRole"
+            android:layout_width="60dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/lvLeftList"
+            android:layout_marginBottom="5dp"
+            android:layout_marginLeft="5dp"
+            android:scaleType="center"
+            android:src="@drawable/icon_role_village" />
+
+        <ImageView
+            android:id="@+id/ivWatch"
+            android:layout_width="60dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_below="@id/lvRightList"
+            android:layout_marginBottom="5dp"
+            android:layout_marginRight="5dp"
+            android:src="@drawable/bg_room_watch" />
+    </RelativeLayout>
 
 
 </RelativeLayout>

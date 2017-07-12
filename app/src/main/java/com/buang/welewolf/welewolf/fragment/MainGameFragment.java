@@ -1,5 +1,6 @@
 package com.buang.welewolf.welewolf.fragment;
 
+import android.app.Dialog;
 import android.os.Bundle;
 import android.view.View;
 
@@ -7,9 +8,13 @@ import com.buang.welewolf.R;
 import com.buang.welewolf.base.bean.OnlineRoomInfo;
 import com.buang.welewolf.base.bean.OnlineUserInfo;
 import com.buang.welewolf.base.http.services.OnlineServices;
+import com.buang.welewolf.modules.game.GameHelpFrament;
 import com.buang.welewolf.modules.game.GameRoomFragment;
+import com.buang.welewolf.modules.game.dialog.RoomSettingDialog;
+import com.buang.welewolf.modules.guild.ContactInfoFragment;
 import com.buang.welewolf.modules.profile.SystemSettingFragment;
 import com.buang.welewolf.modules.services.GuildService;
+import com.buang.welewolf.modules.utils.ConstantsUtils;
 import com.buang.welewolf.modules.utils.Utils;
 import com.buang.welewolf.welewolf.login.LoginFragment;
 import com.buang.welewolf.welewolf.login.PhoneLoginFragment;
@@ -26,6 +31,9 @@ public class MainGameFragment extends BaseUIFragment<UIFragmentHelper> {
 
     private final int ACTION_GET_USERINFO = 1;
     private final int ACTION_FIND_ROOM = 2;
+    private final int ACTION_CREATE_ROOM = 3;
+
+    private Dialog mDialog;
 
     @Override
     public void onCreateImpl(Bundle savedInstanceState) {
@@ -42,10 +50,12 @@ public class MainGameFragment extends BaseUIFragment<UIFragmentHelper> {
     @Override
     public void onViewCreatedImpl(View view, Bundle savedInstanceState) {
         super.onViewCreatedImpl(view, savedInstanceState);
-        getUIFragmentHelper().setTintBar(getResources().getColor(R.color.color_title_bar));
         view.findViewById(R.id.ivUserView).setOnClickListener(onClickListener);
         view.findViewById(R.id.ivSetting).setOnClickListener(onClickListener);
         view.findViewById(R.id.main_game_easy).setOnClickListener(onClickListener);
+        view.findViewById(R.id.ivHelp).setOnClickListener(onClickListener);
+        view.findViewById(R.id.ivCreateRoom).setOnClickListener(onClickListener);
+        view.findViewById(R.id.ivSearchRoom).setOnClickListener(onClickListener);
         loadData(ACTION_GET_USERINFO, PAGE_MORE, Utils.getLoginUserItem().userId);
     }
 
@@ -55,7 +65,9 @@ public class MainGameFragment extends BaseUIFragment<UIFragmentHelper> {
             int id = v.getId();
             switch (id) {
                 case R.id.ivUserView:
-                    LoginFragment fragment = LoginFragment.newFragment(getActivity(), LoginFragment.class, null);
+                    Bundle mBundle = new Bundle();
+                    mBundle.putSerializable(ConstantsUtils.KEY_BUNDLE_CONTACT_INFO, Utils.getLoginUserItem());
+                    ContactInfoFragment fragment = ContactInfoFragment.newFragment(getActivity(), ContactInfoFragment.class, mBundle);
                     showFragment(fragment);
                     break;
                 case R.id.ivSetting:
@@ -63,6 +75,16 @@ public class MainGameFragment extends BaseUIFragment<UIFragmentHelper> {
                     break;
                 case R.id.main_game_easy:
                     loadData(ACTION_FIND_ROOM, PAGE_MORE, "10000");
+                    break;
+                case R.id.ivCreateRoom:
+                    loadData(ACTION_CREATE_ROOM, PAGE_MORE, 3, 15, "6666");
+                    break;
+                case R.id.ivSearchRoom:
+                    showSearchDialog();
+//                    loadData(ACTION_FIND_ROOM, PAGE_MORE, "10000");
+                    break;
+                case R.id.ivHelp:
+                    showFragment(GameHelpFrament.newFragment(getActivity(), GameHelpFrament.class, null, AnimType.ANIM_NONE));
                     break;
             }
         }
@@ -72,6 +94,14 @@ public class MainGameFragment extends BaseUIFragment<UIFragmentHelper> {
         Bundle mBundle = new Bundle();
         mBundle.putSerializable("room", roomInfo);
         showFragment(GameRoomFragment.newFragment(getActivity(), GameRoomFragment.class, mBundle));
+    }
+
+    private void showSearchDialog() {
+        if (mDialog != null && mDialog.isShowing()) {
+            mDialog.show();
+        }
+        mDialog = new RoomSettingDialog(getActivity());
+        mDialog.show();
     }
 
     @Override
@@ -89,6 +119,10 @@ public class MainGameFragment extends BaseUIFragment<UIFragmentHelper> {
             String url = OnlineServices.getFindRoomUrl((String) params[0]);
             OnlineRoomInfo result = new DataAcquirer<OnlineRoomInfo>().get(url, new OnlineRoomInfo());
             return result;
+        } else if (action == ACTION_CREATE_ROOM) {
+            String url = OnlineServices.getCreateRoomUrl((int) params[0], (int) params[1], (String) params[2]);
+            OnlineRoomInfo result = new DataAcquirer<OnlineRoomInfo>().get(url, new OnlineRoomInfo());
+            return result;
         }
         return super.onProcess(action, pageNo, params);
     }
@@ -104,6 +138,8 @@ public class MainGameFragment extends BaseUIFragment<UIFragmentHelper> {
             }
         } else if (action == ACTION_FIND_ROOM) {
             openGameRoom((OnlineRoomInfo) result);
+        } else if (action == ACTION_CREATE_ROOM) {
+
         }
     }
 }

@@ -106,24 +106,9 @@ public class MessagePushUtils {
             openNewWindow(url, title);
         } else if ("openView".equals(methodName)) {
             String view = paramsMap.get("view");
-            if ("root_index".equals(view)) {
-                String classId = paramsMap.get("class_id");
-                ActionUtils.notifyMainTab(MainFragment.TYPE_TAB_TIPS_CLASS, paramsMap);
-            } else if ("root_gym".equals(view)) {
-                ActionUtils.notifyMainTab(MainFragment.TYPE_TAB_TIPS_BANK, paramsMap);
-            } else if ("root_me".equals(view)) {
-                ActionUtils.notifyMainTab(MainFragment.TYPE_TAB_TIPS_PROFILE, paramsMap);
-            }
         }
     }
 
-    private void openClassStudentListFragment(Hashtable<String, String> paramsMap) {
-        ActionUtils.notifyMainTab(MainFragment.TYPE_TAB_TIPS_CLASS, paramsMap);
-    }
-
-    private void openClassListFragment() {
-        ActionUtils.notifyMainTab(MainFragment.TYPE_TAB_TIPS_CLASS, null);
-    }
 
     private void openNewWindow(String url, String title) {
         StringBuffer buffer = new StringBuffer();

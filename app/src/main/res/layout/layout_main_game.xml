@@ -4,173 +4,249 @@
     android:orientation="vertical">
 
     <RelativeLayout
+        android:id="@+id/ivUserView"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:background="@color/color_title_bar">
+        android:layout_height="209dp"
+        android:background="@drawable/bg_main_top">
 
-        <ImageView
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="20dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text="狼人杀"
+                android:textColor="@color/white"
+                android:textSize="17dp" />
+
+            <ImageView
+                android:id="@+id/ivSetting"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="10dp"
+                android:padding="10dp"
+                android:src="@drawable/icon_main_setting" />
+        </RelativeLayout>
+
+        <com.buang.welewolf.widgets.roundedimageview.RoundedImageView xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/main_header_image"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="25dp"
+            android:layout_marginTop="82dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/touxxiaophai"
+            app:riv_corner_radius="5dp" />
+
+        <TextView
+            android:id="@+id/main_header_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:src="@drawable/logo_navigation" />
+            android:layout_alignTop="@id/main_header_image"
+            android:layout_marginLeft="10dp"
+            android:layout_toRightOf="@id/main_header_image"
+            android:text="匀匀"
+            android:textColor="@color/white"
+            android:textSize="15dp" />
+
+        <TextView
+            android:id="@+id/main_header_lv"
+            android:layout_width="40dp"
+            android:layout_height="15dp"
+            android:layout_below="@id/main_header_name"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="5dp"
+            android:layout_toRightOf="@id/main_header_image"
+            android:background="@drawable/bg_auth_shooting"
+            android:gravity="center"
+            android:text="Lv.1"
+            android:textColor="@color/white"
+            android:textSize="11dp" />
+
+        <TextView
+            android:id="@+id/main_header_exp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@id/main_header_lv"
+            android:layout_marginLeft="5dp"
+            android:layout_toRightOf="@id/main_header_lv"
+            android:text="经验:100"
+            android:textColor="@color/white"
+            android:textSize="12dp" />
+
+        <TextView
+            android:id="@+id/main_header_code"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/main_header_lv"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="5dp"
+            android:layout_toRightOf="@id/main_header_image"
+            android:text="ID:39368236"
+            android:textColor="@color/white"
+            android:textSize="13dp" />
 
         <ImageView
-            android:id="@+id/ivSetting"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
-            android:layout_marginRight="10dp"
-            android:padding="10dp"
-            android:src="@drawable/icon_profile_settings" />
+            android:layout_marginRight="20dp"
+            android:src="@drawable/icon_profile_more" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_alignParentBottom="true"
+            android:background="@color/color_white_20">
+
+            <TextView
+                android:id="@+id/main_header_coin"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="15dp"
+                android:drawableLeft="@drawable/ic_coin"
+                android:drawablePadding="5dp"
+                android:text="我的金币:90"
+                android:textColor="@color/white"
+                android:textSize="14dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="15dp"
+                android:drawablePadding="5dp"
+                android:drawableRight="@drawable/icon_profile_more"
+                android:text="充值"
+                android:textColor="@color/white"
+                android:textSize="14dp" />
+        </RelativeLayout>
+
     </RelativeLayout>
 
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_below="@id/ivUserView"
         android:scrollbars="none">
 
-        <RelativeLayout
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
-            <RelativeLayout
-                android:id="@+id/ivUserView"
-                android:layout_width="match_parent"
-                android:layout_height="100dp"
-                android:background="@color/color_title_bar">
-
-                <ImageView
-                    android:id="@+id/main_header_image"
-                    android:layout_width="60dp"
-                    android:layout_height="60dp"
-                    android:layout_centerVertical="true"
-                    android:layout_marginLeft="25dp"
-                    android:padding="4dp"
-                    android:src="@drawable/homepage_title_user" />
-
-                <ImageView
-                    android:layout_width="60dp"
-                    android:layout_height="60dp"
-                    android:layout_centerVertical="true"
-                    android:layout_marginLeft="25dp"
-                    android:src="@drawable/home_head_border" />
-
-                <TextView
-                    android:id="@+id/main_header_name"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignTop="@id/main_header_image"
-                    android:layout_marginLeft="20dp"
-                    android:layout_toRightOf="@id/main_header_image"
-                    android:text="匀匀"
-                    android:textColor="@color/white" />
-
-                <TextView
-                    android:id="@+id/main_header_lv"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:layout_marginLeft="20dp"
-                    android:layout_toRightOf="@id/main_header_image"
-                    android:background="@drawable/chat_recording_text_hint_bg"
-                    android:padding="2dp"
-                    android:text="Lv.1"
-                    android:textColor="@color/white" />
-
-                <TextView
-                    android:id="@+id/main_header_exp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:layout_marginLeft="5dp"
-                    android:layout_toRightOf="@id/main_header_lv"
-                    android:text="经验:100"
-                    android:textColor="@color/white" />
-
-                <TextView
-                    android:id="@+id/main_header_code"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignBottom="@id/main_header_image"
-                    android:layout_marginLeft="20dp"
-                    android:layout_toRightOf="@id/main_header_image"
-                    android:text="ID:39368236"
-                    android:textColor="@color/white" />
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentRight="true"
-                    android:layout_centerVertical="true"
-                    android:layout_marginRight="20dp"
-                    android:src="@drawable/icon_profile_more" />
-            </RelativeLayout>
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:layout_marginTop="100dp"
-                android:background="#474350">
-
-                <TextView
-                    android:id="@+id/main_header_coin"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:layout_marginLeft="15dp"
-                    android:drawableLeft="@drawable/ic_coin"
-                    android:drawablePadding="3dp"
-                    android:text="我的金币:90"
-                    android:textColor="@color/white" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentRight="true"
-                    android:layout_centerVertical="true"
-                    android:layout_marginRight="15dp"
-                    android:drawablePadding="5dp"
-                    android:drawableRight="@drawable/icon_profile_more"
-                    android:text="充值"
-                    android:textColor="@color/white" />
-            </RelativeLayout>
-
-            <ImageView
+            <LinearLayout
                 android:id="@+id/main_game_easy"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="145dp"
-                android:src="@drawable/home_easy" />
+                android:layout_height="110dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:layout_marginTop="15dp"
+                android:background="@drawable/bg_shape_home_easy"
+                android:gravity="center_vertical"
+                android:orientation="vertical">
 
-            <RelativeLayout
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="15dp"
+                    android:text="简单模式"
+                    android:textColor="@color/white"
+                    android:textSize="20dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginTop="5dp"
+                    android:text="适合新手快速加入"
+                    android:textColor="@color/white"
+                    android:textSize="15dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginTop="5dp"
+                    android:background="@drawable/bg_shape_white_alpha"
+                    android:paddingBottom="2dp"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:paddingTop="2dp"
+                    android:text="6-10人屠城模式"
+                    android:textColor="@color/white"
+                    android:textSize="15dp" />
+
+            </LinearLayout>
+
+            <LinearLayout
                 android:id="@+id/main_game_standard"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/main_game_easy"
-                android:layout_marginTop="5dp">
+                android:layout_height="110dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:layout_marginTop="15dp"
+                android:background="@drawable/bg_shape_home_standard"
+                android:gravity="center_vertical"
+                android:orientation="vertical">
 
-                <ImageView
-                    android:layout_width="match_parent"
+
+                <TextView
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/home_standard" />
+                    android:layout_marginLeft="15dp"
+                    android:text="标准模式"
+                    android:textColor="@color/white"
+                    android:textSize="20dp" />
 
-            </RelativeLayout>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginTop="5dp"
+                    android:text="加入警长环节和跟多角色"
+                    android:textColor="@color/white"
+                    android:textSize="15dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginTop="5dp"
+                    android:background="@drawable/bg_shape_white_alpha"
+                    android:paddingBottom="2dp"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:paddingTop="2dp"
+                    android:text="12人屠边模式"
+                    android:textColor="@color/white"
+                    android:textSize="15dp" />
+            </LinearLayout>
 
             <LinearLayout
                 android:id="@+id/main_game_operate"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/main_game_standard"
-                android:layout_marginTop="5dp">
+                android:layout_margin="15dp">
 
                 <ImageView
+                    android:id="@+id/ivHelp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:src="@drawable/home_explanation" />
 
                 <RelativeLayout
+                    android:id="@+id/ivCreateRoom"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1">
@@ -182,19 +258,13 @@
                 </RelativeLayout>
 
                 <ImageView
+                    android:id="@+id/ivSearchRoom"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:src="@drawable/home_search" />
             </LinearLayout>
-
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/main_game_operate"
-                android:layout_marginTop="5dp"
-                android:src="@drawable/home_lock" />
-        </RelativeLayout>
+        </LinearLayout>
     </ScrollView>
 
 </LinearLayout>

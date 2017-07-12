@@ -16,6 +16,7 @@ import com.buang.welewolf.base.database.bean.UserItem;
 import com.buang.welewolf.base.services.upload.UploadListener;
 import com.buang.welewolf.base.services.upload.UploadService;
 import com.buang.welewolf.base.services.upload.UploadTask;
+import com.buang.welewolf.base.utils.DirContext;
 import com.buang.welewolf.base.utils.ImageUtil;
 import com.buang.welewolf.modules.profile.ModifyNameFragment;
 import com.buang.welewolf.modules.utils.DialogUtils;
@@ -76,6 +77,7 @@ public class ContactSettingFragment extends BaseUIFragment<UIFragmentHelper> {
         super.onViewCreatedImpl(view, savedInstanceState);
         getUIFragmentHelper().getTitleBar().setTitle("编辑资料");
         getUIFragmentHelper().setTintBar(R.color.color_title_bar);
+        headImageFile = new File(DirContext.getImageCacheDir(), "user.jpg");
 
         mHeadView = (ImageView) view.findViewById(R.id.ivHead);
         mNameView = (TextView) view.findViewById(R.id.tvName);

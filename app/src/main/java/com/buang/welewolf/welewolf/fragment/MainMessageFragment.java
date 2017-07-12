@@ -3,6 +3,8 @@ package com.buang.welewolf.welewolf.fragment;
 import android.app.Dialog;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.text.InputType;
 import android.view.View;
 
@@ -61,24 +63,30 @@ public class MainMessageFragment extends BaseUIFragment<UIFragmentHelper> {
         super.onViewCreatedImpl(view, savedInstanceState);
         getUIFragmentHelper().setTintBar(getResources().getColor(R.color.color_title_bar));
         rongIMService.connect();
-        if (mConversationListFragment == null) {
-            mConversationListFragment = (ConversationListFragment) getActivity().getSupportFragmentManager().findFragmentById(R.id.ivConversationList);
-        }
+
         view.findViewById(R.id.ivGuild).setOnClickListener(onClickListener);
         view.findViewById(R.id.main_message_contacts).setOnClickListener(onClickListener);
         view.findViewById(R.id.main_message_search).setOnClickListener(onClickListener);
     }
 
     private void initFragment() {
-        Uri uri = Uri.parse("rong://" + getActivity().getApplicationInfo().packageName).buildUpon()
-                .appendPath("conversationlist")
-                .appendQueryParameter(Conversation.ConversationType.PRIVATE.getName(), "true") //设置私聊会话非聚合显示
-                .appendQueryParameter(Conversation.ConversationType.GROUP.getName(), "true")//设置群组会话聚合显示
-                .appendQueryParameter(Conversation.ConversationType.DISCUSSION.getName(), "false")//设置讨论组会话非聚合显示
-                .appendQueryParameter(Conversation.ConversationType.SYSTEM.getName(), "false")//设置系统会话非聚合显示
-                .build();
+        if (mConversationListFragment == null) {
+            mConversationListFragment = new ConversationListFragment();
+            FragmentManager fragmentManager = getChildFragmentManager();
+            FragmentTransaction transaction = fragmentManager.beginTransaction();
+            transaction.replace(R.id.ivConversationList, mConversationListFragment);
+            transaction.commit();
+//            mConversationListFragment = (ConversationListFragment) getActivity().getSupportFragmentManager().findFragmentById(R.id.ivConversationList);
+            Uri uri = Uri.parse("rong://" + getActivity().getApplicationInfo().packageName).buildUpon()
+                    .appendPath("conversationlist")
+                    .appendQueryParameter(Conversation.ConversationType.PRIVATE.getName(), "true") //设置私聊会话非聚合显示
+                    .appendQueryParameter(Conversation.ConversationType.GROUP.getName(), "true")//设置群组会话聚合显示
+                    .appendQueryParameter(Conversation.ConversationType.DISCUSSION.getName(), "false")//设置讨论组会话非聚合显示
+                    .appendQueryParameter(Conversation.ConversationType.SYSTEM.getName(), "false")//设置系统会话非聚合显示
+                    .build();
 
-        mConversationListFragment.setUri(uri);
+            mConversationListFragment.setUri(uri);
+        }
     }
 
     private void showSearchDialog() {
