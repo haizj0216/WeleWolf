@@ -18,21 +18,39 @@
 
             <LinearLayout
                 android:id="@+id/dialog_help"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="40dp"
                 android:layout_centerHorizontal="true"
+                android:layout_marginBottom="40dp"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
                 android:background="@drawable/bg_dialog_help"
                 android:orientation="vertical">
 
                 <ImageView
-                    android:id="@+id/ivImage"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
-                    android:layout_marginRight="10dp" />
+                    android:layout_marginRight="10dp"
+                    android:layout_marginTop="10dp"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/icon_dialog_role_n" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/icon_dialog_role_h1" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/icon_dialog_role_h2" />
 
                 <Button
                     android:id="@+id/blClose"

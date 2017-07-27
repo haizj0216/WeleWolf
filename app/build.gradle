@@ -81,4 +81,6 @@ dependencies {
     compile project(':supportlibrary')
     compile(name: 'android-gif-drawable-1.1.14', ext: 'aar')
     compile(name: 'SMSSDK-2.1.4', ext: 'aar')
+    compile 'com.qiniu:qiniu-android-sdk:7.3.3'
+
 }

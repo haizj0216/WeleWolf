@@ -1,8 +1,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/color_black_80">
+    android:layout_height="match_parent">
 
     <LinearLayout
         android:layout_width="270dp"
@@ -27,7 +26,7 @@
             android:layout_marginBottom="15dp"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
-            android:background="@color/white"
+            android:background="@drawable/bg_shape_dialog_content"
             android:orientation="vertical">
 
             <com.buang.welewolf.widgets.roundedimageview.RoundedImageView
@@ -49,10 +48,20 @@
                 android:layout_below="@id/ivHead"
                 android:layout_centerHorizontal="true"
                 android:layout_gravity="center_horizontal"
-                android:layout_marginBottom="15dp"
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="20dp"
-                android:text="你要发动技能带走一个玩家吗？"
+                android:text="今晚被杀的是 4号玩家"
+                android:textColor="@color/color_4c4b54"
+                android:textSize="14dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@id/tvText"
+                android:layout_below="@id/tvText"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginBottom="20dp"
+                android:text="你要救ta吗？"
                 android:textColor="@color/color_4c4b54"
                 android:textSize="14dp" />
 

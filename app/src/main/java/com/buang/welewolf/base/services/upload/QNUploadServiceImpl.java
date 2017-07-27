@@ -9,6 +9,7 @@ import com.hyena.framework.error.ErrorManager;
 import com.hyena.framework.network.NetworkProvider;
 import com.hyena.framework.security.MD5Util;
 import com.hyena.framework.utils.AppPreferences;
+import com.qiniu.android.common.Zone;
 import com.qiniu.android.http.ResponseInfo;
 import com.qiniu.android.storage.Configuration;
 import com.qiniu.android.storage.UpCancellationSignal;
@@ -16,7 +17,6 @@ import com.qiniu.android.storage.UpCompletionHandler;
 import com.qiniu.android.storage.UpProgressHandler;
 import com.qiniu.android.storage.UploadManager;
 import com.qiniu.android.storage.UploadOptions;
-import com.qiniu.android.storage.Zone;
 
 import org.json.JSONObject;
 
@@ -227,8 +227,7 @@ public abstract class QNUploadServiceImpl implements UploadService {
                         PToken = config.mToken;
                     }
                     final String token = PToken;
-                    Zone zone = new Zone("upload.qiniu.com", "up-z2.qiniu.com", "183.136.139.16");
-                    Configuration.Builder builder = new Configuration.Builder().zone(zone);
+                    Configuration.Builder builder = new Configuration.Builder().zone(Zone.zone2);
                     Configuration config1 = (builder.build());
 
                     UploadManager manager = new UploadManager(config1);

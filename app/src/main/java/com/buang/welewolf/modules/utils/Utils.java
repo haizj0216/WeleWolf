@@ -8,6 +8,7 @@ import android.content.Context;
 import android.telephony.TelephonyManager;
 import android.text.TextUtils;
 
+import com.buang.welewolf.base.bean.OnlineRoleInfo;
 import com.buang.welewolf.base.database.bean.UserItem;
 import com.hyena.framework.security.MD5Util;
 import com.hyena.framework.utils.BaseApp;
@@ -34,6 +35,14 @@ public class Utils {
             return "";
         }
         return user.token;
+    }
+
+    public static UserItem getUserItem(OnlineRoleInfo roleInfo) {
+        UserItem userItem = new UserItem();
+        userItem.userName = roleInfo.userName;
+        userItem.userId = roleInfo.userID;
+        userItem.headPhoto = roleInfo.userPhoto;
+        return userItem;
     }
 
     public static String getDeviceID(Activity activity) {

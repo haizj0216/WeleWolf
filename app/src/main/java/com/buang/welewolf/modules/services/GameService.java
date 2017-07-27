@@ -26,4 +26,26 @@ public interface GameService extends BaseService {
     public void wolfKill(String from, String to);
 
     public List<OnlineRoleInfo> killedByWolfList(String userId);
+
+    public void initGVoice();
+
+    public int joinGVoiceRoom(String roomID);
+
+    public int exitGVoiceRoom(String roomID);
+
+    public int openGVoiceMic();
+
+    public int openGVoiceSpeak();
+
+    public int closeGVoiceMic();
+
+    public int closeGVoiceSpeak();
+
+    public void startSpeak();
+
+    public void endSpeak();
+
+    public int getMinLevel();
+
+    public GameObserver getObserver();
 }

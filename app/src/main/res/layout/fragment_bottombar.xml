@@ -1,35 +1,51 @@
 <?xml version="1.0" encoding="utf-8"?>
 <com.buang.welewolf.modules.game.BottomPanelFragment xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="40dp"
     android:gravity="center_vertical"
+    android:minHeight="40dp"
     android:orientation="horizontal">
 
     <ImageView
         android:id="@+id/btn_input"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="5dp"
+        android:layout_marginLeft="15dp"
+        android:layout_centerVertical="true"
         android:src="@drawable/live_input" />
+
+    <ImageView
+        android:id="@+id/input_emoji_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:layout_marginRight="15dp"
+        android:src="@drawable/input_emoji" />
 
     <TextView
         android:id="@+id/btn_voice"
         android:layout_width="match_parent"
         android:layout_height="40dp"
-        android:layout_marginLeft="5dp"
-        android:layout_marginRight="5dp"
-        android:background="@drawable/rounded_rectangle_shape"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_toLeftOf="@id/input_emoji_btn"
+        android:layout_toRightOf="@id/btn_input"
+        android:background="@drawable/bg_room_input_speesh"
         android:gravity="center"
         android:text="按下发送语音"
         android:textColor="@color/white"
-        android:visibility="gone"/>
+        android:visibility="gone" />
 
     <com.buang.welewolf.modules.game.widget.InputPanel
         android:id="@+id/input_panel"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="5dp"
-        android:layout_marginRight="5dp"
-        android:layout_weight="1"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_toLeftOf="@id/input_emoji_btn"
+        android:layout_toRightOf="@id/btn_input"
         android:visibility="visible" />
+
+
 </com.buang.welewolf.modules.game.BottomPanelFragment>

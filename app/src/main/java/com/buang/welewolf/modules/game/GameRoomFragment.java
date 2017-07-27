@@ -1,12 +1,18 @@
 package com.buang.welewolf.modules.game;
 
+import android.app.Dialog;
+import android.graphics.Color;
+import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
 import android.text.TextUtils;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.buang.welewolf.R;
@@ -14,9 +20,20 @@ import com.buang.welewolf.base.bean.OnlineRoleInfo;
 import com.buang.welewolf.base.bean.OnlineRoomInfo;
 import com.buang.welewolf.base.http.services.OnlineServices;
 import com.buang.welewolf.modules.game.common.LiveKit;
+import com.buang.welewolf.modules.game.dialog.BaseGameDialog;
+import com.buang.welewolf.modules.game.dialog.HunterKillDialog;
+import com.buang.welewolf.modules.game.dialog.MyRoleDialog;
+import com.buang.welewolf.modules.game.dialog.RoomSettingDialog;
+import com.buang.welewolf.modules.game.dialog.SheriffDialog;
+import com.buang.welewolf.modules.game.dialog.UserInfoDialog;
+import com.buang.welewolf.modules.game.dialog.WitchSkillDialog;
+import com.buang.welewolf.modules.game.dialog.WolfKillDialog;
 import com.buang.welewolf.modules.game.widget.InputPanel;
+import com.buang.welewolf.modules.services.GameService;
+import com.buang.welewolf.modules.services.OnGVoiceListener;
 import com.buang.welewolf.modules.services.OnRongIMMessageListener;
 import com.buang.welewolf.modules.services.RongIMService;
+import com.buang.welewolf.modules.utils.ConstantsUtils;
 import com.buang.welewolf.modules.utils.ToastUtils;
 import com.buang.welewolf.modules.utils.UIFragmentHelper;
 import com.buang.welewolf.modules.utils.Utils;
@@ -25,8 +42,7 @@ import com.hyena.framework.clientlog.LogUtil;
 import com.hyena.framework.datacache.BaseObject;
 import com.hyena.framework.datacache.DataAcquirer;
 import com.hyena.framework.utils.UiThreadHandler;
-import com.youme.voiceengine.YouMeCallBackInterface;
-import com.youme.voiceengine.api;
+import com.tencent.gcloud.voice.GCloudVoiceErrno;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -54,6 +70,11 @@ public class GameRoomFragment extends BaseUIFragment<UIFragmentHelper> {
     private final int ACTION_QUIT = 4;
     private final int ACTION_LOCK = 5;
     private final int ACTION_SYNC = 6;
+    private final int ACTION_REPORT = 7;
+    private final int ACTION_ADDFRIEND = 8;
+    private final int ACTION_SKILL = 9;
+
+    private final int MSG_GET_MIC = 1;
 
     private OnlineRoomInfo onlineRoomInfo;
 
@@ -72,9 +93,28 @@ public class GameRoomFragment extends BaseUIFragment<UIFragmentHelper> {
     private ImageView mHelpView;
     private ImageView mZhaoView;
     private Button mReady;
+    private View mRecordingContainer;
+    private Drawable[] mMicImages;
+    private ImageView mMicImage;
+    private TextView mRecordingHint;
     private int orderNumber;
 
+    private Dialog mDialog;
+
     private RongIMService rongIMService;
+    private GameService gameService;
+
+    private Handler mHandler = new Handler() {
+        @Override
+        public void handleMessage(android.os.Message msg) {
+            super.handleMessage(msg);
+            if (msg.what == MSG_GET_MIC) {
+                int mic = gameService.getMinLevel();
+                LogUtil.d("GameRoomFragment", "min:" + mic);
+                sendEmptyMessageDelayed(MSG_GET_MIC, 1000);
+            }
+        }
+    };
 
     @Override
     public void onCreateImpl(Bundle savedInstanceState) {
@@ -83,6 +123,32 @@ public class GameRoomFragment extends BaseUIFragment<UIFragmentHelper> {
         rongIMService = (RongIMService) getSystemService(RongIMService.SERVICE_NAME);
         rongIMService.getObserver().addOnRongIMMessageListener(rongIMMessageListener);
         onlineRoomInfo = (OnlineRoomInfo) getArguments().getSerializable("room");
+        gameService = (GameService) getSystemService(GameService.SERVICE_NAME);
+        gameService.getObserver().addOnGVoiceListener(mOnGVoiceListener);
+        gameService.initGVoice();
+
+        mMicImages = new Drawable[]{
+                getResources().getDrawable(R.drawable.record_animate_01),
+                getResources().getDrawable(R.drawable.record_animate_02),
+                getResources().getDrawable(R.drawable.record_animate_03),
+                getResources().getDrawable(R.drawable.record_animate_04),
+                getResources().getDrawable(R.drawable.record_animate_05),
+                getResources().getDrawable(R.drawable.record_animate_06),
+                getResources().getDrawable(R.drawable.record_animate_07),
+                getResources().getDrawable(R.drawable.record_animate_08),
+                getResources().getDrawable(R.drawable.record_animate_09),
+                getResources().getDrawable(R.drawable.record_animate_10),
+                getResources().getDrawable(R.drawable.record_animate_11),
+                getResources().getDrawable(R.drawable.record_animate_12),
+                getResources().getDrawable(R.drawable.record_animate_13),
+                getResources().getDrawable(R.drawable.record_animate_14),
+                getResources().getDrawable(R.drawable.record_animate_15),
+                getResources().getDrawable(R.drawable.record_animate_16),
+                getResources().getDrawable(R.drawable.record_animate_17),
+                getResources().getDrawable(R.drawable.record_animate_18),
+                getResources().getDrawable(R.drawable.record_animate_19),
+                getResources().getDrawable(R.drawable.record_animate_20)
+        };
     }
 
     @Override
@@ -104,12 +170,17 @@ public class GameRoomFragment extends BaseUIFragment<UIFragmentHelper> {
         mLeftList = (ListView) view.findViewById(R.id.lvLeftList);
         mRightList = (ListView) view.findViewById(R.id.lvRightList);
         mChatList = (ListView) view.findViewById(R.id.lvChatView);
+        mRecordingContainer = view.findViewById(R.id.recording_container);
+        mMicImage = (ImageView) view.findViewById(R.id.mic_image);
+        mRecordingHint = (TextView) view.findViewById(R.id.recording_hint);
         mLeftAdapter = new GameRoleAdapter(getActivity(), onlineRoomInfo, 0);
         mRightAdapter = new GameRoleAdapter(getActivity(), onlineRoomInfo, 1);
         mChatAdapter = new ChatListAdapter();
         mLeftList.setAdapter(mLeftAdapter);
         mRightList.setAdapter(mRightAdapter);
         mChatList.setAdapter(mChatAdapter);
+        mLeftList.setOnItemClickListener(onItemClickListener);
+        mRightList.setOnItemClickListener(onItemClickListener);
 
         bottomPanel = (BottomPanelFragment) view.findViewById(R.id.bottom_bar);
         bottomPanel.setInputPanelListener(new InputPanel.InputPanelListener() {
@@ -119,32 +190,9 @@ public class GameRoomFragment extends BaseUIFragment<UIFragmentHelper> {
                 LiveKit.sendMessage(content);
             }
         });
-
-
         LiveKit.init(getActivity());
         updateUserList();
         joinChatRoom("101");
-        api.SetCallback(new YouMeCallBackInterface() {
-            @Override
-            public void onInitEvent(int i, int i1) {
-
-            }
-
-            @Override
-            public void onCallEvent(int i, int i1) {
-
-            }
-
-            @Override
-            public void OnCommonEventStatus(int i, String s, int i1) {
-
-            }
-
-            @Override
-            public void OnMemberChangeMsg(String[] strings) {
-
-            }
-        });
         mWatch.setOnClickListener(clickListener);
         mReady.setOnClickListener(clickListener);
         mBackView.setOnClickListener(clickListener);
@@ -165,7 +213,7 @@ public class GameRoomFragment extends BaseUIFragment<UIFragmentHelper> {
                         LiveKit.sendMessage(content);
                     }
                 });
-
+                gameService.joinGVoiceRoom(roomId);
             }
 
             @Override
@@ -186,12 +234,79 @@ public class GameRoomFragment extends BaseUIFragment<UIFragmentHelper> {
         mRightAdapter.setItems(onlineRoomInfo.roleInfos.subList(max, onlineRoomInfo.roleInfos.size()));
     }
 
+    OnGVoiceListener mOnGVoiceListener = new OnGVoiceListener() {
+        @Override
+        public void onJoinRoom(int i, String s, int i1) {
+            ToastUtils.showShortToast(getActivity(), "success:" + s);
+            gameService.openGVoiceMic();
+        }
+
+        @Override
+        public void onQuitRoom(int i, String s) {
+
+        }
+
+        @Override
+        public void onStatusUpdate(int i, String s, int i1) {
+
+        }
+
+        @Override
+        public void onMemberVoice(int[] ints, int i) {
+            LogUtil.d("onMemberVoice", "length" + i);
+        }
+
+        @Override
+        public void onUserSpeak() {
+            mRecordingContainer.setVisibility(View.VISIBLE);
+            mRecordingHint
+                    .setText(getString(R.string.move_up_to_cancel));
+            mRecordingHint.setBackgroundColor(Color.TRANSPARENT);
+            mHandler.sendEmptyMessage(MSG_GET_MIC);
+        }
+
+        @Override
+        public void onUserSpeakEnd() {
+            mRecordingContainer.setVisibility(View.INVISIBLE);
+            mHandler.removeMessages(MSG_GET_MIC);
+        }
+    };
+
+    private AdapterView.OnItemClickListener onItemClickListener = new AdapterView.OnItemClickListener() {
+        @Override
+        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+            OnlineRoleInfo roleInfo = ((GameRoleAdapter) parent.getAdapter()).getItem(position);
+            switch (position) {
+                case 0:
+                    showContactInfoDialog(roleInfo);
+                    break;
+                case 1:
+                    showMyRoleDialog(roleInfo);
+                    break;
+                case 2:
+                    showWolfKillDialog();
+                    break;
+                case 3:
+                    showHunterSkillDialog();
+                    break;
+                case 4:
+                    showWitchSkillDialog(roleInfo);
+                    break;
+                case 5:
+                    showSheriffDialog();
+                    break;
+            }
+
+        }
+    };
+
     View.OnClickListener clickListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
             int id = v.getId();
             switch (id) {
                 case R.id.ivSetting:
+                    showSettingDialog();
                     break;
                 case R.id.ivBack:
                     finish();
@@ -199,6 +314,7 @@ public class GameRoomFragment extends BaseUIFragment<UIFragmentHelper> {
                 case R.id.ivZhao://召集令
                     break;
                 case R.id.ivHelp:
+                    showFragment(GameHelpFrament.newFragment(getActivity(), GameHelpFrament.class, null));
                     break;
                 case R.id.ivWatch:
                     break;
@@ -214,7 +330,7 @@ public class GameRoomFragment extends BaseUIFragment<UIFragmentHelper> {
             UiThreadHandler.post(new Runnable() {
                 @Override
                 public void run() {
-                    onMessageReveived(message);
+                    onMessageReceived(message);
                 }
             });
         }
@@ -237,11 +353,117 @@ public class GameRoomFragment extends BaseUIFragment<UIFragmentHelper> {
         }
     };
 
-    private void onMessageReveived(Message message) {
+    BaseGameDialog.OnGameDialogListener gameDialogListener = new BaseGameDialog.OnGameDialogListener() {
+        @Override
+        public void onGameDialogClick(Dialog dialog, Object... params) {
+            String method = (String) params[0];
+            if (ConstantsUtils.DIALOG_PARAMS_REPORT.equals(method)) {
+                String userId = (String) params[1];
+                loadData(ACTION_REPORT, PAGE_MORE, userId);
+            } else if (ConstantsUtils.DIALOG_PARAMS_ADDFRIEND.equals(method)) {
+                String userId = (String) params[1];
+                loadData(ACTION_ADDFRIEND, PAGE_MORE, userId);
+            } else if (ConstantsUtils.DIALOG_PARAMS_WOLFSKILL.equals(method)) {
+
+            } else if (ConstantsUtils.DIALOG_PARAMS_HUNTERSKILL.equals(method)) {
+
+            } else if (ConstantsUtils.DIALOG_PARAMS_SHERIFF.equals(method)) {
+
+            } else if (ConstantsUtils.DIALOG_PARAMS_WITCHSKILL.equals(method)) {
+
+            }
+            dialog.dismiss();
+        }
+    };
+
+    private void showSettingDialog() {
+        RoomSettingDialog mDialog = new RoomSettingDialog(getActivity(), new RoomSettingDialog.OnRoomSettingListener() {
+            @Override
+            public void onRoomSetting(int level, String psw, boolean isWatch) {
+
+            }
+        });
+        mDialog.show();
+    }
+
+    private void showSheriffDialog() {
+        if (mDialog != null && mDialog.isShowing()) {
+            mDialog.dismiss();
+        }
+        mDialog = new SheriffDialog(getActivity(), 20);
+        ((SheriffDialog) mDialog).setOnGameDialogListener(gameDialogListener);
+        mDialog.show();
+    }
+
+    /**
+     * 女巫使用技能
+     * @param roleInfo
+     */
+    private void showWitchSkillDialog(OnlineRoleInfo roleInfo) {
+        if (mDialog != null && mDialog.isShowing()) {
+            mDialog.dismiss();
+        }
+        mDialog = new WitchSkillDialog(getActivity(), roleInfo, 20);
+        ((WitchSkillDialog) mDialog).setOnGameDialogListener(gameDialogListener);
+        mDialog.show();
+    }
+
+    /**
+     * 猎人技能
+     */
+    private void showHunterSkillDialog() {
+        if (mDialog != null && mDialog.isShowing()) {
+            mDialog.dismiss();
+        }
+        mDialog = new HunterKillDialog(getActivity(), 20);
+        ((HunterKillDialog) mDialog).setOnGameDialogListener(gameDialogListener);
+        mDialog.show();
+    }
+
+    /**
+     * 狼人技能
+     */
+    private void showWolfKillDialog() {
+        if (mDialog != null && mDialog.isShowing()) {
+            mDialog.dismiss();
+        }
+        mDialog = new WolfKillDialog(getActivity(), 20);
+        ((WolfKillDialog) mDialog).setOnGameDialogListener(gameDialogListener);
+        mDialog.show();
+    }
+
+    /**
+     * 显示个人角色对话框
+     *
+     * @param roleInfo
+     */
+    private void showMyRoleDialog(OnlineRoleInfo roleInfo) {
+        if (mDialog != null && mDialog.isShowing()) {
+            mDialog.dismiss();
+        }
+        mDialog = new MyRoleDialog(getActivity(), roleInfo, 10);
+        mDialog.show();
+    }
+
+    /**
+     * 显示其他用户信息
+     *
+     * @param roleInfo
+     */
+    private void showContactInfoDialog(OnlineRoleInfo roleInfo) {
+        if (mDialog != null && mDialog.isShowing()) {
+            mDialog.dismiss();
+        }
+        mDialog = new UserInfoDialog(getActivity(), roleInfo, this);
+        ((UserInfoDialog) mDialog).setOnGameDialogListener(gameDialogListener);
+        mDialog.show();
+    }
+
+    private void onMessageReceived(Message message) {
         MessageContent content = message.getContent();
         if (content != null && content instanceof TextMessage) {
-            LogUtil.d("received:", ((TextMessage) content).getExtra());
             String extra = ((TextMessage) content).getExtra();
+            LogUtil.d("received:", extra);
             if (!TextUtils.isEmpty(extra)) {
                 try {
                     handleUrlLoad(new JSONObject(extra));
@@ -351,6 +573,14 @@ public class GameRoomFragment extends BaseUIFragment<UIFragmentHelper> {
             String url = OnlineServices.getRoomSettingUrl((int) params[0], (int) params[1]);
             BaseObject result = new DataAcquirer<>().get(url, new BaseObject());
             return result;
+        } else if (action == ACTION_ADDFRIEND) {
+            String url = OnlineServices.getAddFriendUrl((String) params[0]);
+            BaseObject result = new DataAcquirer<>().acquire(url, new BaseObject(), -1);
+            return result;
+        } else if (action == ACTION_REPORT) {
+            String url = OnlineServices.getReportFriendUrl((String) params[0]);
+            BaseObject result = new DataAcquirer<>().acquire(url, new BaseObject(), -1);
+            return result;
         }
         return super.onProcess(action, pageNo, params);
     }
@@ -363,6 +593,10 @@ public class GameRoomFragment extends BaseUIFragment<UIFragmentHelper> {
         } else if (action == ACTION_QUIT) {
         } else if (action == ACTION_READY) {
         } else if (action == ACTION_SETTING) {
+        } else if (action == ACTION_ADDFRIEND) {
+            ToastUtils.showShortToast(getActivity(), "添加成功");
+        } else if (action == ACTION_REPORT) {
+            ToastUtils.showShortToast(getActivity(), "举报成功");
         }
     }
 
@@ -372,6 +606,9 @@ public class GameRoomFragment extends BaseUIFragment<UIFragmentHelper> {
         if (rongIMService != null) {
             rongIMService.getObserver().removeOnRongIMMessageListener(rongIMMessageListener);
             rongIMService = null;
+        }
+        if (gameService != null) {
+            gameService.getObserver().removeOnGVoiceListener(mOnGVoiceListener);
         }
     }
 

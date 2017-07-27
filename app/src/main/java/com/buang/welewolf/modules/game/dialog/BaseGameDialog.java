@@ -9,6 +9,7 @@ import android.support.annotation.NonNull;
 import android.view.KeyEvent;
 
 import com.buang.welewolf.R;
+import com.buang.welewolf.base.bean.OnlineRoleInfo;
 
 /**
  * Created by weilei on 17/6/22.
@@ -17,6 +18,8 @@ import com.buang.welewolf.R;
 public class BaseGameDialog extends Dialog {
 
     private int maxTime;
+
+    private OnlineRoleInfo roleInfo;
 
     private Handler mHandler = new Handler() {
         @Override
@@ -38,7 +41,9 @@ public class BaseGameDialog extends Dialog {
         setOnShowListener(new OnShowListener() {
             @Override
             public void onShow(DialogInterface dialog) {
-                mHandler.sendEmptyMessage(0);
+                if (maxTime > 0) {
+                    mHandler.sendEmptyMessage(0);
+                }
             }
         });
         setOnDismissListener(new OnDismissListener() {
@@ -48,6 +53,9 @@ public class BaseGameDialog extends Dialog {
                 mHandler = null;
             }
         });
+    }
+
+    public void setCanceled() {
         setOnKeyListener(new OnKeyListener() {
             @Override
             public boolean onKey(DialogInterface dialog, int keyCode, KeyEvent event) {
@@ -76,8 +84,16 @@ public class BaseGameDialog extends Dialog {
 
     }
 
+    public OnlineRoleInfo getRoleInfo() {
+        return roleInfo;
+    }
+
+    public void setRoleInfo(OnlineRoleInfo roleInfo) {
+        this.roleInfo = roleInfo;
+    }
+
     public interface OnGameDialogListener {
-        public void onGameDialogClick(Object... params);
+        public void onGameDialogClick(Dialog dialog, Object... params);
     }
 
     public OnGameDialogListener mOnGameDialogListener;

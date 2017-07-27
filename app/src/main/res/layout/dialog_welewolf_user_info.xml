@@ -1,7 +1,6 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/color_black_80">
+    android:layout_height="match_parent">
 
     <LinearLayout
         android:layout_width="270dp"
@@ -11,17 +10,188 @@
         android:orientation="vertical">
 
         <ImageView
-            android:id="@+id/ivImage"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_marginLeft="5dp"
-            android:layout_marginTop="10dp"
-            android:src="@drawable/touxxiaophai" />
-
-        <TextView
+            android:id="@+id/ivReport"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            />
+            android:layout_gravity="right"
+            android:padding="5dp"
+            android:src="@drawable/icon_dialog_userinfo_report" />
+
+        <RelativeLayout
+            android:id="@+id/rl_userInfo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/ivImage"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginLeft="5dp"
+                android:src="@drawable/touxxiaophai" />
+
+            <ImageView
+                android:id="@+id/ivSex"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@id/ivImage"
+                android:layout_alignRight="@id/ivImage"
+                android:src="@drawable/icon_windows_male" />
+
+            <TextView
+                android:id="@+id/tvName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@id/ivImage"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="5dp"
+                android:layout_toRightOf="@id/ivImage"
+                android:text="啦啦啦啦"
+                android:textColor="@color/color_8b521f"
+                android:textSize="15sp" />
+
+            <TextView
+                android:id="@+id/tvLevel"
+                android:layout_width="50dp"
+                android:layout_height="18dp"
+                android:layout_below="@id/tvName"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="5dp"
+                android:layout_toRightOf="@id/ivImage"
+                android:background="@drawable/bg_level"
+                android:gravity="center"
+                android:text="Lv.8"
+                android:textColor="@color/white"
+                android:textSize="13sp" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:src="@drawable/icon_dialog_user_info_more" />
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp">
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:background="@color/color_f3e1c6" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="11dp"
+                android:layout_marginRight="11dp"
+                android:text="战绩"
+                android:textColor="@color/color_c18730"
+                android:textSize="12sp" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:background="@color/color_f3e1c6" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="39dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/bg_shape_dialog_userinfo_zhanji"
+            android:gravity="center_vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_weight="1"
+                android:gravity="bottom">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="胜"
+                    android:textColor="@color/color_cc9a4e"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/tvWin"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="4dp"
+                    android:text="502"
+                    android:textColor="@color/color_8b521f"
+                    android:textSize="17dp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_weight="1"
+                android:gravity="bottom">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="败"
+                    android:textColor="@color/color_cc9a4e"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/tvLost"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="4dp"
+                    android:text="100"
+                    android:textColor="@color/color_8b521f"
+                    android:textSize="17dp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="10dp"
+                android:layout_weight="1"
+                android:gravity="bottom">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="胜率"
+                    android:textColor="@color/color_cc9a4e"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/tvRate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="4dp"
+                    android:text="50.8%"
+                    android:textColor="@color/color_8b521f"
+                    android:textSize="17dp" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tvFriend"
+            android:layout_width="120dp"
+            android:layout_height="40dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/bg_dialog_button_yellow"
+            android:gravity="center"
+            android:text="加好友"
+            android:textColor="@color/white"
+            android:textSize="15sp" />
 
     </LinearLayout>
 

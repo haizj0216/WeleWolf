@@ -24,6 +24,9 @@ public class WolfUtils {
     public static final int GAME_ROLE_VILLAGE = 5;
     public static final int GAME_ROLE_WITCH = 6;
 
+    public static final int TIME_MY_ROLE = 5;
+    public static final int TIME_WOLF_SKILL = 20;
+
     public static int getGuildLevel(int level) {
         int id = R.drawable.icon_guild_level_1;
         switch (level) {
@@ -99,7 +102,36 @@ public class WolfUtils {
     }
 
     /**
+     * 角色名称
+     * @param role
+     * @return
+     */
+    public static String getRoleName(int role) {
+        String skill = "村民";
+        switch (role) {
+            case GAME_ROLE_HUNTER:
+                skill = "猎人";
+                break;
+            case GAME_ROLE_WOLF:
+                skill = "狼人";
+                break;
+            case GAME_ROLE_IDIOT:
+                skill = "天使";
+                break;
+            case GAME_ROLE_WITCH:
+                skill = "女巫";
+                break;
+            case GAME_ROLE_VILLAGE:
+                skill = "村民";
+                break;
+        }
+        return skill;
+    }
+
+
+    /**
      * 各角色图片
+     *
      * @param role
      * @return
      */
@@ -123,5 +155,61 @@ public class WolfUtils {
                 break;
         }
         return id;
+    }
+
+    /**
+     * 角色技能
+     *
+     * @param role
+     * @return
+     */
+    public static String getRoleSkill(int role) {
+        String skill = "你还没有特殊技能";
+        switch (role) {
+            case GAME_ROLE_HUNTER:
+                skill = "你还没有特殊技能";
+                break;
+            case GAME_ROLE_WOLF:
+                skill = "你还没有特殊技能";
+                break;
+            case GAME_ROLE_IDIOT:
+                skill = "你还没有特殊技能";
+                break;
+            case GAME_ROLE_WITCH:
+                skill = "你还没有特殊技能";
+                break;
+            case GAME_ROLE_VILLAGE:
+                skill = "你还没有特殊技能";
+                break;
+        }
+        return skill;
+    }
+
+    /**
+     * 角色描述
+     *
+     * @param role
+     * @return
+     */
+    public static String getRoleDesc(int role) {
+        String skill = "你还没有特殊技能";
+        switch (role) {
+            case GAME_ROLE_HUNTER:
+                skill = "你还没有特殊技能";
+                break;
+            case GAME_ROLE_WOLF:
+                skill = "你还没有特殊技能";
+                break;
+            case GAME_ROLE_IDIOT:
+                skill = "你还没有特殊技能";
+                break;
+            case GAME_ROLE_WITCH:
+                skill = "你还没有特殊技能";
+                break;
+            case GAME_ROLE_VILLAGE:
+                skill = "你还没有特殊技能";
+                break;
+        }
+        return skill;
     }
 }

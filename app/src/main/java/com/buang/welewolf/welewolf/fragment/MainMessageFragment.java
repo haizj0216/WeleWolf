@@ -16,6 +16,7 @@ import com.buang.welewolf.modules.guild.ContactInfoFragment;
 import com.buang.welewolf.modules.guild.FindGuildFragment;
 import com.buang.welewolf.modules.guild.GuildInfoFragment;
 import com.buang.welewolf.modules.message.ContactsFragment;
+import com.buang.welewolf.modules.services.GuildService;
 import com.buang.welewolf.modules.services.OnRongIMConnectListener;
 import com.buang.welewolf.modules.services.RongIMService;
 import com.buang.welewolf.modules.utils.ConstantsUtils;
@@ -113,7 +114,10 @@ public class MainMessageFragment extends BaseUIFragment<UIFragmentHelper> {
             switch (id) {
                 case R.id.ivGuild:
                     if (Utils.getLoginUserItem().guildIno != null) {
-                        showFragment(GuildInfoFragment.newFragment(getActivity(), GuildInfoFragment.class, null));
+                        Bundle mBundle = new Bundle();
+                        GuildService guildService = (GuildService) getSystemService(GuildService.SERVICE_NAME);
+                        mBundle.putString("guildID", guildService.getGuildInfo().guildID);
+                        showFragment(GuildInfoFragment.newFragment(getActivity(), GuildInfoFragment.class, mBundle));
                     } else {
                         showFragment(FindGuildFragment.newFragment(getActivity(), FindGuildFragment.class, null));
                     }

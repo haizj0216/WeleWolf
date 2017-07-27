@@ -45,7 +45,7 @@ public class UserItem extends BaseItem implements Serializable {
     public int gameStatus;
     public int role;
 
-    public class RecordInfo {
+    public static class RecordInfo {
         public int win;
         public int lost;
         public int total;

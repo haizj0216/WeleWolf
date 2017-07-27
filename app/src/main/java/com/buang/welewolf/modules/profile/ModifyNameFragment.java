@@ -2,6 +2,7 @@ package com.buang.welewolf.modules.profile;
 
 import android.os.Bundle;
 import android.text.InputFilter;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.EditText;
 
@@ -74,23 +75,20 @@ public class ModifyNameFragment extends BaseUIFragment<UIFragmentHelper> {
         int maxLength = 2;
         switch (type) {
             case TYPE_USER_NAME:
-                height = UIUtils.dip2px(50);
-                maxLength = 20;
-                break;
-            case TYPE_USER_SIGN:
-                height = UIUtils.dip2px(200);
-                maxLength = 200;
-                break;
             case TYPE_GUILD_NAME:
                 height = UIUtils.dip2px(50);
                 maxLength = 20;
+                mEditView.setGravity(Gravity.CENTER_VERTICAL);
                 break;
             case TYPE_GUILD_SIGN:
+            case TYPE_USER_SIGN:
                 height = UIUtils.dip2px(200);
                 maxLength = 200;
+                mEditView.setGravity(Gravity.LEFT);
                 break;
         }
-        mEditView.setHeight(height);
+        mEditView.getLayoutParams().height = height;
+//        mEditView.setMaxHeight(height);
         mEditView.setFilters(new InputFilter[]{new InputFilter.LengthFilter(maxLength)});
 
     }

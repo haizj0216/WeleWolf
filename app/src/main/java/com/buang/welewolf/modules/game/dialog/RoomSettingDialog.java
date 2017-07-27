@@ -1,5 +1,6 @@
 package com.buang.welewolf.modules.game.dialog;
 
+import android.app.Dialog;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -13,12 +14,13 @@ import android.widget.TextView;
 import android.widget.ToggleButton;
 
 import com.buang.welewolf.R;
+import com.buang.welewolf.modules.utils.ToastUtils;
 
 /**
  * Created by weilei on 17/6/22.
  */
 
-public class RoomSettingDialog extends BaseGameDialog {
+public class RoomSettingDialog extends Dialog {
 
     private EditText mEditView;
     private TextView mLevel0;
@@ -34,8 +36,9 @@ public class RoomSettingDialog extends BaseGameDialog {
 
     private int mLevel;
 
-    public RoomSettingDialog(@NonNull Context context) {
-        super(context);
+    public RoomSettingDialog(@NonNull Context context, OnRoomSettingListener listenr) {
+        super(context, R.style.IphoneDialog);
+        mOnRoomSettingListenr = listenr;
     }
 
     @Override
@@ -91,6 +94,8 @@ public class RoomSettingDialog extends BaseGameDialog {
                 }
             }
         });
+
+        mPsw.setChecked(false);
     }
 
     private void updatePsw(String psw) {
@@ -141,7 +146,7 @@ public class RoomSettingDialog extends BaseGameDialog {
             int id = v.getId();
             switch (id) {
                 case R.id.bvConfirm:
-                    dismiss();
+                    checkSetting();
                     break;
                 case R.id.tvLevel0:
                     updateLevelView(0);
@@ -161,4 +166,21 @@ public class RoomSettingDialog extends BaseGameDialog {
             }
         }
     };
+
+    private void checkSetting() {
+        if (mPsw.isChecked() && mEditView.getText().length() < 4) {
+            ToastUtils.showShortToast(getContext(), "请输入密码");
+            return;
+        }
+        if (mOnRoomSettingListenr != null) {
+            mOnRoomSettingListenr.onRoomSetting(mLevel, mEditView.getText().toString(), mVisit.isChecked());
+        }
+        dismiss();
+    }
+
+    private OnRoomSettingListener mOnRoomSettingListenr;
+
+    public interface OnRoomSettingListener {
+        public void onRoomSetting(int level, String psw, boolean isWatch);
+    }
 }

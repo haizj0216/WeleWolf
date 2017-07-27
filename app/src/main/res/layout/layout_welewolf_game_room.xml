@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/rvGame"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:windowSoftInputMode="stateVisible|adjustResize">
 
     <ImageView
         android:id="@+id/ivRoomBg"
@@ -50,7 +50,8 @@
             android:layout_marginRight="15dp"
             android:layout_marginTop="27dp"
             android:layout_toLeftOf="@id/ivHelp"
-            android:src="@drawable/icon_game_zhao" />
+            android:src="@drawable/icon_game_zhao"
+            android:visibility="gone"/>
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -58,7 +59,7 @@
             android:layout_centerHorizontal="true"
             android:layout_marginBottom="17dp"
             android:layout_marginTop="23dp"
-            android:background="@color/color_black_40"
+            android:background="@drawable/bg_shape_game_title"
             android:gravity="center"
             android:orientation="vertical"
             android:paddingLeft="10dp"
@@ -87,7 +88,7 @@
         android:id="@+id/bottom_bar"
         layout="@layout/fragment_bottombar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="40dp"
         android:layout_alignParentBottom="true"
         android:layout_marginBottom="5dp" />
 
@@ -106,10 +107,31 @@
             android:layout_marginBottom="5dp"
             android:background="@drawable/bg_room_begin" />
 
+        <ImageView
+            android:id="@+id/ivCurRole"
+            android:layout_width="60dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="15dp"
+            android:layout_marginLeft="5dp"
+            android:scaleType="center"
+            android:src="@drawable/icon_role_village" />
+
+        <ImageView
+            android:id="@+id/ivWatch"
+            android:layout_width="60dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginBottom="15dp"
+            android:layout_marginRight="5dp"
+            android:src="@drawable/bg_room_watch" />
+
         <ListView
             android:id="@+id/lvLeftList"
             android:layout_width="60dp"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_above="@id/ivCurRole"
             android:layout_marginBottom="5dp"
             android:layout_marginLeft="5dp"
             android:cacheColorHint="@android:color/transparent"
@@ -121,7 +143,8 @@
         <ListView
             android:id="@+id/lvRightList"
             android:layout_width="60dp"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_above="@id/ivWatch"
             android:layout_alignParentRight="true"
             android:layout_marginBottom="5dp"
             android:layout_marginRight="5dp"
@@ -141,31 +164,42 @@
             android:layout_marginRight="5dp"
             android:layout_toLeftOf="@id/lvRightList"
             android:layout_toRightOf="@id/lvLeftList"
+            android:background="@drawable/bg_game_dialog"
             android:cacheColorHint="@android:color/transparent"
             android:divider="@null"
             android:dividerHeight="0dp"
-            android:listSelector="@android:color/transparent" />
+            android:listSelector="@android:color/transparent"
+            android:padding="5dp" />
 
-        <ImageView
-            android:id="@+id/ivCurRole"
-            android:layout_width="60dp"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/lvLeftList"
-            android:layout_marginBottom="5dp"
-            android:layout_marginLeft="5dp"
-            android:scaleType="center"
-            android:src="@drawable/icon_role_village" />
 
-        <ImageView
-            android:id="@+id/ivWatch"
-            android:layout_width="60dp"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:layout_below="@id/lvRightList"
-            android:layout_marginBottom="5dp"
-            android:layout_marginRight="5dp"
-            android:src="@drawable/bg_room_watch" />
     </RelativeLayout>
+    <RelativeLayout
+        android:id="@+id/recording_container"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:background="@drawable/recording_hint_bg"
+        android:padding="10dp"
+        android:visibility="invisible">
 
+        <ImageView
+            android:id="@+id/mic_image"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:src="@drawable/record_animate_01" />
+
+        <TextView
+            android:id="@+id/recording_hint"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/mic_image"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="5dp"
+            android:padding="2dp"
+            android:text="@string/move_up_to_cancel"
+            android:textColor="@color/white"
+            android:textSize="10sp" />
+    </RelativeLayout>
 
 </RelativeLayout>

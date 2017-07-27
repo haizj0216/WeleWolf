@@ -13,6 +13,7 @@ import android.widget.TextView;
 
 import com.buang.welewolf.R;
 import com.buang.welewolf.base.database.bean.UserItem;
+import com.buang.welewolf.base.http.services.OnlineServices;
 import com.buang.welewolf.base.services.upload.UploadListener;
 import com.buang.welewolf.base.services.upload.UploadService;
 import com.buang.welewolf.base.services.upload.UploadTask;
@@ -22,11 +23,14 @@ import com.buang.welewolf.modules.profile.ModifyNameFragment;
 import com.buang.welewolf.modules.utils.DialogUtils;
 import com.buang.welewolf.modules.utils.ToastUtils;
 import com.buang.welewolf.modules.utils.UIFragmentHelper;
+import com.buang.welewolf.modules.utils.Utils;
 import com.hyena.framework.app.fragment.BaseUIFragment;
 import com.hyena.framework.app.fragment.bean.MenuItem;
 import com.hyena.framework.datacache.BaseObject;
+import com.hyena.framework.datacache.DataAcquirer;
 import com.hyena.framework.utils.ImageFetcher;
 import com.hyena.framework.utils.RoundDisplayer;
+import com.hyena.framework.utils.UIUtils;
 import com.hyena.framework.utils.UiThreadHandler;
 
 import java.io.File;
@@ -76,7 +80,7 @@ public class ContactSettingFragment extends BaseUIFragment<UIFragmentHelper> {
     public void onViewCreatedImpl(View view, Bundle savedInstanceState) {
         super.onViewCreatedImpl(view, savedInstanceState);
         getUIFragmentHelper().getTitleBar().setTitle("编辑资料");
-        getUIFragmentHelper().setTintBar(R.color.color_title_bar);
+        getUIFragmentHelper().setTintBar(getResources().getColor(R.color.color_title_bar));
         headImageFile = new File(DirContext.getImageCacheDir(), "user.jpg");
 
         mHeadView = (ImageView) view.findViewById(R.id.ivHead);
@@ -89,7 +93,6 @@ public class ContactSettingFragment extends BaseUIFragment<UIFragmentHelper> {
         view.findViewById(R.id.lvName).setOnClickListener(onClickListener);
         view.findViewById(R.id.lvSex).setOnClickListener(onClickListener);
         view.findViewById(R.id.lvSign).setOnClickListener(onClickListener);
-        initData();
         setContactView();
     }
 
@@ -114,7 +117,7 @@ public class ContactSettingFragment extends BaseUIFragment<UIFragmentHelper> {
         }
     };
 
-    private void openModifyNameFragment(int type, String name) {
+    private void openModifyNameFragment(final int type, String name) {
         Bundle mBundle = new Bundle();
         mBundle.putInt("type", type);
         mBundle.putString("name", name);
@@ -122,25 +125,26 @@ public class ContactSettingFragment extends BaseUIFragment<UIFragmentHelper> {
         fragment.setOnModifyNameListener(new ModifyNameFragment.OnModifyNameListener() {
             @Override
             public void onModifyName(String name) {
-
+                if (type == ModifyNameFragment.TYPE_USER_NAME) {
+                    loadData("userName", name);
+                } else {
+                    loadData("sign", name);
+                }
             }
         });
         showFragment(fragment);
     }
 
-    private void initData() {
-        contactInfo = new UserItem();
-        contactInfo.headPhoto = "http://XXX";
-        contactInfo.userName = "朱大壮";
-        contactInfo.sex = "1";
-        contactInfo.sign = "来打我啊";
-    }
-
     private void setContactView() {
+        contactInfo = Utils.getLoginUserItem();
         ImageFetcher.getImageFetcher().loadImage(contactInfo.headPhoto, mHeadView, R.drawable.bt_message_default_head, new RoundDisplayer());
         mNameView.setText(contactInfo.userName);
         mSexView.setText(contactInfo.sex.equals("1") ? "男" : "女");
         mSignView.setText(contactInfo.sign);
+    }
+
+    private void loadData(String param, String content) {
+        loadDefaultData(PAGE_MORE, param, content);
     }
 
     @Override
@@ -150,12 +154,15 @@ public class ContactSettingFragment extends BaseUIFragment<UIFragmentHelper> {
 
     @Override
     public BaseObject onProcess(int action, int pageNo, Object... params) {
-        return super.onProcess(action, pageNo, params);
+        String url = OnlineServices.getUserEditUrl((String) params[0], (String) params[1]);
+        BaseObject result = new DataAcquirer<>().get(url, new BaseObject());
+        return result;
     }
 
     @Override
     public void onGet(int action, int pageNo, BaseObject result, Object... params) {
         super.onGet(action, pageNo, result, params);
+
     }
 
     private void showSex() {
@@ -167,9 +174,13 @@ public class ContactSettingFragment extends BaseUIFragment<UIFragmentHelper> {
                     @Override
                     public void onItemClick(AdapterView<?> parent, View view,
                                             int position, long id) {
+                        String sex = "0";
                         if (position == 0) {
+                            sex = "0";
                         } else if (position == 1) {
+                            sex = "1";
                         }
+                        loadData("sex", sex);
                         if (mDialog.isShowing()) {
                             mDialog.dismiss();
                         }
@@ -200,10 +211,6 @@ public class ContactSettingFragment extends BaseUIFragment<UIFragmentHelper> {
                                     Uri.fromFile(headImageFile));
                             intent.putExtra("return-data", false);
                             startActivityForResult(intent, REQCODE_CAMERA);
-//							setupCameraIntentHelper();
-//							if (mCameraIntentHelper != null) {
-//								mCameraIntentHelper.startCameraIntent();
-//							}
                         }
 
                         // 调用图片浏览器
@@ -300,6 +307,7 @@ public class ContactSettingFragment extends BaseUIFragment<UIFragmentHelper> {
             @Override
             public void onUploadComplete(UploadTask uploadTask, String s) {
                 showContent();
+                loadData("headPhoto", s);
             }
 
             @Override

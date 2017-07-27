@@ -6,7 +6,8 @@
 
     <RelativeLayout
         android:layout_width="50dp"
-        android:layout_height="50dp">
+        android:layout_height="50dp"
+        android:layout_gravity="center_horizontal">
 
         <com.buang.welewolf.widgets.roundedimageview.RoundedImageView
             android:id="@+id/ivHead"
@@ -43,13 +44,15 @@
             android:id="@+id/ivSelect"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:src="@drawable/icon_dialog_role_select" />
+            android:src="@drawable/icon_dialog_role_select"
+            android:visibility="gone" />
     </RelativeLayout>
 
     <LinearLayout
         android:id="@+id/lvIndex"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:visibility="gone"
-        android:orientation="horizontal" />
+        android:layout_gravity="center_horizontal"
+        android:orientation="horizontal"
+        android:visibility="gone" />
 </LinearLayout>

@@ -52,29 +52,29 @@ public class SplashFragment extends BaseUIFragment {
     @Override
     public void onViewCreatedImpl(View view, Bundle savedInstanceState) {
         super.onViewCreatedImpl(view, savedInstanceState);
-        ImageView logo = (ImageView) view.findViewById(com.buang.welewolf.R.id.splash_img_logo);
-//        ImageView version = (ImageView) view.findViewById(R.id.splash_img_version);
-        ImageView greetImg = (ImageView) view.findViewById(com.buang.welewolf.R.id.splash_img_greetimg);
-        try {
-            String fileName = PreferencesController.getStringValue(ConstantsUtils.GREETING_IMG_FIELPATH);
-            if (!TextUtils.isEmpty(fileName)) {
-                File file = new File(fileName);
-                fileIsExists = file.exists();
-                if (fileIsExists) {
-                    greetImg.setVisibility(View.VISIBLE);
-                    logo.setVisibility(View.GONE);
-                    String path = file.getAbsolutePath();
-                    Bitmap bitmap = createSplashBitmap(path);
-                    greetImg.setImageBitmap(bitmap);
-                }else {
-                    greetImg.setVisibility(View.GONE);
-                }
-            }else {
-                greetImg.setVisibility(View.GONE);
-            }
-        } catch (Throwable e) {
-            e.printStackTrace();
-        }
+//        ImageView logo = (ImageView) view.findViewById(com.buang.welewolf.R.id.splash_img_logo);
+////        ImageView version = (ImageView) view.findViewById(R.id.splash_img_version);
+//        ImageView greetImg = (ImageView) view.findViewById(com.buang.welewolf.R.id.splash_img_greetimg);
+//        try {
+//            String fileName = PreferencesController.getStringValue(ConstantsUtils.GREETING_IMG_FIELPATH);
+//            if (!TextUtils.isEmpty(fileName)) {
+//                File file = new File(fileName);
+//                fileIsExists = file.exists();
+//                if (fileIsExists) {
+//                    greetImg.setVisibility(View.VISIBLE);
+//                    logo.setVisibility(View.GONE);
+//                    String path = file.getAbsolutePath();
+//                    Bitmap bitmap = createSplashBitmap(path);
+//                    greetImg.setImageBitmap(bitmap);
+//                }else {
+//                    greetImg.setVisibility(View.GONE);
+//                }
+//            }else {
+//                greetImg.setVisibility(View.GONE);
+//            }
+//        } catch (Throwable e) {
+//            e.printStackTrace();
+//        }
 
         SplashTask mSplashTask = new SplashTask();
         mSplashTask.execute();

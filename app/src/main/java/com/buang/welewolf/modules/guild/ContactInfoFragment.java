@@ -334,7 +334,7 @@ public class ContactInfoFragment extends BaseUIFragment<UIFragmentHelper> {
         mWinView.setText("胜 " + userItem.recordInfo.win + "局");
         mRateView.setText("(胜率" + userItem.recordInfo.rate * 100 + "%）");
         mPopView.setText(userItem.popularity + "");
-        mSignView.setText(userItem.sign + userItem.sign + userItem.sign + userItem.sign + userItem.sign + userItem.sign + userItem.sign + userItem.sign + userItem.sign + userItem.sign);
+        mSignView.setText(userItem.sign);
         if (userItem.mGifts != null && userItem.mGifts.size() > 0) {
             GiftAdapter adapter = new GiftAdapter(getActivity());
             adapter.setItems(userItem.mGifts);
@@ -355,6 +355,7 @@ public class ContactInfoFragment extends BaseUIFragment<UIFragmentHelper> {
             mGuildJob.setText(WolfUtils.getGuildJob(userItem.guildIno.job));
             ImageFetcher.getImageFetcher().loadImage(userItem.guildIno.mHeadPhoto, mGuildHead, R.drawable.bt_message_default_head, new RoundDisplayer());
         }
+        mScrollView.scrollTo(0, 0);
     }
 
     private void updateFriend() {

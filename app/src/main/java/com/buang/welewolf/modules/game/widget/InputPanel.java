@@ -24,7 +24,6 @@ public class InputPanel extends LinearLayout {
 
     private ViewGroup inputBar;
     private EditText textEditor;
-    private ImageView emojiBtn;
     private TextView sendBtn;
     private EmojiBoard emojiBoard;
 
@@ -43,7 +42,6 @@ public class InputPanel extends LinearLayout {
         LayoutInflater.from(getContext()).inflate(R.layout.widget_input_panel, this);
         inputBar = (ViewGroup) findViewById(R.id.input_bar);
         textEditor = (EditText) findViewById(R.id.input_editor);
-        emojiBtn = (ImageView) findViewById(R.id.input_emoji_btn);
         sendBtn = (TextView) findViewById(R.id.input_send);
         emojiBoard = (EmojiBoard) findViewById(R.id.input_emoji_board);
 
@@ -51,7 +49,6 @@ public class InputPanel extends LinearLayout {
             @Override
             public void onFocusChange(View v, boolean hasFocus) {
                 inputBar.setSelected(hasFocus);
-                emojiBtn.setSelected(emojiBoard.getVisibility() == VISIBLE);
             }
         });
         textEditor.addTextChangedListener(new TextWatcher() {
@@ -73,14 +70,6 @@ public class InputPanel extends LinearLayout {
                 textEditor.setText(cs, TextView.BufferType.SPANNABLE);
                 textEditor.setSelection(start, end);
                 textEditor.addTextChangedListener(this);
-            }
-        });
-
-        emojiBtn.setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                emojiBoard.setVisibility(emojiBoard.getVisibility() == VISIBLE ? GONE : VISIBLE);
-                emojiBtn.setSelected(emojiBoard.getVisibility() == VISIBLE);
             }
         });
 
@@ -106,6 +95,10 @@ public class InputPanel extends LinearLayout {
         });
     }
 
+    public void updateEmojiBoard() {
+        emojiBoard.setVisibility(emojiBoard.getVisibility() == VISIBLE ? GONE : VISIBLE);
+    }
+
     public void setPanelListener(InputPanelListener l) {
         listener = l;
     }
@@ -118,7 +111,6 @@ public class InputPanel extends LinearLayout {
     public boolean onBackAction() {
         if (emojiBoard.getVisibility() == VISIBLE) {
             emojiBoard.setVisibility(GONE);
-            emojiBtn.setSelected(false);
             return true;
         }
         return false;

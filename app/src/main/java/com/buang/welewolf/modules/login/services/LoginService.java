@@ -67,5 +67,6 @@ public interface LoginService extends BaseService {
 
 	public void clearUserInfo();
 
+	public void setUserInfo(UserItem userInfo);
 
 }

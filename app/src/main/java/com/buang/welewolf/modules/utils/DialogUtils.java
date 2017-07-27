@@ -2174,26 +2174,6 @@ public class DialogUtils {
         View view = View.inflate(activity, R.layout.dialog_welewolf_help_role, null);
         dialog.setContentView(view);
 
-        ImageView imageView = (ImageView) view.findViewById(R.id.ivImage);
-
-        InputStream inputStream = ImageUtil.Bitmap2InputStream(BitmapFactory.decodeResource(activity.getResources(), R.drawable.icon_help_role_guide));
-        BitmapFactory.Options tmpOptions = new BitmapFactory.Options();
-        tmpOptions.inJustDecodeBounds = true;
-        BitmapFactory.decodeStream(inputStream, null, tmpOptions);
-        int width = tmpOptions.outWidth;
-        int height = tmpOptions.outHeight;
-
-        try {
-            BitmapRegionDecoder bitmapRegionDecoder = null;
-            bitmapRegionDecoder = BitmapRegionDecoder.newInstance(inputStream, false);
-            BitmapFactory.Options options = new BitmapFactory.Options();
-            options.inPreferredConfig = Bitmap.Config.RGB_565;
-            Bitmap bitmap = bitmapRegionDecoder.decodeRegion(new Rect(width / 2 - 100, height / 2 - 100, width / 2 + 100, height / 2 + 100), options);
-            imageView.setImageBitmap(bitmap);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
         view.findViewById(R.id.blClose).setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {

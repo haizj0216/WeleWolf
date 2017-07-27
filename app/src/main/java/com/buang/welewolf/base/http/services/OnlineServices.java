@@ -217,6 +217,19 @@ public class OnlineServices {
     }
 
     /**
+     * 编辑用户信息
+     *
+     * @param name
+     * @param image
+     * @return
+     */
+    public static String getUserEditUrl(String name, String image) {
+        StringBuffer buffer = getPhpCommonUrl("wolf/user/player/update-info?");
+        buffer.append("&" + name + "=" + image);
+        return buffer.toString();
+    }
+
+    /**
      * 好友列表
      *
      * @return

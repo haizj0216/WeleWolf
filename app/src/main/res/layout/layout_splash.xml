@@ -1,33 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="#ffffff" >
+    android:layout_height="match_parent">
 
     <ImageView
         android:id="@+id/splash_img_greetimg"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:paddingBottom="75dp"
-        android:scaleType="centerCrop"/>
-
-    <ImageView
-        android:id="@+id/splash_img_logo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="80dp"
-        android:src="@drawable/introduce_login_logo"
-        android:scaleType="centerCrop"/>
-
-    <ImageView
-        android:id="@+id/splash_img_version"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginBottom="15dp"
-        android:src="@drawable/introduce_logotext"
-        android:scaleType="centerCrop"/>
+        android:background="@drawable/bg_splash"
+        android:scaleType="centerCrop" />
 
 </RelativeLayout>

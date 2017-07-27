@@ -182,4 +182,12 @@ public class ConstantsUtils {
     public static final String GRADE_SECOND_HIGH = "22";
     public static final String GRADE_THIRD_HIGH = "23";
 
+
+    public static final String DIALOG_PARAMS_REPORT = "report";
+    public static final String DIALOG_PARAMS_ADDFRIEND = "addFriend";
+    public static final String DIALOG_PARAMS_WOLFSKILL = "wolfSkill";
+    public static final String DIALOG_PARAMS_HUNTERSKILL = "hunterSkill";
+    public static final String DIALOG_PARAMS_WITCHSKILL = "witchSkill";
+    public static final String DIALOG_PARAMS_SHERIFF = "sheriff";
+
 }

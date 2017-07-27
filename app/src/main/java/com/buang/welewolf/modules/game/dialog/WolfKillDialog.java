@@ -2,11 +2,13 @@ package com.buang.welewolf.modules.game.dialog;
 
 import android.app.Dialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -15,6 +17,8 @@ import android.widget.TextView;
 import com.buang.welewolf.R;
 import com.buang.welewolf.base.bean.OnlineRoleInfo;
 import com.buang.welewolf.modules.services.GameService;
+import com.buang.welewolf.modules.services.OnSkillUpdateListener;
+import com.buang.welewolf.modules.utils.ConstantsUtils;
 import com.buang.welewolf.modules.utils.Utils;
 import com.buang.welewolf.modules.utils.WolfUtils;
 import com.buang.welewolf.widgets.roundedimageview.RoundedImageView;
@@ -33,11 +37,15 @@ public class WolfKillDialog extends BaseGameDialog {
     private GameService gameService;
     private GridView mGridView;
     private RoleAdapter roleAdapter;
+    private TextView mTitle;
+    private OnlineRoleInfo killRole;
 
     public WolfKillDialog(@NonNull Context context, int time) {
         super(context);
         gameService = (GameService) BaseApp.getAppContext().getSystemService(GameService.SERVICE_NAME);
+        gameService.getObserver().addOnSkillUpdateListener(skillUpdateListener);
         setMaxTime(time);
+        setCanceled();
     }
 
     @Override
@@ -47,6 +55,51 @@ public class WolfKillDialog extends BaseGameDialog {
         mGridView = (GridView) findViewById(R.id.gvGrid);
         roleAdapter = new RoleAdapter(getContext());
         mGridView.setAdapter(roleAdapter);
+        roleAdapter.setItems(gameService.getOnlineRoomInfo().roleInfos);
+
+        mTitle = (TextView) findViewById(R.id.tvTitle);
+        setOnDismissListener(new OnDismissListener() {
+            @Override
+            public void onDismiss(DialogInterface dialog) {
+                gameService.getObserver().removeOnSkillUpdateListener(skillUpdateListener);
+            }
+        });
+        mGridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                OnlineRoleInfo roleInfo = roleAdapter.getItem(position);
+                if (roleInfo.roleType != WolfUtils.GAME_ROLE_WOLF) {
+                    killRole(roleInfo);
+                }
+            }
+        });
+    }
+
+    private void killRole(OnlineRoleInfo roleInfo) {
+        killRole = roleInfo;
+        roleAdapter.notifyDataSetChanged();
+        if (mOnGameDialogListener != null) {
+            mOnGameDialogListener.onGameDialogClick(WolfKillDialog.this, ConstantsUtils.DIALOG_PARAMS_WOLFSKILL, roleInfo.userID);
+        }
+    }
+
+    private OnSkillUpdateListener skillUpdateListener = new OnSkillUpdateListener() {
+        @Override
+        public void onSkillUpdate(OnlineRoleInfo from, OnlineRoleInfo to) {
+            roleAdapter.notifyDataSetChanged();
+        }
+    };
+
+    @Override
+    public void updateTime() {
+        super.updateTime();
+        mTitle.setText("选择要杀的玩家(" + getMaxTime() + ")");
+    }
+
+    @Override
+    public void onTimeEnd() {
+        super.onTimeEnd();
+        dismiss();
     }
 
     class RoleAdapter extends SingleTypeAdapter<OnlineRoleInfo> {
@@ -88,13 +141,19 @@ public class WolfKillDialog extends BaseGameDialog {
                 viewHolder.mWolf.setVisibility(View.GONE);
             }
 
+            if (killRole == roleInfo) {
+                viewHolder.mSelect.setVisibility(View.VISIBLE);
+            } else {
+                viewHolder.mSelect.setVisibility(View.GONE);
+            }
+
             List<OnlineRoleInfo> killRoles = gameService.killedByWolfList(roleInfo.userID);
             if (killRoles == null || killRoles.size() == 0) {
                 viewHolder.mLayou.setVisibility(View.GONE);
             } else {
                 updateKillWolf(viewHolder.mLayou, killRoles);
             }
-            return null;
+            return convertView;
         }
 
         private void updateKillWolf(LinearLayout layout, List<OnlineRoleInfo> roleInfos) {
@@ -111,7 +170,6 @@ public class WolfKillDialog extends BaseGameDialog {
                 layout.addView(textView, params);
             }
         }
-
     }
 
     class ViewHolder {

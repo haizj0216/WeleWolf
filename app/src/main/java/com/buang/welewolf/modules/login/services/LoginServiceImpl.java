@@ -95,6 +95,10 @@ public class LoginServiceImpl implements LoginService {
         mLoginUser = null;
     }
 
+    @Override
+    public void setUserInfo(UserItem userInfo) {
+        mLoginUser = userInfo;
+    }
 
     @Override
     public void releaseAll() {

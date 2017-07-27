@@ -45,10 +45,10 @@ import com.hyena.framework.datacache.BaseObject;
 import com.hyena.framework.datacache.DataAcquirer;
 import com.hyena.framework.servcie.debug.DebugModeListener;
 import com.hyena.framework.servcie.debug.DebugService;
+import com.hyena.framework.utils.BaseApp;
 import com.hyena.framework.utils.ToastUtils;
 import com.hyena.framework.utils.UiThreadHandler;
-import com.youme.voiceengine.VoiceEngineService;
-import com.youme.voiceengine.mgr.YouMeManager;
+import com.tencent.gcloud.voice.GCloudVoiceEngine;
 
 import java.io.File;
 
@@ -59,6 +59,10 @@ import java.io.File;
  */
 @SuppressLint("NewApi")
 public class MainActivity extends NavigateActivity {
+
+	static {
+		System.loadLibrary("GCloudVoice");
+	}
 
 	private String AppKey = "YOUMEE8AD97B95594166FF2B47AA01266F24ED513AFD9", AppSecret = "y0ZNDWP9IOA9+RVjeV8Ovpm5DWCUMjnq4DwBooQ/WkAhhqhli1V0ZR3ock5ZQQUUGKsfs2nPQ61LwZaaYK3MUHPvCVQZGf4VEgyTX0MWQiToJ0L4dzXfUIbwKFOUohmPNhCbTfoi0P5OxnVYlleUuIQQXKaY1X1Vg0tNrqRdZEMBAAE=";
 
@@ -103,15 +107,7 @@ public class MainActivity extends NavigateActivity {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
-//		if (BuildConfig.DEBUG && Build.VERSION.SDK_INT >= 9) {
-//			StrictMode.setThreadPolicy(new StrictMode.ThreadPolicy.Builder()
-//					.detectAll().penaltyLog().build());
-//		}
-		YouMeManager.Init(this);
 		super.onCreate(savedInstanceState);
-		Intent intent = new Intent(this,VoiceEngineService.class);
-		startService(intent);
-
 		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
 			//透明状态栏
 			getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
@@ -120,6 +116,7 @@ public class MainActivity extends NavigateActivity {
 				WebView.setWebContentsDebuggingEnabled(true);
 			}
 		}
+		GCloudVoiceEngine.getInstance().init(BaseApp.getAppContext(), this);
 		UIViewFactory.getViewFactory().registViewBuilder(new BoxViewBuilder());
 		showScene(SCENE_SPLASH);
 		if(!App.mIsEmChatConntcted){
@@ -233,9 +230,7 @@ public class MainActivity extends NavigateActivity {
 			mUpdateService.getObserver().removeVersionChangeListener(
 					mVersionChangeListener);
 		}
-//		MsgCenter.unRegisterLocalReceiver(mReceiver);
 		clearPrefsOnExit(false);
-		YouMeManager.Uninit();
 	}
 
 	/**
